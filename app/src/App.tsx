@@ -154,9 +154,6 @@ export default function App() {
   const [detailStop, setDetailStop] = useState<{ stop: JourneyStop; actNumber: number } | null>(null);
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
 
-  const [tasteReturnTo, setTasteReturnTo] = useState<"home" | "buildMyNight">("home");
-  const [tasteShowNext, setTasteShowNext] = useState(false);
-
   const [mapTarget, setMapTarget] = useState<{ startAddress: string; nextStopAddress: string | null; nextStopLabel: string } | null>(null);
 
   useEffect(() => {
@@ -175,20 +172,10 @@ export default function App() {
   }
 
   function openMyTasteFromHome() {
-    setTasteReturnTo("home");
-    setTasteShowNext(false);
-    setView("myTaste");
-  }
-
-  function startBuildMyNight() {
-    setTasteReturnTo("home");
-    setTasteShowNext(true);
     setView("myTaste");
   }
 
   function editTasteFromBuildMyNight() {
-    setTasteReturnTo("buildMyNight");
-    setTasteShowNext(false);
     setView("myTaste");
   }
 
@@ -271,7 +258,7 @@ export default function App() {
           dataset={dataset}
           taste={taste}
           onChangeTaste={updateTaste}
-          onBuildJourney={startBuildMyNight}
+          onBuildJourney={() => setView("buildMyNight")}
           onWhatsGoodNow={() => setView("whatsGoodNow")}
           onSurpriseMe={surpriseMe}
           onOpenArtists={() => setView("browseArtists")}
@@ -281,17 +268,7 @@ export default function App() {
         />
       )}
 
-      {view === "myTaste" && (
-        <MyTasteScreen
-          dataset={dataset}
-          taste={taste}
-          onChange={updateTaste}
-          showBack={tasteShowNext === false && tasteReturnTo === "buildMyNight"}
-          onBack={() => setView(tasteReturnTo)}
-          onHome={goHome}
-          onNext={tasteShowNext ? () => setView("buildMyNight") : undefined}
-        />
-      )}
+      {view === "myTaste" && <MyTasteScreen dataset={dataset} taste={taste} onChange={updateTaste} onHome={goHome} />}
 
       {view === "buildMyNight" && (
         <BuildMyNightScreen
@@ -299,7 +276,6 @@ export default function App() {
           onChangeTaste={updateTaste}
           draft={draft}
           onChangeDraft={setDraft}
-          onBack={() => setView("myTaste")}
           onHome={goHome}
           onEditTaste={editTasteFromBuildMyNight}
           onGo={generateJourney}

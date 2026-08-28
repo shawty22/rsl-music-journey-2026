@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { HomeIcon, BackIcon, PinIcon, ArrowRightIcon } from "../components/icons";
+import { useEffect, useRef, useState } from "react";
+import { HomeIcon, PinIcon, ArrowRightIcon } from "../components/icons";
 import { DAY_OPTIONS } from "../lib/time";
 import { latLngToBrcAddress, type BrcGeoModel } from "../lib/geo";
 import type { TasteProfile } from "../types";
@@ -25,7 +25,6 @@ export function BuildMyNightScreen({
   onChangeTaste,
   draft,
   onChangeDraft,
-  onBack,
   onHome,
   onEditTaste,
   onGo,
@@ -35,7 +34,6 @@ export function BuildMyNightScreen({
   onChangeTaste: (t: TasteProfile) => void;
   draft: JourneyDraft;
   onChangeDraft: (d: JourneyDraft) => void;
-  onBack: () => void;
   onHome: () => void;
   onEditTaste: () => void;
   onGo: () => void;
@@ -45,6 +43,15 @@ export function BuildMyNightScreen({
   const [locating, setLocating] = useState(false);
   const [locateError, setLocateError] = useState<string | null>(null);
   const [autoLocated, setAutoLocated] = useState(false);
+
+  // Geolocation resolves asynchronously, sometimes seconds after the user
+  // has already changed the day/duration/time — read the LATEST draft via a
+  // ref rather than closing over the `draft` prop, or a slow GPS callback
+  // would silently overwrite whatever the user picked in the meantime.
+  const draftRef = useRef(draft);
+  useEffect(() => {
+    draftRef.current = draft;
+  }, [draft]);
 
   function useMyLocation(silent = false) {
     if (!geoModel || !navigator.geolocation) {
@@ -61,7 +68,7 @@ export function BuildMyNightScreen({
           if (!silent) setLocateError("You look like you're outside the city grid — enter your intersection manually.");
           return;
         }
-        onChangeDraft({ ...draft, startLocation: `${addr.clock} & ${addr.street}` });
+        onChangeDraft({ ...draftRef.current, startLocation: `${addr.clock} & ${addr.street}` });
         setAutoLocated(true);
       },
       (err) => {
@@ -88,18 +95,9 @@ export function BuildMyNightScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <div className="nav-cluster">
-          <button className="icon-btn" onClick={onBack} aria-label="Back">
-            <BackIcon />
-          </button>
-          <button className="icon-btn" onClick={onHome} aria-label="Home">
-            <HomeIcon />
-          </button>
-        </div>
-        <div className="step-dots">
-          <span className="dot dot-filled" />
-          <span className="dot dot-filled" />
-        </div>
+        <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <HomeIcon />
+        </button>
         <div className="icon-btn-spacer" />
       </div>
 

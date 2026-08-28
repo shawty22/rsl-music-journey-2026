@@ -3,7 +3,9 @@ import type { Dataset } from "../data/loadData";
 import { GearIcon, ArrowRightIcon, PeopleIcon, BookmarkIcon } from "../components/icons";
 import { MOOD_ICONS } from "../components/moodIcons";
 import { MOOD_TILES } from "../lib/moods";
-import type { TasteProfile } from "../types";
+import type { PerformanceType, TasteProfile } from "../types";
+
+const PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID"];
 
 export function HomeScreen({
   dataset,
@@ -50,6 +52,12 @@ export function HomeScreen({
     onChangeTaste({ ...taste, favorite_genres: next });
   }
 
+  function togglePerfType(t: PerformanceType) {
+    const has = taste.preferred_performance_types.includes(t);
+    const next = has ? taste.preferred_performance_types.filter((x) => x !== t) : [...taste.preferred_performance_types, t];
+    onChangeTaste({ ...taste, preferred_performance_types: next });
+  }
+
   return (
     <div className="screen">
       <div className="screen-top">
@@ -93,6 +101,17 @@ export function HomeScreen({
             <div className="mood-tile-more-count">+{taste.favorite_artists.length}</div>
             <div className="mood-label">artists</div>
           </button>
+        </div>
+        <div className="pill-row" style={{ marginTop: 12 }}>
+          {PERF_TYPES.map((t) => (
+            <button
+              key={t}
+              className={`pill pill-inline ${taste.preferred_performance_types.includes(t) ? "pill-selected" : ""}`}
+              onClick={() => togglePerfType(t)}
+            >
+              {t}
+            </button>
+          ))}
         </div>
       </div>
 

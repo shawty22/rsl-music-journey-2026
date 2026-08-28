@@ -1,12 +1,9 @@
 import { useState } from "react";
 import type { Dataset } from "../data/loadData";
 import type { PerformanceType, TasteProfile } from "../types";
-import { HomeIcon, BackIcon, CheckIcon, DerivedIcon, ArrowRightIcon } from "../components/icons";
-import { MOOD_ICONS } from "../components/moodIcons";
-import { MOOD_TILES } from "../lib/moods";
+import { HomeIcon, CheckIcon, DerivedIcon } from "../components/icons";
 
-const PRIMARY_PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID", "B2B"];
-const MORE_PERF_TYPES: PerformanceType[] = ["LIVE_BAND", "VOCALIST", "PERFORMANCE_MULTIMEDIA"];
+const MORE_PERF_TYPES: PerformanceType[] = ["B2B", "LIVE_BAND", "VOCALIST", "PERFORMANCE_MULTIMEDIA"];
 
 function normalize(s: string): string {
   return s.trim().toLowerCase();
@@ -16,32 +13,17 @@ export function MyTasteScreen({
   dataset,
   taste,
   onChange,
-  onBack,
   onHome,
-  showBack,
-  onNext,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
   onChange: (t: TasteProfile) => void;
-  onBack: () => void;
   onHome: () => void;
-  showBack: boolean;
-  onNext?: () => void;
 }) {
   const [favInput, setFavInput] = useState("");
   const [showMoreTypes, setShowMoreTypes] = useState(false);
 
-  const selectedGenres = new Set(taste.favorite_genres.map((g) => g.toLowerCase()));
   const rslArtistNames = new Set(dataset.artists.map((a) => a.artist_normalized));
-
-  function toggleMood(genreTag: string) {
-    const has = selectedGenres.has(genreTag.toLowerCase());
-    const next = has
-      ? taste.favorite_genres.filter((g) => g.toLowerCase() !== genreTag.toLowerCase())
-      : [...taste.favorite_genres, genreTag];
-    onChange({ ...taste, favorite_genres: next });
-  }
 
   function togglePerfType(t: PerformanceType) {
     const has = taste.preferred_performance_types.includes(t);
@@ -63,38 +45,17 @@ export function MyTasteScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <div className="nav-cluster">
-          {showBack && (
-            <button className="icon-btn" onClick={onBack} aria-label="Back">
-              <BackIcon />
-            </button>
-          )}
-          <button className="icon-btn" onClick={onHome} aria-label="Home">
-            <HomeIcon />
-          </button>
-        </div>
+        <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <HomeIcon />
+        </button>
         <div className="icon-btn-spacer" />
       </div>
 
       <h1 className="step-headline" style={{ fontSize: 26, marginTop: 16 }}>
         My Taste
       </h1>
-      <div style={{ fontSize: 13, color: "var(--text-dim)", marginTop: 4 }}>This is used everywhere the app recommends something to you.</div>
-
-      <div className="section">
-        <div className="section-label">GENRE &amp; MOOD</div>
-        <div className="mood-grid">
-          {MOOD_TILES.map((tile) => {
-            const selected = selectedGenres.has(tile.genreTag.toLowerCase());
-            const Icon = MOOD_ICONS[tile.key];
-            return (
-              <button key={tile.key} className={`mood-tile ${selected ? "mood-tile-selected" : ""}`} onClick={() => toggleMood(tile.genreTag)}>
-                <Icon size={22} color={selected ? "#ff6b35" : "#9797a8"} />
-                <div className="mood-label">{tile.label}</div>
-              </button>
-            );
-          })}
-        </div>
+      <div style={{ fontSize: 13, color: "var(--text-dim)", marginTop: 4 }}>
+        Genre and DJ/LIVE/HYBRID are set right on Home. This is everything else.
       </div>
 
       <div className="section">
@@ -148,20 +109,12 @@ export function MyTasteScreen({
       </div>
 
       <div className="section">
-        <div className="section-label">HOW DO YOU LIKE IT PLAYED?</div>
+        <div className="section-label">ANY OTHER WAYS YOU LIKE IT PLAYED?</div>
+        <div style={{ fontSize: 12, color: "var(--text-faint)", marginBottom: 10 }}>DJ / Live / Hybrid are set on Home — these are the less common ones.</div>
         <div className="pill-row" style={{ flexWrap: "wrap" }}>
-          {PRIMARY_PERF_TYPES.map((t) => (
-            <button
-              key={t}
-              className={`pill pill-inline ${taste.preferred_performance_types.includes(t) ? "pill-selected" : ""}`}
-              onClick={() => togglePerfType(t)}
-            >
-              {t}
-            </button>
-          ))}
           {!showMoreTypes && (
             <button className="pill pill-inline pill-ghost" onClick={() => setShowMoreTypes(true)}>
-              + more types
+              + show more types
             </button>
           )}
           {showMoreTypes &&
@@ -199,17 +152,7 @@ export function MyTasteScreen({
         <div style={{ fontSize: 11.5, color: "var(--text-faint)", marginTop: 8 }}>You can still adjust this per journey when you build a night.</div>
       </div>
 
-      {onNext ? (
-        <>
-          <div className="spacer" style={{ minHeight: 24 }} />
-          <button className="cta-solid" onClick={onNext}>
-            NEXT
-            <ArrowRightIcon size={18} />
-          </button>
-        </>
-      ) : (
-        <div style={{ height: 20 }} />
-      )}
+      <div style={{ height: 20 }} />
     </div>
   );
 }
