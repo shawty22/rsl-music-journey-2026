@@ -28,16 +28,18 @@ export function loadDataset(): Promise<Dataset> {
   if (inflight) return inflight;
 
   inflight = (async () => {
+    // Relative (not "/data/...") so this resolves correctly whether the app
+    // is served from a domain root or a GitHub Pages subpath.
     const [artists, performances, locations, taxonomy, metadata] = await Promise.all([
-      fetchJson<Artist[]>("/data/artists.json"),
-      fetchJson<Performance[]>("/data/performances.json"),
-      fetchJson<Location[]>("/data/locations.json"),
-      fetchJson<Taxonomy>("/data/taxonomy.json"),
-      fetchJson<DatasetMetadata>("/data/metadata.json"),
+      fetchJson<Artist[]>("data/artists.json"),
+      fetchJson<Performance[]>("data/performances.json"),
+      fetchJson<Location[]>("data/locations.json"),
+      fetchJson<Taxonomy>("data/taxonomy.json"),
+      fetchJson<DatasetMetadata>("data/metadata.json"),
     ]);
-    const geoModel = await fetchJson<BrcGeoModel>("/data/brc_geo_model.json").catch(() => null);
-    const tasteReferences = await fetchJson<TasteReference[]>("/data/taste_references.json").catch(() => []);
-    const camps = await fetchJson<Camp[]>("/data/camps.json").catch(() => []);
+    const geoModel = await fetchJson<BrcGeoModel>("data/brc_geo_model.json").catch(() => null);
+    const tasteReferences = await fetchJson<TasteReference[]>("data/taste_references.json").catch(() => []);
+    const camps = await fetchJson<Camp[]>("data/camps.json").catch(() => []);
     const artistsById = new Map(artists.map((a) => [a.artist_id, a]));
     const tasteReferencesByName = new Map(tasteReferences.map((r) => [r.artist.toLowerCase(), r]));
     const campsByName = new Map(camps.map((c) => [c.camp.toLowerCase(), c]));
