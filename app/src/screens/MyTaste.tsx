@@ -4,7 +4,6 @@ import type { PerformanceType, TasteProfile } from "../types";
 import { HomeIcon, BackIcon, CheckIcon, DerivedIcon, ArrowRightIcon } from "../components/icons";
 import { MOOD_ICONS } from "../components/moodIcons";
 import { MOOD_TILES } from "../lib/moods";
-import { lookupKnownArtistGenres } from "../lib/knownArtistGenres";
 
 const PRIMARY_PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID", "B2B"];
 const MORE_PERF_TYPES: PerformanceType[] = ["LIVE_BAND", "VOCALIST", "PERFORMANCE_MULTIMEDIA"];
@@ -106,7 +105,8 @@ export function MyTasteScreen({
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {taste.favorite_artists.map((name) => {
             const isRsl = rslArtistNames.has(normalize(name));
-            const knownGenres = !isRsl ? lookupKnownArtistGenres(name) : null;
+            const ref = !isRsl ? dataset.tasteReferencesByName.get(normalize(name)) : null;
+            const knownGenres = ref && ref.genres.length > 0 ? ref.genres : null;
             return (
               <div key={name} className={`fav-artist-row ${isRsl ? "" : "fav-artist-row-reference"}`}>
                 <div>

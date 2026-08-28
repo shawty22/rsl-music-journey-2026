@@ -1,5 +1,4 @@
-import type { Artist, DiscoveryRole, Performance, Reason, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
-import { lookupKnownArtistGenres } from "./knownArtistGenres";
+import type { Artist, DiscoveryRole, Performance, Reason, ScoredRecommendation, TasteProfile, TasteReference, Taxonomy } from "../types";
 import { resolvePerformanceType } from "./performanceType";
 
 // Transparent, rule-based scoring. Every point added to `score` has a
@@ -27,7 +26,13 @@ export interface CandidateScore {
   excluded: boolean;
 }
 
-export function scoreCandidate(artist: Artist, performance: Performance, taste: TasteProfile, taxonomy: Taxonomy): CandidateScore {
+export function scoreCandidate(
+  artist: Artist,
+  performance: Performance,
+  taste: TasteProfile,
+  taxonomy: Taxonomy,
+  tasteReferencesByName: Map<string, TasteReference> = new Map(),
+): CandidateScore {
   const reasons: Reason[] = [];
   let score = 0;
 
@@ -60,9 +65,9 @@ export function scoreCandidate(artist: Artist, performance: Performance, taste: 
   let derivedGenreHits: string[] = [];
   let derivedFromArtist: string | null = null;
   for (const fav of taste.favorite_artists) {
-    const known = lookupKnownArtistGenres(fav);
-    if (!known) continue;
-    const hits = overlap(artist.genre_tags, known);
+    const ref = tasteReferencesByName.get(normalize(fav));
+    if (!ref) continue;
+    const hits = overlap(artist.genre_tags, ref.genres);
     if (hits.length > 0 && hits.length > derivedGenreHits.length) {
       derivedGenreHits = hits;
       derivedFromArtist = fav;
@@ -161,12 +166,13 @@ export function buildCandidatePool(
   artistsById: Map<string, Artist>,
   taste: TasteProfile,
   taxonomy: Taxonomy,
+  tasteReferencesByName: Map<string, TasteReference> = new Map(),
 ): ScoredRecommendation[] {
   const pool: ScoredRecommendation[] = [];
   for (const performance of performances) {
     const artist = artistsById.get(performance.artist_id);
     if (!artist) continue;
-    const { score, baseRole, reasons, excluded } = scoreCandidate(artist, performance, taste, taxonomy);
+    const { score, baseRole, reasons, excluded } = scoreCandidate(artist, performance, taste, taxonomy, tasteReferencesByName);
     if (excluded) continue;
     pool.push({ performance, artist, role: baseRole, reasons, score });
   }

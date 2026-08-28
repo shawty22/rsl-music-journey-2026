@@ -1,4 +1,4 @@
-import type { Artist, DatasetMetadata, Location, Performance, Taxonomy } from "../types";
+import type { Artist, DatasetMetadata, Location, Performance, TasteReference, Taxonomy } from "../types";
 import type { BrcGeoModel } from "../lib/geo";
 
 export interface Dataset {
@@ -9,6 +9,8 @@ export interface Dataset {
   metadata: DatasetMetadata;
   artistsById: Map<string, Artist>;
   geoModel: BrcGeoModel | null;
+  tasteReferences: TasteReference[];
+  tasteReferencesByName: Map<string, TasteReference>;
 }
 
 let cached: Dataset | null = null;
@@ -33,8 +35,10 @@ export function loadDataset(): Promise<Dataset> {
       fetchJson<DatasetMetadata>("/data/metadata.json"),
     ]);
     const geoModel = await fetchJson<BrcGeoModel>("/data/brc_geo_model.json").catch(() => null);
+    const tasteReferences = await fetchJson<TasteReference[]>("/data/taste_references.json").catch(() => []);
     const artistsById = new Map(artists.map((a) => [a.artist_id, a]));
-    cached = { artists, performances, locations, taxonomy, metadata, artistsById, geoModel };
+    const tasteReferencesByName = new Map(tasteReferences.map((r) => [r.artist.toLowerCase(), r]));
+    cached = { artists, performances, locations, taxonomy, metadata, artistsById, geoModel, tasteReferences, tasteReferencesByName };
     return cached;
   })();
 

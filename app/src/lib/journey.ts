@@ -1,4 +1,4 @@
-import type { Artist, DiscoveryRole, Location, Performance, Reason, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
+import type { Artist, DiscoveryRole, Location, Performance, Reason, ScoredRecommendation, TasteProfile, TasteReference, Taxonomy } from "../types";
 import { scoreCandidate } from "./recommend";
 import { estimateDistance, findLocation } from "./distance";
 import { nightMinutesFromHour24 } from "./time";
@@ -41,6 +41,7 @@ export function buildJourney(
   taxonomy: Taxonomy,
   taste: TasteProfile,
   request: JourneyRequest,
+  tasteReferencesByName: Map<string, TasteReference> = new Map(),
 ): JourneyStop[] {
   const endMinutes = request.startNightMinutes + request.durationHours * 60;
 
@@ -78,7 +79,7 @@ export function buildJourney(
       const artist = artistsById.get(perf.artist_id);
       if (!artist) continue;
 
-      const { score, baseRole, reasons, excluded } = scoreCandidate(artist, perf, taste, taxonomy);
+      const { score, baseRole, reasons, excluded } = scoreCandidate(artist, perf, taste, taxonomy, tasteReferencesByName);
       if (excluded) continue;
 
       const perfLocation = findLocation(locations, perf.location);

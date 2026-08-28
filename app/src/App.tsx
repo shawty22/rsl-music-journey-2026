@@ -66,7 +66,7 @@ function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; tast
 
   const recs = useMemo(() => {
     const dayPerfs = dataset.performances.filter((p) => p.day_start === day);
-    const pool = buildCandidatePool(dayPerfs, dataset.artistsById, taste, dataset.taxonomy);
+    const pool = buildCandidatePool(dayPerfs, dataset.artistsById, taste, dataset.taxonomy, dataset.tasteReferencesByName);
     return applyDiscoveryMix(pool, dataset.taxonomy, taste, count);
   }, [dataset, taste, day, count]);
 
@@ -193,12 +193,20 @@ export default function App() {
   function generateJourney() {
     if (!dataset) return;
     const startNightMinutes = parseTimeInputToNightMinutes(draft.hour, draft.minute, draft.meridiem);
-    const stops = buildJourney(dataset.performances, dataset.artistsById, dataset.locations, dataset.taxonomy, taste, {
-      day: draft.day,
-      startNightMinutes,
-      startLocationString: draft.startLocation || null,
-      durationHours: draft.durationHours,
-    });
+    const stops = buildJourney(
+      dataset.performances,
+      dataset.artistsById,
+      dataset.locations,
+      dataset.taxonomy,
+      taste,
+      {
+        day: draft.day,
+        startNightMinutes,
+        startLocationString: draft.startLocation || null,
+        durationHours: draft.durationHours,
+      },
+      dataset.tasteReferencesByName,
+    );
     setJourneyStops(stops);
     setView("results");
   }
@@ -206,7 +214,7 @@ export default function App() {
   function surpriseMe() {
     if (!dataset) return;
     const dayPerfs = dataset.performances.filter((p) => p.day_start === draft.day && p.set_time_valid);
-    const pool = buildCandidatePool(dayPerfs, dataset.artistsById, taste, dataset.taxonomy);
+    const pool = buildCandidatePool(dayPerfs, dataset.artistsById, taste, dataset.taxonomy, dataset.tasteReferencesByName);
     const wildcardish = pool.filter((p) => p.role === "UNKNOWN" || p.role === "ADJACENT");
     const bag = wildcardish.length > 0 ? wildcardish : pool;
     if (bag.length === 0) return;

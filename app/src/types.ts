@@ -129,6 +129,18 @@ export interface Taxonomy {
   };
 }
 
+// A taste-reference artist: someone a user can add as a favorite even though
+// they're NOT in the RSL 2026 lineup (e.g. Bonobo, Carl Cox). Enough
+// lightweight metadata to inform genre matching — not a claim of biography.
+export interface TasteReference {
+  artist: string;
+  genres: string[];
+  styles: string[];
+  performance_characteristics: PerformanceType[];
+  country: string | null;
+  scene: string | null;
+}
+
 export interface DatasetMetadata {
   dataset_version: string;
   source: string;
