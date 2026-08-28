@@ -1,0 +1,90 @@
+{
+  "genre_tags": [
+    "organic electronic",
+    "global bass",
+    "downtempo",
+    "glitch-hop",
+    "melodic house",
+    "progressive house",
+    "techno",
+    "tech house",
+    "bass house",
+    "experimental electronic",
+    "psychedelic",
+    "live electronic",
+    "world fusion",
+    "dubstep",
+    "drum and bass",
+    "acid",
+    "psytechno",
+    "disco",
+    "funk",
+    "hip-hop",
+    "ambient"
+  ],
+  "performance_types": [
+    "DJ",
+    "LIVE",
+    "HYBRID",
+    "B2B",
+    "LIVE_BAND",
+    "VOCALIST",
+    "PERFORMANCE_MULTIMEDIA",
+    "UNKNOWN"
+  ],
+  "signal_tiers": [
+    "ESTABLISHED",
+    "EMERGING",
+    "UNKNOWN"
+  ],
+  "discovery_roles": [
+    "CORE_MATCH",
+    "ADJACENT",
+    "WILDCARD",
+    "MAJOR_ACT",
+    "LOCAL_GEM",
+    "UNKNOWN"
+  ],
+  "gender_identities": [
+    "Female",
+    "Male",
+    "Non-binary / gender diverse",
+    "Group / mixed",
+    "Unknown"
+  ],
+  "rsl_flags": [
+    "wheelchair_friendly",
+    "live_music_stage",
+    "mutant_vehicle",
+    "rsl_recommended",
+    "bipoc_beats_artist",
+    "bipoc_beats_friend"
+  ],
+  "electronic_bias_weights": {
+    "HIGH": [
+      "electronic",
+      "experimental",
+      "global bass",
+      "organic",
+      "live electronic",
+      "hybrid",
+      "psychedelic"
+    ],
+    "MEDIUM_HIGH": [
+      "house",
+      "techno",
+      "progressive"
+    ],
+    "MEDIUM": [
+      "major EDM"
+    ],
+    "LOWER": [
+      "non-electronic"
+    ]
+  },
+  "discovery_mix_defaults": {
+    "strong_match_weight": 0.7,
+    "adjacent_weight": 0.2,
+    "wildcard_weight": 0.1
+  }
+}

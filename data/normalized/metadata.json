@@ -1,0 +1,9 @@
+{
+  "dataset_version": "2026.1.0-seed",
+  "source": "RSL 2026 PDF (data/source/RSL2026spread(1).pdf) via extraction seed",
+  "generated_at": "2026-08-28T04:44:21.375Z",
+  "record_count": 1604,
+  "artist_count": 1180,
+  "camp_count": 92,
+  "enrichment_status": "unenriched — all artist intelligence fields pending Phase 2 enrichment"
+}
