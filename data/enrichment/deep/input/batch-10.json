@@ -1,0 +1,208 @@
+[
+  {
+    "artist_id": "haana",
+    "artist": "Häana",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "downtempo",
+      "ambient"
+    ],
+    "known_sources": [
+      "https://thisishaana.bandcamp.com/",
+      "https://soundcloud.com/haana",
+      "https://www.linkedin.com/in/thisishaana/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/haana",
+    "known_bandcamp": "https://thisishaana.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "ladybeats-b2b-tagg",
+    "artist": "Ladybeats B2B Tagg",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://set79.com/tracklist/soundcloud.com/ladybeatsofficial/ladybeats-live-burning-man-2025-thursday-at-dementha",
+      "https://soundcloud.com/ladybeatsofficial",
+      "https://www.instagram.com/ladybeatsofficial/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/ladybeatsofficial",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "santiago-garcia",
+    "artist": "Santiago Garcia",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://open.spotify.com/artist/4HTu4h0bTZratn5pTBqRjS",
+      "https://music.apple.com/us/artist/santiago-garcia/262621716",
+      "https://www.beatport.com/artist/santiago-garcia/100186"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/4HTu4h0bTZratn5pTBqRjS",
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "rezonance",
+    "artist": "REZONANCE",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://rezonance.bandcamp.com/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": "https://rezonance.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "krakadilla",
+    "artist": "KRAKADILLA",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://music.apple.com/us/artist/krakadilla/1727168606"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "jkali",
+    "artist": "Jkali",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "global bass",
+      "bass house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/jkalimusic",
+      "https://davidstarfiremusic.bandcamp.com/album/multiverse-remixes-vol-3",
+      "https://www.facebook.com/jkalibass/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/jkalimusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "seth-finkin",
+    "artist": "Seth Finkin",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "disco",
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.sethfinkin.com/about",
+      "https://soundcloud.com/sethfinkin",
+      "https://www.instagram.com/sethfinkin/",
+      "https://sf.funcheap.com/ploverfest-community-music-festival-sfs-sunset-dunes-2026/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/sethfinkin",
+    "known_bandcamp": null,
+    "known_website": "https://www.sethfinkin.com/about"
+  },
+  {
+    "artist_id": "dom-dolla",
+    "artist": "Dom Dolla",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Dom_Dolla",
+      "https://www.last.fm/music/Dom+Dolla",
+      "https://domdolla.com"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://domdolla.com"
+  },
+  {
+    "artist_id": "lana-with-a-k",
+    "artist": "Lana with a K",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/lana-with-a-k",
+      "https://soundcloud.com/lana-with-a-k/heavy-naturals-camp-beaverton-burning-man-24",
+      "https://bay.lgbt/e/el-rio/7825/disco-honey-with-djs-lana-with-a-k-dj-kinki-ahuff-infinite-sun-5-cover-el-rio"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/lana-with-a-k",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kalypso",
+    "artist": "Kalypso",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.gigsalad.com/dj_kalypso_los_angeles",
+      "https://open.spotify.com/artist/05epSAEEFa2yAKGlpDdhpi",
+      "https://soundcloud.com/dj-kalypso"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/05epSAEEFa2yAKGlpDdhpi",
+    "known_soundcloud": "https://soundcloud.com/dj-kalypso",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "dj-spacecamp-b2b-freddie",
+    "artist": "dj spacecamp b2b freddie",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://ra.co/dj/djspacecamp",
+      "https://soundcloud.com/djspacecamp",
+      "http://www.djspacecamp.com/spacecamp",
+      "https://www.mixcloud.com/djspacecamp/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djspacecamp",
+    "known_bandcamp": null,
+    "known_website": "http://www.djspacecamp.com/spacecamp"
+  },
+  {
+    "artist_id": "jalaya",
+    "artist": "Jalaya",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "glitch-hop",
+      "bass house"
+    ],
+    "known_sources": [
+      "https://slipstreammusic.com/artists/jalaya",
+      "https://open.spotify.com/artist/7EyZp1ojtu8O7p6pkYlR8Y",
+      "https://jalaya.bandcamp.com/",
+      "https://music.apple.com/us/artist/jalaya/1331014845",
+      "https://www.beatport.com/artist/jalaya/737283"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/7EyZp1ojtu8O7p6pkYlR8Y",
+    "known_soundcloud": null,
+    "known_bandcamp": "https://jalaya.bandcamp.com/",
+    "known_website": null
+  }
+]

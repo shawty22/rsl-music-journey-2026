@@ -1,0 +1,266 @@
+[
+  {
+    "artist_id": "major-trouble",
+    "artist": "Major Trouble",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house"
+    ],
+    "known_sources": [
+      "https://majortroublemusic.dance/",
+      "https://www.beatport.com/artist/major-trouble/1215100",
+      "https://cndesist.com/artists/major-trouble/",
+      "https://intothefirebm.com/2024/03/09/dylan-hogan-aka-major-trouble/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/majortroublemusic",
+    "known_bandcamp": null,
+    "known_website": "https://majortroublemusic.dance/"
+  },
+  {
+    "artist_id": "rameff",
+    "artist": "Rameff",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/rameff",
+      "https://www.beatport.com/artist/rameff/1093454/tracks",
+      "https://www.traxsource.com/artist/690653/rameff",
+      "https://music.apple.com/us/artist/rameff/1654396759",
+      "https://open.spotify.com/artist/0DWY0d4hBQovhQ9hMc41tv",
+      "https://www.youtube.com/@rameffmusic"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0DWY0d4hBQovhQ9hMc41tv",
+    "known_soundcloud": "https://soundcloud.com/rameff",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "lovecraft",
+    "artist": "Lovecraft",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "live electronic"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/lovecraft/biography",
+      "https://www.beatport.com/artist/lovecraft/3442",
+      "https://www.thezeroagency.com/lovecraft",
+      "https://soundcloud.com/mayanwarriorofficial/lovecraft-mayan-warrior-burning-man-2022",
+      "https://soundcloud.com/mayanwarriorofficial/lovecraft-live-mayan-warrior-burning-man-2024"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://www.thezeroagency.com/lovecraft"
+  },
+  {
+    "artist_id": "jo-ke",
+    "artist": "Jo.Ke",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://electronicgroove.com/interview-jo-ke-2022/",
+      "https://www.beatport.com/artist/jo-ke/456875",
+      "https://music.apple.com/us/artist/jo-ke/1558115800",
+      "https://soundcloud.com/j-ok-e"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/j-ok-e",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "ogan",
+    "artist": "Ogan",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno",
+      "tech house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/ogan",
+      "https://www.beatport.com/artist/ogan/1099879",
+      "https://soundcloud.com/oganic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/oganic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "tonic-walter",
+    "artist": "Tonic Walter",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "organic electronic",
+      "live electronic"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/tonicwalter/biography",
+      "https://open.spotify.com/artist/6HfRl1vZ3mVDGkXb7Pknjv",
+      "https://open.spotify.com/album/3BYDIu3NA4G68kv6eFyTYw",
+      "https://www.facebook.com/therealtonicwalter/"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/6HfRl1vZ3mVDGkXb7Pknjv",
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "lp-giobbi",
+    "artist": "LP Giobbi",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/LP_Giobbi",
+      "https://www.lpgiobbi.com/about",
+      "https://djmag.com/cover-features/lp-giobbi-life-major-key",
+      "https://www.klcc.org/news/2023-01-20/electronic-music-powerhouse-honors-jerry-garcia-with-debut-in-hometown-eugene",
+      "https://www.wweek.com/music/2024/10/22/eugene-born-producer-lp-giobbi-grieves-through-the-dance-floor-anthems-of-dotr/",
+      "https://ninjatune.net/artist/lp-giobbi"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://www.lpgiobbi.com/about"
+  },
+  {
+    "artist_id": "dugan",
+    "artist": "DUGAN",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "techno",
+      "disco"
+    ],
+    "known_sources": [
+      "https://www.denverhousemusic.com/dugan",
+      "https://soundcloud.com/duganofficial",
+      "https://twitter.com/therealDJDugan"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/duganofficial",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "vozhd",
+    "artist": "Vozhd'",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/kurenivka/13-vozhd-multuverse-virtual-burning-man",
+      "https://kurenivka.ua/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/kurenivka/13-vozhd-multuverse-virtual-burning-man",
+    "known_bandcamp": null,
+    "known_website": "https://kurenivka.ua/"
+  },
+  {
+    "artist_id": "d1",
+    "artist": "D1",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "downtempo",
+      "disco"
+    ],
+    "known_sources": [
+      "https://kurenivka.ua/d1",
+      "https://open.spotify.com/artist/0NqIifchK9xiNXnhTKBpXf",
+      "https://soundcloud.com/deone-1"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0NqIifchK9xiNXnhTKBpXf",
+    "known_soundcloud": "https://soundcloud.com/deone-1",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "mamay",
+    "artist": "Mamay",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "techno",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/mamay/biography",
+      "https://mamaymusic.wixsite.com/mamay/mamay-artist",
+      "https://soundcloud.com/kurenivka/mamay-b2b-d1-kurenivka-camp-burning-man-2023"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/kurenivka/mamay-b2b-d1-kurenivka-camp-burning-man-2023",
+    "known_bandcamp": null,
+    "known_website": "https://mamaymusic.wixsite.com/mamay/mamay-artist"
+  },
+  {
+    "artist_id": "ro-rousseau",
+    "artist": "Ro Rousseau",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://ra.co/dj/rorousseau",
+      "https://soundcloud.com/ro-rousseau",
+      "https://edmtrain.com/miami-fl/ro-rousseau-456198"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/ro-rousseau",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "loboman",
+    "artist": "Loboman",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/loboman/burningman2017",
+      "https://soundcloud.com/loboman/bm24",
+      "https://edmidentity.com/2016/05/18/mla-artist-spotlight-loboman/",
+      "https://voyagela.com/interview/meet-eduardo-manilla-dj-loboman-genius-loci-fest-venice-beach/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/loboman",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "the-professor",
+    "artist": "The Professor",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://burningman.org/podcast/playa-music-from-bebop-to-dubstep/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "cindiana-jones",
+    "artist": "Cindiana Jones",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://spinitron.com/KMUD/dj/84060/Dr-Cindiana-Jones",
+      "https://shoutingfire.com/members/cindiana/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]

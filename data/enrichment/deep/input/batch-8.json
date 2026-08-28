@@ -1,0 +1,257 @@
+[
+  {
+    "artist_id": "iggy",
+    "artist": "Iggy",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/iggyymusic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/iggyymusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "dj-p3tunia",
+    "artist": "DJ P3tunia",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "disco"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/dj-p3tunia",
+      "https://www.eventbrite.com/e/bad-asstronauts-and-plur-pups-present-black-hole-a-techno-dnb-experience-tickets-1984524211338"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/dj-p3tunia",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "black-rock-philharmonic",
+    "artist": "Black Rock Philharmonic",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://blackrockphilharmonic.us/",
+      "https://blackrockphilharmonic.us/about/",
+      "https://burningman.org/podcast/orchestral-maneuvers-on-the-playa/",
+      "https://blackrockmusicianscollective.org/",
+      "https://artsandcultureeldorado.org/black-rock-philharmonic/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://blackrockphilharmonic.us/"
+  },
+  {
+    "artist_id": "launchpad-infinity",
+    "artist": "Launchpad Infinity",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "glitch-hop",
+      "psychedelic",
+      "dubstep"
+    ],
+    "known_sources": [
+      "https://launchpadinfinity.bandcamp.com",
+      "https://www.mixcloud.com/launchpadinfinity"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/launchpad-infinity",
+    "known_bandcamp": "https://launchpadinfinity.bandcamp.com",
+    "known_website": null
+  },
+  {
+    "artist_id": "s-akiibaum",
+    "artist": "S'akiibaum",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.instagram.com/sakiibaum"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "j-thor",
+    "artist": "J-Thor",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "organic electronic",
+      "techno",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/j-thor_official"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/j-thor_official",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "gordyceps",
+    "artist": "Gordyceps",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "dubstep",
+      "drum and bass",
+      "experimental electronic"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/gordyceps",
+      "https://www.youtube.com/@Gordyceps"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/gordyceps",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "tantum",
+    "artist": "Tantum",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "progressive house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/tantum",
+      "https://www.housemusicwithlove.com/2020/tantum-the-freedom-of-house-music/",
+      "https://balancemusic.com.au/balance-selections-351-tantum/?v=0b3b97fa6688",
+      "https://www.beatport.com/artist/tantum/735288"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kr3ture",
+    "artist": "Kr3ture",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "ambient",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://kr3ture.bandcamp.com",
+      "https://www.instagram.com (kr3ture_music)",
+      "https://www.bandsintown.com"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": "https://kr3ture.bandcamp.com",
+    "known_website": null
+  },
+  {
+    "artist_id": "handz",
+    "artist": "HANDZ",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/handzzzzz"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/handzzzzz",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "emanate",
+    "artist": "Emanate",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/emanate",
+      "http://www.emanatesound.com",
+      "https://www.beatport.com"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/emanate",
+    "known_bandcamp": null,
+    "known_website": "http://www.emanatesound.com"
+  },
+  {
+    "artist_id": "jerzy-del-mar",
+    "artist": "Jerzy del Mar",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "progressive house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://jerzydelmar.bandcamp.com",
+      "https://ra.co/dj/jerzydelmar/biography",
+      "https://soundcloud.com/jerzydelmar"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/jerzydelmar",
+    "known_bandcamp": "https://jerzydelmar.bandcamp.com",
+    "known_website": null
+  },
+  {
+    "artist_id": "hookahdome-players",
+    "artist": "Hookahdome Players",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://www.facebook.com/Hookahdome/",
+      "https://www.instagram.com/hookahdome.themecamp/",
+      "https://eplaya.burningman.org/viewtopic.php?t=26443",
+      "https://www.mixcloud.com/chlorochill/hookahdome-sunrise-burning-man-set/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "bryn-avery",
+    "artist": "Bryn Avery",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "progressive house",
+      "melodic house",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/brynavery",
+      "https://soundcloud.com/bryn_avery"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/bryn_avery",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kruz",
+    "artist": "Krüz",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/thisiskruz"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/thisiskruz",
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]

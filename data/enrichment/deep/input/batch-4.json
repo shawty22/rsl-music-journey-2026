@@ -1,0 +1,266 @@
+[
+  {
+    "artist_id": "denton",
+    "artist": "Denton",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "funk",
+      "disco"
+    ],
+    "known_sources": [
+      "https://denton.nyc",
+      "https://ra.co/dj/mattdenton",
+      "https://soundcloud.com/dentonparty",
+      "https://thotyssey.com/2025/10/24/on-point-with-matt-denton/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/dentonparty",
+    "known_bandcamp": null,
+    "known_website": "https://denton.nyc"
+  },
+  {
+    "artist_id": "stephan-may",
+    "artist": "Stephan May",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.stephanmay.com",
+      "https://www.b4l.cz/en/lineup/stephan-may-us/",
+      "https://soundcloud.com/stephanmay"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/stephanmay",
+    "known_bandcamp": null,
+    "known_website": "https://www.stephanmay.com"
+  },
+  {
+    "artist_id": "artemistique",
+    "artist": "Artemistique",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "downtempo",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/artemistiquedj/artemistique-first-light",
+      "https://www.instagram.com/artemistique_/",
+      "https://shotgun.live/en/artists/ayca-ad"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/artemistiquedj/artemistique-first-light",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "zilkha",
+    "artist": "Zilkha",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://spinninrecords.com/profile/dj-zilkha",
+      "https://soundcloud.com/djzilkha"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djzilkha",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kon-faber",
+    "artist": "Kon Faber",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "live electronic"
+    ],
+    "known_sources": [
+      "https://konfaber.com",
+      "https://ra.co/dj/konfaber",
+      "https://www.beatport.com/artist/kon-faber/838839",
+      "https://www.kamaimusic.com/artist/konfaber/",
+      "https://www.traxsource.com/artist/530827/kon-faber"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/kon-faber",
+    "known_bandcamp": null,
+    "known_website": "https://konfaber.com"
+  },
+  {
+    "artist_id": "lola-jak",
+    "artist": "Lola Jak",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/we-are-lola-jak"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/we-are-lola-jak",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "mntra",
+    "artist": "MNTRA",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "bass house",
+      "tech house",
+      "drum and bass"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/mntra/biography",
+      "https://www.beatport.com/artist/mntra/748791",
+      "https://www.insomniac.com/music/artists/mntra/",
+      "https://www.mntramusic.com/",
+      "https://mntrasmusic.bandcamp.com/album/hey-how-are-you",
+      "https://open.spotify.com/artist/0QkYDuSI4f9HazvBA4DTzP"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0QkYDuSI4f9HazvBA4DTzP",
+    "known_soundcloud": null,
+    "known_bandcamp": "https://mntrasmusic.bandcamp.com",
+    "known_website": "https://www.mntramusic.com/"
+  },
+  {
+    "artist_id": "sagmo",
+    "artist": "Sagmo",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/sagmolive",
+      "https://ra.co/dj/matony",
+      "https://www.instagram.com/sagmo__/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/sagmolive",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "matony",
+    "artist": "Matony",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/matony",
+      "https://soundcloud.com/matony_music",
+      "https://www.instagram.com/matony_music",
+      "https://www.youtube.com/@matonymusic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/matony_music",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "ahau",
+    "artist": "Ahau",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "organic electronic",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/ahau/897634",
+      "https://soundcloud.com/djahau"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djahau",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "mona-pirzad",
+    "artist": "Mona Pirzad",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/monapirzad",
+      "https://www.amsterdam-dance-event.nl/en/artists-speakers/mona-pirzad/1511559/",
+      "https://soundcloud.com/mona_pirzad",
+      "https://www.instagram.com/mona.pirzad/",
+      "https://www.wumanas.net/monapirzad"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/mona_pirzad",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "mr-bold",
+    "artist": "Mr. Bold",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house"
+    ],
+    "known_sources": [
+      "https://bellyup.com/calendar/13962624/earlier-dj-senzo-dj-mr-bold-sonny-olivera/",
+      "https://soundcloud.com/mrbold"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/mrbold",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "vlvt-plse",
+    "artist": "VLVT // PLSE",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/quantifymusic/vlvt-plse-quantify-set-me-free",
+      "https://www.instagram.com/vlvtplse"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "rampue-orbit",
+    "artist": "Rampue / Orbit",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/rampue",
+      "https://soundcloud.com/robot-heart",
+      "https://www.concertarchives.org/bands/rampue"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/rampue",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "sensanik",
+    "artist": "Sensanik",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "organic electronic",
+      "psychedelic"
+    ],
+    "known_sources": [
+      "https://sensanik.com",
+      "https://ra.co/dj/sensanik",
+      "https://soundcloud.com/sensanik",
+      "https://www.instagram.com/sensanikmusik",
+      "https://www.facebook.com/SenSanik"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/sensanik",
+    "known_bandcamp": null,
+    "known_website": "https://sensanik.com"
+  }
+]

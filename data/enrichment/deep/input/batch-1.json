@@ -1,0 +1,286 @@
+[
+  {
+    "artist_id": "kosmozoo-downtempo",
+    "artist": "Kosmozoo Downtempo",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "downtempo",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://www.kosmozoo.org/radio/",
+      "https://soundcloud.com/kosmozoo/sets/all-mixs-kosmozoo-nowhere",
+      "https://shoutingfire.com/shows/kosmozoo/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/kosmozoo/sets/all-mixs-kosmozoo-nowhere",
+    "known_bandcamp": null,
+    "known_website": "https://www.kosmozoo.org/radio/"
+  },
+  {
+    "artist_id": "mr-jennings",
+    "artist": "Mr. Jennings",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "hip-hop",
+      "funk"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/mr-jennings/333892",
+      "https://mrjennings.bandcamp.com/",
+      "https://soundcloud.com/mrjennings",
+      "https://www.facebook.com/mrjenningsmusic/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/mrjennings",
+    "known_bandcamp": "https://mrjennings.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "grease-withaspoon",
+    "artist": "Grease Withaspoon",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "hip-hop",
+      "bass house"
+    ],
+    "known_sources": [
+      "https://www.instagram.com/grease_withaspoon/",
+      "https://soundcloud.com/grease_withaspoon",
+      "https://playaevents.burningman.org/2018/playa_event/27613/",
+      "https://www.bonobonetwork.com/events/bonobo-network-presents-kiss-and-tell-112225"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/grease_withaspoon",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "crowsnestster",
+    "artist": "Crowsnestster",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://shoutingfire.com/shows/crowsnester-pooch-live-from-bull-shoals/",
+      "https://shoutingfire.com/burning-man/new-shows-on-sunday/",
+      "https://shoutingfire.com/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "silkworm",
+    "artist": "SILKWORM",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "techno",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://www.denverhousemusic.com/silkworm",
+      "https://soundcloud.com/silkworm-dj",
+      "https://www.indieonthemove.com/users/SILKWORM",
+      "https://linktr.ee/djsilkworm"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/silkworm-dj",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "dirty-texans",
+    "artist": "Dirty Texans",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://open.spotify.com/artist/22rUKppAgLDCQLTFql11oB",
+      "https://music.apple.com/us/artist/dirty-texans/1681269405",
+      "https://www.highsierramusic.com/lineup/dirty-texans",
+      "https://www.instagram.com/reel/DaoX6_Gisof/"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/22rUKppAgLDCQLTFql11oB",
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "black-panda",
+    "artist": "Black Panda",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno",
+      "disco",
+      "funk"
+    ],
+    "known_sources": [
+      "https://blackpandamusicus.bandcamp.com/",
+      "https://www.beatport.com/artist/black-panda/1066967",
+      "https://soundcloud.com/black-panda-musik",
+      "https://music.apple.com/us/artist/black-panda/1448788720",
+      "https://www.instagram.com/black.panda.dj/",
+      "https://ra.co/dj/blackpanda"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/black-panda-musik",
+    "known_bandcamp": "https://blackpandamusicus.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "contessa",
+    "artist": "Contessa",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/contessa-us/biography",
+      "https://www.beatport.com/artist/contessa/472236",
+      "https://soundcloud.com/djcontessa",
+      "https://www.facebook.com/DJContessaOfficial/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djcontessa",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "beat-kitty",
+    "artist": "Beat Kitty",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "global bass",
+      "drum and bass"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/beat-kitty/545198",
+      "https://bandcamp.com/beatkitty",
+      "https://www.insomniac.com/music/artists/beat-kitty/",
+      "https://www.mutimusic.com/artist/beatkitty/",
+      "https://www.thebeatkitty.com/",
+      "https://www.facebook.com/thebeatkitty/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": "https://bandcamp.com/beatkitty",
+    "known_website": "https://www.thebeatkitty.com/"
+  },
+  {
+    "artist_id": "igor-marijuan",
+    "artist": "Igor Marijuan",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "tech house",
+      "disco"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/igormarijuan",
+      "https://ra.co/dj/igormarijuan/biography",
+      "https://www.ibiza-spotlight.com/dj/igor-marijuan",
+      "https://soundcloud.com/igormarijuan",
+      "https://open.spotify.com/artist/7hn8iM2u1dWEaK5zTMxEWN",
+      "https://thedjlist.com/djs/igor-marijuan/info"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/7hn8iM2u1dWEaK5zTMxEWN",
+    "known_soundcloud": "https://soundcloud.com/igormarijuan",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "seth-schwarz",
+    "artist": "Seth Schwarz",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno",
+      "progressive house",
+      "live electronic"
+    ],
+    "known_sources": [
+      "https://www.mixcloud.com/sethschwarz/",
+      "https://www.beatport.com/artist/seth-schwarz/257755",
+      "https://www.instagram.com/seth_schwarz/?hl=en",
+      "https://soundcloud.com/seth-schwarz",
+      "https://ra.co/dj/sethschwarz",
+      "https://ra.co/dj/sethschwarz/biography",
+      "https://nativibiza.com/seth-schwarz-strings-of-life/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/seth-schwarz",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "gongo",
+    "artist": "Gongo",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.beatport.com/artist/gongo/263323"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "iman-rizky",
+    "artist": "Iman Rizky",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/imanrizky/biography",
+      "https://m.soundcloud.com/imanrizky",
+      "https://thedjlist.com/djs/iman-rizky/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/imanrizky",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "amanda-gaez",
+    "artist": "Amanda Gaez",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.viberate.com/artist/amanda-gaez/",
+      "https://soundcloud.com/amanda-gaez",
+      "https://www.mixcloud.com/amanda-gaez/",
+      "https://www.jambase.com/band/amanda-gaez",
+      "https://do816.com/events/2019/6/7/the-red-headed-league-dj-ray-velasquez-amanda-gaez"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/amanda-gaez",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "buddha-bass",
+    "artist": "Buddha Bass",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "world fusion",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://buddhabass.bandcamp.com/music",
+      "https://soundcloud.com/buddha-bass",
+      "https://www.beatport.com/release/buddha-bass/1144678",
+      "https://www.allmusic.com/album/buddha-bass-mw0002579927",
+      "https://open.spotify.com/track/5c5otx6Zr9XDAN2nCJLCNU"
+    ],
+    "known_spotify": "https://open.spotify.com/track/5c5otx6Zr9XDAN2nCJLCNU",
+    "known_soundcloud": "https://soundcloud.com/buddha-bass",
+    "known_bandcamp": "https://buddhabass.bandcamp.com/music",
+    "known_website": null
+  }
+]

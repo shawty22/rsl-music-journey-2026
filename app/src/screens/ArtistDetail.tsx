@@ -31,7 +31,7 @@ export function ArtistDetailScreen({
 
   const performances = dataset.performances.filter((p) => p.artist_id === artistId);
   const geo = geographyLine(artist);
-  const about = [artist.discovery_note, artist.catalogue_signal, artist.external_signal].filter(Boolean).join(" ");
+  const about = artist.bio || [artist.discovery_note, artist.catalogue_signal, artist.external_signal].filter(Boolean).join(" ");
   const links = LINK_LABELS.filter((l) => artist[l.key]);
 
   return (
@@ -83,6 +83,34 @@ export function ArtistDetailScreen({
         <div className="section">
           <div className="section-label">ABOUT</div>
           <div className="detail-why">{about}</div>
+        </div>
+      )}
+
+      {(artist.notable_releases || artist.labels || artist.notable_collaborations || artist.burning_man_history) && (
+        <div className="section">
+          <div className="section-label">NOTABLE</div>
+          <div className="detail-notable-list">
+            {artist.labels && (
+              <div className="detail-notable-row">
+                <span className="detail-notable-label">Labels</span> {artist.labels}
+              </div>
+            )}
+            {artist.notable_releases && (
+              <div className="detail-notable-row">
+                <span className="detail-notable-label">Releases</span> {artist.notable_releases}
+              </div>
+            )}
+            {artist.notable_collaborations && (
+              <div className="detail-notable-row">
+                <span className="detail-notable-label">Collaborations</span> {artist.notable_collaborations}
+              </div>
+            )}
+            {artist.burning_man_history && (
+              <div className="detail-notable-row">
+                <span className="detail-notable-label">Burning Man history</span> {artist.burning_man_history}
+              </div>
+            )}
+          </div>
         </div>
       )}
 

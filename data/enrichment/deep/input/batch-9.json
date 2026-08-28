@@ -1,0 +1,268 @@
+[
+  {
+    "artist_id": "vanjee",
+    "artist": "Vanjee",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/vanjee/biography",
+      "https://open.spotify.com/artist/0LkH5Wbg6CH9TTfVsr7GGe",
+      "https://www.djvanjee.com/",
+      "https://soundcloud.com/vanjee"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0LkH5Wbg6CH9TTfVsr7GGe",
+    "known_soundcloud": "https://soundcloud.com/vanjee",
+    "known_bandcamp": null,
+    "known_website": "https://www.djvanjee.com/"
+  },
+  {
+    "artist_id": "dj-zip-disk",
+    "artist": "DJ Zip Disk",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.mixcloud.com/ted-alsop/",
+      "https://www.cactusclubmilwaukee.com/events/club-ritual-dj-zip-disk-natural-language-asher-gray-greyhound/",
+      "https://www.facebook.com/DJZipDisk/",
+      "https://www.instagram.com/dj_zip_disk_official/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "l-core",
+    "artist": "L'Core",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://music.apple.com/us/artist/lcore/1782723829",
+      "https://music.apple.com/us/artist/lcore-music/1803144158",
+      "https://music.apple.com/us/album/king-of-my-castle/1868334988"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "grant-kaye",
+    "artist": "Grant Kaye",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/grantkaye",
+      "https://blog.mountainsmith.com/team/grant-kaye/",
+      "https://vimeo.com/grantkaye"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/grantkaye",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "illich-mujica",
+    "artist": "illich Mujica",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://www.illichmujica.com/",
+      "https://open.spotify.com/artist/02xQQT2Z19wMkQaVRqzlJK",
+      "https://soundcloud.com/illich-mujica",
+      "https://music.apple.com/us/artist/illich-mujica/594156626",
+      "https://musicbrainz.org/artist/5112c3d1-89c1-4992-9a97-ffa8aad1fa75"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/02xQQT2Z19wMkQaVRqzlJK",
+    "known_soundcloud": "https://soundcloud.com/illich-mujica",
+    "known_bandcamp": null,
+    "known_website": "https://www.illichmujica.com/"
+  },
+  {
+    "artist_id": "natascha-polke",
+    "artist": "Natascha Polké",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/nataschapolke/biography",
+      "https://ra.co/dj/nataschapolke",
+      "https://www.beatport.com/artist/natascha-polke/528045",
+      "https://soundcloud.com/nataschapolke",
+      "https://www.nataschapolke.com/nataschapolke",
+      "https://zamnafestival.com/artists/natascha-polke"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/nataschapolke",
+    "known_bandcamp": null,
+    "known_website": "https://www.nataschapolke.com/nataschapolke"
+  },
+  {
+    "artist_id": "deniz-reno",
+    "artist": "Deniz Reno",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "progressive house",
+      "psychedelic"
+    ],
+    "known_sources": [
+      "http://www.denizreno.com/",
+      "https://open.spotify.com/artist/0E4YnH9Xnp22bxdrk9TmLD",
+      "https://www.wikidata.org/wiki/Q47308097",
+      "https://musicbrainz.org/artist/deniz-reno"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0E4YnH9Xnp22bxdrk9TmLD",
+    "known_soundcloud": "http://soundcloud.com/denizreno",
+    "known_bandcamp": null,
+    "known_website": "http://www.denizreno.com/"
+  },
+  {
+    "artist_id": "xinobi",
+    "artist": "Xinobi",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "drum and bass",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/xinobi/biography",
+      "https://xinobi.bandcamp.com/",
+      "https://soundcloud.com/xinobi",
+      "https://www.beatport.com/artist/xinobi/82950"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/xinobi",
+    "known_bandcamp": "https://xinobi.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "mobad",
+    "artist": "Mobâd",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://music.apple.com/us/artist/mobad/1496947722"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "louis-the-child",
+    "artist": "Louis The Child",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "bass house",
+      "dubstep"
+    ],
+    "known_sources": [
+      "http://www.louisthechild.com/",
+      "https://open.spotify.com/artist/7wg1qvie3KqDNQbAkTdbX0",
+      "https://soundcloud.com/louisthechild",
+      "https://music.apple.com/us/artist/666268457",
+      "https://www.songkick.com/artists/6441739"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/7wg1qvie3KqDNQbAkTdbX0",
+    "known_soundcloud": "https://soundcloud.com/louisthechild",
+    "known_bandcamp": null,
+    "known_website": "http://www.louisthechild.com/"
+  },
+  {
+    "artist_id": "oveous",
+    "artist": "OVEOUS",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://open.spotify.com/artist/5AnuYnFCVs0mK7rbcvIiBc",
+      "https://music.apple.com/us/artist/843416610",
+      "https://www.beatport.com/artist/oveous/398365"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/5AnuYnFCVs0mK7rbcvIiBc",
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "oba-flip",
+    "artist": "OBA+FLIP",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "experimental electronic"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/obaflip",
+      "https://soundcloud.com/oba-flip",
+      "https://www.instagram.com/oba.flip/",
+      "https://podcasts.apple.com/us/podcast/%E1%BB%8Dba-flip-distrikt-burning-man-2023/id1526246892?i=1000652629141&l=es-MX"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/oba-flip",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "truprwulf",
+    "artist": "Truprwulf",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "bass house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/truprwulf/atlantis-2025-future-bass-house-mix",
+      "https://soundcloud.com/truprwulf/truprwulf-2025-bass-house"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/truprwulf",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "2juicy",
+    "artist": "2Juicy",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "dubstep"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/2juicymusic",
+      "https://www.deezer.com/en/artist/145614932"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/2juicymusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "fiendi",
+    "artist": "Fiendi",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://music.apple.com/us/artist/fiendi/1572216787",
+      "https://soundcloud.com/fiendi",
+      "https://relentlessbeats.com/tag/fiendi/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/fiendi",
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]

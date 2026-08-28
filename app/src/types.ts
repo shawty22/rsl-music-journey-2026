@@ -37,6 +37,7 @@ export interface Artist {
   labels: string | null;
   notable_releases: string | null;
   notable_collaborations: string | null;
+  bio: string | null;
 
   signal_status: string;
   spotify_found: string | null;

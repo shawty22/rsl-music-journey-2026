@@ -1,0 +1,280 @@
+[
+  {
+    "artist_id": "onelife",
+    "artist": "Onelife",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/onelife/onelife-indecisive"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/onelife",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "golden",
+    "artist": "Golden",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://www.alexgoldenbeats.com/bio",
+      "https://www.alexgoldenbeats.com/",
+      "https://soundcloud.com/alex-golden-dj",
+      "https://www.instagram.com/alexgoldenbeats/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/alex-golden-dj",
+    "known_bandcamp": null,
+    "known_website": "https://www.alexgoldenbeats.com/"
+  },
+  {
+    "artist_id": "doozie",
+    "artist": "Doozie",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/doozie/65810",
+      "https://soundcloud.com/dj-doozie",
+      "https://earground.com/msizkay-teams-up-with-brazilian-dj-and-producer-doozie-on-new-song/",
+      "https://x.com/dooziemusic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/dj-doozie",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "vintage-culture",
+    "artist": "Vintage Culture",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "tech house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Vintage_Culture",
+      "https://djmag.com/top100djs/2024/9/vintage-culture",
+      "https://grayarea.co/artists/vintage-culture"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "catori",
+    "artist": "Catori",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "ambient",
+      "world fusion",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://grayarea.co/artists/catori",
+      "https://ra.co/dj/catori",
+      "https://www.catori.live/",
+      "https://open.spotify.com/artist/6UnB8wX7qdcxLUFn9Y9gXq",
+      "https://soundcloud.com/catorimusica",
+      "https://www.elysiumaffairs.com/artists/catori"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/6UnB8wX7qdcxLUFn9Y9gXq",
+    "known_soundcloud": "https://soundcloud.com/catorimusica",
+    "known_bandcamp": null,
+    "known_website": "https://www.catori.live/"
+  },
+  {
+    "artist_id": "dragonfly",
+    "artist": "Dragonfly",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "world fusion",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/djdragonfly",
+      "https://www.mixcloud.com/DJDragonfly/",
+      "https://set79.com/festival/Burning%20Man"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djdragonfly",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "greg-eversoul",
+    "artist": "Greg Eversoul",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/gregeversoul/biography",
+      "https://gregeversoul.bandcamp.com/",
+      "https://www.beatport.com/artist/greg-eversoul/332",
+      "https://soundcloud.com/greg_eversoul",
+      "https://open.spotify.com/artist/16XX8ES4IkWSVPLPRwicu6"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/16XX8ES4IkWSVPLPRwicu6",
+    "known_soundcloud": "https://soundcloud.com/greg_eversoul",
+    "known_bandcamp": "https://gregeversoul.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "johnnie-clutch",
+    "artist": "Johnnie Clutch",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "bass house",
+      "tech house",
+      "dubstep"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/johnnieclutch",
+      "https://www.mixcloud.com/johnnieclutch",
+      "https://www.instagram.com/johnnieclutch"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/johnnieclutch",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kimonos",
+    "artist": "Kimonos",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "melodic house",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://hollywood411.medium.com/one-of-the-hottest-dj-duos-in-the-world-the-kimonos-f9d0b191bb71",
+      "https://ra.co/dj/kimonos",
+      "https://ra.co/dj/kimonos/biography",
+      "https://soundcloud.com/thekimonos/jolene-set-mix",
+      "https://www.beatport.com/artist/the-kimonos/789659",
+      "https://allhiphop.com/sponsored-posts/the-kimonos-omri-malka-gabriele-falanga-release-blu-oasis/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/thekimonos",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "docta-reebs",
+    "artist": "docta reebs",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "tech house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/tekno_reba",
+      "https://www.facebook.com/doctareebs"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/tekno_reba",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "dj-spacecamp",
+    "artist": "dj spacecamp",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "tech house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/djspacecamp",
+      "https://ra.co/dj/djspacecamp",
+      "https://www.facebook.com/SpacecampSpacecamp"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djspacecamp",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "turtletheory",
+    "artist": "turtletheory",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "progressive house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/turtletheory",
+      "https://ra.co/dj/turtletheory-us",
+      "https://turtletheory.bandcamp.com",
+      "https://www.beatport.com/artist/turtletheory"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/turtletheory",
+    "known_bandcamp": "https://turtletheory.bandcamp.com",
+    "known_website": null
+  },
+  {
+    "artist_id": "asli-kose",
+    "artist": "Asli Kose",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/aslikose",
+      "https://ra.co/dj/aslikose",
+      "https://www.youtube.com/@aslikose"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/aslikose",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "xinobi-b2b-losha",
+    "artist": "Xinobi b2b Losha",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/track/the-source",
+      "https://xinobi.bandcamp.com",
+      "https://www.traxsource.com"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/xinobi-losha-kevin-adams-the",
+    "known_bandcamp": "https://xinobi.bandcamp.com",
+    "known_website": null
+  },
+  {
+    "artist_id": "tycho",
+    "artist": "Tycho",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "ambient",
+      "downtempo",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Awake_(Tycho_album)",
+      "https://www.npr.org/artists/503884113/tycho",
+      "https://www.viberate.com/artist/tycho/",
+      "https://sharpmagazine.com/2019/09/16/even-if-you-werent-at-burning-man-you-should-listen-to-tycho/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]

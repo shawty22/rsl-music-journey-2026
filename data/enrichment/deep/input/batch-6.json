@@ -1,0 +1,287 @@
+[
+  {
+    "artist_id": "lost-desert",
+    "artist": "Lost Desert",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "downtempo",
+      "melodic house",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://www.lostdesertmusic.com/",
+      "https://electronicgroove.com/eg-artists/eg-885-lost-desert/",
+      "https://www.decodedmagazine.com/lost-desert-interview-2019/",
+      "https://alldayidream.bandcamp.com/album/saudade",
+      "https://soundcloud.com/lostdesertmusic",
+      "https://www.beatport.com/artist/lost-desert/546340"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/lostdesertmusic",
+    "known_bandcamp": "https://alldayidream.bandcamp.com/album/saudade",
+    "known_website": "https://www.lostdesertmusic.com/"
+  },
+  {
+    "artist_id": "pomboklap",
+    "artist": "POMBOKLAP",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "organic electronic"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/duir-pomboklap",
+      "https://music.apple.com/us/artist/pomboklap/990458036",
+      "https://www.traxsource.com/artist/247266/pomboklap",
+      "https://ra.co/dj/pomboklap/biography",
+      "https://www.beatport.com/artist/pomboklap/480516",
+      "https://tenibiza.com/roster/pomboklap/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/duir-pomboklap",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "miko-franconi",
+    "artist": "Miko Franconi",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/mikofranconi",
+      "https://www.beatport.com/artist/miko-franconi/354404",
+      "https://bandcamp.com/mikofranconi",
+      "https://djlifemag.com/2022/05/dj-miko-franconi-island-beats/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": "https://bandcamp.com/mikofranconi",
+    "known_website": null
+  },
+  {
+    "artist_id": "niall-augustine",
+    "artist": "Niall Augustine",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "bass house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/niall-augustine/1252098",
+      "https://soundcloud.com/desertheartsblack/niall-augustine-seeker",
+      "https://open.spotify.com/track/6hsNBGaWnn3M2oUd5rWABm"
+    ],
+    "known_spotify": "https://open.spotify.com/track/6hsNBGaWnn3M2oUd5rWABm",
+    "known_soundcloud": "https://soundcloud.com/desertheartsblack/niall-augustine-seeker",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "wronski",
+    "artist": "Wronski",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "organic electronic",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/djwronski",
+      "https://www.beatport.com/artist/wronski/1181718",
+      "https://www.youtube.com/watch?v=p28_gcJuQmg"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djwronski",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "joanna-magik",
+    "artist": "Joanna Magik",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "bass house"
+    ],
+    "known_sources": [
+      "https://www.insomniac.com/music/artists/joanna-magik/",
+      "https://www.beatport.com/artist/joanna-magik/941669",
+      "http://www.joannamagik.com/",
+      "https://www.shambhalamusicfestival.com/artists/joanna-magik"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/joannamagik",
+    "known_bandcamp": null,
+    "known_website": "http://www.joannamagik.com/"
+  },
+  {
+    "artist_id": "franccesco-cardenas",
+    "artist": "Franccesco Cardenas",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "progressive house",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/franccescocardenas/biography",
+      "https://www.beatport.com/artist/franccesco-cardenas/222473",
+      "https://soundcloud.com/franccesco-cardenas",
+      "https://franccescocardenas.bandcamp.com/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/franccesco-cardenas",
+    "known_bandcamp": "https://franccescocardenas.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "josh-forster",
+    "artist": "Josh Forster",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/josh_forster",
+      "https://soundcloud.com/josh_forster/josh-forster-disco-lips-burning-man-2024",
+      "https://shotgun.live/en/artists/josh_forster",
+      "https://www.facebook.com/JoshForster87/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/josh_forster",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "jehnee",
+    "artist": "JEHNEE",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "experimental electronic"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/jehnee",
+      "https://soundcloud.com/jehneemusic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/jehneemusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "museus",
+    "artist": "Museus",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "tech house",
+      "downtempo",
+      "funk"
+    ],
+    "known_sources": [
+      "https://museusmusic.com/",
+      "https://soundcloud.com/museus",
+      "https://www.beatport.com/artist/tran-museus/1412785"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/museus",
+    "known_bandcamp": null,
+    "known_website": "https://museusmusic.com/"
+  },
+  {
+    "artist_id": "mario-lui",
+    "artist": "Mario Lui",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "progressive house",
+      "world fusion"
+    ],
+    "known_sources": [
+      "https://electronicgroove.com/eg-artists/eg-spotlight-306-mario-lui/",
+      "https://ra.co/dj/lui-/biography",
+      "https://www.beatport.com/artist/mario-lui/1091649"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "philou",
+    "artist": "Philou",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/philou",
+      "https://www.beatport.com/artist/philou-louzolo/331993",
+      "https://awakenings.com/en/artists/philou-louzolo/75635",
+      "https://djmag.com/features/selections-philou-louzolo"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "roy-rosenfeld-b2b-vanjee",
+    "artist": "Roy Rosenfeld b2b Vanjee",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "progressive house",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Roy_Rosenfeld",
+      "https://ra.co/dj/royrosenfeld",
+      "https://www.beatport.com/artist/roy-rosenfeld/99166",
+      "https://ra.co/dj/vanjee/biography",
+      "https://www.djvanjee.com/",
+      "https://open.spotify.com/artist/0LkH5Wbg6CH9TTfVsr7GGe"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/0LkH5Wbg6CH9TTfVsr7GGe",
+    "known_soundcloud": "https://soundcloud.com/vanjee",
+    "known_bandcamp": null,
+    "known_website": "https://www.djvanjee.com/"
+  },
+  {
+    "artist_id": "thiccboi-drewski",
+    "artist": "Thiccboi Drewski",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.beatport.com/artist/thiccboi-drewski/1147213",
+      "https://thiccboidrewski.bandcamp.com/",
+      "https://www.traxsource.com/artist/747683/",
+      "https://linktr.ee/thiccboidrewski",
+      "https://audiomack.com/thiccboi-drewski"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": "https://thiccboidrewski.bandcamp.com/",
+    "known_website": null
+  },
+  {
+    "artist_id": "infected-mushroom-dj-set",
+    "artist": "Infected Mushroom (DJ Set)",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "psychedelic",
+      "psytechno"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Infected_Mushroom",
+      "https://infected-mushroom.com/bio/",
+      "https://open.spotify.com/artist/6S2tas4z6DyIklBajDqJxI",
+      "https://www.keranews.org/2009-12-14/infected-mushroom-psy-trance-from-israel"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/6S2tas4z6DyIklBajDqJxI",
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://infected-mushroom.com/bio/"
+  }
+]

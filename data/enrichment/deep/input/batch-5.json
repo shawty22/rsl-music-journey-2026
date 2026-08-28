@@ -1,0 +1,264 @@
+[
+  {
+    "artist_id": "syd-gris",
+    "artist": "Syd Gris",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "progressive house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/sydgris/biography",
+      "https://www.opulenttemple.org/syd-gris",
+      "https://www.facebook.com/sydgris",
+      "https://soundcloud.com/syd-gris",
+      "https://www.last.fm/music/Syd+Gris"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/syd-gris",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "razing-prophet",
+    "artist": "Razing Prophet",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "psytechno",
+      "psychedelic"
+    ],
+    "known_sources": [
+      "https://subterra.fm/razingprophet",
+      "https://soundcloud.com/razingprophet",
+      "https://www.instagram.com/razingprophet",
+      "https://www.facebook.com/razingprophetmusic",
+      "https://bandcamp.com/razingprophet"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/razingprophet",
+    "known_bandcamp": "https://bandcamp.com/razingprophet",
+    "known_website": null
+  },
+  {
+    "artist_id": "moldover",
+    "artist": "Moldover",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "live electronic",
+      "experimental electronic"
+    ],
+    "known_sources": [
+      "https://en.wikipedia.org/wiki/Moldover",
+      "https://moldover.com/",
+      "https://moldover.bandcamp.com/",
+      "https://open.spotify.com/artist/5VpkPLMXtFZ34rN22loogV",
+      "https://soundcloud.com/moldover"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/5VpkPLMXtFZ34rN22loogV",
+    "known_soundcloud": "https://soundcloud.com/moldover",
+    "known_bandcamp": "https://moldover.bandcamp.com/",
+    "known_website": "https://moldover.com/"
+  },
+  {
+    "artist_id": "organism",
+    "artist": "Organism",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://the-everyday-agency.prezly.com/the-organism-unveils-evolution-a-bold-sonic--visual-manifesto-for-a-waste-free-future",
+      "https://mixmagde.com/read/the-organism-announces-new-album-evolution-a-sonic-and-visual-manifesto-for-a-waste-free-future-music",
+      "https://beatselectormagazine.com/the-organism-announces-new-album-evolution/",
+      "https://plasticmag.co.uk/2025/11/the-organism-drops-new-lp-evolution/",
+      "https://electric-mode.co.uk/2025/08/07/ukrainian-producer-the-organism-announces-new-album-evolution-a-sonic-and-visual-manifesto-for-a-waste-free-future/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "dawdust",
+    "artist": "DAWdust",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.dawdust.com/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://www.dawdust.com/"
+  },
+  {
+    "artist_id": "todd-spero",
+    "artist": "Todd Spero",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/todd-spero",
+      "https://www.facebook.com/DJ-Todd-Spero-115649118517606/",
+      "https://soundcloud.com/todd-spero/todd-spero-live-edc-2004"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/todd-spero",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "don-gentry",
+    "artist": "Don Gentry",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/opulent-temple/opulent-temple-podcast-154-don-gentry-live-at-burning-man-2022",
+      "https://soundcloud.com/opulent-temple/opulent-temple-podcast-158-don-gentry-live-at-burning-man-2024",
+      "https://www.opulenttemple.org/tag/music/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "heavenly-father",
+    "artist": "Heavenly Father",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/djheavenlyfather",
+      "https://soundcloud.com/heavenly-father",
+      "https://www.beatport.com/artist/heavenly-father/69166"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djheavenlyfather",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "cheetatah",
+    "artist": "CHEETATAH",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "disco",
+      "funk",
+      "tech house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/djcheetatah",
+      "https://ktvz.com/cnn-regional/2025/05/15/vermont-dj-brings-music-to-your-living-room-while-you-clean-3/",
+      "https://www.burlingtoncityarts.org/event/splash-dance-dj-justin-rem-feat-dj-cheetahta",
+      "https://cheetahtah-launchpad.lovable.app/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/djcheetatah",
+    "known_bandcamp": null,
+    "known_website": "https://cheetahtah-launchpad.lovable.app/"
+  },
+  {
+    "artist_id": "go-south",
+    "artist": "Go South",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/gosouth",
+      "https://directory.burningman.org/camps/browse/G/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/gosouth",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "lidiya",
+    "artist": "Lidiya",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "melodic house"
+    ],
+    "known_sources": [
+      "https://www.instagram.com/lidiya.music/",
+      "https://ra.co/dj/misslidiya/biography (note: this profile is for a different, Bulgarian techno artist sharing the name)"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "millad",
+    "artist": "Millad",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.beatport.com/artist/millad/841470",
+      "https://www.traxsource.com/artist/531774/millad",
+      "https://soundcloud.com/milladmusic",
+      "https://music.apple.com/us/artist/millad/1499736488"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/milladmusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "gilarden",
+    "artist": "Gilarden",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "world fusion",
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.beatport.com/artist/gilarden/1195620",
+      "https://soundcloud.com/gilarden",
+      "https://open.spotify.com/artist/5ZLXMRgZaPEFUoejhgdmPL",
+      "https://www.instagram.com/giilarden/"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/5ZLXMRgZaPEFUoejhgdmPL",
+    "known_soundcloud": "https://soundcloud.com/gilarden",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "kohbain",
+    "artist": "Kohbain",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/kohbain/live-el-borg-art-car-burning-man-2024-08-31",
+      "https://soundcloud.com/kohbain/live-soul-fam-fest-2025-06-28",
+      "https://bandcamp.com/kohbain",
+      "https://www.facebook.com/kohbain/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/kohbain",
+    "known_bandcamp": "https://bandcamp.com/kohbain",
+    "known_website": null
+  },
+  {
+    "artist_id": "ramzi",
+    "artist": "Ramzi",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "downtempo",
+      "psychedelic"
+    ],
+    "known_sources": [
+      "https://montreal.mutek.org/en/artists/ramzi",
+      "https://ra.co/dj/ramzi",
+      "https://www.last.fm/music/Ramzi",
+      "https://www.instagram.com/ramziofficial/?hl=en"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]

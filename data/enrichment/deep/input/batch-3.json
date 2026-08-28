@@ -1,0 +1,273 @@
+[
+  {
+    "artist_id": "simbasol",
+    "artist": "SIMBASŌL",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://www.musicconnection.com/hit-the-decks-its-simbasol/",
+      "https://piknicelectronik.com/en/artists/simbasol",
+      "https://songstats.com/artist/lmjwx984/simbasol",
+      "https://soundcloud.com/simbasol",
+      "https://www.mtlelectronicmusic.com/artists/simbasol/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/simbasol",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "yaku-means-water-hybrid-set",
+    "artist": "Yaku Means Water (Hybrid Set)",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "world fusion",
+      "organic electronic",
+      "global bass"
+    ],
+    "known_sources": [
+      "https://open.spotify.com/artist/4UmKGzvBo5tIlSd7hbsgBx",
+      "https://soundcloud.com/yakumeanswater",
+      "https://music.apple.com/us/artist/yaku-means-water/1564995148",
+      "https://www.beatport.com/artist/yaku-means-water/1060093",
+      "https://set79.com/tracklist/soundcloud.com/deephousetulum/dhtm-mix-series-097-yaku-means-water"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/4UmKGzvBo5tIlSd7hbsgBx",
+    "known_soundcloud": "https://soundcloud.com/yakumeanswater",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "alkemiss-erika",
+    "artist": "Alkemiss erika",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "organic electronic",
+      "melodic house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/alkemisserika",
+      "https://open.spotify.com/artist/3VUZUFra8oj5rCeOtnwmtf",
+      "https://soundcloud.com/alkemisserika",
+      "https://www.bandsintown.com/e/1039598801-alkemiss-erika-at-the-great-northern"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/3VUZUFra8oj5rCeOtnwmtf",
+    "known_soundcloud": "https://soundcloud.com/alkemisserika",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "bobby-lyte",
+    "artist": "Bobby Lyte",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "funk"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/bobbylyte/biography",
+      "https://soundcloud.com/bobbyflowstate",
+      "https://www.mixcloud.com/bobby-lyte/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/bobbyflowstate",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "yaz",
+    "artist": "Yaz",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/yaz",
+      "https://soundcloud.com/yazmaniandevil",
+      "https://soundcloud.com/dementha/yaz-dementha-wednesday-bm2022",
+      "https://www.sfstation.com/b2b-sessions-with-yaz-a-very-ronin-christmas-e2303609",
+      "https://dementha.tumblr.com/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/yazmaniandevil",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "andrea-castells",
+    "artist": "Andrea Castells",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "progressive house",
+      "techno"
+    ],
+    "known_sources": [
+      "https://electronicgroove.com/andrea-castells-groovy-melodic-latest-eg-mix/",
+      "https://ra.co/dj/andreacastells/biography",
+      "https://www.beatport.com/artist/andrea-castells/1330366",
+      "https://soundcloud.com/andreacastellsmusic",
+      "https://electronicgroove.com/andrea-castells-interview-2025/"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/andreacastellsmusic",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "nevos",
+    "artist": "Nevos",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "techno",
+      "tech house",
+      "global bass"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/nevosmusic/lifeissimple",
+      "https://www.youtube.com/@NEVOS_Music"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/nevosmusic/lifeissimple",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "zach-walker",
+    "artist": "Zach Walker",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://www.zachwalker.com/",
+      "https://www.envisionfestival.com/talents/Zach-Walker",
+      "https://husasounds.com/2020/02/interview-zach-walker-envision-festival-pink-mammoth/",
+      "https://soundcloud.com/zachwalker"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/zachwalker",
+    "known_bandcamp": null,
+    "known_website": "https://www.zachwalker.com/"
+  },
+  {
+    "artist_id": "sasi",
+    "artist": "Sasi",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "psytechno"
+    ],
+    "known_sources": [
+      "https://jweekly.com/2024/09/05/at-burning-man-a-desert-tribute-to-the-nova-festivals-victims/",
+      "https://soundcloud.com/omrisasi"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/omrisasi",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "cameron-angeli",
+    "artist": "Cameron Angeli",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [],
+    "known_sources": [
+      "https://soundcloud.com/cameronangeli",
+      "https://ra.co/dj/cameronangeli/biography",
+      "https://ra.co/dj/cameronangeli"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/cameronangeli",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "sacred-echoes",
+    "artist": "Sacred Echoes",
+    "signal_status": "EMERGING",
+    "genre_tags": [],
+    "known_sources": [
+      "https://music.apple.com/us/artist/sacred-echoes/1844174583"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "christian-voldstad",
+    "artist": "Christian Voldstad",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "downtempo"
+    ],
+    "known_sources": [
+      "https://ra.co/dj/christianvoldstad/biography",
+      "https://www.beatport.com/artist/christian-voldstad/1283910",
+      "https://electronicgroove.com/interview-christian-voldstad/",
+      "https://soundcloud.com/christianvoldstad",
+      "https://set79.com/dj/Christian%20Voldstad"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/christianvoldstad",
+    "known_bandcamp": null,
+    "known_website": null
+  },
+  {
+    "artist_id": "david-hohme",
+    "artist": "David Hohme",
+    "signal_status": "ESTABLISHED",
+    "genre_tags": [
+      "melodic house",
+      "progressive house"
+    ],
+    "known_sources": [
+      "https://www.hohme.com",
+      "https://ra.co/dj/davidhohme/biography",
+      "https://open.spotify.com/artist/2dYKTyW1fmdSt8hih9j9yE",
+      "https://soundcloud.com/hohme",
+      "https://www.insomniac.com/music/artists/david-hohme/"
+    ],
+    "known_spotify": "https://open.spotify.com/artist/2dYKTyW1fmdSt8hih9j9yE",
+    "known_soundcloud": "http://soundcloud.com/hohme",
+    "known_bandcamp": null,
+    "known_website": "https://www.hohme.com"
+  },
+  {
+    "artist_id": "brk-brk",
+    "artist": "BRK×BRK",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house",
+      "disco"
+    ],
+    "known_sources": [
+      "https://www.brkxbrk.com",
+      "https://www.youtube.com/@brk_x_brk",
+      "https://www.instagram.com/brk_x_brk"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": null,
+    "known_bandcamp": null,
+    "known_website": "https://www.brkxbrk.com"
+  },
+  {
+    "artist_id": "breauxx",
+    "artist": "Breauxx",
+    "signal_status": "EMERGING",
+    "genre_tags": [
+      "tech house"
+    ],
+    "known_sources": [
+      "https://soundcloud.com/breauxxmusic"
+    ],
+    "known_spotify": null,
+    "known_soundcloud": "https://soundcloud.com/breauxxmusic",
+    "known_bandcamp": null,
+    "known_website": null
+  }
+]
