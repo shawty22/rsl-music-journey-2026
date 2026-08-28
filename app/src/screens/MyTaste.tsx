@@ -77,11 +77,11 @@ export function MyTasteScreen({
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   {isRsl ? (
                     <span className="rsl-badge">
-                      <CheckIcon size={10} color="#4fd1c5" /> PLAYING 2026
+                      <CheckIcon size={10} color="#4fd1c5" /> PLAYING THIS YEAR
                     </span>
                   ) : (
                     <span className="reference-badge">
-                      <DerivedIcon size={10} color="#9797a8" /> REFERENCE
+                      <DerivedIcon size={10} color="#9797a8" /> NOT PLAYING THIS YEAR
                     </span>
                   )}
                   <button
