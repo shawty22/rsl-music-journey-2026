@@ -1,0 +1,18 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 390, "h": 844 },
+    { "file": "TasteSetup.dc.html", "x": 470, "y": 0, "w": 390, "h": 844 },
+    { "file": "JourneySettings.dc.html", "x": 940, "y": 0, "w": 390, "h": 844 },
+    { "file": "JourneyResults.dc.html", "x": 1410, "y": 0, "w": 390, "h": 1560 },
+    { "file": "ActDetail.dc.html", "x": 1880, "y": 0, "w": 390, "h": 844 }
+  ],
+  "annotations": [
+    { "id": "flow-title", "x": 0, "y": -210, "w": 760, "text": "RSL Music Journey — UX direction\nDISCOVER → DECIDE → GO (not search → filter → sort → manage)" },
+    { "id": "step-1", "x": 0, "y": -90, "w": 390, "text": "1 · HOME\nOne dominant invitation, not a 4-button menu." },
+    { "id": "step-2", "x": 470, "y": -90, "w": 390, "text": "2 · WHAT ARE YOU FEELING\nMood tiles + artists + DJ/LIVE/HYBRID. Not a settings form." },
+    { "id": "step-3", "x": 940, "y": -90, "w": 390, "text": "3 · ADVENTUROUS / TIME / WHERE\nOne slider, one chip row, one field. Then go." },
+    { "id": "step-4", "x": 1410, "y": -90, "w": 390, "text": "4 · YOUR NIGHT\nA journey timeline with a narrative thread, not a list of cards." },
+    { "id": "step-5", "x": 1880, "y": -90, "w": 390, "text": "5 · ACT DETAIL\nTap any act. Unknown never means bad." }
+  ],
+  "launch": { "view": "canvas" }
+}
