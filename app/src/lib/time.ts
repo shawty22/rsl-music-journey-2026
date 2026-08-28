@@ -27,6 +27,27 @@ export function formatNightMinutes(nightMinutes: number): string {
 
 export const DAY_OPTIONS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] as const;
 
+// Real, verified Burning Man 2026 calendar dates (Black Rock City runs Aug
+// 30 - Sep 7, 2026 per burningman.org) — shown next to each day chip so
+// "what day is it out there" doesn't depend on remembering the week.
+export const BURN_DATE_LABELS: Record<(typeof DAY_OPTIONS)[number], string> = {
+  SUN: "Aug 30",
+  MON: "Aug 31",
+  TUE: "Sep 1",
+  WED: "Sep 2",
+  THU: "Sep 3",
+  FRI: "Sep 4",
+  SAT: "Sep 5",
+};
+
+// Live "menu-bar style" day/date/time readout straight off the device clock.
+export function formatLiveClock(now: Date): string {
+  const day = now.toLocaleDateString(undefined, { weekday: "short" }).toUpperCase();
+  const date = now.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  const time = now.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+  return `${day} · ${date} · ${time}`;
+}
+
 // "Right now" as journey-draft defaults — day/hour/minute/meridiem read off
 // the device clock, rounded to the nearest quarter hour (matching the app's
 // time picker granularity). Always just a starting point: every field stays

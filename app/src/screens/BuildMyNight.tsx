@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { HomeIcon, PinIcon, ArrowRightIcon } from "../components/icons";
-import { DAY_OPTIONS } from "../lib/time";
+import { LiveStatusBar } from "../components/LiveStatus";
+import { DAY_OPTIONS, BURN_DATE_LABELS, currentDraftTime } from "../lib/time";
 import { latLngToBrcAddress, type BrcGeoModel } from "../lib/geo";
 import type { TasteProfile } from "../types";
 
@@ -101,6 +102,8 @@ export function BuildMyNightScreen({
         <div className="icon-btn-spacer" />
       </div>
 
+      <LiveStatusBar geoModel={geoModel} />
+
       <h1 className="step-headline" style={{ marginTop: 16 }}>
         Build My Night
       </h1>
@@ -167,9 +170,16 @@ export function BuildMyNightScreen({
       <div className="section">
         <div className="section-label">WHICH NIGHT?</div>
         <div className="day-row">
+          <button
+            className="day-chip day-chip-now"
+            onClick={() => onChangeDraft({ ...draft, ...currentDraftTime() })}
+          >
+            <span className="day-chip-name">NOW</span>
+          </button>
           {DAY_OPTIONS.map((d) => (
             <button key={d} className={`day-chip ${draft.day === d ? "day-chip-selected" : ""}`} onClick={() => onChangeDraft({ ...draft, day: d })}>
-              {d}
+              <span className="day-chip-name">{d}</span>
+              <span className="day-chip-date">{BURN_DATE_LABELS[d]}</span>
             </button>
           ))}
         </div>

@@ -72,6 +72,14 @@ export function PlayaMapScreen({
   const youXY = youHours !== null ? polarToXY(youHours, youRadiusFrac, center, maxR) : null;
   const nextXY = nextHours !== null ? polarToXY(nextHours, nextRadiusFrac, center, maxR) : null;
 
+  // The "12:00"/"6:00" axis labels sit right where a YOU/NEXT marker can
+  // land too — parseClockPosition wraps 12:00 to 0, so both stored as 0.
+  // Hide the axis label when a marker's this close so the two never render
+  // on top of each other (was reading as garbled overlapping text).
+  const hoursNear = (target: number, hours: number | null) => hours !== null && Math.min(Math.abs(hours - target), 12 - Math.abs(hours - target)) < 0.75;
+  const hide12 = hoursNear(0, youHours) || hoursNear(0, nextHours);
+  const hide6 = hoursNear(6, youHours) || hoursNear(6, nextHours);
+
   return (
     <div className="screen">
       <div className="screen-top">
@@ -94,12 +102,16 @@ export function PlayaMapScreen({
           ))}
           <line x1={center} y1={center - maxR - 10} x2={center} y2={center + maxR + 10} stroke="var(--border)" strokeWidth={1} />
           <line x1={center - maxR - 10} y1={center} x2={center + maxR + 10} y2={center} stroke="var(--border)" strokeWidth={1} />
-          <text x={center} y={center - maxR - 16} textAnchor="middle" fontSize="11" fill="var(--text-faint)" fontWeight="700">
-            12:00
-          </text>
-          <text x={center} y={center + maxR + 26} textAnchor="middle" fontSize="11" fill="var(--text-faint)" fontWeight="700">
-            6:00
-          </text>
+          {!hide12 && (
+            <text x={center} y={center - maxR - 16} textAnchor="middle" fontSize="11" fill="var(--text-faint)" fontWeight="700">
+              12:00
+            </text>
+          )}
+          {!hide6 && (
+            <text x={center} y={center + maxR + 26} textAnchor="middle" fontSize="11" fill="var(--text-faint)" fontWeight="700">
+              6:00
+            </text>
+          )}
 
           {youXY && nextXY && <line x1={youXY.x} y1={youXY.y} x2={nextXY.x} y2={nextXY.y} stroke="var(--wildcard)" strokeWidth={1.5} strokeDasharray="4 4" />}
 
@@ -151,7 +163,10 @@ export function PlayaMapScreen({
           <div className="map-distance-main">
             ~{Math.round(bearingAndDistance.distanceM)}m · {metersToWalkMinutes(bearingAndDistance.distanceM)} min walk
           </div>
-          <div className="map-distance-sub">to {nextStopLabel}</div>
+          <div className="map-distance-sub">
+            to {nextStopLabel}
+            {nextStopAddress ? ` · ${nextStopAddress}` : ""}
+          </div>
         </div>
       )}
 

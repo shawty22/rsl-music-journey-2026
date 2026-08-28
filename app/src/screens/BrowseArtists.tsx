@@ -3,7 +3,7 @@ import type { Dataset } from "../data/loadData";
 import { HomeIcon, SearchIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
 
-type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING";
+type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
 
 function geographyLine(artist: Dataset["artists"][number]): string | null {
   const parts = [artist.city, artist.state_region, artist.country].filter(Boolean);
@@ -25,7 +25,8 @@ export function BrowseArtistsScreen({
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     let list = q ? dataset.artists.filter((a) => a.artist_normalized.includes(q)) : dataset.artists;
-    if (filter !== "ALL") list = list.filter((a) => a.signal_status === filter);
+    if (filter === "WILDCARD") list = list.filter((a) => a.signal_status.toUpperCase() === "UNKNOWN");
+    else if (filter !== "ALL") list = list.filter((a) => a.signal_status.toUpperCase() === filter);
     return list.slice(0, 100);
   }, [dataset, query, filter]);
 
@@ -53,6 +54,9 @@ export function BrowseArtistsScreen({
         </button>
         <button className={`filter-chip filter-chip-emerging ${filter === "EMERGING" ? "filter-chip-active" : ""}`} onClick={() => setFilter("EMERGING")}>
           🟡 Emerging
+        </button>
+        <button className={`filter-chip filter-chip-wildcard ${filter === "WILDCARD" ? "filter-chip-active" : ""}`} onClick={() => setFilter("WILDCARD")}>
+          🟣 Wildcard
         </button>
       </div>
 

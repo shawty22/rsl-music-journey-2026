@@ -102,14 +102,16 @@ export function SearchIcon({ size = 16, color = "#5c5c6b" }: IconProps) {
 }
 
 export function GearIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+  // An actual toothed cog silhouette (not a sun/starburst) so it doesn't get
+  // mistaken for a light/dark toggle — the hub is a real cut hole via
+  // evenodd fill, not a background-dependent knockout.
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx={12} cy={12} r={3} stroke={color} strokeWidth={2} />
       <path
-        d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"
-        stroke={color}
-        strokeWidth={2}
-        strokeLinecap="round"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.51,2.62 L13.49,2.62 L14.76,5.35 L17.58,4.31 L19.69,6.42 L18.65,9.24 L21.38,10.51 L21.38,13.49 L18.65,14.76 L19.69,17.58 L17.58,19.69 L14.76,18.65 L13.49,21.38 L10.51,21.38 L9.24,18.65 L6.42,19.69 L4.31,17.58 L5.35,14.76 L2.62,13.49 L2.62,10.51 L5.35,9.24 L4.31,6.42 L6.42,4.31 L9.24,5.35 Z M15.2,12 A3.2,3.2 0 1,0 8.8,12 A3.2,3.2 0 1,0 15.2,12 Z"
+        fill={color}
       />
     </svg>
   );

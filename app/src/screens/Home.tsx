@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import { GearIcon, ArrowRightIcon, PeopleIcon, BookmarkIcon } from "../components/icons";
+import { LiveStatusBar } from "../components/LiveStatus";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
 
@@ -60,7 +61,7 @@ export function HomeScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <span className="wordmark">RSL MUSIC JOURNEY</span>
+        <span className="wordmark">PLAYAFY</span>
         <div className="top-actions">
           <span className={`badge ${online ? "badge-online" : "badge-offline"}`}>
             <span className="badge-dot" />
@@ -71,6 +72,8 @@ export function HomeScreen({
           </button>
         </div>
       </div>
+
+      <LiveStatusBar geoModel={dataset.geoModel} />
 
       <div className="home-headline-block">
         <div className="home-headline">What kind of night do you want?</div>
