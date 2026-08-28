@@ -120,6 +120,19 @@ export function scoreCandidate(artist: Artist, performance: Performance, taste: 
   return { score, baseRole, reasons, excluded: false };
 }
 
+export type DisplayRole = "STRONG_MATCH" | "DISCOVERY" | "WILDCARD" | "FINALE";
+
+// Collapses the engine's internal DiscoveryRole (which includes UNKNOWN —
+// never shown to users, per "unknown never means bad") into the four
+// narrative roles the UI actually displays. isFinale forces a strong pick
+// into the FINALE framing for the last stop of a journey.
+export function toDisplayRole(role: DiscoveryRole, isFinale = false): DisplayRole {
+  if (isFinale && (role === "CORE_MATCH" || role === "MAJOR_ACT" || role === "LOCAL_GEM")) return "FINALE";
+  if (role === "CORE_MATCH" || role === "MAJOR_ACT" || role === "LOCAL_GEM") return "STRONG_MATCH";
+  if (role === "ADJACENT") return "DISCOVERY";
+  return "WILDCARD"; // WILDCARD and UNKNOWN both read as wildcard to the user
+}
+
 export function buildCandidatePool(
   performances: Performance[],
   artistsById: Map<string, Artist>,
