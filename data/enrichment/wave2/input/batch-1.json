@@ -1,0 +1,102 @@
+[
+  {
+    "artist_id": "kimonos",
+    "artist": "Kimonos",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "black-rock-philharmonic",
+    "artist": "Black Rock Philharmonic",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "hookahdome-players",
+    "artist": "Hookahdome Players",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "moondrop",
+    "artist": "Moondrop",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "2juicy",
+    "artist": "2Juicy",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "special-guest-dj",
+    "artist": "Special Guest DJ",
+    "appearance_count": 4
+  },
+  {
+    "artist_id": "crowsnestster",
+    "artist": "Crowsnestster",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "silkworm",
+    "artist": "SILKWORM",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "swingline",
+    "artist": "Swingline",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "burger-pockets",
+    "artist": "Burger Pockets",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "full-service",
+    "artist": "Full Service",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "face",
+    "artist": "Face",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "tango",
+    "artist": "Tango",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "electric-angel",
+    "artist": "Electric Angel",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "zank",
+    "artist": "Zank",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "zenti",
+    "artist": "Zenti",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "augustine",
+    "artist": "Augustine",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "oba-flip",
+    "artist": "Oba + Flip",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "lp-giobbi",
+    "artist": "LP Giobbi",
+    "appearance_count": 3
+  },
+  {
+    "artist_id": "dugan",
+    "artist": "DUGAN",
+    "appearance_count": 3
+  }
+]
