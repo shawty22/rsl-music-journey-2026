@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import { GearIcon, ArrowRightIcon, PeopleIcon, BookmarkIcon } from "../components/icons";
-import { MOOD_ICONS } from "../components/moodIcons";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
 
@@ -89,17 +88,25 @@ export function HomeScreen({
         <div className="home-mood-grid">
           {MOOD_TILES.map((tile) => {
             const selected = selectedGenres.has(tile.genreTag.toLowerCase());
-            const Icon = MOOD_ICONS[tile.key];
             return (
-              <button key={tile.key} className={`mood-tile ${selected ? "mood-tile-selected" : ""}`} onClick={() => toggleMood(tile.genreTag)}>
-                <Icon size={20} color={selected ? "#ff6b35" : "#9797a8"} />
-                <div className="mood-label">{tile.label}</div>
+              <button
+                key={tile.key}
+                className="mood-tile"
+                style={selected ? { borderColor: tile.color, background: `${tile.color}24` } : undefined}
+                onClick={() => toggleMood(tile.genreTag)}
+              >
+                <div className="mood-emoji" style={{ opacity: selected ? 1 : 0.75 }}>
+                  {tile.emoji}
+                </div>
+                <div className="mood-label" style={selected ? { color: tile.color } : undefined}>
+                  {tile.label}
+                </div>
               </button>
             );
           })}
           <button className="mood-tile mood-tile-more" onClick={onOpenMyTaste}>
-            <div className="mood-tile-more-count">+{taste.favorite_artists.length}</div>
-            <div className="mood-label">artists</div>
+            <div className="mood-tile-more-count">★ {taste.favorite_artists.length}</div>
+            <div className="mood-label">favorites</div>
           </button>
         </div>
         <div className="pill-row" style={{ marginTop: 12 }}>

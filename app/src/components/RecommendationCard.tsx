@@ -31,6 +31,7 @@ export function RecommendationCard({ rec }: { rec: ScoredRecommendation }) {
       <div className="card-meta">
         <span>
           <PinIcon size={12} /> {performance.camp}
+          {performance.location ? ` · ${performance.location}` : ""}
         </span>
         <span>
           <ClockIcon size={12} /> {performance.day_raw} @ {performance.set_time_raw}

@@ -104,6 +104,7 @@ export function JourneyResultsScreen({
                   <div className="timeline-location">
                     <PinIcon size={13} />
                     {stop.performance.camp}
+                    {stop.performance.location && <span className="timeline-address">· {stop.performance.location}</span>}
                   </div>
                   {topReason && <ReasonRow reason={topReason} />}
                 </div>
