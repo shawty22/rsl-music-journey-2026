@@ -1,4 +1,4 @@
-import { BackIcon, PinIcon, ArrowRightIcon } from "../components/icons";
+import { HomeIcon, BackIcon, PinIcon, ArrowRightIcon } from "../components/icons";
 import { DAY_OPTIONS } from "../lib/time";
 import type { TasteProfile } from "../types";
 
@@ -18,12 +18,14 @@ export interface JourneyDraft {
   startLocation: string;
 }
 
-export function JourneySettingsScreen({
+export function BuildMyNightScreen({
   taste,
   onChangeTaste,
   draft,
   onChangeDraft,
   onBack,
+  onHome,
+  onEditTaste,
   onGo,
 }: {
   taste: TasteProfile;
@@ -31,6 +33,8 @@ export function JourneySettingsScreen({
   draft: JourneyDraft;
   onChangeDraft: (d: JourneyDraft) => void;
   onBack: () => void;
+  onHome: () => void;
+  onEditTaste: () => void;
   onGo: () => void;
 }) {
   const adventurous = taste.discovery_level;
@@ -42,9 +46,14 @@ export function JourneySettingsScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onBack} aria-label="Back">
-          <BackIcon />
-        </button>
+        <div className="nav-cluster">
+          <button className="icon-btn" onClick={onBack} aria-label="Back">
+            <BackIcon />
+          </button>
+          <button className="icon-btn" onClick={onHome} aria-label="Home">
+            <HomeIcon />
+          </button>
+        </div>
         <div className="step-dots">
           <span className="dot dot-filled" />
           <span className="dot dot-filled" />
@@ -52,12 +61,38 @@ export function JourneySettingsScreen({
         <div className="icon-btn-spacer" />
       </div>
 
+      <h1 className="step-headline" style={{ marginTop: 16 }}>
+        Build My Night
+      </h1>
+
+      <div className="taste-summary-card">
+        <div className="taste-module-header">
+          <span className="section-label" style={{ margin: 0 }}>
+            YOUR TASTE
+          </span>
+          <button className="text-link" onClick={onEditTaste}>
+            Edit →
+          </button>
+        </div>
+        <div className="chip-row chip-row-tight">
+          {taste.favorite_genres.length > 0 ? (
+            taste.favorite_genres.map((g) => (
+              <span key={g} className="tag-chip">
+                {g}
+              </span>
+            ))
+          ) : (
+            <span className="tag-chip tag-chip-dim">no genres picked yet</span>
+          )}
+        </div>
+        <div className="taste-summary-footer">
+          {taste.favorite_artists.length} favorite artist{taste.favorite_artists.length === 1 ? "" : "s"}
+          {taste.preferred_performance_types.length > 0 ? ` · ${taste.preferred_performance_types.join(" / ")} preferred` : ""}
+        </div>
+      </div>
+
       <div className="section">
-        <h1 className="step-headline">
-          How far down the
-          <br />
-          rabbit hole?
-        </h1>
+        <div className="section-label">TONIGHT'S ADVENTURE LEVEL</div>
         <div className="slider-labels">
           <span>FAMILIAR</span>
           <span className="slider-label-adventurous">ADVENTUROUS</span>
@@ -75,11 +110,7 @@ export function JourneySettingsScreen({
       </div>
 
       <div className="section">
-        <h1 className="step-headline">
-          How long have
-          <br />
-          you got?
-        </h1>
+        <div className="section-label">HOW LONG HAVE YOU GOT?</div>
         <div className="duration-row">
           {DURATION_OPTIONS.map((d) => (
             <button
@@ -105,17 +136,37 @@ export function JourneySettingsScreen({
       </div>
 
       <div className="section">
-        <h1 className="step-headline">
-          Where are you
-          <br />
-          starting?
-        </h1>
+        <div className="section-label">WHEN ARE YOU STARTING?</div>
+        <div className="input-row">
+          <select value={draft.hour} onChange={(e) => onChangeDraft({ ...draft, hour: parseInt(e.target.value, 10) })}>
+            {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
+              <option key={h} value={h}>
+                {h}
+              </option>
+            ))}
+          </select>
+          <select value={draft.minute} onChange={(e) => onChangeDraft({ ...draft, minute: parseInt(e.target.value, 10) })}>
+            {[0, 15, 30, 45].map((m) => (
+              <option key={m} value={m}>
+                {String(m).padStart(2, "0")}
+              </option>
+            ))}
+          </select>
+          <select value={draft.meridiem} onChange={(e) => onChangeDraft({ ...draft, meridiem: e.target.value as "AM" | "PM" })}>
+            <option value="PM">PM</option>
+            <option value="AM">AM</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="section-label">WHERE ARE YOU STARTING?</div>
         <div className="location-field">
           <PinIcon size={18} color="#ff6b35" />
           <input
             value={draft.startLocation}
             onChange={(e) => onChangeDraft({ ...draft, startLocation: e.target.value })}
-            placeholder="e.g. 7:15 & B"
+            placeholder="e.g. 2:35 & B"
           />
         </div>
         <div className="location-hint">Nearest intersection — that's close enough.</div>

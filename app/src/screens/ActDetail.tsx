@@ -1,51 +1,49 @@
 import type { JourneyStop } from "../lib/journey";
-import { toDisplayRole, type DisplayRole } from "../lib/recommend";
+import { toDisplayRole } from "../lib/recommend";
+import { resolvePerformanceType } from "../lib/performanceType";
 import { formatNightMinutes } from "../lib/time";
-import { BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
-
-const ROLE_LABEL: Record<DisplayRole, string> = {
-  STRONG_MATCH: "STRONG MATCH",
-  DISCOVERY: "DISCOVERY",
-  WILDCARD: "WILDCARD",
-  FINALE: "FINALE",
-};
-
-const ROLE_CLASS: Record<DisplayRole, string> = {
-  STRONG_MATCH: "role-strong",
-  DISCOVERY: "role-discovery",
-  WILDCARD: "role-wildcard",
-  FINALE: "role-finale",
-};
+import { HomeIcon, BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
+import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
 
 export function ActDetailScreen({
   stop,
   actNumber,
   onBack,
+  onHome,
 }: {
   stop: JourneyStop;
   actNumber: number;
   onBack: () => void;
+  onHome: () => void;
 }) {
-  const displayRole = toDisplayRole(stop.role, stop.isFinale);
+  const displayRole = toDisplayRole(stop.role);
   const isWildcard = displayRole === "WILDCARD";
-  const whyReasons = stop.reasons.filter((r) => r !== stop.transitionNote);
+  const whyReasons = stop.reasons.filter((r) => r.text !== stop.transitionNote);
 
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onBack} aria-label="Back">
-          <BackIcon />
-        </button>
-        <div className="icon-btn-spacer" />
+        <div className="nav-cluster">
+          <button className="icon-btn" onClick={onBack} aria-label="Back">
+            <BackIcon />
+          </button>
+          <button className="icon-btn" onClick={onHome} aria-label="Home">
+            <HomeIcon />
+          </button>
+        </div>
         <button className="icon-btn" aria-label="Share">
           <ShareIcon />
         </button>
       </div>
 
-      <div className={`detail-eyebrow ${ROLE_CLASS[displayRole]}`}>
-        {ROLE_LABEL[displayRole]} · ACT {actNumber}
+      <div className="detail-badges">
+        <RoleBadge role={displayRole} isFinale={stop.isFinale} />
+        <span className="dim">· ACT {actNumber}</span>
       </div>
       <div className="detail-name">{stop.artist.artist}</div>
+      <div style={{ marginTop: 6, marginBottom: 12 }}>
+        <SignalBadge status={stop.artist.signal_status} size="md" />
+      </div>
 
       <div className="chip-row">
         {stop.artist.genre_tags.length > 0 ? (
@@ -57,9 +55,7 @@ export function ActDetailScreen({
         ) : (
           <span className="tag-chip tag-chip-lg">genre not yet tagged</span>
         )}
-        {stop.performance.performance_type !== "UNKNOWN" && (
-          <span className="tag-chip tag-chip-lg">{stop.performance.performance_type.toLowerCase()} set</span>
-        )}
+        <PerformanceTypeTag type={resolvePerformanceType(stop.performance, stop.artist)} />
       </div>
 
       {isWildcard && (
@@ -91,8 +87,12 @@ export function ActDetailScreen({
 
       <div className="section">
         <div className="section-label">WHY IT'S IN YOUR NIGHT</div>
-        <div className="detail-why">
-          {whyReasons.length > 0 ? whyReasons.join(" ") : "Fits the mood and the moment — scheduling and musical fit alone."}
+        <div className="reason-list">
+          {whyReasons.length > 0 ? (
+            whyReasons.map((r, i) => <ReasonRow key={i} reason={r} />)
+          ) : (
+            <ReasonRow reason={{ text: "Fits the mood and the moment — scheduling and musical fit alone.", provenance: "system" }} />
+          )}
         </div>
       </div>
 

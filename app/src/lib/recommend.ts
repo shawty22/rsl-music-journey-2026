@@ -1,12 +1,11 @@
-import type { Artist, DiscoveryRole, Performance, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
+import type { Artist, DiscoveryRole, Performance, Reason, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
+import { lookupKnownArtistGenres } from "./knownArtistGenres";
+import { resolvePerformanceType } from "./performanceType";
 
 // Transparent, rule-based scoring. Every point added to `score` has a
-// matching human-readable reason pushed to `reasons` — nothing here is a
-// black box, and nothing here fabricates a signal the data doesn't have.
-// Given the current seed dataset has 0% enrichment (no genre_tags,
-// signal_status is "unknown" for every artist), most non-favorite artists
-// will legitimately score as UNKNOWN/WILDCARD today. That's correct
-// behavior, not a bug — it should change automatically as enrichment lands.
+// matching human-readable reason pushed to `reasons`, each tagged with WHERE
+// it came from (user_selected / derived / system) — nothing here is a black
+// box, and nothing here fabricates a signal the data doesn't have.
 
 function normalize(s: string): string {
   return s.trim().toLowerCase();
@@ -17,82 +16,106 @@ function overlap(a: string[], b: string[]): string[] {
   return a.filter((x) => bSet.has(normalize(x)));
 }
 
+function reason(text: string, provenance: Reason["provenance"]): Reason {
+  return { text, provenance };
+}
+
 export interface CandidateScore {
   score: number;
   baseRole: DiscoveryRole;
-  reasons: string[];
+  reasons: Reason[];
   excluded: boolean;
 }
 
 export function scoreCandidate(artist: Artist, performance: Performance, taste: TasteProfile, taxonomy: Taxonomy): CandidateScore {
-  const reasons: string[] = [];
+  const reasons: Reason[] = [];
   let score = 0;
 
   const avoidHit = overlap(artist.genre_tags, taste.avoid_genres);
   if (avoidHit.length > 0) {
-    return { score: -Infinity, baseRole: "UNKNOWN", reasons: [`Excluded: matches avoided genre(s) ${avoidHit.join(", ")}.`], excluded: true };
+    return { score: -Infinity, baseRole: "UNKNOWN", reasons: [reason(`Excluded: matches avoided genre(s) ${avoidHit.join(", ")}.`, "user_selected")], excluded: true };
   }
 
   const isFavoriteArtist = taste.favorite_artists.some((fav) => normalize(fav) === normalize(artist.artist));
   if (isFavoriteArtist) {
     score += 50;
-    reasons.push(`${artist.artist} is one of your favorite artists.`);
+    reasons.push(reason(`You added ${artist.artist} as a favorite.`, "user_selected"));
   }
 
   const genreHits = overlap(artist.genre_tags, taste.favorite_genres);
   if (genreHits.length > 0) {
     score += genreHits.length * 15;
-    reasons.push(`Matches your favorite genre(s): ${genreHits.join(", ")}.`);
+    reasons.push(reason(`You selected: ${genreHits.join(", ")}.`, "user_selected"));
   }
 
   const styleHits = overlap(artist.style_tags, taste.favorite_styles);
   if (styleHits.length > 0) {
     score += styleHits.length * 10;
-    reasons.push(`Matches your favorite style(s): ${styleHits.join(", ")}.`);
+    reasons.push(reason(`Matches your favorite style(s): ${styleHits.join(", ")}.`, "user_selected"));
+  }
+
+  // Taste-reference artists (favorites not playing RSL 2026) can still
+  // inform genre fit via a small curated lookup — always tagged "derived"
+  // so it's never confused with something the user explicitly selected.
+  let derivedGenreHits: string[] = [];
+  let derivedFromArtist: string | null = null;
+  for (const fav of taste.favorite_artists) {
+    const known = lookupKnownArtistGenres(fav);
+    if (!known) continue;
+    const hits = overlap(artist.genre_tags, known);
+    if (hits.length > 0 && hits.length > derivedGenreHits.length) {
+      derivedGenreHits = hits;
+      derivedFromArtist = fav;
+    }
+  }
+  if (derivedFromArtist && derivedGenreHits.length > 0) {
+    score += derivedGenreHits.length * 9;
+    reasons.push(reason(`Derived from ${derivedFromArtist}: similar ${derivedGenreHits.join(", ")}.`, "derived"));
   }
 
   const bias = taxonomy.electronic_bias_weights;
   const tagsLower = artist.genre_tags.map(normalize);
   if (bias.HIGH?.some((g) => tagsLower.includes(normalize(g)))) {
     score += 12;
-    reasons.push("Strong electronic preference match.");
+    reasons.push(reason("Strong electronic preference match.", "system"));
   } else if (bias.MEDIUM_HIGH?.some((g) => tagsLower.includes(normalize(g)))) {
     score += 8;
-    reasons.push("House/techno/progressive — solid electronic fit.");
+    reasons.push(reason("House/techno/progressive — solid electronic fit.", "system"));
   } else if (bias.MEDIUM?.some((g) => tagsLower.includes(normalize(g)))) {
     score += 3;
   }
 
   if (artist.rsl_recommended) {
     score += 20;
-    reasons.push("RSL recommended.");
+    reasons.push(reason("RSL recommended.", "system"));
   }
   if (artist.bipoc_beats_artist) {
     score += 5;
-    reasons.push("BIPOC Beats artist.");
+    reasons.push(reason("BIPOC Beats artist.", "system"));
   }
   if (artist.bipoc_beats_friend) {
     score += 5;
-    reasons.push("BIPOC Beats friend of the program.");
+    reasons.push(reason("BIPOC Beats friend of the program.", "system"));
   }
 
   if (artist.signal_status === "ESTABLISHED") {
     score += 10;
-    reasons.push("Established artist with an independent music career.");
+    reasons.push(reason("Established artist with an independent music career.", "system"));
   } else if (artist.signal_status === "EMERGING") {
     score += 6;
-    reasons.push("Emerging artist with a real catalogue.");
+    reasons.push(reason("Emerging artist with a real catalogue.", "system"));
   }
 
-  if (taste.preferred_performance_types.includes(performance.performance_type)) {
+  const resolvedType = resolvePerformanceType(performance, artist);
+  if (taste.preferred_performance_types.includes(resolvedType)) {
     score += 8;
-    reasons.push(`Matches your preferred performance type (${performance.performance_type}).`);
+    reasons.push(reason(`You prefer ${resolvedType} sets.`, "user_selected"));
   }
 
-  const isLiveish = performance.performance_type === "LIVE" || performance.performance_type === "HYBRID";
+  const isLiveish = resolvedType === "LIVE" || resolvedType === "HYBRID";
   if (taste.live_hybrid_preference === "seek" && isLiveish) {
     score += 10;
-    reasons.push("Live/hybrid set, matching your preference.");
+    reasons.push(reason("Live/hybrid set, matching your preference.", "user_selected"));
   } else if (taste.live_hybrid_preference === "avoid" && isLiveish) {
     score -= 10;
   }
@@ -108,26 +131,26 @@ export function scoreCandidate(artist: Artist, performance: Performance, taste: 
     baseRole = "CORE_MATCH";
   } else if (genreHits.length === 1 || artist.rsl_recommended || artist.signal_status === "ESTABLISHED") {
     baseRole = "ADJACENT";
-  } else if (artist.signal_status === "EMERGING" || bias.HIGH?.some((g) => tagsLower.includes(normalize(g)))) {
+  } else if (derivedFromArtist || artist.signal_status === "EMERGING" || bias.HIGH?.some((g) => tagsLower.includes(normalize(g)))) {
     baseRole = "ADJACENT";
   } else {
     baseRole = "UNKNOWN";
     if (reasons.length === 0) {
-      reasons.push("No taste-profile or signal data yet for this artist — showing up on musical/scheduling fit alone.");
+      reasons.push(reason("No taste-profile or signal data yet for this artist — showing up on musical/scheduling fit alone.", "system"));
     }
   }
 
   return { score, baseRole, reasons, excluded: false };
 }
 
-export type DisplayRole = "STRONG_MATCH" | "DISCOVERY" | "WILDCARD" | "FINALE";
+export type DisplayRole = "STRONG_MATCH" | "DISCOVERY" | "WILDCARD";
 
 // Collapses the engine's internal DiscoveryRole (which includes UNKNOWN —
-// never shown to users, per "unknown never means bad") into the four
-// narrative roles the UI actually displays. isFinale forces a strong pick
-// into the FINALE framing for the last stop of a journey.
-export function toDisplayRole(role: DiscoveryRole, isFinale = false): DisplayRole {
-  if (isFinale && (role === "CORE_MATCH" || role === "MAJOR_ACT" || role === "LOCAL_GEM")) return "FINALE";
+// never shown to users, per "unknown never means bad") into the 3 roles the
+// UI actually displays. "Finale" is conveyed as a separate flag/label
+// suffix, not a fourth color, so the badge system stays consistent
+// everywhere an artist appears.
+export function toDisplayRole(role: DiscoveryRole): DisplayRole {
   if (role === "CORE_MATCH" || role === "MAJOR_ACT" || role === "LOCAL_GEM") return "STRONG_MATCH";
   if (role === "ADJACENT") return "DISCOVERY";
   return "WILDCARD"; // WILDCARD and UNKNOWN both read as wildcard to the user
@@ -178,7 +201,7 @@ export function applyDiscoveryMix(pool: ScoredRecommendation[], taxonomy: Taxono
   const wildcardPicks = unknown.slice(0, nWildcard).map((rec) => ({
     ...rec,
     role: "WILDCARD" as DiscoveryRole,
-    reasons: [...rec.reasons, "Wildcard: deliberately included for discovery — limited external signal but musically/schedule-wise interesting."],
+    reasons: [...rec.reasons, reason("Deliberately included for discovery — limited external signal but musically/schedule-wise interesting.", "system")],
   }));
   picked.push(...wildcardPicks);
 

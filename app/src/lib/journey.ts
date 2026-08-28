@@ -1,4 +1,4 @@
-import type { Artist, DiscoveryRole, Location, Performance, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
+import type { Artist, DiscoveryRole, Location, Performance, Reason, ScoredRecommendation, TasteProfile, Taxonomy } from "../types";
 import { scoreCandidate } from "./recommend";
 import { estimateDistance, findLocation } from "./distance";
 import { nightMinutesFromHour24 } from "./time";
@@ -132,11 +132,11 @@ export function buildJourney(
     if (!best) break;
 
     used.add(best.rec.performance.performance_id);
-    const reasons = [...best.rec.reasons];
+    const reasons: Reason[] = [...best.rec.reasons];
     if (deliberateWildcard) {
-      reasons.push("Wildcard: deliberately included for discovery — limited external signal but musically/schedule-wise interesting.");
+      reasons.push({ text: "Deliberately included for discovery — limited external signal but musically/schedule-wise interesting.", provenance: "system" });
     }
-    reasons.push(best.note);
+    reasons.push({ text: best.note, provenance: "system" });
 
     stops.push({
       ...best.rec,

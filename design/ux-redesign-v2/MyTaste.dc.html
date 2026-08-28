@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; }
+    a { color: #4fd1c5; } a:hover { color: #7fe3d8; }
+  </style>
+</helmet>
+<div style="width:390px;height:1180px;background:#0b0b12;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#f2f2f7;padding:20px 20px 30px;box-sizing:border-box;">
+
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:34px;height:34px;border-radius:10px;background:#16161f;border:1px solid #2a2a38;display:flex;align-items:center;justify-content:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6 8 6" stroke="#f2f2f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10.5V20h12v-9.5" stroke="#f2f2f7" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.5px;color:#9797a8;">HOME</div>
+  </div>
+
+  <div style="font-size:26px;font-weight:800;margin-top:16px;">My Taste</div>
+  <div style="font-size:13px;color:#9797a8;margin-top:4px;">This is used everywhere the app recommends something to you.</div>
+
+  <div style="font-size:11px;font-weight:800;letter-spacing:0.5px;color:#9797a8;margin-top:26px;margin-bottom:12px;">GENRE &amp; MOOD</div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;">
+
+    <div style="aspect-ratio:1/1;border-radius:16px;background:rgba(255,107,53,0.14);border:1.5px solid #ff6b35;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 20c8 0 13-5 13-14-9 0-13 5-13 14z" stroke="#ff6b35" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 18c2-4 5-7 9-10" stroke="#ff6b35" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div style="font-size:10px;font-weight:700;">Organic</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:rgba(255,107,53,0.14);border:1.5px solid #ff6b35;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12c3 0 3-4 0-4s-3 4 0 4-3 4 0 4 3-4 0-4 5-2 5 2-5 2-5 2" stroke="#ff6b35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-size:10px;font-weight:700;">Psychedelic</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:rgba(255,107,53,0.14);border:1.5px solid #ff6b35;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke="#ff6b35" stroke-width="1.8" stroke-linejoin="round"/><circle cx="10.5" cy="15.5" r="0.9" fill="#ff6b35"/></svg>
+      <div style="font-size:10px;font-weight:700;">Experimental</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:rgba(255,107,53,0.14);border:1.5px solid #ff6b35;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#ff6b35" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5" stroke="#ff6b35" stroke-width="1.6"/><path d="M3.5 12h17" stroke="#ff6b35" stroke-width="1.6"/></svg>
+      <div style="font-size:10px;font-weight:700;">Global</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:#16161f;border:1px solid #2a2a38;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 10h3l5-4v12l-5-4H5v-4z" stroke="#9797a8" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 9c1.3 1.3 1.3 4.7 0 6M19.3 6.7c2.6 2.6 2.6 8 0 10.6" stroke="#9797a8" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div style="font-size:10px;font-weight:600;color:#9797a8;">Bass</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:#16161f;border:1px solid #2a2a38;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6 8 6" stroke="#9797a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10.5V20h12v-9.5" stroke="#9797a8" stroke-width="1.8" stroke-linejoin="round"/><path d="M18.5 8c1 1 1 3.2 0 4.2" stroke="#9797a8" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <div style="font-size:10px;font-weight:600;color:#9797a8;">House</div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:16px;background:#16161f;border:1px solid #2a2a38;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2 5 14h5l-1 8 8-12h-5l1-8z" stroke="#9797a8" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <div style="font-size:10px;font-weight:600;color:#9797a8;">Techno</div>
+    </div>
+  </div>
+
+  <div style="font-size:11px;font-weight:800;letter-spacing:0.5px;color:#9797a8;margin-top:26px;margin-bottom:6px;">FAVORITE ARTISTS</div>
+  <div style="font-size:12px;color:#5c5c6b;margin-bottom:12px;">Add anyone — they don't need to be playing this year. We'll use them to understand your taste.</div>
+
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#16161f;border:1px solid #2a2a38;border-radius:12px;padding:10px 12px;">
+      <span style="font-size:14px;font-weight:700;">Govinda</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:#4fd1c5;background:rgba(79,209,197,0.12);border-radius:999px;padding:4px 9px;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 17V7l8-4 8 4v10l-8 4-8-4z" stroke="#4fd1c5" stroke-width="2" stroke-linejoin="round"/></svg>
+        PLAYING 2026
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#16161f;border:1px dashed #3a3a4a;border-radius:12px;padding:10px 12px;">
+      <span style="font-size:14px;font-weight:700;">Bonobo</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:#9797a8;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 18V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10" stroke="#9797a8" stroke-width="2" stroke-linecap="round"/><circle cx="7" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/><circle cx="17" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/></svg>
+        REFERENCE
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#16161f;border:1px dashed #3a3a4a;border-radius:12px;padding:10px 12px;">
+      <span style="font-size:14px;font-weight:700;">The Polish Ambassador</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:#9797a8;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 18V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10" stroke="#9797a8" stroke-width="2" stroke-linecap="round"/><circle cx="7" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/><circle cx="17" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/></svg>
+        REFERENCE
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#16161f;border:1px dashed #3a3a4a;border-radius:12px;padding:10px 12px;">
+      <span style="font-size:14px;font-weight:700;">Carl Cox</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:#9797a8;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 18V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10" stroke="#9797a8" stroke-width="2" stroke-linecap="round"/><circle cx="7" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/><circle cx="17" cy="18" r="2" stroke="#9797a8" stroke-width="1.8"/></svg>
+        REFERENCE
+      </span>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin-top:10px;">
+    <div style="flex:1;background:#16161f;border:1px solid #2a2a38;border-radius:10px;padding:12px;color:#5c5c6b;font-size:14px;">Add an artist…</div>
+    <div style="background:#ff6b35;border-radius:10px;padding:12px 18px;color:#0b0b12;font-weight:700;font-size:14px;">Add</div>
+  </div>
+
+  <div style="font-size:11px;font-weight:800;letter-spacing:0.5px;color:#9797a8;margin-top:26px;margin-bottom:10px;">HOW DO YOU LIKE IT PLAYED?</div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;">
+    <div style="background:#16161f;border:1px solid #2a2a38;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:700;color:#9797a8;">DJ</div>
+    <div style="background:rgba(79,209,197,0.14);border:1.5px solid #4fd1c5;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:700;color:#4fd1c5;">LIVE</div>
+    <div style="background:rgba(79,209,197,0.14);border:1.5px solid #4fd1c5;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:700;color:#4fd1c5;">HYBRID</div>
+    <div style="background:#16161f;border:1px solid #2a2a38;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:700;color:#9797a8;">B2B</div>
+    <div style="background:#16161f;border:1px dashed #3a3a4a;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:700;color:#5c5c6b;">+ more types</div>
+  </div>
+
+  <div style="font-size:11px;font-weight:800;letter-spacing:0.5px;color:#9797a8;margin-top:26px;margin-bottom:12px;">HOW ADVENTUROUS ARE YOU, GENERALLY?</div>
+  <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:#5c5c6b;margin-bottom:8px;">
+    <span>FAMILIAR</span><span style="color:#c084fc;">ADVENTUROUS</span>
+  </div>
+  <div style="position:relative;height:20px;">
+    <div style="position:absolute;top:8px;left:0;right:0;height:4px;border-radius:2px;background:#2a2a38;"></div>
+    <div style="position:absolute;top:8px;left:0;width:80%;height:4px;border-radius:2px;background:linear-gradient(90deg,#ff6b35,#c084fc);"></div>
+    <div style="position:absolute;top:0;left:calc(80% - 10px);width:20px;height:20px;border-radius:50%;background:#f2f2f7;border:4px solid #c084fc;"></div>
+  </div>
+  <div style="font-size:11.5px;color:#5c5c6b;margin-top:8px;">You can still adjust this per journey when you build a night.</div>
+
+</div>
+</x-dc>
+</body>
+</html>

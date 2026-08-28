@@ -1,14 +1,9 @@
 import type { JourneyStop } from "../lib/journey";
-import { toDisplayRole, type DisplayRole } from "../lib/recommend";
+import { toDisplayRole } from "../lib/recommend";
+import { resolvePerformanceType } from "../lib/performanceType";
 import { formatNightMinutes } from "../lib/time";
-import { BackIcon, PinIcon, ShareIcon } from "../components/icons";
-
-const ROLE_META: Record<DisplayRole, { label: string; className: string }> = {
-  STRONG_MATCH: { label: "STRONG MATCH", className: "role-strong" },
-  DISCOVERY: { label: "DISCOVERY", className: "role-discovery" },
-  WILDCARD: { label: "WILDCARD", className: "role-wildcard" },
-  FINALE: { label: "FINALE", className: "role-finale" },
-};
+import { HomeIcon, BackIcon, PinIcon, ShareIcon } from "../components/icons";
+import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
 
 export function JourneyResultsScreen({
   stops,
@@ -17,6 +12,7 @@ export function JourneyResultsScreen({
   startLocation,
   durationHours,
   onBack,
+  onHome,
   onSelectStop,
   onShare,
   onSave,
@@ -27,6 +23,7 @@ export function JourneyResultsScreen({
   startLocation: string;
   durationHours: number;
   onBack: () => void;
+  onHome: () => void;
   onSelectStop: (index: number) => void;
   onShare: () => void;
   onSave: () => void;
@@ -34,13 +31,18 @@ export function JourneyResultsScreen({
   return (
     <div className="screen">
       <div className="screen-top screen-top-centered">
-        <button className="icon-btn" onClick={onBack} aria-label="Back">
-          <BackIcon />
-        </button>
+        <div className="nav-cluster">
+          <button className="icon-btn" onClick={onBack} aria-label="Back">
+            <BackIcon />
+          </button>
+          <button className="icon-btn" onClick={onHome} aria-label="Home">
+            <HomeIcon />
+          </button>
+        </div>
         <div className="results-title">
           <div className="results-title-label">YOUR NIGHT</div>
           <div className="results-title-main">
-            {durationHours}h Journey · {day}
+            {durationHours}h · {day}
           </div>
         </div>
         <button className="icon-btn" onClick={onShare} aria-label="Share">
@@ -69,37 +71,41 @@ export function JourneyResultsScreen({
           </div>
 
           {stops.map((stop, i) => {
-            const displayRole = toDisplayRole(stop.role, stop.isFinale);
-            const meta = ROLE_META[displayRole];
+            const displayRole = toDisplayRole(stop.role);
             const isLast = i === stops.length - 1;
-            const whyReason = stop.reasons.find((r) => r !== stop.transitionNote) ?? "Fits the mood and the moment.";
+            const topReason = stop.reasons.find((r) => r.text !== stop.transitionNote);
             return (
               <div className="timeline-row" key={stop.performance.performance_id} onClick={() => onSelectStop(i)}>
                 <div className="timeline-rail">
-                  <div className={`timeline-dot ${meta.className}`} />
+                  <div className={`timeline-dot role-dot-${displayRole === "STRONG_MATCH" ? "strong" : displayRole === "DISCOVERY" ? "discovery" : "wildcard"}`} />
                   {!isLast && <div className="timeline-line" />}
                 </div>
                 <div className="timeline-content timeline-clickable">
                   <div className="timeline-meta">
-                    <span className={`timeline-role ${meta.className}`}>{meta.label}</span>
+                    <RoleBadge role={displayRole} isFinale={stop.isFinale} />
                     <span className="dim">· {formatNightMinutes(stop.arrivalNightMinutes)}</span>
                   </div>
-                  <div className="timeline-artist">{stop.artist.artist}</div>
-                  <div className="chip-row chip-row-tight">
-                    {stop.artist.genre_tags.slice(0, 2).map((g) => (
-                      <span key={g} className="tag-chip">
-                        {g}
-                      </span>
-                    ))}
-                    {stop.performance.performance_type !== "UNKNOWN" && (
-                      <span className="tag-chip">{stop.performance.performance_type.toLowerCase()}</span>
-                    )}
+                  <div className="timeline-artist-row">
+                    <div className="timeline-artist">{stop.artist.artist}</div>
+                    <SignalBadge status={stop.artist.signal_status} />
                   </div>
+                  {stop.artist.genre_tags.length > 0 ? (
+                    <div className="chip-row chip-row-tight">
+                      {stop.artist.genre_tags.slice(0, 2).map((g) => (
+                        <span key={g} className="tag-chip">
+                          {g}
+                        </span>
+                      ))}
+                      <PerformanceTypeTag type={resolvePerformanceType(stop.performance, stop.artist)} />
+                    </div>
+                  ) : (
+                    <div className="card-genre">genre not yet tagged</div>
+                  )}
                   <div className="timeline-location">
                     <PinIcon size={13} />
                     {stop.performance.camp}
                   </div>
-                  <div className="timeline-why">{whyReason}</div>
+                  {topReason && <ReasonRow reason={topReason} />}
                 </div>
               </div>
             );

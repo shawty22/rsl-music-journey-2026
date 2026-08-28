@@ -151,11 +151,24 @@ export interface TasteProfile {
   avoid_genres: string[];
 }
 
+// Where a recommendation reason came from — shown to the user so they're
+// never confused about whether they picked something or the system inferred
+// it. user_selected = they picked this exact genre/artist/preference.
+// derived = inferred from a taste-reference artist they added (one that
+// isn't playing RSL 2026). system = a broader heuristic (signal tier,
+// electronic bias, RSL flags).
+export type ReasonProvenance = "user_selected" | "derived" | "system";
+
+export interface Reason {
+  text: string;
+  provenance: ReasonProvenance;
+}
+
 export interface ScoredRecommendation {
   performance: Performance;
   artist: Artist;
   role: DiscoveryRole;
-  reasons: string[];
+  reasons: Reason[];
   score: number;
 }
 

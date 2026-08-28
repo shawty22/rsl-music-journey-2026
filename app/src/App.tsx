@@ -7,23 +7,25 @@ import { buildJourney, type JourneyStop } from "./lib/journey";
 import { DAY_OPTIONS, parseTimeInputToNightMinutes, nightMinutesFromHour24, formatNightMinutes } from "./lib/time";
 import { RecommendationCard } from "./components/RecommendationCard";
 import { HomeScreen } from "./screens/Home";
-import { TasteSetupScreen } from "./screens/TasteSetup";
-import { JourneySettingsScreen, type JourneyDraft } from "./screens/JourneySettings";
+import { MyTasteScreen } from "./screens/MyTaste";
+import { BuildMyNightScreen, type JourneyDraft } from "./screens/BuildMyNight";
 import { JourneyResultsScreen } from "./screens/JourneyResults";
 import { ActDetailScreen } from "./screens/ActDetail";
-import { BackIcon } from "./components/icons";
+import { BrowseArtistsScreen } from "./screens/BrowseArtists";
+import { ArtistDetailScreen } from "./screens/ArtistDetail";
+import { HomeIcon } from "./components/icons";
 import type { SavedJourney, TasteProfile } from "./types";
 
-type View = "home" | "taste" | "journeySettings" | "results" | "actDetail" | "discover" | "artists" | "saved";
+type View = "home" | "myTaste" | "buildMyNight" | "results" | "actDetail" | "whatsGoodNow" | "browseArtists" | "artistDetail" | "saved";
 
 const DEFAULT_DRAFT: JourneyDraft = { day: "FRI", hour: 7, minute: 0, meridiem: "PM", durationHours: 4, startLocation: "" };
 
-function PreferencesPanel({ taste, onChange, onClose }: { taste: TasteProfile; onChange: (t: TasteProfile) => void; onClose: () => void }) {
+function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; onChange: (t: TasteProfile) => void; onClose: () => void }) {
   return (
     <div className="sheet">
       <div className="sheet-header">
         <h1 className="step-headline" style={{ margin: 0 }}>
-          Preferences
+          App Settings
         </h1>
         <button className="btn-close" onClick={onClose}>
           ✕
@@ -57,7 +59,7 @@ function PreferencesPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
   );
 }
 
-function DiscoverScreen({ dataset, taste, onBack }: { dataset: Dataset; taste: TasteProfile; onBack: () => void }) {
+function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; taste: TasteProfile; onHome: () => void }) {
   const [day, setDay] = useState<string>(DEFAULT_DRAFT.day);
   const [count, setCount] = useState(10);
 
@@ -70,8 +72,8 @@ function DiscoverScreen({ dataset, taste, onBack }: { dataset: Dataset; taste: T
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onBack} aria-label="Back">
-          <BackIcon />
+        <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <HomeIcon />
         </button>
         <div className="icon-btn-spacer" />
       </div>
@@ -98,60 +100,7 @@ function DiscoverScreen({ dataset, taste, onBack }: { dataset: Dataset; taste: T
   );
 }
 
-function ArtistsScreen({ dataset, onBack }: { dataset: Dataset; onBack: () => void }) {
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<string | null>(null);
-
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    const list = q ? dataset.artists.filter((a) => a.artist_normalized.includes(q)) : dataset.artists;
-    return list.slice(0, 100);
-  }, [dataset, query]);
-
-  const selectedArtist = selected ? dataset.artistsById.get(selected) : null;
-  const selectedPerfs = selected ? dataset.performances.filter((p) => p.artist_id === selected) : [];
-
-  return (
-    <div className="screen">
-      <div className="screen-top">
-        <button className="icon-btn" onClick={() => (selectedArtist ? setSelected(null) : onBack())} aria-label="Back">
-          <BackIcon />
-        </button>
-        <div className="icon-btn-spacer" />
-      </div>
-
-      {selectedArtist ? (
-        <>
-          <h1 className="step-headline">{selectedArtist.artist}</h1>
-          <p className="empty" style={{ marginTop: 8 }}>
-            {selectedArtist.genre_tags.length ? selectedArtist.genre_tags.join(", ") : "Genre not yet tagged."}
-          </p>
-          {selectedPerfs.map((p) => (
-            <div key={p.performance_id} className="perf-row">
-              <strong>{p.day_raw}</strong> @ {p.set_time_raw} — {p.camp}
-              {p.location ? ` (${p.location})` : ""}
-            </div>
-          ))}
-        </>
-      ) : (
-        <>
-          <h1 className="step-headline">Artists</h1>
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search artists…" style={{ marginTop: 16 }} />
-          <div className="artist-list">
-            {results.map((a) => (
-              <div key={a.artist_id} className="artist-row" onClick={() => setSelected(a.artist_id)}>
-                <span>{a.artist}</span>
-                <span className="artist-count">{a.appearance_count} sets</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
-function SavedScreen({ onBack }: { onBack: () => void }) {
+function SavedScreen({ onHome }: { onHome: () => void }) {
   const [journeys, setJourneys] = useState<SavedJourney[]>(loadSavedJourneys());
 
   function remove(id: string) {
@@ -162,8 +111,8 @@ function SavedScreen({ onBack }: { onBack: () => void }) {
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onBack} aria-label="Back">
-          <BackIcon />
+        <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <HomeIcon />
         </button>
         <div className="icon-btn-spacer" />
       </div>
@@ -194,12 +143,16 @@ export default function App() {
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [view, setView] = useState<View>("home");
   const [taste, setTaste] = useState<TasteProfile>(loadTaste());
-  const [showPrefs, setShowPrefs] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const [draft, setDraft] = useState<JourneyDraft>(DEFAULT_DRAFT);
   const [journeyStops, setJourneyStops] = useState<JourneyStop[]>([]);
   const [detailStop, setDetailStop] = useState<{ stop: JourneyStop; actNumber: number } | null>(null);
+  const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
+
+  const [tasteReturnTo, setTasteReturnTo] = useState<"home" | "buildMyNight">("home");
+  const [tasteShowNext, setTasteShowNext] = useState(false);
 
   useEffect(() => {
     loadDataset()
@@ -210,6 +163,28 @@ export default function App() {
   function updateTaste(t: TasteProfile) {
     setTaste(t);
     saveTaste(t);
+  }
+
+  function goHome() {
+    setView("home");
+  }
+
+  function openMyTasteFromHome() {
+    setTasteReturnTo("home");
+    setTasteShowNext(false);
+    setView("myTaste");
+  }
+
+  function startBuildMyNight() {
+    setTasteReturnTo("home");
+    setTasteShowNext(true);
+    setView("myTaste");
+  }
+
+  function editTasteFromBuildMyNight() {
+    setTasteReturnTo("buildMyNight");
+    setTasteShowNext(false);
+    setView("myTaste");
   }
 
   function generateJourney() {
@@ -237,10 +212,11 @@ export default function App() {
       pick.performance.set_time_hour24 !== null && pick.performance.set_time_minute !== null
         ? nightMinutesFromHour24(pick.performance.set_time_hour24, pick.performance.set_time_minute)
         : 0;
+    const transitionNote = `${pick.performance.day_raw} at ${pick.performance.set_time_raw}.`;
     const stop: JourneyStop = {
       ...pick,
-      reasons: [...pick.reasons, "Wildcard: a surprise pick for right now, deliberately outside your usual lane."],
-      transitionNote: `${pick.performance.day_raw} at ${pick.performance.set_time_raw}.`,
+      reasons: [...pick.reasons, { text: "A surprise pick for right now, deliberately outside your usual lane.", provenance: "system" }],
+      transitionNote,
       arrivalNightMinutes: nm,
       isFinale: false,
     };
@@ -280,26 +256,39 @@ export default function App() {
       {view === "home" && (
         <HomeScreen
           dataset={dataset}
-          onBuildJourney={() => setView("taste")}
-          onWhatsGoodNow={() => setView("discover")}
+          taste={taste}
+          onChangeTaste={updateTaste}
+          onBuildJourney={startBuildMyNight}
+          onWhatsGoodNow={() => setView("whatsGoodNow")}
           onSurpriseMe={surpriseMe}
-          onOpenArtists={() => setView("artists")}
+          onOpenArtists={() => setView("browseArtists")}
           onOpenSaved={() => setView("saved")}
-          onOpenPrefs={() => setShowPrefs(true)}
+          onOpenMyTaste={openMyTasteFromHome}
+          onOpenSettings={() => setShowSettings(true)}
         />
       )}
 
-      {view === "taste" && (
-        <TasteSetupScreen taste={taste} onChange={updateTaste} onBack={() => setView("home")} onNext={() => setView("journeySettings")} />
+      {view === "myTaste" && (
+        <MyTasteScreen
+          dataset={dataset}
+          taste={taste}
+          onChange={updateTaste}
+          showBack={tasteShowNext === false && tasteReturnTo === "buildMyNight"}
+          onBack={() => setView(tasteReturnTo)}
+          onHome={goHome}
+          onNext={tasteShowNext ? () => setView("buildMyNight") : undefined}
+        />
       )}
 
-      {view === "journeySettings" && (
-        <JourneySettingsScreen
+      {view === "buildMyNight" && (
+        <BuildMyNightScreen
           taste={taste}
           onChangeTaste={updateTaste}
           draft={draft}
           onChangeDraft={setDraft}
-          onBack={() => setView("taste")}
+          onBack={() => setView("myTaste")}
+          onHome={goHome}
+          onEditTaste={editTasteFromBuildMyNight}
           onGo={generateJourney}
         />
       )}
@@ -311,7 +300,8 @@ export default function App() {
           startLabel={`${draft.hour}:${String(draft.minute).padStart(2, "0")}${draft.meridiem}`}
           startLocation={draft.startLocation}
           durationHours={draft.durationHours}
-          onBack={() => setView("journeySettings")}
+          onBack={() => setView("buildMyNight")}
+          onHome={goHome}
           onSelectStop={(i) => {
             setDetailStop({ stop: journeyStops[i], actNumber: i + 1 });
             setView("actDetail");
@@ -326,14 +316,30 @@ export default function App() {
           stop={detailStop.stop}
           actNumber={detailStop.actNumber}
           onBack={() => setView(journeyStops.length > 0 ? "results" : "home")}
+          onHome={goHome}
         />
       )}
 
-      {view === "discover" && <DiscoverScreen dataset={dataset} taste={taste} onBack={() => setView("home")} />}
-      {view === "artists" && <ArtistsScreen dataset={dataset} onBack={() => setView("home")} />}
-      {view === "saved" && <SavedScreen onBack={() => setView("home")} />}
+      {view === "whatsGoodNow" && <WhatsGoodNowScreen dataset={dataset} taste={taste} onHome={goHome} />}
 
-      {showPrefs && <PreferencesPanel taste={taste} onChange={updateTaste} onClose={() => setShowPrefs(false)} />}
+      {view === "browseArtists" && (
+        <BrowseArtistsScreen
+          dataset={dataset}
+          onHome={goHome}
+          onSelectArtist={(id) => {
+            setSelectedArtistId(id);
+            setView("artistDetail");
+          }}
+        />
+      )}
+
+      {view === "artistDetail" && selectedArtistId && (
+        <ArtistDetailScreen dataset={dataset} artistId={selectedArtistId} onBack={() => setView("browseArtists")} onHome={goHome} />
+      )}
+
+      {view === "saved" && <SavedScreen onHome={goHome} />}
+
+      {showSettings && <AppSettingsPanel taste={taste} onChange={updateTaste} onClose={() => setShowSettings(false)} />}
     </div>
   );
 }

@@ -12,6 +12,7 @@ html, body, #root { height: 100%; margin: 0; }
   --accent-2: #4fd1c5;
   --wildcard: #c084fc;
   --gold: #f5c451;
+  --established: #4ade80;
   --danger: #ff5c5c;
 }
 
@@ -309,13 +310,12 @@ input, select {
 .timeline-why { font-size: 13.5px; color: var(--text); line-height: 1.5; }
 
 .role-strong { color: var(--accent-2); }
-.timeline-dot.role-strong { background: var(--accent-2); }
 .role-discovery { color: var(--accent); }
-.timeline-dot.role-discovery { background: var(--accent); }
 .role-wildcard { color: var(--wildcard); }
-.timeline-dot.role-wildcard { background: var(--wildcard); }
-.role-finale { color: var(--gold); }
-.timeline-dot.role-finale { background: var(--gold); }
+.role-dot-strong { background: var(--accent-2); }
+.role-dot-discovery { background: var(--accent); }
+.role-dot-wildcard { background: var(--wildcard); }
+.timeline-artist-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
 
 .results-actions { display: flex; gap: 10px; margin-top: 10px; }
 
@@ -362,7 +362,7 @@ input, select {
 
 .card-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
 .card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
-.card-role { font-size: 12px; font-weight: 800; letter-spacing: 0.5px; color: var(--accent); margin-bottom: 6px; }
+.card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .card-artist { font-size: 18px; font-weight: 700; }
 .card-genre { color: var(--text-dim); font-size: 13px; margin-bottom: 8px; }
 .card-meta { display: flex; gap: 14px; font-size: 13px; color: var(--text-dim); margin-bottom: 2px; flex-wrap: wrap; }
@@ -381,3 +381,102 @@ input, select {
 .artist-count { color: var(--text-dim); font-size: 13px; }
 .perf-row { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
 .saved-journey { margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+
+/* ---------- nav cluster (home + back, consistent everywhere) ---------- */
+
+.nav-cluster { display: flex; align-items: center; gap: 8px; }
+
+/* ---------- signal badge (artist fact: established/emerging/unknown) ---------- */
+
+.signal-badge { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; white-space: nowrap; }
+.signal-badge-sm { font-size: 10.5px; }
+.signal-badge-md { font-size: 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
+.signal-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.signal-established { color: var(--established); }
+.signal-established .signal-dot { background: var(--established); }
+.signal-emerging { color: var(--gold); }
+.signal-emerging .signal-dot { background: var(--gold); }
+.signal-unknown { color: var(--wildcard); }
+.signal-unknown .signal-dot { background: var(--wildcard); }
+
+/* ---------- role badge (recommendation judgment: strong/discovery/wildcard) ---------- */
+
+.role-badge { font-size: 11px; font-weight: 800; letter-spacing: 0.4px; white-space: nowrap; }
+
+/* ---------- reasons (provenance-tagged) ---------- */
+
+.reason-row { display: flex; align-items: flex-start; gap: 6px; font-size: 12.5px; color: var(--text-dim); line-height: 1.5; }
+.reason-row svg { flex-shrink: 0; margin-top: 2px; }
+.reason-list { display: flex; flex-direction: column; gap: 8px; }
+
+.tag-chip-dim { color: var(--text-faint); }
+
+/* ---------- home: taste module + tertiary actions ---------- */
+
+.home-headline-block { margin-top: 16px; }
+.home-headline { font-size: 26px; font-weight: 800; line-height: 1.18; letter-spacing: -0.3px; }
+
+.taste-module { margin-top: 18px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 18px; padding: 16px; }
+.taste-module-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+
+.home-mood-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.mood-tile-more { background: #1a1a24; border: 1px dashed var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.mood-tile-more-count { font-size: 16px; color: var(--text-faint); font-weight: 700; }
+
+.home-tertiary-row { display: flex; gap: 10px; margin-top: 10px; }
+.btn-tertiary {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 8px;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ---------- taste summary card (Build My Night) ---------- */
+
+.taste-summary-card { margin-top: 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px; }
+.taste-summary-footer { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+/* ---------- favorite artists: RSL vs taste-reference ---------- */
+
+.fav-artist-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+.fav-artist-row-reference { border: 1px dashed #3a3a4a; }
+.fav-artist-name { font-size: 14px; font-weight: 700; }
+.fav-artist-hint { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+.rsl-badge { display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 700; color: var(--accent-2); background: rgba(79, 209, 197, 0.12); border-radius: 999px; padding: 4px 9px; white-space: nowrap; }
+.reference-badge { display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 700; color: var(--text-dim); white-space: nowrap; }
+
+.pill-inline { flex: none; padding: 10px 14px; }
+.pill-ghost { background: none; border: 1px dashed #3a3a4a; color: var(--text-faint); }
+
+/* ---------- browse artists ---------- */
+
+.search-field { display: flex; align-items: center; gap: 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.search-field input { background: none; border: none; padding: 0; font-size: 14px; }
+
+.filter-row { display: flex; gap: 8px; margin-top: 12px; }
+.filter-chip { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; padding: 7px 13px; font-size: 11.5px; font-weight: 700; color: var(--text-dim); }
+.filter-chip-active.filter-chip-established { background: rgba(74, 222, 128, 0.12); border-color: var(--established); color: var(--established); }
+.filter-chip-active.filter-chip-emerging { background: rgba(245, 196, 81, 0.12); border-color: var(--gold); color: var(--gold); }
+.filter-chip-active:not(.filter-chip-established):not(.filter-chip-emerging) { background: var(--text); color: var(--bg); }
+
+.artist-row-rich { padding: 14px 4px; border-bottom: 1px solid var(--border); cursor: pointer; }
+.artist-row-top { display: flex; align-items: center; justify-content: space-between; }
+.artist-row-name { font-size: 16px; font-weight: 700; }
+.artist-row-genre { font-size: 12.5px; color: var(--text-dim); margin-top: 4px; }
+.artist-row-meta { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.artist-row-geo { font-size: 12px; color: var(--text-faint); }
+
+/* ---------- artist / act detail shared ---------- */
+
+.detail-badges { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+.detail-subtitle { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+.link-chip { font-size: 12.5px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 9px 14px; font-weight: 700; }
+.detail-sources { margin-top: 22px; font-size: 11px; color: var(--text-faint); line-height: 1.6; }

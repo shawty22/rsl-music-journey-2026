@@ -1,0 +1,24 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 390, "h": 920 },
+    { "file": "BuildMyNight.dc.html", "x": 470, "y": 0, "w": 390, "h": 1180 },
+    { "file": "WhatsGoodNow.dc.html", "x": 940, "y": 0, "w": 390, "h": 1180 },
+    { "file": "BrowseArtists.dc.html", "x": 1410, "y": 0, "w": 390, "h": 1050 },
+    { "file": "MyTaste.dc.html", "x": 470, "y": 1330, "w": 390, "h": 1180 },
+    { "file": "Journey.dc.html", "x": 940, "y": 1330, "w": 390, "h": 1620 },
+    { "file": "ArtistDetail.dc.html", "x": 1410, "y": 1330, "w": 390, "h": 1280 }
+  ],
+  "annotations": [
+    { "id": "overview", "x": 0, "y": -260, "w": 1800, "text": "RSL Music Journey — UX v2 (per critique)\nFlow: HOME branches to BUILD MY NIGHT / WHAT'S GOOD NOW / BROWSE ARTISTS. BUILD MY NIGHT opens on MY TASTE (edit taste, then trip details) → JOURNEY. WHAT'S GOOD NOW goes straight to a JOURNEY-style feed using your saved taste. BROWSE ARTISTS → ARTIST DETAIL. JOURNEY → Save Journey.\nTwo separate badge systems now, used consistently everywhere an artist appears: ROLE (⭐ Strong match / 🧭 Discovery / 🧪 Wildcard — a recommendation judgment) and SIGNAL (🟢 Established / 🟡 Emerging / 🟣 Unknown — a fact about the artist, independent of role). \"Why\" reasons are provenance-tagged: check = you selected it, chain = derived from a taste-reference artist, clock = system inference." },
+
+    { "id": "step-home", "x": 0, "y": -90, "w": 390, "text": "HOME\nMood tiles live on Home (quick-toggle) with real icons — no more ambiguous glyphs. Browse Artists + Saved promoted to visible actions." },
+    { "id": "step-bmn", "x": 470, "y": -90, "w": 390, "text": "BUILD MY NIGHT — step 2\nShows a compact, editable YOUR TASTE summary instead of re-asking. Explicitly still collects duration, night, start time, location, adventure level." },
+    { "id": "step-wgn", "x": 940, "y": -90, "w": 390, "text": "WHAT'S GOOD NOW\nSame card language as Journey. Demonstrates role ≠ signal: an Established artist can still be just a Discovery, not a Strong Match." },
+    { "id": "step-ba", "x": 1410, "y": -90, "w": 390, "text": "BROWSE ARTISTS\nEvery row: genre/style, performance type, signal badge, geography where known. Filter chips by signal tier." },
+
+    { "id": "step-mt", "x": 470, "y": 1240, "w": 390, "text": "MY TASTE — step 1 of Build My Night (also reachable to edit anytime)\nFavorite artists split RSL ARTIST (playing 2026, teal) vs TASTE REFERENCE (dashed, not in the lineup — e.g. Bonobo, Carl Cox)." },
+    { "id": "step-journey", "x": 940, "y": 1240, "w": 390, "text": "JOURNEY\nEvery stop shows role badge + signal badge + genre + performance type + location + a provenance-tagged reason. Last stop reads STRONG MATCH · FINALE." },
+    { "id": "step-ad", "x": 1410, "y": 1240, "w": 390, "text": "ARTIST DETAIL\nGeography, about, notable info, links (only what's real), sources/verified date. Built to hold richer bios later without a redesign." }
+  ],
+  "launch": { "view": "canvas" }
+}
