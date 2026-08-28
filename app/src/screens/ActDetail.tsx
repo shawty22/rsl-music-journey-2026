@@ -4,6 +4,7 @@ import { resolvePerformanceType } from "../lib/performanceType";
 import { formatNightMinutes } from "../lib/time";
 import { HomeIcon, BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
 import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
+import type { Camp } from "../types";
 
 export function ActDetailScreen({
   stop,
@@ -11,12 +12,14 @@ export function ActDetailScreen({
   onBack,
   onHome,
   onOpenMap,
+  camp,
 }: {
   stop: JourneyStop;
   actNumber: number;
   onBack: () => void;
   onHome: () => void;
   onOpenMap?: () => void;
+  camp?: Camp | null;
 }) {
   const displayRole = toDisplayRole(stop.role);
   const isWildcard = displayRole === "WILDCARD";
@@ -97,6 +100,18 @@ export function ActDetailScreen({
           )}
         </div>
       </div>
+
+      {camp && camp.description && (
+        <div className="section">
+          <div className="section-label">ABOUT {stop.performance.camp.toUpperCase()}</div>
+          <div className="detail-why">{camp.description}</div>
+          {camp.landmark && <div className="camp-landmark">📍 Look for: {camp.landmark}</div>}
+          <div className="camp-as-of">
+            {camp.hometown && `Hometown: ${camp.hometown} · `}
+            As of {camp.as_of_year} — camp placement changes yearly, this is descriptive only.
+          </div>
+        </div>
+      )}
 
       <div className="spacer" />
 

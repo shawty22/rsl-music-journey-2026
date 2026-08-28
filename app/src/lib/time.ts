@@ -26,3 +26,23 @@ export function formatNightMinutes(nightMinutes: number): string {
 }
 
 export const DAY_OPTIONS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] as const;
+
+// "Right now" as journey-draft defaults — day/hour/minute/meridiem read off
+// the device clock, rounded to the nearest quarter hour (matching the app's
+// time picker granularity). Always just a starting point: every field stays
+// fully editable, same as Google Maps defaulting to "current location" but
+// letting you type a different one.
+export function currentDraftTime(): { day: (typeof DAY_OPTIONS)[number]; hour: number; minute: number; meridiem: "AM" | "PM" } {
+  const now = new Date();
+  const day = DAY_OPTIONS[now.getDay()];
+  let hour24 = now.getHours();
+  let minute = Math.round(now.getMinutes() / 15) * 15;
+  if (minute === 60) {
+    minute = 0;
+    hour24 = (hour24 + 1) % 24;
+  }
+  const meridiem: "AM" | "PM" = hour24 >= 12 ? "PM" : "AM";
+  let hour12 = hour24 % 12;
+  if (hour12 === 0) hour12 = 12;
+  return { day, hour: hour12, minute, meridiem };
+}

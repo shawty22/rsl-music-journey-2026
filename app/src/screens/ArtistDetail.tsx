@@ -139,6 +139,22 @@ export function ArtistDetailScreen({
         </div>
       )}
 
+      {Array.from(new Set(performances.map((p) => p.camp))).map((campName) => {
+        const camp = dataset.campsByName.get(campName.toLowerCase());
+        if (!camp || !camp.description) return null;
+        return (
+          <div className="section" key={campName}>
+            <div className="section-label">ABOUT {campName.toUpperCase()}</div>
+            <div className="detail-why">{camp.description}</div>
+            {camp.landmark && <div className="camp-landmark">📍 Look for: {camp.landmark}</div>}
+            <div className="camp-as-of">
+              {camp.hometown && `Hometown: ${camp.hometown} · `}
+              As of {camp.as_of_year} — camp placement changes yearly, this is descriptive only.
+            </div>
+          </div>
+        );
+      })}
+
       {artist.sources.length > 0 && (
         <div className="detail-sources">
           Sources: {artist.sources.length} linked{artist.last_verified ? ` · verified ${artist.last_verified}` : ""}

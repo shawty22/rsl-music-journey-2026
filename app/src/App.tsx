@@ -4,7 +4,7 @@ import { loadDataset, type Dataset } from "./data/loadData";
 import { loadTaste, saveTaste, loadSavedJourneys, saveJourney, deleteJourney, DEFAULT_TASTE } from "./lib/taste";
 import { buildCandidatePool, applyDiscoveryMix } from "./lib/recommend";
 import { buildJourney, type JourneyStop } from "./lib/journey";
-import { DAY_OPTIONS, parseTimeInputToNightMinutes, nightMinutesFromHour24, formatNightMinutes } from "./lib/time";
+import { DAY_OPTIONS, parseTimeInputToNightMinutes, nightMinutesFromHour24, formatNightMinutes, currentDraftTime } from "./lib/time";
 import { RecommendationCard } from "./components/RecommendationCard";
 import { HomeScreen } from "./screens/Home";
 import { MyTasteScreen } from "./screens/MyTaste";
@@ -19,7 +19,9 @@ import type { SavedJourney, TasteProfile } from "./types";
 
 type View = "home" | "myTaste" | "buildMyNight" | "results" | "actDetail" | "whatsGoodNow" | "browseArtists" | "artistDetail" | "saved" | "playaMap";
 
-const DEFAULT_DRAFT: JourneyDraft = { day: "FRI", hour: 7, minute: 0, meridiem: "PM", durationHours: 4, startLocation: "" };
+function defaultDraft(): JourneyDraft {
+  return { ...currentDraftTime(), durationHours: 4, startLocation: "" };
+}
 
 function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; onChange: (t: TasteProfile) => void; onClose: () => void }) {
   return (
@@ -61,7 +63,7 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
 }
 
 function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; taste: TasteProfile; onHome: () => void }) {
-  const [day, setDay] = useState<string>(DEFAULT_DRAFT.day);
+  const [day, setDay] = useState<string>(() => currentDraftTime().day);
   const [count, setCount] = useState(10);
 
   const recs = useMemo(() => {
@@ -147,7 +149,7 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [draft, setDraft] = useState<JourneyDraft>(DEFAULT_DRAFT);
+  const [draft, setDraft] = useState<JourneyDraft>(defaultDraft);
   const [journeyStops, setJourneyStops] = useState<JourneyStop[]>([]);
   const [detailStop, setDetailStop] = useState<{ stop: JourneyStop; actNumber: number } | null>(null);
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
@@ -327,6 +329,7 @@ export default function App() {
         <ActDetailScreen
           stop={detailStop.stop}
           actNumber={detailStop.actNumber}
+          camp={dataset.campsByName.get(detailStop.stop.performance.camp.toLowerCase())}
           onBack={() => setView(journeyStops.length > 0 ? "results" : "home")}
           onHome={goHome}
           onOpenMap={

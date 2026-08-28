@@ -141,6 +141,19 @@ export interface TasteReference {
   scene: string | null;
 }
 
+// Camp context — deliberately has NO location/GPS fields. Camp placement is
+// re-assigned every year, so a prior year's coordinates would be actively
+// wrong for this year. Descriptive color only (description/hometown/
+// landmark), sourced from a prior year's public archive and labeled as such.
+export interface Camp {
+  camp: string;
+  description: string | null;
+  hometown: string | null;
+  landmark: string | null;
+  as_of_year: number;
+  source: string;
+}
+
 export interface DatasetMetadata {
   dataset_version: string;
   source: string;

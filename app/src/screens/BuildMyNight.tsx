@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HomeIcon, BackIcon, PinIcon, ArrowRightIcon } from "../components/icons";
 import { DAY_OPTIONS } from "../lib/time";
 import { latLngToBrcAddress, type BrcGeoModel } from "../lib/geo";
@@ -44,27 +44,29 @@ export function BuildMyNightScreen({
   const adventurous = taste.discovery_level;
   const [locating, setLocating] = useState(false);
   const [locateError, setLocateError] = useState<string | null>(null);
+  const [autoLocated, setAutoLocated] = useState(false);
 
-  function useMyLocation() {
+  function useMyLocation(silent = false) {
     if (!geoModel || !navigator.geolocation) {
-      setLocateError("Location isn't available on this device/browser.");
+      if (!silent) setLocateError("Location isn't available on this device/browser.");
       return;
     }
     setLocating(true);
-    setLocateError(null);
+    if (!silent) setLocateError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocating(false);
         const addr = latLngToBrcAddress(geoModel, { lat: pos.coords.latitude, lng: pos.coords.longitude });
         if (addr.beyondCity) {
-          setLocateError("You look like you're outside the city grid — enter your intersection manually.");
+          if (!silent) setLocateError("You look like you're outside the city grid — enter your intersection manually.");
           return;
         }
         onChangeDraft({ ...draft, startLocation: `${addr.clock} & ${addr.street}` });
+        setAutoLocated(true);
       },
       (err) => {
         setLocating(false);
-        setLocateError(err.message || "Couldn't get your location.");
+        if (!silent) setLocateError(err.message || "Couldn't get your location.");
       },
       { enableHighAccuracy: true, timeout: 15000 },
     );
@@ -73,6 +75,15 @@ export function BuildMyNightScreen({
   function setAdventurous(v: number) {
     onChangeTaste({ ...taste, discovery_level: v, wildcard_level: Math.min(0.6, v * 0.4) });
   }
+
+  // Default to "here, now" the way Google Maps defaults to your current
+  // location — try once, silently, and only if the field is still empty.
+  // Any manual edit (including a re-tap of the button) is never overwritten.
+  useEffect(() => {
+    if (draft.startLocation) return;
+    useMyLocation(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="screen">
@@ -196,14 +207,18 @@ export function BuildMyNightScreen({
           <PinIcon size={18} color="#ff6b35" />
           <input
             value={draft.startLocation}
-            onChange={(e) => onChangeDraft({ ...draft, startLocation: e.target.value })}
+            onChange={(e) => {
+              setAutoLocated(false);
+              onChangeDraft({ ...draft, startLocation: e.target.value });
+            }}
             placeholder="e.g. 2:35 & B"
           />
+          {autoLocated && <span className="location-auto-tag">CURRENT</span>}
         </div>
         <div className="location-row">
-          <div className="location-hint">Nearest intersection — that's close enough.</div>
+          <div className="location-hint">{autoLocated ? "Detected from your location — tap to edit." : "Nearest intersection — that's close enough."}</div>
           {geoModel && (
-            <button className="text-link" onClick={useMyLocation} disabled={locating}>
+            <button className="text-link" onClick={() => useMyLocation(false)} disabled={locating}>
               {locating ? "Locating…" : "📍 Use my location"}
             </button>
           )}
