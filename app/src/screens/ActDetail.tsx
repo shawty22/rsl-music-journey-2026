@@ -10,11 +10,13 @@ export function ActDetailScreen({
   actNumber,
   onBack,
   onHome,
+  onOpenMap,
 }: {
   stop: JourneyStop;
   actNumber: number;
   onBack: () => void;
   onHome: () => void;
+  onOpenMap?: () => void;
 }) {
   const displayRole = toDisplayRole(stop.role);
   const isWildcard = displayRole === "WILDCARD";
@@ -97,6 +99,12 @@ export function ActDetailScreen({
       </div>
 
       <div className="spacer" />
+
+      {onOpenMap && stop.performance.location && (
+        <button className="btn-secondary" onClick={onOpenMap} style={{ marginTop: 0, marginBottom: 12 }}>
+          🧭 View on Playa Map
+        </button>
+      )}
 
       <button className="btn-ghost btn-ghost-full" onClick={onBack}>
         <BackIcon size={16} />

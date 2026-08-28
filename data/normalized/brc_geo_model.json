@@ -1,0 +1,41 @@
+{
+  "center": {
+    "lat": 40.783242,
+    "lng": -119.207871
+  },
+  "rotation_deg": 45.04,
+  "rings": {
+    "K": 1753.2,
+    "J": 1695.3,
+    "I": 1640.4,
+    "H": 1555.1,
+    "G": 1469.8,
+    "F": 1384.5,
+    "E": 1236.8,
+    "D": 1149.9,
+    "C": 1064.6,
+    "B": 979.4,
+    "A": 894.0,
+    "ESP": 761.6
+  },
+  "ring_full_names": {
+    "K": "Kundalini",
+    "J": "Jiba",
+    "I": "Iroko",
+    "H": "Heiau",
+    "G": "Great Oak",
+    "F": "Fulcrum",
+    "E": "Eternal",
+    "D": "Delphi",
+    "C": "Ceiba",
+    "B": "Bodhi",
+    "A": "Ararat",
+    "ESP": "Esplanade"
+  },
+  "city_span_clock": {
+    "start": "2:00",
+    "end": "10:00"
+  },
+  "generated_at": "2026-08-28T12:01:51.889879+00:00",
+  "source": "Derived from official Burning Man 2026 GIS data (burningmantech/innovate-GIS-data, 2026/GeoJSON/street_lines.geojson). Golden Spike per innovate.burningman.org."
+}

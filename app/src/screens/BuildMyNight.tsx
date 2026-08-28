@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { HomeIcon, BackIcon, PinIcon, ArrowRightIcon } from "../components/icons";
 import { DAY_OPTIONS } from "../lib/time";
+import { latLngToBrcAddress, type BrcGeoModel } from "../lib/geo";
 import type { TasteProfile } from "../types";
 
 const DURATION_OPTIONS: { label: string; hours: number }[] = [
@@ -27,6 +29,7 @@ export function BuildMyNightScreen({
   onHome,
   onEditTaste,
   onGo,
+  geoModel,
 }: {
   taste: TasteProfile;
   onChangeTaste: (t: TasteProfile) => void;
@@ -36,8 +39,36 @@ export function BuildMyNightScreen({
   onHome: () => void;
   onEditTaste: () => void;
   onGo: () => void;
+  geoModel: BrcGeoModel | null;
 }) {
   const adventurous = taste.discovery_level;
+  const [locating, setLocating] = useState(false);
+  const [locateError, setLocateError] = useState<string | null>(null);
+
+  function useMyLocation() {
+    if (!geoModel || !navigator.geolocation) {
+      setLocateError("Location isn't available on this device/browser.");
+      return;
+    }
+    setLocating(true);
+    setLocateError(null);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setLocating(false);
+        const addr = latLngToBrcAddress(geoModel, { lat: pos.coords.latitude, lng: pos.coords.longitude });
+        if (addr.beyondCity) {
+          setLocateError("You look like you're outside the city grid — enter your intersection manually.");
+          return;
+        }
+        onChangeDraft({ ...draft, startLocation: `${addr.clock} & ${addr.street}` });
+      },
+      (err) => {
+        setLocating(false);
+        setLocateError(err.message || "Couldn't get your location.");
+      },
+      { enableHighAccuracy: true, timeout: 15000 },
+    );
+  }
 
   function setAdventurous(v: number) {
     onChangeTaste({ ...taste, discovery_level: v, wildcard_level: Math.min(0.6, v * 0.4) });
@@ -169,7 +200,15 @@ export function BuildMyNightScreen({
             placeholder="e.g. 2:35 & B"
           />
         </div>
-        <div className="location-hint">Nearest intersection — that's close enough.</div>
+        <div className="location-row">
+          <div className="location-hint">Nearest intersection — that's close enough.</div>
+          {geoModel && (
+            <button className="text-link" onClick={useMyLocation} disabled={locating}>
+              {locating ? "Locating…" : "📍 Use my location"}
+            </button>
+          )}
+        </div>
+        {locateError && <div className="location-error">{locateError}</div>}
       </div>
 
       <div className="spacer" />

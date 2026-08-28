@@ -13,10 +13,11 @@ import { JourneyResultsScreen } from "./screens/JourneyResults";
 import { ActDetailScreen } from "./screens/ActDetail";
 import { BrowseArtistsScreen } from "./screens/BrowseArtists";
 import { ArtistDetailScreen } from "./screens/ArtistDetail";
+import { PlayaMapScreen } from "./screens/PlayaMap";
 import { HomeIcon } from "./components/icons";
 import type { SavedJourney, TasteProfile } from "./types";
 
-type View = "home" | "myTaste" | "buildMyNight" | "results" | "actDetail" | "whatsGoodNow" | "browseArtists" | "artistDetail" | "saved";
+type View = "home" | "myTaste" | "buildMyNight" | "results" | "actDetail" | "whatsGoodNow" | "browseArtists" | "artistDetail" | "saved" | "playaMap";
 
 const DEFAULT_DRAFT: JourneyDraft = { day: "FRI", hour: 7, minute: 0, meridiem: "PM", durationHours: 4, startLocation: "" };
 
@@ -154,6 +155,8 @@ export default function App() {
   const [tasteReturnTo, setTasteReturnTo] = useState<"home" | "buildMyNight">("home");
   const [tasteShowNext, setTasteShowNext] = useState(false);
 
+  const [mapTarget, setMapTarget] = useState<{ startAddress: string; nextStopAddress: string | null; nextStopLabel: string } | null>(null);
+
   useEffect(() => {
     loadDataset()
       .then(setDataset)
@@ -290,6 +293,7 @@ export default function App() {
           onHome={goHome}
           onEditTaste={editTasteFromBuildMyNight}
           onGo={generateJourney}
+          geoModel={dataset.geoModel}
         />
       )}
 
@@ -316,6 +320,31 @@ export default function App() {
           stop={detailStop.stop}
           actNumber={detailStop.actNumber}
           onBack={() => setView(journeyStops.length > 0 ? "results" : "home")}
+          onHome={goHome}
+          onOpenMap={
+            dataset.geoModel
+              ? () => {
+                  const prevStop = detailStop.actNumber >= 2 ? journeyStops[detailStop.actNumber - 2] : null;
+                  const startAddress = prevStop ? prevStop.performance.location ?? "" : draft.startLocation;
+                  setMapTarget({
+                    startAddress,
+                    nextStopAddress: detailStop.stop.performance.location,
+                    nextStopLabel: `${detailStop.stop.artist.artist} at ${detailStop.stop.performance.camp}`,
+                  });
+                  setView("playaMap");
+                }
+              : undefined
+          }
+        />
+      )}
+
+      {view === "playaMap" && mapTarget && (
+        <PlayaMapScreen
+          geoModel={dataset.geoModel}
+          startAddress={mapTarget.startAddress}
+          nextStopAddress={mapTarget.nextStopAddress}
+          nextStopLabel={mapTarget.nextStopLabel}
+          onBack={() => setView("actDetail")}
           onHome={goHome}
         />
       )}

@@ -285,7 +285,20 @@ input, select {
 
 .location-field { display: flex; align-items: center; gap: 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-top: 16px; }
 .location-field input { background: none; border: none; padding: 0; font-size: 17px; font-weight: 700; }
-.location-hint { font-size: 12px; color: var(--text-faint); margin-top: 8px; }
+.location-hint { font-size: 12px; color: var(--text-faint); }
+.location-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.location-error { font-size: 12px; color: var(--danger); margin-top: 6px; }
+
+/* ---------- playa map ---------- */
+
+.map-wrap { position: relative; display: flex; justify-content: center; margin-top: 20px; }
+.compass-arrow { position: absolute; top: -6px; left: 50%; margin-left: -17px; transition: transform 0.2s ease-out; }
+.map-status { margin-top: 16px; text-align: center; }
+.map-you-line { font-size: 13.5px; color: var(--text-dim); margin-top: 4px; }
+.map-distance-card { margin-top: 18px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
+.map-distance-main { font-size: 20px; font-weight: 800; }
+.map-distance-sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.map-source-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 20px; line-height: 1.5; }
 
 /* ---------- timeline (journey results) ---------- */
 

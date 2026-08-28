@@ -1,4 +1,5 @@
 import type { Artist, DatasetMetadata, Location, Performance, Taxonomy } from "../types";
+import type { BrcGeoModel } from "../lib/geo";
 
 export interface Dataset {
   artists: Artist[];
@@ -7,6 +8,7 @@ export interface Dataset {
   taxonomy: Taxonomy;
   metadata: DatasetMetadata;
   artistsById: Map<string, Artist>;
+  geoModel: BrcGeoModel | null;
 }
 
 let cached: Dataset | null = null;
@@ -30,8 +32,9 @@ export function loadDataset(): Promise<Dataset> {
       fetchJson<Taxonomy>("/data/taxonomy.json"),
       fetchJson<DatasetMetadata>("/data/metadata.json"),
     ]);
+    const geoModel = await fetchJson<BrcGeoModel>("/data/brc_geo_model.json").catch(() => null);
     const artistsById = new Map(artists.map((a) => [a.artist_id, a]));
-    cached = { artists, performances, locations, taxonomy, metadata, artistsById };
+    cached = { artists, performances, locations, taxonomy, metadata, artistsById, geoModel };
     return cached;
   })();
 
