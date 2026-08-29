@@ -30,6 +30,11 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        // Without this, the SPA's navigateFallback (needed so client-side
+        // routing survives a refresh) also swallows <a download> clicks for
+        // files that aren't precached — e.g. the PDF/EPUB — and serves
+        // index.html instead of the actual file. Exclude them explicitly.
+        navigateFallbackDenylist: [/\.pdf$/i, /\.epub$/i],
       },
     }),
   ],

@@ -515,7 +515,11 @@ input, select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: url("images/cover/cover-bg.jpg") center 32% / cover no-repeat;
+  /* Relative to the BUILT css file's own location (dist/assets/*.css), not
+     the page — Vite bundles this stylesheet into assets/, so a path
+     relative to site root here 404s in production even though it works
+     in dev. ../ steps back out to dist/ where the public/ dir is copied. */
+  background: url("../images/cover/cover-bg.jpg") center 32% / cover no-repeat;
   flex-shrink: 0;
 }
 .hero-banner-nav { display: flex; justify-content: flex-end; padding: 16px 16px 0; }
