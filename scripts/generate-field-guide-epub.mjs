@@ -171,7 +171,13 @@ function wildcardsBody() {
 const generatedAt = new Date().toISOString().slice(0, 10);
 const totalPrimary = established.length + emerging.length;
 
-const coverBody = `
+const coverImageBody = `
+<div class="cover-image-page">
+<img class="cover-photo" src="images/cover-bg.jpg" alt="A crowd dancing at Burning Man at night, fire in the background"/>
+<p class="cover-photo-credit">Photo: "Burning Man &#8211; Festival &#8211; Night &#8211; DJ Michel von Tell" by Tituous, CC BY 4.0, via Wikimedia Commons</p>
+</div>`;
+
+const titlePageBody = `
 <div class="cover">
 <p class="mark">BMRI</p>
 <h1>Burning Man<br/>Rave Intelligence</h1>
@@ -202,6 +208,9 @@ h4 { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em; color
 .cover .subtitle { text-transform: uppercase; letter-spacing: 0.12em; color: #444; font-size: 0.9em; }
 .cover .meta { color: #777; font-size: 0.85em; margin-bottom: 2em; }
 .cover p { text-align: left; }
+.cover-image-page { text-align: center; padding: 0; margin: 0; }
+.cover-photo { width: 100%; height: auto; margin: 0; }
+.cover-photo-credit { font-size: 0.7em; color: #999; padding: 0.5em 5%; text-align: center; }
 .glance { background: #f4f2ec; padding: 0.8em 1em; margin: 0.8em 0; font-size: 0.9em; }
 .glance p { margin: 0.25em 0; }
 .photo { width: 100%; max-height: 60vh; object-fit: cover; }
@@ -246,8 +255,12 @@ writeFileSync(
 </container>`,
 );
 writeFileSync(path.join(oebps, "styles.css"), css);
-writeFileSync(path.join(oebps, "cover.xhtml"), chapterXhtml("BMRI 2026", coverBody));
+writeFileSync(path.join(oebps, "cover.xhtml"), chapterXhtml("BMRI 2026", coverImageBody));
+writeFileSync(path.join(oebps, "title-page.xhtml"), chapterXhtml("BMRI 2026", titlePageBody));
 writeFileSync(path.join(oebps, "how-to.xhtml"), chapterXhtml("How to Read BMRI", howToBody));
+
+const coverImageSrc = path.join(ROOT, "app", "public", "images", "cover", "cover-bg.jpg");
+if (existsSync(coverImageSrc)) copyFileSync(coverImageSrc, path.join(oebps, "images", "cover-bg.jpg"));
 
 const dayChapters = days.map((d, i) => ({
   id: `day-${d.day}`,
@@ -269,7 +282,8 @@ for (const id of usedImages) {
 }
 
 const chapters = [
-  { id: "cover", file: "cover.xhtml", title: "BMRI 2026" },
+  { id: "cover", file: "cover.xhtml", title: "Cover" },
+  { id: "titlepage", file: "title-page.xhtml", title: "BMRI 2026" },
   { id: "howto", file: "how-to.xhtml", title: "How to Read BMRI" },
   ...dayChapters,
   { id: "artist-index", file: "artist-index.xhtml", title: "Artist Index" },
@@ -316,11 +330,13 @@ writeFileSync(
     <dc:language>en</dc:language>
     <dc:creator>BMRI — Burning Man Rave Intelligence</dc:creator>
     <meta property="dcterms:modified">${new Date().toISOString().replace(/\.\d+Z$/, "Z")}</meta>
+    <meta name="cover" content="img-cover-bg"/>
   </metadata>
   <manifest>
     <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
     <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
     <item id="css" href="styles.css" media-type="text/css"/>
+    <item id="img-cover-bg" href="images/cover-bg.jpg" media-type="image/jpeg" properties="cover-image"/>
 ${chapters.map((c) => `    <item id="${c.id}" href="${c.file}" media-type="application/xhtml+xml"/>`).join("\n")}
 ${imageManifestItems}
   </manifest>

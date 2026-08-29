@@ -15,11 +15,22 @@
   a { color: var(--gold); }
 
   /* ---- cover ---- */
-  header.cover { padding: 20vh 0 40px; text-align: center; border-bottom: 1px solid var(--line); }
-  .cover-mark { font-size: 15px; font-weight: 800; letter-spacing: 4px; color: var(--gold); }
-  .cover-title { font-size: 52px; font-weight: 900; letter-spacing: -1px; margin: 14px 0 4px; }
-  .cover-subtitle { font-size: 15px; font-weight: 700; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
-  .cover-year { font-size: 13px; color: var(--text-faint); margin-top: 26px; }
+  header.cover {
+    position: relative; width: 100vw; margin-left: calc(-50vw + 50%);
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: url("images/cover/cover-bg.jpg") center 30% / cover no-repeat;
+    padding: 0;
+  }
+  .cover-scrim { background: linear-gradient(180deg, rgba(8,8,11,0) 0%, rgba(8,8,11,0.55) 45%, rgba(8,8,11,0.96) 100%); padding: 30vh 8% 40px; text-align: center; }
+  /* Cover text always sits on a dark photo scrim, in both screen and print
+     modes — colors are hardcoded here rather than themed, so the print
+     stylesheet's light-mode text-color flip below can't make them illegible. */
+  .cover-mark { font-size: 15px; font-weight: 800; letter-spacing: 4px; color: #f3c85b; }
+  .cover-title { font-size: 44px; font-weight: 900; letter-spacing: -1px; margin: 14px 0 4px; color: #f4f1ec; text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
+  .cover-subtitle { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: #cfcbd6; text-transform: uppercase; }
+  .cover-year { font-size: 13px; color: #a5a2ac; margin-top: 26px; }
+  .cover-credit { font-size: 9.5px; color: #a5a2ac; text-align: center; padding: 6px 8% 10px; background: #08080b; }
 
   section.top-section { padding: 30px 0; border-bottom: 1px solid var(--line); }
   h2.plain { font-size: 22px; font-weight: 800; margin: 0 0 12px; }
@@ -99,7 +110,7 @@
     body { color: #111; background: #fff; max-width: none; padding: 0 6%; }
     :root { --text: #111; --text-dim: #333; --text-faint: #666; --gold: #7a5b00; --line: #ccc; --established: #2d6b00; --ultraviolet: #5a2fa0; }
     #search-box { display: none; }
-    header.cover { break-after: page; padding-top: 8vh; }
+    header.cover { break-after: page; }
     #contents { break-after: page; }
     .day-section { break-before: page; }
     .artist-entry { break-inside: avoid; }
@@ -110,12 +121,15 @@
 <body>
 
   <header class="cover">
-    <div class="cover-mark">BMRI</div>
-    <div class="cover-title">Burning Man<br/>Rave Intelligence</div>
-    <div class="cover-subtitle">The Burning Man Music Field Guide</div>
-    <div class="cover-year">2026 Edition · Generated 2026-08-29</div>
-    <input id="search-box" type="text" placeholder="Search artist or genre… (Cmd/Ctrl-F also works)" oninput="filterEntries(this.value)" />
+    <div class="cover-scrim">
+      <div class="cover-mark">BMRI</div>
+      <div class="cover-title">Burning Man<br/>Rave Intelligence</div>
+      <div class="cover-subtitle">The Burning Man Music Field Guide</div>
+      <div class="cover-year">2026 Edition · Generated 2026-08-29</div>
+    </div>
+    <div class="cover-credit">Photo: "Burning Man – Festival – Night – DJ Michel von Tell" by Tituous, CC BY 4.0, via Wikimedia Commons</div>
   </header>
+  <input id="search-box" type="text" placeholder="Search artist or genre… (Cmd/Ctrl-F also works)" oninput="filterEntries(this.value)" />
 
   <section class="top-section" id="introduction">
     <h2 class="plain">Introduction</h2>

@@ -5,7 +5,7 @@ import { toDisplayRole } from "../lib/recommend";
 import { classifyLiveState, computeSignalOfMoment, currentNightMinutes, dedupePerformances, formatStateLabel } from "../lib/liveStatus";
 import { DAY_OPTIONS } from "../lib/time";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon } from "../components/icons";
+import { GearIcon, PeopleIcon, ArrowRightIcon } from "../components/icons";
 import { LiveStatusBar } from "../components/LiveStatus";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { ScoredRecommendation, TasteProfile } from "../types";
@@ -193,6 +193,26 @@ export function NowScreen({
           </div>
         </div>
       )}
+
+      <div className="book-promo">
+        <div className="section-label">BMRI BOOK 2026</div>
+        <p className="book-promo-note">
+          Every Established and Emerging artist — photo, bio, and every set — as one offline document. If the app fails on
+          playa, this doesn't need it.
+        </p>
+        <a className="cta-gradient book-promo-primary" href="field-guide.html" target="_blank" rel="noreferrer">
+          <span>READ THE BOOK ONLINE</span>
+          <ArrowRightIcon />
+        </a>
+        <div className="book-promo-downloads">
+          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.epub" download>
+            Download EPUB
+          </a>
+          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.pdf" download>
+            Download PDF
+          </a>
+        </div>
+      </div>
 
       <div style={{ height: 90 }} />
     </div>
