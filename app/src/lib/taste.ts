@@ -1,7 +1,8 @@
-import type { SavedJourney, TasteProfile } from "../types";
+import type { SavedJourney, ScoredRecommendation, TasteProfile } from "../types";
 
 const TASTE_KEY = "rsl.taste_profile.v1";
 const JOURNEYS_KEY = "rsl.saved_journeys.v1";
+const SETS_KEY = "rsl.saved_sets.v1";
 
 export const DEFAULT_TASTE: TasteProfile = {
   favorite_artists: [],
@@ -60,4 +61,33 @@ export function deleteJourney(id: string): void {
   } catch {
     // ignore
   }
+}
+
+// Individual saved sets — separate from whole saved journeys, for a single
+// act bookmarked from Now/Radar rather than a full built-out night.
+export function loadSavedSets(): ScoredRecommendation[] {
+  try {
+    const raw = localStorage.getItem(SETS_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export function isSetSaved(performanceId: string, saved: ScoredRecommendation[]): boolean {
+  return saved.some((s) => s.performance.performance_id === performanceId);
+}
+
+export function toggleSavedSet(rec: ScoredRecommendation): ScoredRecommendation[] {
+  const existing = loadSavedSets();
+  const next = isSetSaved(rec.performance.performance_id, existing)
+    ? existing.filter((s) => s.performance.performance_id !== rec.performance.performance_id)
+    : [rec, ...existing];
+  try {
+    localStorage.setItem(SETS_KEY, JSON.stringify(next));
+  } catch {
+    // ignore
+  }
+  return next;
 }

@@ -101,6 +101,52 @@ export function SearchIcon({ size = 16, color = "#5c5c6b" }: IconProps) {
   );
 }
 
+export function PulseIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <circle cx={12} cy={12} r={2} fill={color} />
+      <path d="M16.5 7.5a6.36 6.36 0 0 1 0 9" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
+      <path d="M7.5 7.5a6.36 6.36 0 0 0 0 9" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
+      <path d="M19.5 4.5a10.6 10.6 0 0 1 0 15" stroke={color} strokeWidth={1.8} strokeLinecap="round" opacity={0.55} />
+      <path d="M4.5 4.5a10.6 10.6 0 0 0 0 15" stroke={color} strokeWidth={1.8} strokeLinecap="round" opacity={0.55} />
+    </svg>
+  );
+}
+
+export function RadarIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.6} opacity={0.5} />
+      <circle cx={12} cy={12} r={5.5} stroke={color} strokeWidth={1.6} opacity={0.7} />
+      <path d="M12 12L12 3.5A8.5 8.5 0 0 1 20.5 12z" fill={color} opacity={0.35} />
+      <circle cx={12} cy={12} r={1.6} fill={color} />
+    </svg>
+  );
+}
+
+export function RouteIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <circle cx={5} cy={6} r={2} stroke={color} strokeWidth={1.8} />
+      <circle cx={19} cy={18} r={2} stroke={color} strokeWidth={1.8} />
+      <path d="M5 8v3a4 4 0 0 0 4 4h6a4 4 0 0 1 4 4" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeDasharray="1 3.5" />
+    </svg>
+  );
+}
+
+export function HeartIcon({ size = 16, color = "#9797a8", filled = false }: IconProps & { filled?: boolean }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? color : "none"}>
+      <path
+        d="M12 20.5s-7.5-4.6-10-9.3C.5 7.8 2.3 4.5 5.7 4c2-.3 3.8.6 5 2.3 1.2-1.7 3-2.6 5-2.3 3.4.5 5.2 3.8 3.7 7.2-2.5 4.7-10 9.3-10 9.3z"
+        stroke={color}
+        strokeWidth={1.8}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function GearIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
   // An actual toothed cog silhouette (not a sun/starburst) so it doesn't get
   // mistaken for a light/dark toggle — the hub is a real cut hole via

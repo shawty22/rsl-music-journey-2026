@@ -105,7 +105,7 @@ export function BuildMyNightScreen({
       <LiveStatusBar geoModel={geoModel} />
 
       <h1 className="step-headline" style={{ marginTop: 16 }}>
-        Build My Night
+        Build a rave journey
       </h1>
 
       <div className="taste-summary-card">
@@ -237,7 +237,7 @@ export function BuildMyNightScreen({
       <div className="spacer" />
 
       <button className="cta-gradient cta-go" onClick={onGo}>
-        <span>TAKE ME SOMEWHERE</span>
+        <span>BUILD MY JOURNEY</span>
         <ArrowRightIcon />
       </button>
     </div>

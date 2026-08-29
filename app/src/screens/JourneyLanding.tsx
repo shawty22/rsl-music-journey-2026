@@ -1,43 +1,29 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
-import { GearIcon, ArrowRightIcon, PeopleIcon, BookmarkIcon } from "../components/icons";
-import { LiveStatusBar } from "../components/LiveStatus";
-import { PlayaMapCanvas, type MapStopMarker } from "../components/PlayaMapCanvas";
-import { useGeolocation } from "../lib/useGeolocation";
-import { toDisplayRole } from "../lib/recommend";
-import { parseClockStreetAddress, brcAddressToLatLng, latLngToBrcAddress, haversineMeters, metersToWalkMinutes } from "../lib/geo";
+import { GearIcon, ArrowRightIcon } from "../components/icons";
 import { MOOD_TILES } from "../lib/moods";
-import type { JourneyStop } from "../lib/journey";
 import type { PerformanceType, TasteProfile } from "../types";
 
 const PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID"];
 
-export function HomeScreen({
+// The Journey tab's landing step — taste/mood selection, then hands off to
+// the existing day/time/location/duration builder. This is the former Home
+// screen, trimmed: What's Good Now, Surprise Me, and the map preview moved
+// to the Now/Radar/Map tabs, so this screen does one job.
+export function JourneyLandingScreen({
   dataset,
   taste,
-  journeyStops,
   onChangeTaste,
   onBuildJourney,
-  onWhatsGoodNow,
-  onSurpriseMe,
-  onOpenArtists,
-  onOpenSaved,
   onOpenMyTaste,
   onOpenSettings,
-  onOpenMap,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
-  journeyStops: JourneyStop[];
   onChangeTaste: (t: TasteProfile) => void;
   onBuildJourney: () => void;
-  onWhatsGoodNow: () => void;
-  onSurpriseMe: () => void;
-  onOpenArtists: () => void;
-  onOpenSaved: () => void;
   onOpenMyTaste: () => void;
   onOpenSettings: () => void;
-  onOpenMap: () => void;
 }) {
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -67,31 +53,6 @@ export function HomeScreen({
     onChangeTaste({ ...taste, preferred_performance_types: next });
   }
 
-  // "Where am I, what's next" — the map-first home card. Low information
-  // density on purpose (just YOU + the next stop, never the full event
-  // list) so it answers "where should I go" at a glance, not overwhelm.
-  const gps = useGeolocation(true);
-  const gpsAddress = useMemo(
-    () => (gps.position && dataset.geoModel ? latLngToBrcAddress(dataset.geoModel, gps.position) : null),
-    [gps.position, dataset.geoModel],
-  );
-  const youPoint = gpsAddress && !gpsAddress.beyondCity ? { clock: gpsAddress.clock, street: gpsAddress.street } : null;
-
-  const nextStop = journeyStops[0] ?? null;
-  const nextParsed = nextStop?.performance.location ? parseClockStreetAddress(nextStop.performance.location) : null;
-
-  const nextDistanceM = useMemo(() => {
-    if (!dataset.geoModel || !youPoint || !nextParsed) return null;
-    const you = brcAddressToLatLng(dataset.geoModel, youPoint.clock, youPoint.street);
-    const next = brcAddressToLatLng(dataset.geoModel, nextParsed.clock, nextParsed.street);
-    if (!you || !next) return null;
-    return haversineMeters(you, next);
-  }, [dataset.geoModel, youPoint, nextParsed]);
-
-  const miniMapStops: MapStopMarker[] = nextStop && nextParsed
-    ? [{ key: nextStop.performance.performance_id, clock: nextParsed.clock, street: nextParsed.street, label: "NEXT", role: toDisplayRole(nextStop.role), isNext: true }]
-    : [];
-
   return (
     <div className="screen">
       <div className="screen-top">
@@ -107,10 +68,9 @@ export function HomeScreen({
         </div>
       </div>
 
-      <LiveStatusBar geoModel={dataset.geoModel} />
-
       <div className="home-headline-block">
-        <div className="home-headline">What kind of night do you want?</div>
+        <div className="home-headline">Build a rave journey</div>
+        <div className="home-sub">Pick a sound, a starting point, and how long you have. We'll create your next sequence of music.</div>
       </div>
 
       <div className="taste-module">
@@ -159,52 +119,10 @@ export function HomeScreen({
         </div>
       </div>
 
-      <button className="mini-map-card" onClick={onOpenMap}>
-        <PlayaMapCanvas geoModel={dataset.geoModel} you={youPoint} stops={miniMapStops} size={148} />
-        <div className="mini-map-info">
-          <div className="mini-map-eyebrow">{nextStop ? "UP NEXT" : "PLAYA MAP"}</div>
-          {nextStop ? (
-            <>
-              <div className="mini-map-headline">{nextStop.artist.artist}</div>
-              <div className="mini-map-sub">
-                {nextStop.performance.camp}
-                {nextDistanceM !== null ? ` · ~${metersToWalkMinutes(nextDistanceM)} min walk` : nextStop.performance.location ? ` · ${nextStop.performance.location}` : ""}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="mini-map-headline">Where you are</div>
-              <div className="mini-map-sub">{youPoint ? `${youPoint.clock} & ${youPoint.street}` : "Build a night to see your route here"}</div>
-            </>
-          )}
-        </div>
-        <span className="mini-map-arrow">→</span>
-      </button>
-
       <button className="cta-gradient" onClick={onBuildJourney}>
-        <span>BUILD MY NIGHT</span>
+        <span>BUILD MY JOURNEY</span>
         <ArrowRightIcon />
       </button>
-
-      <div className="home-secondary-row">
-        <button className="btn-ghost" onClick={onWhatsGoodNow}>
-          WHAT'S GOOD NOW
-        </button>
-        <button className="btn-ghost btn-ghost-wildcard" onClick={onSurpriseMe}>
-          SURPRISE ME
-        </button>
-      </div>
-
-      <div className="home-tertiary-row">
-        <button className="btn-tertiary" onClick={onOpenArtists}>
-          <PeopleIcon size={14} />
-          BROWSE ARTISTS
-        </button>
-        <button className="btn-tertiary" onClick={onOpenSaved}>
-          <BookmarkIcon size={14} />
-          SAVED
-        </button>
-      </div>
 
       <div className="spacer" />
       <div className="home-footer">{dataset.metadata.artist_count.toLocaleString()} artists to discover · works fully offline</div>
