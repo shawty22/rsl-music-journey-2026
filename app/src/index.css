@@ -96,6 +96,7 @@ input, select { font-family: inherit; }
 .screen-top-centered { align-items: center; }
 
 .wordmark { font-size: 13px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim); }
+.wordmark-full { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; color: var(--text-faint); margin-top: 1px; }
 .top-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 
 .live-status-bar { display: flex; align-items: center; gap: 14px; margin-top: 10px; flex-wrap: wrap; }

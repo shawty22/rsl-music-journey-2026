@@ -82,7 +82,10 @@ export function NowScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <span className="wordmark">BMRI</span>
+        <div>
+          <span className="wordmark">BMRI</span>
+          <div className="wordmark-full">Burning Man Rave Intelligence</div>
+        </div>
         <div className="top-actions">
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
