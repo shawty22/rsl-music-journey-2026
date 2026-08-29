@@ -81,18 +81,41 @@ export function NowScreen({
 
   return (
     <div className="screen">
-      <div className="screen-top">
-        <div>
-          <span className="wordmark">BMRI</span>
-          <div className="wordmark-full">Burning Man Rave Intelligence</div>
+      <div className="hero-banner">
+        <div className="hero-banner-nav">
+          <div className="top-actions">
+            <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
+              <PeopleIcon size={16} />
+            </button>
+            <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
+              <GearIcon />
+            </button>
+          </div>
         </div>
-        <div className="top-actions">
-          <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
-            <PeopleIcon size={16} />
-          </button>
-          <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
-            <GearIcon />
-          </button>
+        <div className="hero-banner-caption">
+          <span className="hero-mark">BMRI</span>
+          <div className="hero-title">Burning Man Rave Intelligence</div>
+          <div className="hero-tagline">The app and the 2026 field guide book, in one place.</div>
+        </div>
+      </div>
+
+      <div className="book-promo book-promo-top">
+        <div className="section-label">BMRI BOOK 2026 · DOWNLOADABLE</div>
+        <p className="book-promo-note">
+          Every Established and Emerging artist — photo, bio, and every set — as one offline document. If the app fails on
+          playa, this doesn't need it.
+        </p>
+        <a className="cta-gradient book-promo-primary" href="field-guide.html" target="_blank" rel="noreferrer">
+          <span>READ THE BOOK ONLINE</span>
+          <ArrowRightIcon />
+        </a>
+        <div className="book-promo-downloads">
+          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.epub" download>
+            ⬇ Download EPUB
+          </a>
+          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.pdf" download>
+            ⬇ Download PDF
+          </a>
         </div>
       </div>
 
@@ -101,10 +124,6 @@ export function NowScreen({
           <button className="welcome-dismiss" onClick={dismissWelcome} aria-label="Dismiss">
             ×
           </button>
-          <p>
-            Hi! This is the Burning Man Rave Intelligence app and booklet for 2026 — every Established and Emerging artist
-            playing this year, with a short bio, genre, and set times/camps.
-          </p>
           <p>
             Some website functionality is still under construction. Try out <b>Build My Journey</b> and the <b>Map</b> to
             plan your own custom route through Burning Man.
@@ -193,26 +212,6 @@ export function NowScreen({
           </div>
         </div>
       )}
-
-      <div className="book-promo">
-        <div className="section-label">BMRI BOOK 2026</div>
-        <p className="book-promo-note">
-          Every Established and Emerging artist — photo, bio, and every set — as one offline document. If the app fails on
-          playa, this doesn't need it.
-        </p>
-        <a className="cta-gradient book-promo-primary" href="field-guide.html" target="_blank" rel="noreferrer">
-          <span>READ THE BOOK ONLINE</span>
-          <ArrowRightIcon />
-        </a>
-        <div className="book-promo-downloads">
-          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.epub" download>
-            Download EPUB
-          </a>
-          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.pdf" download>
-            Download PDF
-          </a>
-        </div>
-      </div>
 
       <div style={{ height: 90 }} />
     </div>

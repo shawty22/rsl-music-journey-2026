@@ -12,7 +12,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon-192.png', 'icon-512.png'],
+      includeAssets: ['icon-192.png', 'icon-512.png', 'favicon-32.png'],
       manifest: {
         name: 'BMRI — Burning Man Rave Intelligence',
         short_name: 'BMRI',
