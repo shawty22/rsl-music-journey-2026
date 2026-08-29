@@ -4,6 +4,7 @@ import { resolvePerformanceType } from "../lib/performanceType";
 import { formatNightMinutes } from "../lib/time";
 import { HomeIcon, BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
 import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
+import { ArtistPhoto } from "../components/ArtistPhoto";
 import type { Camp } from "../types";
 
 export function ActDetailScreen({
@@ -40,6 +41,8 @@ export function ActDetailScreen({
           <ShareIcon />
         </button>
       </div>
+
+      <ArtistPhoto artistId={stop.artist.artist_id} alt={stop.artist.artist} className="detail-photo" />
 
       <div className="detail-badges">
         <RoleBadge role={displayRole} isFinale={stop.isFinale} />

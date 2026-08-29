@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import { HomeIcon, SearchIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
+import { ArtistPhoto } from "../components/ArtistPhoto";
 
 type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
 
@@ -68,6 +69,7 @@ export function BrowseArtistsScreen({
           return (
             <div key={a.artist_id} className="artist-row-rich" onClick={() => onSelectArtist(a.artist_id)}>
               <div className="artist-row-top">
+                <ArtistPhoto artistId={a.artist_id} alt={a.artist} className="artist-row-thumb" />
                 <span className="artist-row-name">{a.artist}</span>
                 <SignalBadge status={a.signal_status} />
               </div>

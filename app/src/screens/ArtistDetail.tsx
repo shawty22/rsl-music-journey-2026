@@ -1,6 +1,7 @@
 import type { Dataset } from "../data/loadData";
 import { HomeIcon, BackIcon, PinIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
+import { ArtistPhoto } from "../components/ArtistPhoto";
 
 const LINK_LABELS: { key: "spotify_url" | "soundcloud_url" | "bandcamp_url" | "apple_music_url" | "website"; label: string }[] = [
   { key: "spotify_url", label: "Spotify" },
@@ -47,6 +48,8 @@ export function ArtistDetailScreen({
         </div>
         <div className="icon-btn-spacer" />
       </div>
+
+      <ArtistPhoto artistId={artist.artist_id} alt={artist.artist} className="detail-photo" />
 
       <div style={{ marginTop: 16 }}>
         <SignalBadge status={artist.signal_status} size="md" />
