@@ -34,6 +34,21 @@ export function NowScreen({
   onOpenSettings: () => void;
 }) {
   const [now] = useState(() => new Date());
+  const [welcomeDismissed, setWelcomeDismissed] = useState(() => {
+    try {
+      return localStorage.getItem("bmri_welcome_dismissed_v1") === "1";
+    } catch {
+      return false;
+    }
+  });
+  function dismissWelcome() {
+    setWelcomeDismissed(true);
+    try {
+      localStorage.setItem("bmri_welcome_dismissed_v1", "1");
+    } catch {
+      // localStorage unavailable (private mode etc) — banner just won't stay dismissed
+    }
+  }
 
   const { happeningNow, startingSoon, signal, bestNext } = useMemo(() => {
     const nowNM = currentNightMinutes(now);
@@ -77,6 +92,27 @@ export function NowScreen({
           </button>
         </div>
       </div>
+
+      {!welcomeDismissed && (
+        <div className="welcome-banner">
+          <button className="welcome-dismiss" onClick={dismissWelcome} aria-label="Dismiss">
+            ×
+          </button>
+          <p>
+            Hi! This is the Burning Man Rave Intelligence app and booklet for 2026 — every Established and Emerging artist
+            playing this year, with a short bio, genre, and set times/camps.
+          </p>
+          <p>
+            Some website functionality is still under construction. Try out <b>Build My Journey</b> and the <b>Map</b> to
+            plan your own custom route through Burning Man.
+          </p>
+          <p className="welcome-signoff">
+            Happy burn. See you on the dance floor.
+            <br />
+            — Ciaran aka Papi Chuleto 2026 · Find me at Media Mecca or Snack Shack @ 2:45 &amp; B x
+          </p>
+        </div>
+      )}
 
       <LiveStatusBar geoModel={dataset.geoModel} />
 
