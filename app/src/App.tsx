@@ -64,6 +64,31 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
         Reset all taste settings
       </button>
 
+      <div className="install-block">
+        <div className="section-label" style={{ marginTop: 28 }}>
+          INSTALL BMRI AS AN APP
+        </div>
+        <p className="field-guide-note">Add BMRI to your home screen — it opens like a real app and works offline.</p>
+        <div className="install-steps">
+          <div className="install-platform">
+            <div className="install-platform-label">📱 iPhone (Safari)</div>
+            <ol>
+              <li>Tap the Share icon (square with an arrow)</li>
+              <li>Tap "Add to Home Screen"</li>
+              <li>Tap "Add"</li>
+            </ol>
+          </div>
+          <div className="install-platform">
+            <div className="install-platform-label">🤖 Android (Chrome)</div>
+            <ol>
+              <li>Tap the ⋮ menu (top right)</li>
+              <li>Tap "Install app" (or "Add to Home screen")</li>
+              <li>Tap "Install"</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
       <div className="field-guide-block">
         <div className="section-label" style={{ marginTop: 28 }}>
           BMRI FIELD GUIDE
