@@ -27,11 +27,11 @@ export function LiveStatusBar({ geoModel }: { geoModel: BrcGeoModel | null }) {
   return (
     <div className="live-status-bar">
       <span className="live-status-item">
-        <ClockIcon size={12} color="#9797a8" />
+        <ClockIcon size={12} color="var(--text-dim)" />
         {formatLiveClock(now)}
       </span>
       <span className="live-status-item">
-        <PinIcon size={12} color="#ff6b35" />
+        <PinIcon size={12} color="var(--accent)" />
         {locationText}
       </span>
     </div>

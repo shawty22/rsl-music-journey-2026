@@ -23,17 +23,18 @@ export function SignalBadge({ status, size = "sm" }: { status: string; size?: "s
 // Discovery role: a JUDGMENT about how this recommendation fits — separate
 // from signal status. isFinale appends a narrative suffix to the label
 // without introducing a fourth color.
-const ROLE_META: Record<DisplayRole, { emoji: string; label: string; className: string }> = {
-  STRONG_MATCH: { emoji: "⭐", label: "STRONG MATCH", className: "role-strong" },
-  DISCOVERY: { emoji: "🧭", label: "DISCOVERY", className: "role-discovery" },
-  WILDCARD: { emoji: "🧪", label: "WILDCARD", className: "role-wildcard" },
+const ROLE_META: Record<DisplayRole, { label: string; className: string }> = {
+  STRONG_MATCH: { label: "STRONG MATCH", className: "role-strong" },
+  DISCOVERY: { label: "DISCOVERY", className: "role-discovery" },
+  WILDCARD: { label: "WILDCARD", className: "role-wildcard" },
 };
 
 export function RoleBadge({ role, isFinale }: { role: DisplayRole; isFinale?: boolean }) {
   const meta = ROLE_META[role];
   return (
     <span className={`role-badge ${meta.className}`}>
-      {meta.emoji} {meta.label}
+      <span className="role-badge-dot" />
+      {meta.label}
       {isFinale ? " · FINALE" : ""}
     </span>
   );
@@ -50,9 +51,10 @@ const PERF_TYPE_LABEL: Record<PerformanceType, string> = {
   UNKNOWN: "TYPE UNKNOWN",
 };
 
-export function PerformanceTypeTag({ type }: { type: PerformanceType }) {
-  if (type === "UNKNOWN") return <span className="tag-chip tag-chip-dim">Type unknown</span>;
-  return <span className="tag-chip">{PERF_TYPE_LABEL[type]}</span>;
+export function PerformanceTypeTag({ type, inline }: { type: PerformanceType; inline?: boolean }) {
+  const label = type === "UNKNOWN" ? "type unknown" : PERF_TYPE_LABEL[type];
+  if (inline) return <span className={type === "UNKNOWN" ? "tag-chip-dim" : undefined}>{label}</span>;
+  return <span className={`tag-chip ${type === "UNKNOWN" ? "tag-chip-dim" : ""}`}>{label}</span>;
 }
 
 // A single reason, prefixed with an icon that tells the user WHERE it came
@@ -60,11 +62,11 @@ export function PerformanceTypeTag({ type }: { type: PerformanceType }) {
 export function ReasonRow({ reason }: { reason: Reason }) {
   const icon =
     reason.provenance === "user_selected" ? (
-      <CheckIcon size={12} color="#4fd1c5" />
+      <CheckIcon size={12} color="var(--accent-2)" />
     ) : reason.provenance === "derived" ? (
-      <DerivedIcon size={12} color="#c084fc" />
+      <DerivedIcon size={12} color="var(--wildcard)" />
     ) : (
-      <ClockIcon size={12} color="#9797a8" />
+      <ClockIcon size={12} color="var(--text-dim)" />
     );
   return (
     <div className="reason-row">

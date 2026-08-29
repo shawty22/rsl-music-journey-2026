@@ -21,7 +21,7 @@ export function BottomNav({ active, onSelect }: { active: PrimaryTab; onSelect: 
         return (
           <button key={key} className={`bottom-nav-item ${isActive ? "bottom-nav-item-active" : ""}`} onClick={() => onSelect(key)} aria-current={isActive}>
             <span className="bottom-nav-icon">
-              <Icon size={20} color={isActive ? "#ff6b35" : "#9797a8"} />
+              <Icon size={20} color={isActive ? "var(--accent)" : "var(--text-dim)"} />
             </span>
             <span className="bottom-nav-label">{label}</span>
           </button>

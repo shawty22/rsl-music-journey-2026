@@ -3,7 +3,7 @@ interface IconProps {
   color?: string;
 }
 
-export function BackIcon({ size = 16, color = "#f2f2f7" }: IconProps) {
+export function BackIcon({ size = 16, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M15 6l-6 6 6 6" stroke={color} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
@@ -11,7 +11,7 @@ export function BackIcon({ size = 16, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function ArrowRightIcon({ size = 20, color = "#0b0b12" }: IconProps) {
+export function ArrowRightIcon({ size = 20, color = "var(--bg)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M5 12h14M13 6l6 6-6 6" stroke={color} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
@@ -19,7 +19,7 @@ export function ArrowRightIcon({ size = 20, color = "#0b0b12" }: IconProps) {
   );
 }
 
-export function PinIcon({ size = 14, color = "#9797a8" }: IconProps) {
+export function PinIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z" stroke={color} strokeWidth={2} strokeLinejoin="round" />
@@ -28,7 +28,7 @@ export function PinIcon({ size = 14, color = "#9797a8" }: IconProps) {
   );
 }
 
-export function ClockIcon({ size = 14, color = "#9797a8" }: IconProps) {
+export function ClockIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={12} cy={12} r={9} stroke={color} strokeWidth={2} />
@@ -37,7 +37,7 @@ export function ClockIcon({ size = 14, color = "#9797a8" }: IconProps) {
   );
 }
 
-export function ShareIcon({ size = 15, color = "#f2f2f7" }: IconProps) {
+export function ShareIcon({ size = 15, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={6} cy={12} r={2.4} stroke={color} strokeWidth={2} />
@@ -48,7 +48,7 @@ export function ShareIcon({ size = 15, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function HomeIcon({ size = 16, color = "#f2f2f7" }: IconProps) {
+export function HomeIcon({ size = 16, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M4 11l8-6 8 6" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
@@ -57,7 +57,7 @@ export function HomeIcon({ size = 16, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function PeopleIcon({ size = 14, color = "#9797a8" }: IconProps) {
+export function PeopleIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={12} cy={8} r={3.2} stroke={color} strokeWidth={1.8} />
@@ -66,7 +66,7 @@ export function PeopleIcon({ size = 14, color = "#9797a8" }: IconProps) {
   );
 }
 
-export function BookmarkIcon({ size = 14, color = "#9797a8" }: IconProps) {
+export function BookmarkIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M6 3h9l3 3v15l-6-3.5L6 21V3z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" />
@@ -74,7 +74,7 @@ export function BookmarkIcon({ size = 14, color = "#9797a8" }: IconProps) {
   );
 }
 
-export function CheckIcon({ size = 12, color = "#4fd1c5" }: IconProps) {
+export function CheckIcon({ size = 12, color = "var(--accent-2)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M5 13l4 4L19 7" stroke={color} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
@@ -82,7 +82,7 @@ export function CheckIcon({ size = 12, color = "#4fd1c5" }: IconProps) {
   );
 }
 
-export function DerivedIcon({ size = 12, color = "#c084fc" }: IconProps) {
+export function DerivedIcon({ size = 12, color = "var(--wildcard)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M4 18V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10" stroke={color} strokeWidth={2} strokeLinecap="round" />
@@ -92,7 +92,7 @@ export function DerivedIcon({ size = 12, color = "#c084fc" }: IconProps) {
   );
 }
 
-export function SearchIcon({ size = 16, color = "#5c5c6b" }: IconProps) {
+export function SearchIcon({ size = 16, color = "var(--text-faint)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={11} cy={11} r={7} stroke={color} strokeWidth={2} />
@@ -101,7 +101,7 @@ export function SearchIcon({ size = 16, color = "#5c5c6b" }: IconProps) {
   );
 }
 
-export function PulseIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+export function PulseIcon({ size = 18, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={12} cy={12} r={2} fill={color} />
@@ -113,7 +113,7 @@ export function PulseIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function RadarIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+export function RadarIcon({ size = 18, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.6} opacity={0.5} />
@@ -124,7 +124,7 @@ export function RadarIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function RouteIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+export function RouteIcon({ size = 18, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx={5} cy={6} r={2} stroke={color} strokeWidth={1.8} />
@@ -134,7 +134,7 @@ export function RouteIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
   );
 }
 
-export function HeartIcon({ size = 16, color = "#9797a8", filled = false }: IconProps & { filled?: boolean }) {
+export function HeartIcon({ size = 16, color = "var(--text-dim)", filled = false }: IconProps & { filled?: boolean }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? color : "none"}>
       <path
@@ -147,7 +147,7 @@ export function HeartIcon({ size = 16, color = "#9797a8", filled = false }: Icon
   );
 }
 
-export function GearIcon({ size = 18, color = "#f2f2f7" }: IconProps) {
+export function GearIcon({ size = 18, color = "var(--text)" }: IconProps) {
   // An actual toothed cog silhouette (not a sun/starburst) so it doesn't get
   // mistaken for a light/dark toggle — the hub is a real cut hole via
   // evenodd fill, not a background-dependent knockout.

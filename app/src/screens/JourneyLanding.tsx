@@ -87,31 +87,20 @@ export function JourneyLandingScreen({
             Edit →
           </button>
         </div>
-        <div className="home-mood-grid">
+        <div className="chip-grid">
           {MOOD_TILES.map((tile) => {
             const selected = selectedGenres.has(tile.genreTag.toLowerCase());
             return (
-              <button
-                key={tile.key}
-                className="mood-tile"
-                style={selected ? { borderColor: tile.color, background: `${tile.color}24` } : undefined}
-                onClick={() => toggleMood(tile.genreTag)}
-              >
-                <div className="mood-emoji" style={{ opacity: selected ? 1 : 0.75 }}>
-                  {tile.emoji}
-                </div>
-                <div className="mood-label" style={selected ? { color: tile.color } : undefined}>
-                  {tile.label}
-                </div>
+              <button key={tile.key} className={`filter-chip ${selected ? "filter-chip-active" : ""}`} onClick={() => toggleMood(tile.genreTag)}>
+                {tile.label}
               </button>
             );
           })}
-          <button className="mood-tile mood-tile-more" onClick={onOpenMyTaste}>
-            <div className="mood-tile-more-count">★ {taste.favorite_artists.length}</div>
-            <div className="mood-label">favorites</div>
+          <button className="filter-chip" onClick={onOpenMyTaste}>
+            ★ {taste.favorite_artists.length} favorites
           </button>
         </div>
-        <div className="pill-row" style={{ marginTop: 12 }}>
+        <div className="pill-row" style={{ marginTop: 14 }}>
           {PERF_TYPES.map((t) => (
             <button
               key={t}

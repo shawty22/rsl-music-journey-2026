@@ -73,14 +73,14 @@ export function ActDetailScreen({
 
       <div className="detail-info-list">
         <div className="detail-info-row">
-          <PinIcon size={18} color="#ff6b35" />
+          <PinIcon size={18} color="var(--accent)" />
           <div>
             <div className="detail-info-main">{stop.performance.camp}</div>
             {stop.performance.location && <div className="detail-info-sub">{stop.performance.location}</div>}
           </div>
         </div>
         <div className="detail-info-row">
-          <ClockIcon size={18} color="#ff6b35" />
+          <ClockIcon size={18} color="var(--accent)" />
           <div>
             <div className="detail-info-main">
               {stop.performance.day_start} · {formatNightMinutes(stop.arrivalNightMinutes)}

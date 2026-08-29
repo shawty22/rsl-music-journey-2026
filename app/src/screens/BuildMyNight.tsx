@@ -212,7 +212,7 @@ export function BuildMyNightScreen({
       <div className="section">
         <div className="section-label">WHERE ARE YOU STARTING?</div>
         <div className="location-field">
-          <PinIcon size={18} color="#ff6b35" />
+          <PinIcon size={18} color="var(--accent)" />
           <input
             value={draft.startLocation}
             onChange={(e) => {

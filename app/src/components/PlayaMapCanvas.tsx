@@ -168,29 +168,24 @@ export function PlayaMapCanvas({
         style={{ transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`, transformOrigin: "center center" }}
       >
         <defs>
-          <radialGradient id={`night-${gradId}`} cx="50%" cy="50%" r="70%">
-            <stop offset="0%" stopColor="#2a1a3d" />
-            <stop offset="55%" stopColor="#1a1424" />
-            <stop offset="100%" stopColor="var(--bg)" />
-          </radialGradient>
-          <radialGradient id={`glow-${gradId}`} cx="50%" cy="50%" r="55%">
-            <stop offset="0%" stopColor="rgba(255,140,66,0.28)" />
-            <stop offset="100%" stopColor="rgba(255,140,66,0)" />
+          <radialGradient id={`glow-${gradId}`} cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor="rgba(243, 200, 91, 0.05)" />
+            <stop offset="100%" stopColor="rgba(243, 200, 91, 0)" />
           </radialGradient>
         </defs>
 
-        <rect x={0} y={0} width={size} height={size} fill={`url(#night-${gradId})`} />
-        <circle cx={center} cy={center} r={maxR * 0.55} fill={`url(#glow-${gradId})`} />
+        <rect x={0} y={0} width={size} height={size} fill="var(--bg)" />
+        <circle cx={center} cy={center} r={maxR} fill={`url(#glow-${gradId})`} />
 
         {STARS.map((s, i) => (
-          <circle key={i} cx={s.xFrac * size} cy={s.yFrac * size} r={s.r * scale} fill="#fff" opacity={s.o} />
+          <circle key={i} cx={s.xFrac * size} cy={s.yFrac * size} r={s.r * scale} fill="#fff" opacity={s.o * 0.5} />
         ))}
 
         {[0.35, 0.6, 0.8, 1].map((f) => (
-          <circle key={f} cx={center} cy={center} r={f * maxR} fill="none" stroke="rgba(245, 196, 81, 0.22)" strokeWidth={1} />
+          <circle key={f} cx={center} cy={center} r={f * maxR} fill="none" stroke="rgba(243, 200, 91, 0.28)" strokeWidth={1} />
         ))}
-        <line x1={center} y1={center - maxR - 10 * scale} x2={center} y2={center + maxR + 10 * scale} stroke="rgba(245, 196, 81, 0.16)" strokeWidth={1} />
-        <line x1={center - maxR - 10 * scale} y1={center} x2={center + maxR + 10 * scale} y2={center} stroke="rgba(245, 196, 81, 0.16)" strokeWidth={1} />
+        <line x1={center} y1={center - maxR - 10 * scale} x2={center} y2={center + maxR + 10 * scale} stroke="rgba(243, 200, 91, 0.18)" strokeWidth={1} />
+        <line x1={center - maxR - 10 * scale} y1={center} x2={center + maxR + 10 * scale} y2={center} stroke="rgba(243, 200, 91, 0.18)" strokeWidth={1} />
         {!compact && !hide12 && (
           <text x={center} y={center - maxR - 16 * scale} textAnchor="middle" fontSize={fontMain} fill="var(--text-faint)" fontWeight="700">
             12:00

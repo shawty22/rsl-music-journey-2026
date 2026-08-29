@@ -69,7 +69,7 @@ export function ArtistDetailScreen({
       <div className="detail-info-list">
         {geo && (
           <div className="detail-info-row">
-            <PinIcon size={17} color="#ff6b35" />
+            <PinIcon size={17} color="var(--accent)" />
             <div className="detail-info-main">{geo}</div>
           </div>
         )}
