@@ -298,13 +298,66 @@ input, select {
 /* ---------- playa map ---------- */
 
 .map-wrap { position: relative; display: flex; justify-content: center; margin-top: 20px; }
-.compass-arrow { position: absolute; top: -6px; left: 50%; margin-left: -17px; transition: transform 0.2s ease-out; }
+.compass-block { position: absolute; top: -36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.walk-this-way { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; color: var(--accent); white-space: nowrap; }
+.compass-arrow { transition: transform 0.2s ease-out; }
 .map-status { margin-top: 16px; text-align: center; }
 .map-you-line { font-size: 13.5px; color: var(--text-dim); margin-top: 4px; }
 .map-distance-card { margin-top: 18px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
 .map-distance-main { font-size: 20px; font-weight: 800; }
 .map-distance-sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.map-route-note { font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 12px; }
 .map-source-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 20px; line-height: 1.5; }
+
+.map-canvas-wrap { position: relative; touch-action: none; line-height: 0; }
+.map-canvas-wrap svg { display: block; }
+.map-canvas-interactive { cursor: grab; }
+.map-canvas-interactive:active { cursor: grabbing; }
+.map-recenter-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-map-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 14px;
+  text-align: left;
+}
+.mini-map-card .map-canvas-wrap { flex-shrink: 0; border-radius: 12px; overflow: hidden; }
+.mini-map-info { flex: 1; min-width: 0; }
+.mini-map-headline { font-size: 15px; font-weight: 800; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-map-sub { font-size: 12.5px; color: var(--text-dim); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-map-arrow { font-size: 18px; color: var(--text-faint); flex-shrink: 0; }
+
+.card-map-btn {
+  margin-top: 10px;
+  padding: 10px 0 0;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---------- timeline (journey results) ---------- */
 

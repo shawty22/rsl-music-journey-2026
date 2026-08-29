@@ -15,7 +15,7 @@ import { BrowseArtistsScreen } from "./screens/BrowseArtists";
 import { ArtistDetailScreen } from "./screens/ArtistDetail";
 import { PlayaMapScreen } from "./screens/PlayaMap";
 import { HomeIcon } from "./components/icons";
-import type { SavedJourney, TasteProfile } from "./types";
+import type { SavedJourney, ScoredRecommendation, TasteProfile } from "./types";
 
 type View = "home" | "myTaste" | "buildMyNight" | "results" | "actDetail" | "whatsGoodNow" | "browseArtists" | "artistDetail" | "saved" | "playaMap";
 
@@ -62,7 +62,17 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
   );
 }
 
-function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; taste: TasteProfile; onHome: () => void }) {
+function WhatsGoodNowScreen({
+  dataset,
+  taste,
+  onHome,
+  onShowOnMap,
+}: {
+  dataset: Dataset;
+  taste: TasteProfile;
+  onHome: () => void;
+  onShowOnMap?: (rec: ScoredRecommendation) => void;
+}) {
   const [day, setDay] = useState<string>(() => currentDraftTime().day);
   const [count, setCount] = useState(10);
 
@@ -95,7 +105,7 @@ function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; tast
       </div>
       <div className="card-list">
         {recs.map((r) => (
-          <RecommendationCard key={r.performance.performance_id} rec={r} />
+          <RecommendationCard key={r.performance.performance_id} rec={r} onShowOnMap={onShowOnMap ? () => onShowOnMap(r) : undefined} />
         ))}
         {recs.length === 0 && <p className="empty">No performances found for that night.</p>}
       </div>
@@ -103,7 +113,7 @@ function WhatsGoodNowScreen({ dataset, taste, onHome }: { dataset: Dataset; tast
   );
 }
 
-function SavedScreen({ onHome }: { onHome: () => void }) {
+function SavedScreen({ onHome, onShowOnMap }: { onHome: () => void; onShowOnMap?: (rec: ScoredRecommendation) => void }) {
   const [journeys, setJourneys] = useState<SavedJourney[]>(loadSavedJourneys());
 
   function remove(id: string) {
@@ -131,7 +141,7 @@ function SavedScreen({ onHome }: { onHome: () => void }) {
             {j.day} night, {j.start_time_label}, {j.duration_hours}h — {j.stops.length} stops
           </div>
           {j.stops.map((s) => (
-            <RecommendationCard key={s.performance.performance_id} rec={s} />
+            <RecommendationCard key={s.performance.performance_id} rec={s} onShowOnMap={onShowOnMap ? () => onShowOnMap(s) : undefined} />
           ))}
           <button className="btn-secondary" onClick={() => remove(j.id)}>
             Delete
@@ -154,7 +164,15 @@ export default function App() {
   const [detailStop, setDetailStop] = useState<{ stop: JourneyStop; actNumber: number } | null>(null);
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
 
-  const [mapTarget, setMapTarget] = useState<{ startAddress: string; nextStopAddress: string | null; nextStopLabel: string } | null>(null);
+  const [mapTarget, setMapTarget] = useState<{
+    startAddress: string;
+    stops: ScoredRecommendation[];
+    actNumberOffset: number;
+    // When set, tapping stop i on the map jumps to journeyStops[journeyStartIndex + i]'s
+    // act detail — only meaningful when these stops actually came from the active journey.
+    journeyStartIndex: number | null;
+    returnTo: View;
+  } | null>(null);
 
   useEffect(() => {
     loadDataset()
@@ -224,6 +242,25 @@ export default function App() {
     setView("actDetail");
   }
 
+  // Opens the full map showing the rest of tonight's built journey, starting
+  // at journeyStops[idx]. Reused by Home ("here's what's next") and Act
+  // Detail ("view on map" for a specific act).
+  function openMapForJourneyFrom(idx: number, returnTo: View) {
+    if (!dataset?.geoModel) return;
+    const prevStop = idx >= 1 ? journeyStops[idx - 1] : null;
+    const startAddress = prevStop ? (prevStop.performance.location ?? "") : draft.startLocation;
+    setMapTarget({ startAddress, stops: journeyStops.slice(idx), actNumberOffset: idx, journeyStartIndex: idx, returnTo });
+    setView("playaMap");
+  }
+
+  // Opens the map for a single performance that isn't part of the active
+  // journey (a What's Good Now / Saved card, or a Surprise Me pick).
+  function openMapForSingle(rec: ScoredRecommendation, returnTo: View) {
+    if (!dataset?.geoModel) return;
+    setMapTarget({ startAddress: draft.startLocation, stops: [rec], actNumberOffset: 0, journeyStartIndex: null, returnTo });
+    setView("playaMap");
+  }
+
   function handleShare(stops: JourneyStop[]) {
     const text = `My BMRI Journey (${draft.day} night, ${draft.durationHours}h):\n${stops
       .map((s, i) => `${i + 1}. ${s.artist.artist} — ${formatNightMinutes(s.arrivalNightMinutes)} @ ${s.performance.camp}`)
@@ -257,6 +294,7 @@ export default function App() {
         <HomeScreen
           dataset={dataset}
           taste={taste}
+          journeyStops={journeyStops}
           onChangeTaste={updateTaste}
           onBuildJourney={() => setView("buildMyNight")}
           onWhatsGoodNow={() => setView("whatsGoodNow")}
@@ -265,6 +303,7 @@ export default function App() {
           onOpenSaved={() => setView("saved")}
           onOpenMyTaste={openMyTasteFromHome}
           onOpenSettings={() => setShowSettings(true)}
+          onOpenMap={() => openMapForJourneyFrom(0, "home")}
         />
       )}
 
@@ -311,14 +350,10 @@ export default function App() {
           onOpenMap={
             dataset.geoModel
               ? () => {
-                  const prevStop = detailStop.actNumber >= 2 ? journeyStops[detailStop.actNumber - 2] : null;
-                  const startAddress = prevStop ? prevStop.performance.location ?? "" : draft.startLocation;
-                  setMapTarget({
-                    startAddress,
-                    nextStopAddress: detailStop.stop.performance.location,
-                    nextStopLabel: `${detailStop.stop.artist.artist} at ${detailStop.stop.performance.camp}`,
-                  });
-                  setView("playaMap");
+                  const idx = detailStop.actNumber - 1;
+                  const fromJourney = journeyStops.length > idx && journeyStops[idx]?.performance.performance_id === detailStop.stop.performance.performance_id;
+                  if (fromJourney) openMapForJourneyFrom(idx, "actDetail");
+                  else openMapForSingle(detailStop.stop, "actDetail");
                 }
               : undefined
           }
@@ -329,14 +364,30 @@ export default function App() {
         <PlayaMapScreen
           geoModel={dataset.geoModel}
           startAddress={mapTarget.startAddress}
-          nextStopAddress={mapTarget.nextStopAddress}
-          nextStopLabel={mapTarget.nextStopLabel}
-          onBack={() => setView("actDetail")}
+          stops={mapTarget.stops}
+          actNumberOffset={mapTarget.actNumberOffset}
+          onSelectStop={
+            mapTarget.journeyStartIndex !== null
+              ? (i) => {
+                  const globalIndex = mapTarget.journeyStartIndex! + i;
+                  setDetailStop({ stop: journeyStops[globalIndex], actNumber: globalIndex + 1 });
+                  setView("actDetail");
+                }
+              : undefined
+          }
+          onBack={() => setView(mapTarget.returnTo)}
           onHome={goHome}
         />
       )}
 
-      {view === "whatsGoodNow" && <WhatsGoodNowScreen dataset={dataset} taste={taste} onHome={goHome} />}
+      {view === "whatsGoodNow" && (
+        <WhatsGoodNowScreen
+          dataset={dataset}
+          taste={taste}
+          onHome={goHome}
+          onShowOnMap={dataset.geoModel ? (rec) => openMapForSingle(rec, "whatsGoodNow") : undefined}
+        />
+      )}
 
       {view === "browseArtists" && (
         <BrowseArtistsScreen
@@ -353,7 +404,9 @@ export default function App() {
         <ArtistDetailScreen dataset={dataset} artistId={selectedArtistId} onBack={() => setView("browseArtists")} onHome={goHome} />
       )}
 
-      {view === "saved" && <SavedScreen onHome={goHome} />}
+      {view === "saved" && (
+        <SavedScreen onHome={goHome} onShowOnMap={dataset.geoModel ? (rec) => openMapForSingle(rec, "saved") : undefined} />
+      )}
 
       {showSettings && <AppSettingsPanel taste={taste} onChange={updateTaste} onClose={() => setShowSettings(false)} />}
     </div>

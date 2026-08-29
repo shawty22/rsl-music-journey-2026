@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import { GearIcon, ArrowRightIcon, PeopleIcon, BookmarkIcon } from "../components/icons";
 import { LiveStatusBar } from "../components/LiveStatus";
+import { PlayaMapCanvas, type MapStopMarker } from "../components/PlayaMapCanvas";
+import { useGeolocation } from "../lib/useGeolocation";
+import { toDisplayRole } from "../lib/recommend";
+import { parseClockStreetAddress, brcAddressToLatLng, latLngToBrcAddress, haversineMeters, metersToWalkMinutes } from "../lib/geo";
 import { MOOD_TILES } from "../lib/moods";
+import type { JourneyStop } from "../lib/journey";
 import type { PerformanceType, TasteProfile } from "../types";
 
 const PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID"];
@@ -10,6 +15,7 @@ const PERF_TYPES: PerformanceType[] = ["DJ", "LIVE", "HYBRID"];
 export function HomeScreen({
   dataset,
   taste,
+  journeyStops,
   onChangeTaste,
   onBuildJourney,
   onWhatsGoodNow,
@@ -18,9 +24,11 @@ export function HomeScreen({
   onOpenSaved,
   onOpenMyTaste,
   onOpenSettings,
+  onOpenMap,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
+  journeyStops: JourneyStop[];
   onChangeTaste: (t: TasteProfile) => void;
   onBuildJourney: () => void;
   onWhatsGoodNow: () => void;
@@ -29,6 +37,7 @@ export function HomeScreen({
   onOpenSaved: () => void;
   onOpenMyTaste: () => void;
   onOpenSettings: () => void;
+  onOpenMap: () => void;
 }) {
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -57,6 +66,31 @@ export function HomeScreen({
     const next = has ? taste.preferred_performance_types.filter((x) => x !== t) : [...taste.preferred_performance_types, t];
     onChangeTaste({ ...taste, preferred_performance_types: next });
   }
+
+  // "Where am I, what's next" — the map-first home card. Low information
+  // density on purpose (just YOU + the next stop, never the full event
+  // list) so it answers "where should I go" at a glance, not overwhelm.
+  const gps = useGeolocation(true);
+  const gpsAddress = useMemo(
+    () => (gps.position && dataset.geoModel ? latLngToBrcAddress(dataset.geoModel, gps.position) : null),
+    [gps.position, dataset.geoModel],
+  );
+  const youPoint = gpsAddress && !gpsAddress.beyondCity ? { clock: gpsAddress.clock, street: gpsAddress.street } : null;
+
+  const nextStop = journeyStops[0] ?? null;
+  const nextParsed = nextStop?.performance.location ? parseClockStreetAddress(nextStop.performance.location) : null;
+
+  const nextDistanceM = useMemo(() => {
+    if (!dataset.geoModel || !youPoint || !nextParsed) return null;
+    const you = brcAddressToLatLng(dataset.geoModel, youPoint.clock, youPoint.street);
+    const next = brcAddressToLatLng(dataset.geoModel, nextParsed.clock, nextParsed.street);
+    if (!you || !next) return null;
+    return haversineMeters(you, next);
+  }, [dataset.geoModel, youPoint, nextParsed]);
+
+  const miniMapStops: MapStopMarker[] = nextStop && nextParsed
+    ? [{ key: nextStop.performance.performance_id, clock: nextParsed.clock, street: nextParsed.street, label: "NEXT", role: toDisplayRole(nextStop.role), isNext: true }]
+    : [];
 
   return (
     <div className="screen">
@@ -124,6 +158,27 @@ export function HomeScreen({
           ))}
         </div>
       </div>
+
+      <button className="mini-map-card" onClick={onOpenMap}>
+        <PlayaMapCanvas geoModel={dataset.geoModel} you={youPoint} stops={miniMapStops} size={112} />
+        <div className="mini-map-info">
+          {nextStop ? (
+            <>
+              <div className="mini-map-headline">{nextStop.artist.artist}</div>
+              <div className="mini-map-sub">
+                {nextStop.performance.camp}
+                {nextDistanceM !== null ? ` · ~${metersToWalkMinutes(nextDistanceM)} min walk` : nextStop.performance.location ? ` · ${nextStop.performance.location}` : ""}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="mini-map-headline">Where you are</div>
+              <div className="mini-map-sub">{youPoint ? `${youPoint.clock} & ${youPoint.street}` : "Build a night to see your route here"}</div>
+            </>
+          )}
+        </div>
+        <span className="mini-map-arrow">→</span>
+      </button>
 
       <button className="cta-gradient" onClick={onBuildJourney}>
         <span>BUILD MY NIGHT</span>

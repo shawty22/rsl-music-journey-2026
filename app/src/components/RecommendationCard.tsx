@@ -4,7 +4,7 @@ import { resolvePerformanceType } from "../lib/performanceType";
 import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "./badges";
 import { PinIcon, ClockIcon } from "./icons";
 
-export function RecommendationCard({ rec }: { rec: ScoredRecommendation }) {
+export function RecommendationCard({ rec, onShowOnMap }: { rec: ScoredRecommendation; onShowOnMap?: () => void }) {
   const { artist, performance, role, reasons } = rec;
   const displayRole = toDisplayRole(role);
   const topReason = reasons[0];
@@ -42,6 +42,17 @@ export function RecommendationCard({ rec }: { rec: ScoredRecommendation }) {
         <div className="card-why">
           <ReasonRow reason={topReason} />
         </div>
+      )}
+      {onShowOnMap && performance.location && (
+        <button
+          className="card-map-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onShowOnMap();
+          }}
+        >
+          🧭 Show on map
+        </button>
       )}
     </div>
   );
