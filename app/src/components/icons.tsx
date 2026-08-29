@@ -11,7 +11,7 @@ export function BackIcon({ size = 16, color = "var(--text)" }: IconProps) {
   );
 }
 
-export function ArrowRightIcon({ size = 20, color = "var(--bg)" }: IconProps) {
+export function ArrowRightIcon({ size = 20, color = "var(--gold)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <path d="M5 12h14M13 6l6 6-6 6" stroke={color} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />

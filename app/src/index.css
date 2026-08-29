@@ -148,16 +148,16 @@ input, select { font-family: inherit; }
 }
 
 .cta-gradient {
-  border: 1px solid var(--accent);
+  border: 1px solid var(--gold);
   border-radius: 14px;
   padding: 18px 20px;
-  background: var(--accent);
+  background: var(--bg-elevated);
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: none;
 }
-.cta-gradient span { font-size: 14px; font-weight: 800; color: var(--bg); letter-spacing: 2px; }
+.cta-gradient span { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 2.5px; }
 
 .cta-solid {
   border: none;
