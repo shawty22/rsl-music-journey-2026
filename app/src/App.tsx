@@ -63,6 +63,25 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
       <button className="btn-secondary" onClick={() => onChange({ ...DEFAULT_TASTE })}>
         Reset all taste settings
       </button>
+
+      <div className="field-guide-block">
+        <div className="section-label" style={{ marginTop: 28 }}>
+          FIELD GUIDE
+        </div>
+        <p className="field-guide-note">
+          Every Established/Emerging artist's bio, set times, camps, and locations — plus curated Wildcards — as one offline
+          document. If the app fails on playa, this doesn't need it.
+        </p>
+        <a className="btn-secondary field-guide-link" href="field-guide.html" target="_blank" rel="noreferrer">
+          Read online
+        </a>
+        <a className="btn-secondary field-guide-link" href="BMRI-Field-Guide-2026.pdf" download>
+          Download PDF
+        </a>
+        <a className="btn-secondary field-guide-link" href="BMRI-Field-Guide-2026.epub" download>
+          Download EPUB
+        </a>
+      </div>
     </div>
   );
 }
