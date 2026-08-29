@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import { GearIcon, ArrowRightIcon, PeopleIcon } from "../components/icons";
+import { OrbitGraphic } from "../components/OrbitGraphic";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
 
@@ -111,6 +112,10 @@ export function JourneyLandingScreen({
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="orbit-wrap">
+        <OrbitGraphic />
       </div>
 
       <button className="cta-gradient" onClick={onBuildJourney}>

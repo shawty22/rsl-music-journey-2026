@@ -137,6 +137,16 @@ input, select { font-family: inherit; }
 
 /* ---------- buttons ---------- */
 
+/* ---------- orbit graphic (decorative) ---------- */
+
+.orbit-wrap { display: flex; justify-content: center; margin: 22px 0 6px; }
+@keyframes orbit-rotate { to { transform: rotate(360deg); } }
+.orbit-spin-slow { animation: orbit-rotate 34s linear infinite; }
+.orbit-spin-fast { animation: orbit-rotate 19s linear infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin-slow, .orbit-spin-fast { animation: none; }
+}
+
 .cta-gradient {
   border: 1px solid var(--accent);
   border-radius: 14px;
