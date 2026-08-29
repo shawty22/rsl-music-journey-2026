@@ -14,8 +14,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon-192.png', 'icon-512.png'],
       manifest: {
-        name: 'Playafy — RSL Music Journey 2026',
-        short_name: 'Playafy',
+        name: 'BMRI — Burning Man Rave Intelligence',
+        short_name: 'BMRI',
         description: 'Offline music-discovery and journey planner for the RSL 2026 Burning Man guide.',
         theme_color: '#0b0b12',
         background_color: '#0b0b12',

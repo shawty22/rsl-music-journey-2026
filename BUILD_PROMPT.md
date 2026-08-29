@@ -1,4 +1,4 @@
-# Claude Build Prompt — RSL Music Journey 2026
+# Claude Build Prompt — BMRI (Burning Man Rave Intelligence) 2026
 
 This is the founding product/build spec for this repo. Preserved verbatim from the
 project kickoff conversation (2026-08-27) so future work stays anchored to it.

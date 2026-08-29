@@ -225,11 +225,11 @@ export default function App() {
   }
 
   function handleShare(stops: JourneyStop[]) {
-    const text = `My RSL Music Journey (${draft.day} night, ${draft.durationHours}h):\n${stops
+    const text = `My BMRI Journey (${draft.day} night, ${draft.durationHours}h):\n${stops
       .map((s, i) => `${i + 1}. ${s.artist.artist} — ${formatNightMinutes(s.arrivalNightMinutes)} @ ${s.performance.camp}`)
       .join("\n")}`;
     if (navigator.share) {
-      navigator.share({ title: "My RSL Music Journey", text }).catch(() => {});
+      navigator.share({ title: "My BMRI Journey", text }).catch(() => {});
     } else {
       alert("Sharing isn't available in this browser — here's your night:\n\n" + text);
     }

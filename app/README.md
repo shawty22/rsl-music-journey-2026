@@ -1,6 +1,10 @@
-# React + TypeScript + Vite
+# BMRI — Burning Man Rave Intelligence
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Offline-first music-discovery and journey planner for Black Rock City, built on the RSL 2026 Burning Man music guide as its underlying source dataset.
+
+## Dev setup (React + TypeScript + Vite)
+
+This app is built on a minimal Vite + React + HMR + Oxlint template.
 
 Currently, two official plugins are available:
 

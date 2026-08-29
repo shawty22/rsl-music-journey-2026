@@ -61,7 +61,7 @@ export function HomeScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <span className="wordmark">PLAYAFY</span>
+        <span className="wordmark">BMRI</span>
         <div className="top-actions">
           <span className={`badge ${online ? "badge-online" : "badge-offline"}`}>
             <span className="badge-dot" />
