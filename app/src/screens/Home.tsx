@@ -160,8 +160,9 @@ export function HomeScreen({
       </div>
 
       <button className="mini-map-card" onClick={onOpenMap}>
-        <PlayaMapCanvas geoModel={dataset.geoModel} you={youPoint} stops={miniMapStops} size={112} />
+        <PlayaMapCanvas geoModel={dataset.geoModel} you={youPoint} stops={miniMapStops} size={148} />
         <div className="mini-map-info">
+          <div className="mini-map-eyebrow">{nextStop ? "UP NEXT" : "PLAYA MAP"}</div>
           {nextStop ? (
             <>
               <div className="mini-map-headline">{nextStop.artist.artist}</div>

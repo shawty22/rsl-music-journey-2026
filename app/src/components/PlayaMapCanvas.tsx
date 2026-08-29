@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { parseClockPosition, type BrcGeoModel } from "../lib/geo";
 import type { DisplayRole } from "../lib/recommend";
 
@@ -24,6 +24,25 @@ function polarToXY(clockHours: number, radiusFrac: number, center: number, maxR:
   return { x: center + Math.cos(angle) * radiusFrac * maxR, y: center + Math.sin(angle) * radiusFrac * maxR };
 }
 
+// A fixed, deterministic scatter of faint dust/star points (fractional
+// coordinates, seeded — not Math.random() — so they don't reshuffle on every
+// re-render) purely for atmosphere: "nocturnal, slightly psychedelic" per
+// the brief, not data of any kind.
+function seededStars(count: number): { xFrac: number; yFrac: number; r: number; o: number }[] {
+  let seed = 1337;
+  const rand = () => {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed / 233280;
+  };
+  return Array.from({ length: count }, () => ({
+    xFrac: rand(),
+    yFrac: rand(),
+    r: 0.5 + rand() * 1,
+    o: 0.15 + rand() * 0.35,
+  }));
+}
+const STARS = seededStars(22);
+
 // Shared clock-diagram renderer behind both the Home mini-map and the full
 // Playa Map screen — one visual language for "where things are" everywhere
 // in the app. `interactive` adds touch drag-to-pan + pinch/wheel-to-zoom
@@ -42,6 +61,7 @@ export function PlayaMapCanvas({
   size?: number;
   interactive?: boolean;
 }) {
+  const gradId = useId();
   const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 });
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const dragRef = useRef<{ lastX: number; lastY: number } | null>(null);
@@ -147,11 +167,30 @@ export function PlayaMapCanvas({
         viewBox={`0 0 ${size} ${size}`}
         style={{ transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`, transformOrigin: "center center" }}
       >
-        {[0.35, 0.6, 0.8, 1].map((f) => (
-          <circle key={f} cx={center} cy={center} r={f * maxR} fill="none" stroke="var(--border)" strokeWidth={1} />
+        <defs>
+          <radialGradient id={`night-${gradId}`} cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stopColor="#2a1a3d" />
+            <stop offset="55%" stopColor="#1a1424" />
+            <stop offset="100%" stopColor="var(--bg)" />
+          </radialGradient>
+          <radialGradient id={`glow-${gradId}`} cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stopColor="rgba(255,140,66,0.28)" />
+            <stop offset="100%" stopColor="rgba(255,140,66,0)" />
+          </radialGradient>
+        </defs>
+
+        <rect x={0} y={0} width={size} height={size} fill={`url(#night-${gradId})`} />
+        <circle cx={center} cy={center} r={maxR * 0.55} fill={`url(#glow-${gradId})`} />
+
+        {STARS.map((s, i) => (
+          <circle key={i} cx={s.xFrac * size} cy={s.yFrac * size} r={s.r * scale} fill="#fff" opacity={s.o} />
         ))}
-        <line x1={center} y1={center - maxR - 10 * scale} x2={center} y2={center + maxR + 10 * scale} stroke="var(--border)" strokeWidth={1} />
-        <line x1={center - maxR - 10 * scale} y1={center} x2={center + maxR + 10 * scale} y2={center} stroke="var(--border)" strokeWidth={1} />
+
+        {[0.35, 0.6, 0.8, 1].map((f) => (
+          <circle key={f} cx={center} cy={center} r={f * maxR} fill="none" stroke="rgba(245, 196, 81, 0.22)" strokeWidth={1} />
+        ))}
+        <line x1={center} y1={center - maxR - 10 * scale} x2={center} y2={center + maxR + 10 * scale} stroke="rgba(245, 196, 81, 0.16)" strokeWidth={1} />
+        <line x1={center - maxR - 10 * scale} y1={center} x2={center + maxR + 10 * scale} y2={center} stroke="rgba(245, 196, 81, 0.16)" strokeWidth={1} />
         {!compact && !hide12 && (
           <text x={center} y={center - maxR - 16 * scale} textAnchor="middle" fontSize={fontMain} fill="var(--text-faint)" fontWeight="700">
             12:00
@@ -175,6 +214,7 @@ export function PlayaMapCanvas({
 
         {youXY && (
           <g>
+            <circle cx={youXY.x} cy={youXY.y} r={markerR * 2.4} fill="var(--text)" opacity={0.16} />
             <circle cx={youXY.x} cy={youXY.y} r={markerR} fill="var(--text)" />
             {!compact && (
               <text x={youXY.x} y={youXY.y - 12 * scale} textAnchor="middle" fontSize={fontMain} fill="var(--text)" fontWeight="800">
@@ -188,6 +228,7 @@ export function PlayaMapCanvas({
           (s) =>
             s.xy && (
               <g key={s.key} onClick={s.onSelect} style={{ cursor: s.onSelect ? "pointer" : "default" }}>
+                {s.isNext && <circle cx={s.xy.x} cy={s.xy.y} r={markerR * 2.6} fill={ROLE_COLOR[s.role]} opacity={0.22} />}
                 {s.isNext ? (
                   <circle cx={s.xy.x} cy={s.xy.y} r={markerR} fill={ROLE_COLOR[s.role]} />
                 ) : (
