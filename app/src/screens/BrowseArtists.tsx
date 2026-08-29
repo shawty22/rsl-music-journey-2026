@@ -27,7 +27,9 @@ export function BrowseArtistsScreen({
     let list = q ? dataset.artists.filter((a) => a.artist_normalized.includes(q)) : dataset.artists;
     if (filter === "WILDCARD") list = list.filter((a) => a.signal_status.toUpperCase() === "UNKNOWN");
     else if (filter !== "ALL") list = list.filter((a) => a.signal_status.toUpperCase() === filter);
-    return list.slice(0, 100);
+    // Alphabetical, A-Z — the point of "browse" rather than search.
+    list = [...list].sort((a, b) => a.artist.localeCompare(b.artist));
+    return list.slice(0, 200);
   }, [dataset, query, filter]);
 
   return (

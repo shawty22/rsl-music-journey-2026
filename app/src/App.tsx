@@ -17,7 +17,7 @@ import { ActDetailScreen } from "./screens/ActDetail";
 import { BrowseArtistsScreen } from "./screens/BrowseArtists";
 import { ArtistDetailScreen } from "./screens/ArtistDetail";
 import { PlayaMapScreen } from "./screens/PlayaMap";
-import { HomeIcon } from "./components/icons";
+import { HomeIcon, PeopleIcon } from "./components/icons";
 import type { SavedJourney, ScoredRecommendation, TasteProfile } from "./types";
 
 type View = PrimaryTab | "journeyDetails" | "results" | "actDetail" | "browseArtists" | "artistDetail" | "myTaste";
@@ -75,6 +75,7 @@ function SavedScreen({
   journeys,
   onRemoveJourney,
   onHome,
+  onOpenArtists,
 }: {
   savedSets: ScoredRecommendation[];
   onRemoveSet: (performanceId: string) => void;
@@ -83,14 +84,20 @@ function SavedScreen({
   journeys: SavedJourney[];
   onRemoveJourney: (id: string) => void;
   onHome: () => void;
+  onOpenArtists: () => void;
 }) {
   return (
     <div className="screen">
       <div className="screen-top">
         <span className="wordmark">SAVED</span>
-        <button className="icon-btn" onClick={onHome} aria-label="Home">
-          <HomeIcon />
-        </button>
+        <div className="top-actions">
+          <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
+            <PeopleIcon size={16} />
+          </button>
+          <button className="icon-btn" onClick={onHome} aria-label="Home">
+            <HomeIcon />
+          </button>
+        </div>
       </div>
 
       <div className="section">
@@ -324,6 +331,7 @@ export default function App() {
           onBuildJourney={() => setView("journeyDetails")}
           onOpenMyTaste={() => setView("myTaste")}
           onOpenSettings={() => setShowSettings(true)}
+          onOpenArtists={() => setView("browseArtists")}
         />
       )}
 
@@ -443,6 +451,7 @@ export default function App() {
             setSavedJourneys(loadSavedJourneys());
           }}
           onHome={goNow}
+          onOpenArtists={() => setView("browseArtists")}
         />
       )}
 

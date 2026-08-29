@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
-import { GearIcon, ArrowRightIcon } from "../components/icons";
+import { GearIcon, ArrowRightIcon, PeopleIcon } from "../components/icons";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
 
@@ -17,6 +17,7 @@ export function JourneyLandingScreen({
   onBuildJourney,
   onOpenMyTaste,
   onOpenSettings,
+  onOpenArtists,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
@@ -24,6 +25,7 @@ export function JourneyLandingScreen({
   onBuildJourney: () => void;
   onOpenMyTaste: () => void;
   onOpenSettings: () => void;
+  onOpenArtists: () => void;
 }) {
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -62,6 +64,9 @@ export function JourneyLandingScreen({
             <span className="badge-dot" />
             {online ? "ONLINE" : "OFFLINE"}
           </span>
+          <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
+            <PeopleIcon size={16} />
+          </button>
           <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
             <GearIcon />
           </button>
