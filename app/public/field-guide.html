@@ -52,6 +52,7 @@
   .artist-photo-wrap { width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: var(--surface); margin-bottom: 14px; }
   .artist-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
   .artist-photo-missing { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-faint); font-size: 11px; font-weight: 800; letter-spacing: 1px; border: 1px dashed var(--line); }
+  .photo-flag { font-size: 11px; font-weight: 700; color: #ffb14e; background: rgba(255,177,78,0.1); border: 1px solid rgba(255,177,78,0.35); border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
   .artist-head h3 { font-size: 26px; font-weight: 900; margin: 0 0 6px; letter-spacing: -0.3px; }
   .artist-tags { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
   .signal-pill { font-size: 11px; font-weight: 800; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; }
@@ -127,6 +128,7 @@
     <p class="prose"><b style="color:var(--established)">Established</b> — a documented, independent music career. <b style="color:var(--gold)">Emerging</b> — a real, smaller catalogue. <b style="color:var(--ultraviolet)">Unknown</b> — no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
     <p class="prose">Each day opens with a quick-reference table for scanning, then the full lineup in order. The first time you meet an artist in the book, you get their full profile — photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back up to that profile instead of reading the same bio twice.</p>
     <p class="prose">Locations are the original RSL address strings where given. Camp placement is reassigned every year — treat any address as approximate.</p>
+    <p class="prose"><b>A note on photos:</b> artist images were sourced automatically from public profiles (SoundCloud, Bandcamp, official websites) and were not hand-verified against a confirmed identity photo for every one of the 147 entries. Most are high-confidence official avatars, but 8 are flagged below their photo as unverified — including one reported directly by a human reviewer. If you spot a wrong photo anywhere in this book, treat it as a sourcing error, not an intentional misrepresentation, and let BMRI know.</p>
   </section>
 
   <section class="top-section" id="contents">
@@ -198,6 +200,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/black-panda.jpg" alt="Black Panda" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Reported by a human reviewer as a possible photo mismatch — please verify before relying on it.</div>
     <div class="artist-head">
       <h3>Black Panda</h3>
       <div class="artist-tags">
@@ -241,6 +244,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Gongo</h3>
       <div class="artist-tags">
@@ -272,6 +276,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/grease-withaspoon.jpg" alt="Grease Withaspoon" />
     </div>
+    
     <div class="artist-head">
       <h3>Grease Withaspoon</h3>
       <div class="artist-tags">
@@ -313,6 +318,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/rameff.jpg" alt="Rameff" />
     </div>
+    
     <div class="artist-head">
       <h3>Rameff</h3>
       <div class="artist-tags">
@@ -355,6 +361,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/contessa.jpg" alt="Contessa" />
     </div>
+    
     <div class="artist-head">
       <h3>Contessa</h3>
       <div class="artist-tags">
@@ -390,6 +397,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/iman-rizky.jpg" alt="Iman Rizky" />
     </div>
+    
     <div class="artist-head">
       <h3>Iman Rizky</h3>
       <div class="artist-tags">
@@ -425,6 +433,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/oba-flip.jpg" alt="OBA+FLIP" />
     </div>
+    
     <div class="artist-head">
       <h3>OBA+FLIP</h3>
       <div class="artist-tags">
@@ -462,6 +471,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>The Professor</h3>
       <div class="artist-tags">
@@ -500,6 +510,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/beat-kitty.jpg" alt="Beat Kitty" />
     </div>
+    
     <div class="artist-head">
       <h3>Beat Kitty</h3>
       <div class="artist-tags">
@@ -542,6 +553,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Amanda Gaez</h3>
       <div class="artist-tags">
@@ -585,6 +597,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Buddha Bass</h3>
       <div class="artist-tags">
@@ -625,6 +638,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/moldover.jpg" alt="Moldover" />
     </div>
+    
     <div class="artist-head">
       <h3>Moldover</h3>
       <div class="artist-tags">
@@ -663,6 +677,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Hookahdome Players</h3>
       <div class="artist-tags">
@@ -701,6 +716,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/tantum.jpg" alt="Tantum" />
     </div>
+    
     <div class="artist-head">
       <h3>Tantum</h3>
       <div class="artist-tags">
@@ -740,6 +756,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/igor-marijuan.jpg" alt="Igor Marijuan" />
     </div>
+    
     <div class="artist-head">
       <h3>Igor Marijuan</h3>
       <div class="artist-tags">
@@ -777,6 +794,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/major-trouble.jpg" alt="Major Trouble" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Source photo shows the artist from behind in one image; face match to the SoundCloud avatar used here is reasonably but not certainly confirmed.</div>
     <div class="artist-head">
       <h3>Major Trouble</h3>
       <div class="artist-tags">
@@ -812,6 +830,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/ogan.jpg" alt="Ogan" />
     </div>
+    
     <div class="artist-head">
       <h3>Ogan</h3>
       <div class="artist-tags">
@@ -853,6 +872,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/seth-schwarz.jpg" alt="Seth Schwarz" />
     </div>
+    
     <div class="artist-head">
       <h3>Seth Schwarz</h3>
       <div class="artist-tags">
@@ -895,6 +915,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/silkworm.jpg" alt="SILKWORM" />
     </div>
+    
     <div class="artist-head">
       <h3>SILKWORM</h3>
       <div class="artist-tags">
@@ -930,6 +951,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lovecraft.jpg" alt="Lovecraft" />
     </div>
+    
     <div class="artist-head">
       <h3>Lovecraft</h3>
       <div class="artist-tags">
@@ -974,6 +996,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Dirty Texans</h3>
       <div class="artist-tags">
@@ -1009,6 +1032,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/jo-ke.jpg" alt="Jo.Ke" />
     </div>
+    
     <div class="artist-head">
       <h3>Jo.Ke</h3>
       <div class="artist-tags">
@@ -1051,6 +1075,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Crowsnestster</h3>
       <div class="artist-tags">
@@ -1152,6 +1177,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Sacred Echoes</h3>
       <div class="artist-tags">
@@ -1191,6 +1217,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/loboman.jpg" alt="Loboman" />
     </div>
+    
     <div class="artist-head">
       <h3>Loboman</h3>
       <div class="artist-tags">
@@ -1225,6 +1252,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/bobby-lyte.jpg" alt="Bobby Lyte" />
     </div>
+    
     <div class="artist-head">
       <h3>Bobby Lyte</h3>
       <div class="artist-tags">
@@ -1265,6 +1293,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/christian-voldstad.jpg" alt="Christian Voldstad" />
     </div>
+    
     <div class="artist-head">
       <h3>Christian Voldstad</h3>
       <div class="artist-tags">
@@ -1306,6 +1335,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/organism.jpg" alt="Organism" />
     </div>
+    
     <div class="artist-head">
       <h3>Organism</h3>
       <div class="artist-tags">
@@ -1348,6 +1378,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/yaz.jpg" alt="Yaz" />
     </div>
+    
     <div class="artist-head">
       <h3>Yaz</h3>
       <div class="artist-tags">
@@ -1386,6 +1417,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lola-jak.jpg" alt="Lola Jak" />
     </div>
+    
     <div class="artist-head">
       <h3>Lola Jak</h3>
       <div class="artist-tags">
@@ -1425,6 +1457,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/yaku-means-water-hybrid-set.jpg" alt="Yaku Means Water (Hybrid Set)" />
     </div>
+    
     <div class="artist-head">
       <h3>Yaku Means Water (Hybrid Set)</h3>
       <div class="artist-tags">
@@ -1465,6 +1498,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/brk-brk.jpg" alt="BRK×BRK" />
     </div>
+    
     <div class="artist-head">
       <h3>BRK×BRK</h3>
       <div class="artist-tags">
@@ -1504,6 +1538,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/cameron-angeli.jpg" alt="Cameron Angeli" />
     </div>
+    
     <div class="artist-head">
       <h3>Cameron Angeli</h3>
       <div class="artist-tags">
@@ -1539,6 +1574,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/zilkha.jpg" alt="Zilkha" />
     </div>
+    
     <div class="artist-head">
       <h3>Zilkha</h3>
       <div class="artist-tags">
@@ -1574,6 +1610,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mntra.jpg" alt="MNTRA" />
     </div>
+    
     <div class="artist-head">
       <h3>MNTRA</h3>
       <div class="artist-tags">
@@ -1616,6 +1653,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/vozhd.jpg" alt="Vozhd'" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Image is stylized cover art with a text overlay, not a clean portrait.</div>
     <div class="artist-head">
       <h3>Vozhd'</h3>
       <div class="artist-tags">
@@ -1657,6 +1695,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/alkemiss-erika.jpg" alt="Alkemiss erika" />
     </div>
+    
     <div class="artist-head">
       <h3>Alkemiss erika</h3>
       <div class="artist-tags">
@@ -1697,6 +1736,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dugan.jpg" alt="DUGAN" />
     </div>
+    
     <div class="artist-head">
       <h3>DUGAN</h3>
       <div class="artist-tags">
@@ -1732,6 +1772,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/andrea-castells.jpg" alt="Andrea Castells" />
     </div>
+    
     <div class="artist-head">
       <h3>Andrea Castells</h3>
       <div class="artist-tags">
@@ -1766,6 +1807,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/stephan-may.jpg" alt="Stephan May" />
     </div>
+    
     <div class="artist-head">
       <h3>Stephan May</h3>
       <div class="artist-tags">
@@ -1807,6 +1849,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/david-hohme.jpg" alt="David Hohme" />
     </div>
+    
     <div class="artist-head">
       <h3>David Hohme</h3>
       <div class="artist-tags">
@@ -1847,6 +1890,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/d1.jpg" alt="D1" />
     </div>
+    
     <div class="artist-head">
       <h3>D1</h3>
       <div class="artist-tags">
@@ -1883,6 +1927,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/zach-walker.jpg" alt="Zach Walker" />
     </div>
+    
     <div class="artist-head">
       <h3>Zach Walker</h3>
       <div class="artist-tags">
@@ -1918,6 +1963,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/breauxx.jpg" alt="Breauxx" />
     </div>
+    
     <div class="artist-head">
       <h3>Breauxx</h3>
       <div class="artist-tags">
@@ -1959,6 +2005,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/nevos.jpg" alt="Nevos" />
     </div>
+    
     <div class="artist-head">
       <h3>Nevos</h3>
       <div class="artist-tags">
@@ -1994,6 +2041,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/sasi.jpg" alt="Sasi" />
     </div>
+    
     <div class="artist-head">
       <h3>Sasi</h3>
       <div class="artist-tags">
@@ -2034,6 +2082,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/artemistique.jpg" alt="Artemistique" />
     </div>
+    
     <div class="artist-head">
       <h3>Artemistique</h3>
       <div class="artist-tags">
@@ -2074,6 +2123,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mamay.jpg" alt="Mamay" />
     </div>
+    
     <div class="artist-head">
       <h3>Mamay</h3>
       <div class="artist-tags">
@@ -2115,6 +2165,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kon-faber.jpg" alt="Kon Faber" />
     </div>
+    
     <div class="artist-head">
       <h3>Kon Faber</h3>
       <div class="artist-tags">
@@ -2156,6 +2207,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/denton.jpg" alt="Denton" />
     </div>
+    
     <div class="artist-head">
       <h3>Denton</h3>
       <div class="artist-tags">
@@ -2195,6 +2247,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/sagmo.jpg" alt="Sagmo" />
     </div>
+    
     <div class="artist-head">
       <h3>Sagmo</h3>
       <div class="artist-tags">
@@ -2234,6 +2287,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/tonic-walter.jpg" alt="Tonic Walter" />
     </div>
+    
     <div class="artist-head">
       <h3>Tonic Walter</h3>
       <div class="artist-tags">
@@ -2268,6 +2322,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/ro-rousseau.jpg" alt="Ro Rousseau" />
     </div>
+    
     <div class="artist-head">
       <h3>Ro Rousseau</h3>
       <div class="artist-tags">
@@ -2308,6 +2363,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/matony.jpg" alt="Matony" />
     </div>
+    
     <div class="artist-head">
       <h3>Matony</h3>
       <div class="artist-tags">
@@ -2347,6 +2403,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/simbasol.jpg" alt="SIMBASŌL" />
     </div>
+    
     <div class="artist-head">
       <h3>SIMBASŌL</h3>
       <div class="artist-tags">
@@ -2383,6 +2440,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mona-pirzad.jpg" alt="Mona Pirzad" />
     </div>
+    
     <div class="artist-head">
       <h3>Mona Pirzad</h3>
       <div class="artist-tags">
@@ -2422,6 +2480,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/ahau.jpg" alt="Ahau" />
     </div>
+    
     <div class="artist-head">
       <h3>Ahau</h3>
       <div class="artist-tags">
@@ -2463,6 +2522,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lp-giobbi.jpg" alt="LP Giobbi" />
     </div>
+    
     <div class="artist-head">
       <h3>LP Giobbi</h3>
       <div class="artist-tags">
@@ -2506,6 +2566,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Cindiana Jones</h3>
       <div class="artist-tags">
@@ -2549,6 +2610,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mr-bold.jpg" alt="Mr. Bold" />
     </div>
+    
     <div class="artist-head">
       <h3>Mr. Bold</h3>
       <div class="artist-tags">
@@ -2676,6 +2738,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Todd Spero</h3>
       <div class="artist-tags">
@@ -2717,6 +2780,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kohbain.jpg" alt="Kohbain" />
     </div>
+    
     <div class="artist-head">
       <h3>Kohbain</h3>
       <div class="artist-tags">
@@ -2764,6 +2828,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/don-gentry.jpg" alt="Don Gentry" />
     </div>
+    
     <div class="artist-head">
       <h3>Don Gentry</h3>
       <div class="artist-tags">
@@ -2808,6 +2873,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/syd-gris.jpg" alt="Syd Gris" />
     </div>
+    
     <div class="artist-head">
       <h3>Syd Gris</h3>
       <div class="artist-tags">
@@ -2843,6 +2909,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/franccesco-cardenas.jpg" alt="Franccesco Cardenas" />
     </div>
+    
     <div class="artist-head">
       <h3>Franccesco Cardenas</h3>
       <div class="artist-tags">
@@ -2884,6 +2951,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/cheetatah.jpg" alt="CHEETATAH" />
     </div>
+    
     <div class="artist-head">
       <h3>CHEETATAH</h3>
       <div class="artist-tags">
@@ -2920,6 +2988,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/millad.jpg" alt="Millad" />
     </div>
+    
     <div class="artist-head">
       <h3>Millad</h3>
       <div class="artist-tags">
@@ -2959,6 +3028,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Onelife</h3>
       <div class="artist-tags">
@@ -2998,6 +3068,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Razing Prophet</h3>
       <div class="artist-tags">
@@ -3032,6 +3103,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/catori.jpg" alt="Catori" />
     </div>
+    
     <div class="artist-head">
       <h3>Catori</h3>
       <div class="artist-tags">
@@ -3075,6 +3147,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>VLVT // PLSE</h3>
       <div class="artist-tags">
@@ -3107,6 +3180,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/ramzi.jpg" alt="Ramzi" />
     </div>
+    
     <div class="artist-head">
       <h3>Ramzi</h3>
       <div class="artist-tags">
@@ -3139,6 +3213,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/wronski.jpg" alt="Wronski" />
     </div>
+    
     <div class="artist-head">
       <h3>Wronski</h3>
       <div class="artist-tags">
@@ -3173,6 +3248,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/thiccboi-drewski.jpg" alt="Thiccboi Drewski" />
     </div>
+    
     <div class="artist-head">
       <h3>Thiccboi Drewski</h3>
       <div class="artist-tags">
@@ -3208,6 +3284,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/johnnie-clutch.jpg" alt="Johnnie Clutch" />
     </div>
+    
     <div class="artist-head">
       <h3>Johnnie Clutch</h3>
       <div class="artist-tags">
@@ -3249,6 +3326,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Heavenly Father</h3>
       <div class="artist-tags">
@@ -3283,6 +3361,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lidiya.jpg" alt="Lidiya" />
     </div>
+    
     <div class="artist-head">
       <h3>Lidiya</h3>
       <div class="artist-tags">
@@ -3314,6 +3393,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/joanna-magik.jpg" alt="Joanna Magik" />
     </div>
+    
     <div class="artist-head">
       <h3>Joanna Magik</h3>
       <div class="artist-tags">
@@ -3348,6 +3428,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Dragonfly</h3>
       <div class="artist-tags">
@@ -3382,6 +3463,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dj-spacecamp.jpg" alt="dj spacecamp" />
     </div>
+    
     <div class="artist-head">
       <h3>dj spacecamp</h3>
       <div class="artist-tags">
@@ -3424,6 +3506,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lost-desert.jpg" alt="Lost Desert" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Artist's own promotional image, but a stylized shot with the face obscured — not a clean identity photo.</div>
     <div class="artist-head">
       <h3>Lost Desert</h3>
       <div class="artist-tags">
@@ -3461,6 +3544,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/golden.jpg" alt="Golden" />
     </div>
+    
     <div class="artist-head">
       <h3>Golden</h3>
       <div class="artist-tags">
@@ -3503,6 +3587,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/miko-franconi.jpg" alt="Miko Franconi" />
     </div>
+    
     <div class="artist-head">
       <h3>Miko Franconi</h3>
       <div class="artist-tags">
@@ -3543,6 +3628,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/philou.jpg" alt="Philou" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — No direct profile link in the source data — matched by city (Amsterdam) to a same-named DJ; identity not independently confirmed.</div>
     <div class="artist-head">
       <h3>Philou</h3>
       <div class="artist-tags">
@@ -3574,6 +3660,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/docta-reebs.jpg" alt="docta reebs" />
     </div>
+    
     <div class="artist-head">
       <h3>docta reebs</h3>
       <div class="artist-tags">
@@ -3617,6 +3704,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/go-south.jpg" alt="Go South" />
     </div>
+    
     <div class="artist-head">
       <h3>Go South</h3>
       <div class="artist-tags">
@@ -3653,6 +3741,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/gilarden.jpg" alt="Gilarden" />
     </div>
+    
     <div class="artist-head">
       <h3>Gilarden</h3>
       <div class="artist-tags">
@@ -3689,6 +3778,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/pomboklap.jpg" alt="POMBOKLAP" />
     </div>
+    
     <div class="artist-head">
       <h3>POMBOKLAP</h3>
       <div class="artist-tags">
@@ -3723,6 +3813,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mario-lui.jpg" alt="Mario Lui" />
     </div>
+    
     <div class="artist-head">
       <h3>Mario Lui</h3>
       <div class="artist-tags">
@@ -3756,6 +3847,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Doozie</h3>
       <div class="artist-tags">
@@ -3799,6 +3891,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Roy Rosenfeld b2b Vanjee</h3>
       <div class="artist-tags">
@@ -3836,6 +3929,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>turtletheory</h3>
       <div class="artist-tags">
@@ -3876,6 +3970,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/rampue-orbit.jpg" alt="Rampue / Orbit" />
     </div>
+    
     <div class="artist-head">
       <h3>Rampue / Orbit</h3>
       <div class="artist-tags">
@@ -3912,6 +4007,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/vintage-culture.jpg" alt="Vintage Culture" />
     </div>
+    
     <div class="artist-head">
       <h3>Vintage Culture</h3>
       <div class="artist-tags">
@@ -3946,6 +4042,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/greg-eversoul.jpg" alt="Greg Eversoul" />
     </div>
+    
     <div class="artist-head">
       <h3>Greg Eversoul</h3>
       <div class="artist-tags">
@@ -3988,6 +4085,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/infected-mushroom-dj-set.jpg" alt="Infected Mushroom (DJ Set)" />
     </div>
+    
     <div class="artist-head">
       <h3>Infected Mushroom (DJ Set)</h3>
       <div class="artist-tags">
@@ -4026,6 +4124,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/jehnee.jpg" alt="JEHNEE" />
     </div>
+    
     <div class="artist-head">
       <h3>JEHNEE</h3>
       <div class="artist-tags">
@@ -4079,6 +4178,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/museus.jpg" alt="Museus" />
     </div>
+    
     <div class="artist-head">
       <h3>Museus</h3>
       <div class="artist-tags">
@@ -4121,6 +4221,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/josh-forster.jpg" alt="Josh Forster" />
     </div>
+    
     <div class="artist-head">
       <h3>Josh Forster</h3>
       <div class="artist-tags">
@@ -4163,6 +4264,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dawdust.jpg" alt="DAWdust" />
     </div>
+    
     <div class="artist-head">
       <h3>DAWdust</h3>
       <div class="artist-tags">
@@ -4197,6 +4299,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/niall-augustine.jpg" alt="Niall Augustine" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Only a very low-resolution (100x100) avatar was found; likely correct but image quality is poor.</div>
     <div class="artist-head">
       <h3>Niall Augustine</h3>
       <div class="artist-tags">
@@ -4243,6 +4346,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kimonos.jpg" alt="Kimonos" />
     </div>
+    
     <div class="artist-head">
       <h3>Kimonos</h3>
       <div class="artist-tags">
@@ -4285,6 +4389,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/sensanik.jpg" alt="Sensanik" />
     </div>
+    
     <div class="artist-head">
       <h3>Sensanik</h3>
       <div class="artist-tags">
@@ -4429,6 +4534,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kruz.jpg" alt="Krüz" />
     </div>
+    
     <div class="artist-head">
       <h3>Krüz</h3>
       <div class="artist-tags">
@@ -4468,6 +4574,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/asli-kose.jpg" alt="Asli Kose" />
     </div>
+    
     <div class="artist-head">
       <h3>Asli Kose</h3>
       <div class="artist-tags">
@@ -4509,6 +4616,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dj-p3tunia.jpg" alt="DJ P3tunia" />
     </div>
+    
     <div class="artist-head">
       <h3>DJ P3tunia</h3>
       <div class="artist-tags">
@@ -4549,6 +4657,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Black Rock Philharmonic</h3>
       <div class="artist-tags">
@@ -4606,6 +4715,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/bryn-avery.jpg" alt="Bryn Avery" />
     </div>
+    
     <div class="artist-head">
       <h3>Bryn Avery</h3>
       <div class="artist-tags">
@@ -4645,6 +4755,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/vanjee.jpg" alt="Vanjee" />
     </div>
+    
     <div class="artist-head">
       <h3>Vanjee</h3>
       <div class="artist-tags">
@@ -4682,6 +4793,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/grant-kaye.jpg" alt="Grant Kaye" />
     </div>
+    
     <div class="artist-head">
       <h3>Grant Kaye</h3>
       <div class="artist-tags">
@@ -4729,6 +4841,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Xinobi b2b Losha</h3>
       <div class="artist-tags">
@@ -4764,6 +4877,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/jerzy-del-mar.jpg" alt="Jerzy del Mar" />
     </div>
+    
     <div class="artist-head">
       <h3>Jerzy del Mar</h3>
       <div class="artist-tags">
@@ -4799,6 +4913,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/launchpad-infinity.jpg" alt="Launchpad Infinity" />
     </div>
+    
     <div class="artist-head">
       <h3>Launchpad Infinity</h3>
       <div class="artist-tags">
@@ -4841,6 +4956,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/deniz-reno.jpg" alt="Deniz Reno" />
     </div>
+    
     <div class="artist-head">
       <h3>Deniz Reno</h3>
       <div class="artist-tags">
@@ -4883,6 +4999,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/iggy.jpg" alt="Iggy" />
     </div>
+    
     <div class="artist-head">
       <h3>Iggy</h3>
       <div class="artist-tags">
@@ -4917,6 +5034,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/j-thor.jpg" alt="J-Thor" />
     </div>
+    
     <div class="artist-head">
       <h3>J-Thor</h3>
       <div class="artist-tags">
@@ -4951,6 +5069,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/l-core.jpg" alt="L'Core" />
     </div>
+    
     <div class="artist-head">
       <h3>L'Core</h3>
       <div class="artist-tags">
@@ -4994,6 +5113,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/gordyceps.jpg" alt="Gordyceps" />
     </div>
+    
     <div class="artist-head">
       <h3>Gordyceps</h3>
       <div class="artist-tags">
@@ -5028,6 +5148,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mobad.jpg" alt="Mobâd" />
     </div>
+    
     <div class="artist-head">
       <h3>Mobâd</h3>
       <div class="artist-tags">
@@ -5063,6 +5184,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/illich-mujica.jpg" alt="illich Mujica" />
     </div>
+    
     <div class="artist-head">
       <h3>illich Mujica</h3>
       <div class="artist-tags">
@@ -5097,6 +5219,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/xinobi.jpg" alt="Xinobi" />
     </div>
+    
     <div class="artist-head">
       <h3>Xinobi</h3>
       <div class="artist-tags">
@@ -5148,6 +5271,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/s-akiibaum.jpg" alt="S'akiibaum" />
     </div>
+    
     <div class="artist-head">
       <h3>S'akiibaum</h3>
       <div class="artist-tags">
@@ -5182,6 +5306,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/emanate.jpg" alt="Emanate" />
     </div>
+    
     <div class="artist-head">
       <h3>Emanate</h3>
       <div class="artist-tags">
@@ -5226,6 +5351,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/natascha-polke.jpg" alt="Natascha Polké" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Original avatar was album-cover art rather than a portrait; swapped for a profile photo, not independently cross-verified.</div>
     <div class="artist-head">
       <h3>Natascha Polké</h3>
       <div class="artist-tags">
@@ -5278,6 +5404,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kr3ture.jpg" alt="Kr3ture" />
     </div>
+    
     <div class="artist-head">
       <h3>Kr3ture</h3>
       <div class="artist-tags">
@@ -5332,6 +5459,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/tycho.jpg" alt="Tycho" />
     </div>
+    
     <div class="artist-head">
       <h3>Tycho</h3>
       <div class="artist-tags">
@@ -5372,6 +5500,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/handz.jpg" alt="HANDZ" />
     </div>
+    
     <div class="artist-head">
       <h3>HANDZ</h3>
       <div class="artist-tags">
@@ -5418,6 +5547,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dj-zip-disk.jpg" alt="DJ Zip Disk" />
     </div>
+    <div class="photo-flag">⚠ PHOTO UNVERIFIED — Source account username doesn't match the stage name; matched via page title and regional event history only.</div>
     <div class="artist-head">
       <h3>DJ Zip Disk</h3>
       <div class="artist-tags">
@@ -5580,6 +5710,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/ladybeats-b2b-tagg.jpg" alt="Ladybeats B2B Tagg" />
     </div>
+    
     <div class="artist-head">
       <h3>Ladybeats B2B Tagg</h3>
       <div class="artist-tags">
@@ -5619,6 +5750,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dom-dolla.jpg" alt="Dom Dolla" />
     </div>
+    
     <div class="artist-head">
       <h3>Dom Dolla</h3>
       <div class="artist-tags">
@@ -5684,6 +5816,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/truprwulf.jpg" alt="Truprwulf" />
     </div>
+    
     <div class="artist-head">
       <h3>Truprwulf</h3>
       <div class="artist-tags">
@@ -5724,6 +5857,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/louis-the-child.jpg" alt="Louis The Child" />
     </div>
+    
     <div class="artist-head">
       <h3>Louis The Child</h3>
       <div class="artist-tags">
@@ -5759,6 +5893,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/haana.jpg" alt="Häana" />
     </div>
+    
     <div class="artist-head">
       <h3>Häana</h3>
       <div class="artist-tags">
@@ -5799,6 +5934,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>REZONANCE</h3>
       <div class="artist-tags">
@@ -5834,6 +5970,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/jkali.jpg" alt="Jkali" />
     </div>
+    
     <div class="artist-head">
       <h3>Jkali</h3>
       <div class="artist-tags">
@@ -5870,6 +6007,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/lana-with-a-k.jpg" alt="Lana with a K" />
     </div>
+    
     <div class="artist-head">
       <h3>Lana with a K</h3>
       <div class="artist-tags">
@@ -5918,6 +6056,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/2juicy.jpg" alt="2Juicy" />
     </div>
+    
     <div class="artist-head">
       <h3>2Juicy</h3>
       <div class="artist-tags">
@@ -5968,6 +6107,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/fiendi.jpg" alt="Fiendi" />
     </div>
+    
     <div class="artist-head">
       <h3>Fiendi</h3>
       <div class="artist-tags">
@@ -6016,6 +6156,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/santiago-garcia.jpg" alt="Santiago Garcia" />
     </div>
+    
     <div class="artist-head">
       <h3>Santiago Garcia</h3>
       <div class="artist-tags">
@@ -6062,6 +6203,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/krakadilla.jpg" alt="KRAKADILLA" />
     </div>
+    
     <div class="artist-head">
       <h3>KRAKADILLA</h3>
       <div class="artist-tags">
@@ -6101,6 +6243,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/oveous.jpg" alt="OVEOUS" />
     </div>
+    
     <div class="artist-head">
       <h3>OVEOUS</h3>
       <div class="artist-tags">
@@ -6170,6 +6313,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/seth-finkin.jpg" alt="Seth Finkin" />
     </div>
+    
     <div class="artist-head">
       <h3>Seth Finkin</h3>
       <div class="artist-tags">
@@ -6319,6 +6463,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/dj-spacecamp-b2b-freddie.jpg" alt="dj spacecamp b2b freddie" />
     </div>
+    
     <div class="artist-head">
       <h3>dj spacecamp b2b freddie</h3>
       <div class="artist-tags">
@@ -6480,6 +6625,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/kalypso.jpg" alt="Kalypso" />
     </div>
+    
     <div class="artist-head">
       <h3>Kalypso</h3>
       <div class="artist-tags">
@@ -6601,6 +6747,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/mr-jennings.jpg" alt="Mr. Jennings" />
     </div>
+    
     <div class="artist-head">
       <h3>Mr. Jennings</h3>
       <div class="artist-tags">
@@ -6701,6 +6848,7 @@
     <div class="artist-photo-wrap">
       <img class="artist-photo" src="images/artists/jalaya.jpg" alt="Jalaya" />
     </div>
+    
     <div class="artist-head">
       <h3>Jalaya</h3>
       <div class="artist-tags">
@@ -6759,6 +6907,7 @@
     <div class="artist-photo-wrap">
       <div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>
     </div>
+    
     <div class="artist-head">
       <h3>Kosmozoo Downtempo</h3>
       <div class="artist-tags">

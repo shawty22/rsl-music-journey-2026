@@ -13,6 +13,26 @@ const DAY_DATE = { SUN: "Aug 30", MON: "Aug 31", TUE: "Sep 1", WED: "Sep 2", THU
 
 const PERF_TYPE_LABEL = { DJ: "DJ", LIVE: "Live", HYBRID: "Hybrid", B2B: "B2B", LIVE_BAND: "Live Band", VOCALIST: "Vocalist", PERFORMANCE_MULTIMEDIA: "Multimedia", UNKNOWN: "Unknown" };
 
+// Photos were sourced automatically from public profiles (SoundCloud/Bandcamp/
+// website avatars), not hand-verified against a confirmed identity photo for
+// every artist. These were flagged as lower-confidence by the sourcing pass
+// itself, or reported wrong by a human — surfaced honestly rather than
+// presented as certain. Add to this list any time a mismatch is found.
+const FLAGGED_IMAGES = {
+  "black-panda": "Reported by a human reviewer as a possible photo mismatch — please verify before relying on it.",
+  "major-trouble": "Source photo shows the artist from behind in one image; face match to the SoundCloud avatar used here is reasonably but not certainly confirmed.",
+  philou: "No direct profile link in the source data — matched by city (Amsterdam) to a same-named DJ; identity not independently confirmed.",
+  "lost-desert": "Artist's own promotional image, but a stylized shot with the face obscured — not a clean identity photo.",
+  "natascha-polke": "Original avatar was album-cover art rather than a portrait; swapped for a profile photo, not independently cross-verified.",
+  "dj-zip-disk": "Source account username doesn't match the stage name; matched via page title and regional event history only.",
+  "niall-augustine": "Only a very low-resolution (100x100) avatar was found; likely correct but image quality is poor.",
+  vozhd: "Image is stylized cover art with a text overlay, not a clean portrait.",
+};
+
+export function imageFlagFor(artistId) {
+  return FLAGGED_IMAGES[artistId] || null;
+}
+
 function nightMinutesFromHour24(hour24, minute) {
   const base = hour24 * 60 + minute;
   return hour24 < 12 ? base + 24 * 60 : base;
@@ -186,4 +206,4 @@ export function loadModel(rootDir, imagesDir) {
   return { artists, artistById, perfs, established, emerging, wildcards, days, genreIndex, anchorId, imageFor };
 }
 
-export { DAY_ORDER, DAY_LABEL, DAY_DATE, PERF_TYPE_LABEL };
+export { DAY_ORDER, DAY_LABEL, DAY_DATE, PERF_TYPE_LABEL, FLAGGED_IMAGES };

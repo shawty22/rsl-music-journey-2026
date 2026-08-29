@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
 import { execFileSync } from "node:child_process";
-import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType } from "./lib/field-guide-model.mjs";
+import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES } from "./lib/field-guide-model.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -71,9 +71,11 @@ function fullEntryXhtml(a) {
   const geo = geoLine(a);
   const t = tier(a);
 
+  const flag = img ? imageFlagFor(a.artist_id) : null;
   return `
   <div class="entry" id="${esc(anchorId(a.artist_id))}">
     ${img ? `<img class="photo" src="images/artists/${esc(a.artist_id)}.jpg" alt="${esc(a.artist)}"/>` : `<div class="photo-missing">IMAGE NOT FOUND</div>`}
+    ${flag ? `<p class="photo-flag">&#9888; PHOTO UNVERIFIED &#8212; ${esc(flag)}</p>` : ""}
     <h3>${esc(a.artist)}</h3>
     <p class="pills"><span class="pill pill-${t.toLowerCase()}">${t}</span> <span class="pill">${esc(perfType(a))}</span></p>
     <p class="genres">${esc(genres)}</p>
@@ -182,7 +184,8 @@ const coverBody = `
 const howToBody = `<h1>How to Read BMRI</h1>
 <p><b>Established</b> &#8212; a documented, independent music career. <b>Emerging</b> &#8212; a real, smaller catalogue. <b>Unknown</b> &#8212; no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
 <p>Each day opens with the full lineup in chronological order. The first time you meet an artist in this book, you get their full profile &#8212; photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back to that profile instead of reading the same bio twice.</p>
-<p>Locations are the original RSL address strings where given. Camp placement is reassigned every year &#8212; treat any address as approximate.</p>`;
+<p>Locations are the original RSL address strings where given. Camp placement is reassigned every year &#8212; treat any address as approximate.</p>
+<p><b>A note on photos:</b> artist images were sourced automatically from public profiles (SoundCloud, Bandcamp, official websites) and were not hand-verified against a confirmed identity photo for every one of the 147 entries. Most are high-confidence official avatars, but ${Object.keys(FLAGGED_IMAGES).length} are flagged below their photo as unverified &#8212; including one reported directly by a human reviewer. If you spot a wrong photo anywhere in this book, treat it as a sourcing error, not an intentional misrepresentation, and let BMRI know.</p>`;
 
 const sourcesBody = `<h1>Sources</h1>
 <p>Built from the RSL 2026 Burning Man music guide and independent research linked per artist throughout this book. Nothing in this book is fabricated &#8212; a missing field means the information isn't known yet, not that it was skipped.</p>`;
@@ -215,6 +218,7 @@ h4 { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em; color
 .notable, .perf, .listen { font-size: 0.88em; margin: 0.15em 0; }
 .perf-empty { font-size: 0.88em; color: #777; font-style: italic; }
 .entry { margin-bottom: 1.6em; padding-bottom: 1.1em; border-bottom: 1px solid #ddd; }
+.photo-flag { font-size: 0.8em; font-weight: bold; color: #7a4a00; background: #fdf0dc; border: 1px solid #e0b877; border-radius: 6px; padding: 0.3em 0.6em; margin: 0.4em 0; }
 .backref { font-size: 0.9em; color: #444; border-bottom: 1px solid #eee; padding: 0.3em 0; }
 .sources { font-size: 0.75em; color: #999; margin-top: 0.5em; }
 .index-row { margin: 0.2em 0; }

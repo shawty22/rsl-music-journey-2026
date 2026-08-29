@@ -81,6 +81,10 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
         <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.pdf" download>
           Download PDF
         </a>
+        <p className="field-guide-disclaimer">
+          Photos were auto-sourced from public artist profiles, not hand-verified one by one. Most are correct, but a few
+          are flagged inside the guide as unverified — if you spot a wrong photo, it's a sourcing error, not intentional.
+        </p>
       </div>
     </div>
   );

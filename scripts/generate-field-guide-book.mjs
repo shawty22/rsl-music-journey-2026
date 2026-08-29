@@ -7,7 +7,7 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType } from "./lib/field-guide-model.mjs";
+import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES } from "./lib/field-guide-model.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -79,11 +79,13 @@ function fullEntryHtml(a) {
   const geo = geoLine(a);
   const t = tier(a);
 
+  const flag = img ? imageFlagFor(a.artist_id) : null;
   return `
   <article class="artist-entry" id="${esc(anchorId(a.artist_id))}">
     <div class="artist-photo-wrap">
       ${img ? `<img class="artist-photo" src="${esc(img)}" alt="${esc(a.artist)}" />` : `<div class="artist-photo artist-photo-missing"><span>IMAGE NOT FOUND</span></div>`}
     </div>
+    ${flag ? `<div class="photo-flag">⚠ PHOTO UNVERIFIED — ${esc(flag)}</div>` : ""}
     <div class="artist-head">
       <h3>${esc(a.artist)}</h3>
       <div class="artist-tags">
@@ -257,6 +259,7 @@ const html = `<!doctype html>
   .artist-photo-wrap { width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: var(--surface); margin-bottom: 14px; }
   .artist-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
   .artist-photo-missing { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-faint); font-size: 11px; font-weight: 800; letter-spacing: 1px; border: 1px dashed var(--line); }
+  .photo-flag { font-size: 11px; font-weight: 700; color: #ffb14e; background: rgba(255,177,78,0.1); border: 1px solid rgba(255,177,78,0.35); border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
   .artist-head h3 { font-size: 26px; font-weight: 900; margin: 0 0 6px; letter-spacing: -0.3px; }
   .artist-tags { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
   .signal-pill { font-size: 11px; font-weight: 800; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; }
@@ -332,6 +335,7 @@ const html = `<!doctype html>
     <p class="prose"><b style="color:var(--established)">Established</b> — a documented, independent music career. <b style="color:var(--gold)">Emerging</b> — a real, smaller catalogue. <b style="color:var(--ultraviolet)">Unknown</b> — no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
     <p class="prose">Each day opens with a quick-reference table for scanning, then the full lineup in order. The first time you meet an artist in the book, you get their full profile — photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back up to that profile instead of reading the same bio twice.</p>
     <p class="prose">Locations are the original RSL address strings where given. Camp placement is reassigned every year — treat any address as approximate.</p>
+    <p class="prose"><b>A note on photos:</b> artist images were sourced automatically from public profiles (SoundCloud, Bandcamp, official websites) and were not hand-verified against a confirmed identity photo for every one of the 147 entries. Most are high-confidence official avatars, but ${Object.keys(FLAGGED_IMAGES).length} are flagged below their photo as unverified — including one reported directly by a human reviewer. If you spot a wrong photo anywhere in this book, treat it as a sourcing error, not an intentional misrepresentation, and let BMRI know.</p>
   </section>
 
   <section class="top-section" id="contents">
