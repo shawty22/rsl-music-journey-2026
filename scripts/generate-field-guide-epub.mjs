@@ -1,41 +1,24 @@
 #!/usr/bin/env node
-// Hand-built EPUB3 (no external epub library — it's just a structured zip of
-// XHTML). Same source data, same content decisions as generate-artist-guide.mjs
-// (kept as a light duplication rather than a shared import, to keep each
-// generator simple and independently readable). Built with Node's built-in
-// zlib, no new dependency.
+// BMRI 2026 Music Field Guide — EPUB3. Genuinely reflowable, day-based
+// chapters built from the SAME shared model as the HTML/PDF generator
+// (scripts/lib/field-guide-model.mjs), not a wrapped copy of the website.
+// Hand-built as a structured zip — no epub library dependency.
 
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, mkdtempSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
 import { execFileSync } from "node:child_process";
+import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType } from "./lib/field-guide-model.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dataDir = path.join(__dirname, "..", "data", "normalized");
-const outPath = path.join(__dirname, "..", "app", "public", "BMRI-Field-Guide-2026.epub");
+const ROOT = path.join(__dirname, "..");
+const imagesDir = path.join(ROOT, "app", "public", "images", "artists");
+const outPath = path.join(ROOT, "app", "public", "BMRI-2026-Music-Field-Guide.epub");
 
-const artists = JSON.parse(readFileSync(path.join(dataDir, "artists.json"), "utf8"));
-const performances = JSON.parse(readFileSync(path.join(dataDir, "performances.json"), "utf8"));
+const model = loadModel(ROOT, imagesDir);
+const { established, emerging, wildcards, days, genreIndex, anchorId, imageFor } = model;
 
-const seenPerfKeys = new Set();
-const dedupedPerformances = performances.filter((p) => {
-  const key = p.is_possible_duplicate ? `${p.artist_id}__${p.day_start}__${p.set_time_raw}__${p.camp}` : p.performance_id;
-  if (seenPerfKeys.has(key)) return false;
-  seenPerfKeys.add(key);
-  return true;
-});
-
-const perfsByArtist = new Map();
-for (const p of dedupedPerformances) {
-  if (!perfsByArtist.has(p.artist_id)) perfsByArtist.set(p.artist_id, []);
-  perfsByArtist.get(p.artist_id).push(p);
-}
-for (const list of perfsByArtist.values()) list.sort((a, b) => (a.global_sort_key ?? 0) - (b.global_sort_key ?? 0));
-
-function tier(a) {
-  return (a.signal_status || "").toUpperCase() === "UNKNOWN" ? "UNKNOWN" : (a.signal_status || "").toUpperCase();
-}
 function esc(s) {
   return String(s ?? "")
     .replace(/&/g, "&amp;")
@@ -43,44 +26,72 @@ function esc(s) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
-function aboutText(a) {
-  return a.bio || [a.discovery_note, a.catalogue_signal, a.external_signal].filter(Boolean).join(" ") || null;
-}
-function geoLine(a) {
-  const parts = [a.city, a.state_region, a.country].filter(Boolean);
-  return parts.length ? parts.join(", ") : "Unknown";
-}
-const PERF_TYPE_LABEL = { DJ: "DJ", LIVE: "Live", HYBRID: "Hybrid", B2B: "B2B", LIVE_BAND: "Live Band", VOCALIST: "Vocalist", PERFORMANCE_MULTIMEDIA: "Multimedia", UNKNOWN: "Unknown" };
-function perfType(a) {
-  return PERF_TYPE_LABEL[a.performance_type] || "Unknown";
+
+function allPerformancesOf(artistId) {
+  return model.perfs.filter((p) => p.artist_id === artistId).sort((a, b) => (a.global_sort_key ?? 0) - (b.global_sort_key ?? 0));
 }
 
-const established = artists.filter((a) => tier(a) === "ESTABLISHED").sort((a, b) => a.artist.localeCompare(b.artist));
-const emerging = artists.filter((a) => tier(a) === "EMERGING").sort((a, b) => a.artist.localeCompare(b.artist));
-const wildcards = artists.filter((a) => tier(a) === "UNKNOWN" && aboutText(a)).sort((a, b) => a.artist.localeCompare(b.artist));
-const unknownTotal = artists.filter((a) => tier(a) === "UNKNOWN").length;
+function notableBlock(a) {
+  const rows = [
+    a.labels ? `<p class="notable"><b>Labels</b> ${esc(a.labels)}</p>` : "",
+    a.notable_releases ? `<p class="notable"><b>Notable releases</b> ${esc(a.notable_releases)}</p>` : "",
+    a.notable_collaborations ? `<p class="notable"><b>Collaborations</b> ${esc(a.notable_collaborations)}</p>` : "",
+    a.burning_man_history ? `<p class="notable"><b>Burning Man history</b> ${esc(a.burning_man_history)}</p>` : "",
+  ].filter(Boolean);
+  return rows.join("\n");
+}
 
-function entryXhtml(a) {
+function linksBlock(a) {
+  const LINKS = [
+    ["spotify_url", "Spotify"],
+    ["soundcloud_url", "SoundCloud"],
+    ["bandcamp_url", "Bandcamp"],
+    ["apple_music_url", "Apple Music"],
+    ["website", "Website"],
+  ];
+  const found = LINKS.filter(([key]) => a[key]);
+  if (!found.length) return "";
+  return `<p class="listen"><b>Listen / explore</b> ${found.map(([key, label]) => `<a href="${esc(a[key])}">${esc(label)}</a>`).join(" &#183; ")}</p>`;
+}
+
+function performanceListXhtml(artistId) {
+  const perfs = allPerformancesOf(artistId);
+  if (!perfs.length) return `<p class="perf-empty">No confirmed set time in the source data.</p>`;
+  return perfs.map((p) => `<p class="perf"><b>${esc(p.day_raw)} @ ${esc(p.set_time_raw)}</b> &#8212; ${esc(p.camp)}${p.location ? ` &#183; ${esc(p.location)}` : ""}</p>`).join("\n");
+}
+
+// image files actually referenced this build, copied into OEBPS/images/artists/
+const usedImages = new Set();
+
+function fullEntryXhtml(a) {
+  const img = imageFor(a.artist_id);
+  if (img) usedImages.add(a.artist_id);
   const about = aboutText(a);
-  const genres = a.genre_tags?.length ? a.genre_tags.join(" / ") : "genre not yet tagged";
-  const perfs = perfsByArtist.get(a.artist_id) || [];
-  const perfRows = perfs.length
-    ? perfs.map((p) => `<p class="perf"><b>${esc(p.day_raw)} @ ${esc(p.set_time_raw)}</b> — ${esc(p.camp)}${p.location ? ` · ${esc(p.location)}` : ""}</p>`).join("\n")
-    : `<p class="perf-empty">No confirmed set time in the source data.</p>`;
-  const notable = [
-    a.labels ? `<p class="notable"><b>Labels:</b> ${esc(a.labels)}</p>` : "",
-    a.notable_releases ? `<p class="notable"><b>Releases:</b> ${esc(a.notable_releases)}</p>` : "",
-    a.notable_collaborations ? `<p class="notable"><b>Collaborations:</b> ${esc(a.notable_collaborations)}</p>` : "",
-  ].join("\n");
+  const genres = a.genre_tags?.length ? a.genre_tags.join(" &#183; ") : "Genre not yet tagged";
+  const geo = geoLine(a);
+  const t = tier(a);
+
   return `
-  <div class="entry">
+  <div class="entry" id="${esc(anchorId(a.artist_id))}">
+    ${img ? `<img class="photo" src="images/artists/${esc(a.artist_id)}.jpg" alt="${esc(a.artist)}"/>` : `<div class="photo-missing">IMAGE NOT FOUND</div>`}
     <h3>${esc(a.artist)}</h3>
-    <p class="genres">${esc(genres)} · ${esc(perfType(a))}</p>
-    <p class="geo">${esc(geoLine(a))}</p>
-    <p class="about">${about ? esc(about) : "No biography collected yet."}</p>
-    ${notable}
-    ${perfRows}
+    <p class="pills"><span class="pill pill-${t.toLowerCase()}">${t}</span> <span class="pill">${esc(perfType(a))}</span></p>
+    <p class="genres">${esc(genres)}</p>
+    ${geo ? `<p class="geo">${esc(geo)}</p>` : ""}
+    <h4>About</h4>
+    <p class="about">${about ? esc(about) : "No biography collected yet &#8212; genuinely unknown, not omitted."}</p>
+    <h4>Why BMRI thinks they're interesting</h4>
+    <p class="why">${esc(whyInteresting(a))}</p>
+    ${notableBlock(a)}
+    <h4>Burning Man 2026</h4>
+    ${performanceListXhtml(a.artist_id)}
+    ${linksBlock(a)}
+    <p class="sources">${a.sources?.length ? `Sources: ${a.sources.length} linked${a.last_verified ? ` &#183; verified ${esc(a.last_verified)}` : ""}` : "Sources: none linked yet"}</p>
   </div>`;
+}
+
+function backRefXhtml(a, p) {
+  return `<p class="backref"><b>${esc(p.set_time_raw)}</b> &#8212; <a href="#${esc(anchorId(a.artist_id))}">${esc(a.artist)}</a> &#183; ${esc(p.camp)}${p.location ? ` &#183; ${esc(p.location)}` : ""} <i>(see full profile above)</i></p>`;
 }
 
 function chapterXhtml(title, bodyHtml) {
@@ -94,50 +105,133 @@ ${bodyHtml}
 </html>`;
 }
 
-const generatedAt = new Date().toISOString().slice(0, 10);
+function dayChapterBody(d) {
+  const glance = `
+  <div class="glance">
+    ${d.dominantGenres.length ? `<p>A ${esc(d.label)} leaning toward: <b>${d.dominantGenres.map(esc).join(", ")}</b>.</p>` : ""}
+    ${d.establishedHighlights.length ? `<p><b>Established highlights:</b> ${d.establishedHighlights.map(esc).join(", ")}</p>` : ""}
+    ${d.emergingDiscoveries.length ? `<p><b>Emerging discoveries:</b> ${d.emergingDiscoveries.map(esc).join(", ")}</p>` : ""}
+    ${d.wildcardsToday.length ? `<p><b>Wildcards:</b> ${d.wildcardsToday.map(esc).join(", ")}</p>` : ""}
+  </div>`;
 
-const coverBody = `
-<h1>BMRI</h1>
-<h2 class="subtitle">Burning Man Rave Intelligence</h2>
-<h2 class="subtitle">2026 Field Guide</h2>
-<p>Every Established and Emerging artist's real bio/discovery intel and confirmed set times, camps, and locations, plus a curated set of Wildcards — from the same dataset the BMRI app uses.</p>
-<p class="meta">Generated ${generatedAt}. Nothing here is invented — a blank field means the data isn't known yet, not that it's bad.</p>`;
+  const timeline = d.slots
+    .map((slot) => {
+      const primaries = slot.performances.filter((x) => x.isPrimary);
+      const backrefs = slot.performances.filter((x) => !x.isPrimary);
+      return `
+      <div class="slot">
+        <h2 class="time">${esc(slot.timeLabel)}</h2>
+        ${primaries.map((x) => fullEntryXhtml(x.artist)).join("\n")}
+        ${backrefs.map((x) => backRefXhtml(x.artist, x.performance)).join("\n")}
+      </div>`;
+    })
+    .join("\n");
 
-const howToBody = `
-<h2>How to use BMRI</h2>
-<p><b>Signal status</b> is a fact about the artist: <b>Established</b> — a documented, independent music career. <b>Emerging</b> — a real, smaller catalogue. <b>Unknown</b> — no external signal found yet. Unknown does not mean bad.</p>
-<p><b>Discovery role</b> (used in the app) is a judgment, not a fact: Strong Match, Discovery, or Wildcard.</p>
-<p>Locations are the original RSL address strings where given. Camp placement is reassigned every year — treat any address as approximate.</p>`;
-
-function tierChapterBody(title, list) {
-  return `<h2>${esc(title)} (${list.length})</h2>` + list.map(entryXhtml).join("\n");
+  return `<h1>${esc(d.label)} <span class="date">${esc(d.date)}</span></h1>${glance}${timeline}`;
 }
 
-const wildcardsBody =
-  `<h2>Wildcards (${wildcards.length} of ${unknownTotal} unknown-signal artists)</h2>` +
-  `<p>Unknown does not mean bad — these ${wildcards.length} have at least a preliminary research note; the other ${unknownTotal - wildcards.length} have nothing beyond a name and a set time. Browse the full roster in the app.</p>` +
-  wildcards.map(entryXhtml).join("\n");
+function artistIndexBody() {
+  const all = [...established, ...emerging].sort((a, b) => a.artist.localeCompare(b.artist));
+  const rows = all.map((a) => `<p class="index-row"><a href="#${esc(anchorId(a.artist_id))}">${esc(a.artist)}</a> <span class="tag">${tier(a)}</span></p>`).join("\n");
+  return `<h1>Artist Index</h1>${rows}`;
+}
+
+function genreIndexBody() {
+  const genres = [...genreIndex.keys()].sort();
+  const rows = genres
+    .map((g) => {
+      const names = genreIndex
+        .get(g)
+        .sort((a, b) => a.artist.localeCompare(b.artist))
+        .map((a) => `<a href="#${esc(anchorId(a.artist_id))}">${esc(a.artist)}</a>`)
+        .join(", ");
+      return `<p class="group"><b>${esc(g)}</b><br/>${names}</p>`;
+    })
+    .join("\n");
+  return `<h1>Genre Index</h1>${rows}`;
+}
+
+function wildcardsBody() {
+  const total = model.artists.filter((a) => tier(a) === "UNKNOWN").length;
+  const rows = wildcards
+    .map((a) => {
+      const perfs = allPerformancesOf(a.artist_id);
+      const first = perfs[0];
+      const disc = a.bio || [a.discovery_note, a.catalogue_signal, a.external_signal].filter(Boolean).join(" ");
+      return `<div class="wildcard"><p><b>${esc(a.artist)}</b>${first ? ` <span class="wc-when">${esc(first.day_raw)} @ ${esc(first.set_time_raw)} &#183; ${esc(first.camp)}</span>` : ""}</p><p>${esc(disc)}</p></div>`;
+    })
+    .join("\n");
+  return `<h1>Wildcard / Discovery</h1>
+  <p>Unknown does not mean bad &#8212; it means BMRI hasn't found external signal yet. These ${wildcards.length} of ${total} unknown-signal artists have at least a preliminary research note; the rest of the unknown-signal roster is browsable in the app.</p>
+  ${rows}`;
+}
+
+const generatedAt = new Date().toISOString().slice(0, 10);
+const totalPrimary = established.length + emerging.length;
+
+const coverBody = `
+<div class="cover">
+<p class="mark">BMRI</p>
+<h1>Burning Man<br/>Rave Intelligence</h1>
+<p class="subtitle">THE BURNING MAN MUSIC FIELD GUIDE</p>
+<p class="meta">2026 Edition &#183; Generated ${esc(generatedAt)}</p>
+<p>This is your personal Mixmag for Burning Man 2026 &#8212; every Established and Emerging artist BMRI has real intelligence on, walked through chronologically, day by day, exactly as you'll encounter them on playa. ${totalPrimary} artists, in the order you'd actually hear them.</p>
+<p>If the interactive BMRI app fails you out there, this book doesn't need it. Everything here comes from the same dataset, generated fresh, not maintained twice.</p>
+</div>`;
+
+const howToBody = `<h1>How to Read BMRI</h1>
+<p><b>Established</b> &#8212; a documented, independent music career. <b>Emerging</b> &#8212; a real, smaller catalogue. <b>Unknown</b> &#8212; no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
+<p>Each day opens with the full lineup in chronological order. The first time you meet an artist in this book, you get their full profile &#8212; photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back to that profile instead of reading the same bio twice.</p>
+<p>Locations are the original RSL address strings where given. Camp placement is reassigned every year &#8212; treat any address as approximate.</p>`;
+
+const sourcesBody = `<h1>Sources</h1>
+<p>Built from the RSL 2026 Burning Man music guide and independent research linked per artist throughout this book. Nothing in this book is fabricated &#8212; a missing field means the information isn't known yet, not that it was skipped.</p>`;
 
 const css = `
-body { font-family: Georgia, "Times New Roman", serif; color: #1a1a1a; line-height: 1.5; padding: 0 4%; }
-h1 { font-size: 2.2em; margin-bottom: 0.1em; }
-h2 { font-size: 1.3em; color: #7a5b00; margin-top: 1.4em; }
-h2.subtitle { font-size: 1em; color: #444; margin: 0; font-weight: normal; }
-h3 { font-size: 1.15em; margin-bottom: 0.1em; }
+body { font-family: Georgia, "Times New Roman", serif; color: #17171a; line-height: 1.5; margin: 0; padding: 0 5%; }
+h1 { font-size: 1.8em; margin: 0.6em 0 0.3em; }
+h1 .date { font-size: 0.5em; color: #777; font-weight: normal; display: block; }
+h2.time { font-size: 1.05em; text-transform: uppercase; letter-spacing: 0.08em; color: #9c7300; border-bottom: 1px solid #ddd; padding-bottom: 0.2em; margin-top: 1.6em; }
+h3 { font-size: 1.25em; margin: 0.6em 0 0.15em; }
+h4 { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em; color: #777; margin: 0.9em 0 0.15em; }
+.cover { text-align: center; margin-top: 15%; }
+.cover .mark { color: #9c7300; font-weight: bold; letter-spacing: 0.2em; }
+.cover .subtitle { text-transform: uppercase; letter-spacing: 0.12em; color: #444; font-size: 0.9em; }
+.cover .meta { color: #777; font-size: 0.85em; margin-bottom: 2em; }
+.cover p { text-align: left; }
+.glance { background: #f4f2ec; padding: 0.8em 1em; margin: 0.8em 0; font-size: 0.9em; }
+.glance p { margin: 0.25em 0; }
+.photo { width: 100%; max-height: 60vh; object-fit: cover; }
+.photo-missing { width: 100%; padding: 2em 0; text-align: center; border: 1px dashed #999; color: #777; font-size: 0.8em; letter-spacing: 0.05em; }
+.pills { margin: 0.3em 0; }
+.pill { display: inline-block; border: 1px solid #999; border-radius: 999px; padding: 0.05em 0.6em; font-size: 0.72em; letter-spacing: 0.03em; margin-right: 0.3em; }
+.pill-established { border-color: #4c7a00; color: #4c7a00; }
+.pill-emerging { border-color: #9c7300; color: #9c7300; }
+.pill-unknown { border-color: #6a3fa0; color: #6a3fa0; }
 .genres { text-transform: uppercase; font-size: 0.8em; color: #555; letter-spacing: 0.02em; margin: 0.1em 0; }
 .geo { font-size: 0.85em; color: #777; margin: 0 0 0.4em; }
-.about { margin: 0.4em 0; }
-.notable, .perf { font-size: 0.9em; margin: 0.15em 0; }
-.perf-empty { font-size: 0.9em; color: #777; font-style: italic; }
-.entry { margin-bottom: 1.4em; padding-bottom: 1em; border-bottom: 1px solid #ddd; }
-.meta { font-size: 0.85em; color: #666; }
+.about, .why { margin: 0.3em 0; }
+.why { font-style: italic; color: #333; }
+.notable, .perf, .listen { font-size: 0.88em; margin: 0.15em 0; }
+.perf-empty { font-size: 0.88em; color: #777; font-style: italic; }
+.entry { margin-bottom: 1.6em; padding-bottom: 1.1em; border-bottom: 1px solid #ddd; }
+.backref { font-size: 0.9em; color: #444; border-bottom: 1px solid #eee; padding: 0.3em 0; }
+.sources { font-size: 0.75em; color: #999; margin-top: 0.5em; }
+.index-row { margin: 0.2em 0; }
+.index-row .tag { color: #999; font-size: 0.75em; }
+.group { margin: 0.6em 0; font-size: 0.9em; }
+.wildcard { margin: 0.8em 0; padding-bottom: 0.6em; border-bottom: 1px solid #eee; font-size: 0.92em; }
+.wc-when { color: #777; font-size: 0.85em; }
 `;
 
-// ---- assemble the zip by hand (mimetype must be first & stored, not deflated) ----
+// ---- assemble ----
 const tmp = mkdtempSync(path.join(os.tmpdir(), "bmri-epub-"));
 const oebps = path.join(tmp, "OEBPS");
 const metaInf = path.join(tmp, "META-INF");
-execFileSync("mkdir", ["-p", oebps, metaInf]);
+const imgOut = path.join(oebps, "images", "artists");
+mkdirSync(oebps, { recursive: true });
+mkdirSync(metaInf, { recursive: true });
+mkdirSync(imgOut, { recursive: true });
 
 writeFileSync(path.join(tmp, "mimetype"), "application/epub+zip");
 writeFileSync(
@@ -148,18 +242,36 @@ writeFileSync(
 </container>`,
 );
 writeFileSync(path.join(oebps, "styles.css"), css);
-writeFileSync(path.join(oebps, "cover.xhtml"), chapterXhtml("BMRI Field Guide", coverBody));
-writeFileSync(path.join(oebps, "how-to.xhtml"), chapterXhtml("How to use BMRI", howToBody));
-writeFileSync(path.join(oebps, "established.xhtml"), chapterXhtml("Established Artists", tierChapterBody("Established Artists", established)));
-writeFileSync(path.join(oebps, "emerging.xhtml"), chapterXhtml("Emerging Artists", tierChapterBody("Emerging Artists", emerging)));
-writeFileSync(path.join(oebps, "wildcards.xhtml"), chapterXhtml("Wildcards", wildcardsBody));
+writeFileSync(path.join(oebps, "cover.xhtml"), chapterXhtml("BMRI 2026", coverBody));
+writeFileSync(path.join(oebps, "how-to.xhtml"), chapterXhtml("How to Read BMRI", howToBody));
+
+const dayChapters = days.map((d, i) => ({
+  id: `day-${d.day}`,
+  file: `day-${i + 1}-${d.day.toLowerCase()}.xhtml`,
+  title: `${d.label} (${d.date})`,
+  body: dayChapterBody(d),
+}));
+for (const c of dayChapters) writeFileSync(path.join(oebps, c.file), chapterXhtml(c.title, c.body));
+
+writeFileSync(path.join(oebps, "artist-index.xhtml"), chapterXhtml("Artist Index", artistIndexBody()));
+writeFileSync(path.join(oebps, "genre-index.xhtml"), chapterXhtml("Genre Index", genreIndexBody()));
+writeFileSync(path.join(oebps, "wildcards.xhtml"), chapterXhtml("Wildcard / Discovery", wildcardsBody()));
+writeFileSync(path.join(oebps, "sources.xhtml"), chapterXhtml("Sources", sourcesBody));
+
+// copy only the images actually referenced by a full entry in this build
+for (const id of usedImages) {
+  const src = path.join(imagesDir, `${id}.jpg`);
+  if (existsSync(src)) copyFileSync(src, path.join(imgOut, `${id}.jpg`));
+}
 
 const chapters = [
-  { id: "cover", file: "cover.xhtml", title: "BMRI Field Guide" },
-  { id: "howto", file: "how-to.xhtml", title: "How to use BMRI" },
-  { id: "established", file: "established.xhtml", title: `Established Artists (${established.length})` },
-  { id: "emerging", file: "emerging.xhtml", title: `Emerging Artists (${emerging.length})` },
-  { id: "wildcards", file: "wildcards.xhtml", title: `Wildcards (${wildcards.length})` },
+  { id: "cover", file: "cover.xhtml", title: "BMRI 2026" },
+  { id: "howto", file: "how-to.xhtml", title: "How to Read BMRI" },
+  ...dayChapters,
+  { id: "artist-index", file: "artist-index.xhtml", title: "Artist Index" },
+  { id: "genre-index", file: "genre-index.xhtml", title: "Genre Index" },
+  { id: "wildcards", file: "wildcards.xhtml", title: "Wildcard / Discovery" },
+  { id: "sources", file: "sources.xhtml", title: "Sources" },
 ];
 
 writeFileSync(
@@ -180,21 +292,23 @@ writeFileSync(
   path.join(oebps, "toc.ncx"),
   `<?xml version="1.0" encoding="UTF-8"?>
 <ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
-  <head><meta name="dtb:uid" content="urn:uuid:bmri-field-guide-2026"/></head>
-  <docTitle><text>BMRI Field Guide 2026</text></docTitle>
+  <head><meta name="dtb:uid" content="urn:uuid:bmri-2026-field-guide"/></head>
+  <docTitle><text>BMRI 2026 — The Burning Man Music Field Guide</text></docTitle>
   <navMap>
 ${chapters.map((c, i) => `    <navPoint id="np-${c.id}" playOrder="${i + 1}"><navLabel><text>${esc(c.title)}</text></navLabel><content src="${c.file}"/></navPoint>`).join("\n")}
   </navMap>
 </ncx>`,
 );
 
+const imageManifestItems = [...usedImages].map((id) => `    <item id="img-${id}" href="images/artists/${id}.jpg" media-type="image/jpeg"/>`).join("\n");
+
 writeFileSync(
   path.join(oebps, "content.opf"),
   `<?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <dc:identifier id="bookid">urn:uuid:bmri-field-guide-2026</dc:identifier>
-    <dc:title>BMRI Field Guide 2026</dc:title>
+    <dc:identifier id="bookid">urn:uuid:bmri-2026-field-guide</dc:identifier>
+    <dc:title>BMRI 2026 — The Burning Man Music Field Guide</dc:title>
     <dc:language>en</dc:language>
     <dc:creator>BMRI — Burning Man Rave Intelligence</dc:creator>
     <meta property="dcterms:modified">${new Date().toISOString().replace(/\.\d+Z$/, "Z")}</meta>
@@ -204,6 +318,7 @@ writeFileSync(
     <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
     <item id="css" href="styles.css" media-type="text/css"/>
 ${chapters.map((c) => `    <item id="${c.id}" href="${c.file}" media-type="application/xhtml+xml"/>`).join("\n")}
+${imageManifestItems}
   </manifest>
   <spine toc="ncx">
 ${chapters.map((c) => `    <itemref idref="${c.id}"/>`).join("\n")}
@@ -211,10 +326,10 @@ ${chapters.map((c) => `    <itemref idref="${c.id}"/>`).join("\n")}
 </package>`,
 );
 
-// zip: mimetype first & stored (uncompressed), everything else deflated
 execFileSync("rm", ["-f", outPath]);
 execFileSync("zip", ["-X", "-0", outPath, "mimetype"], { cwd: tmp });
 execFileSync("zip", ["-X", "-r", "-9", outPath, "META-INF", "OEBPS"], { cwd: tmp });
 rmSync(tmp, { recursive: true, force: true });
 
 console.log(`Wrote ${outPath}`);
+console.log(`Chapters: ${chapters.length} (${dayChapters.length} day chapters), images embedded: ${usedImages.size}`);

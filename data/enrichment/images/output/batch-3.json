@@ -1,0 +1,212 @@
+[
+  {
+    "artist_id": "roy-rosenfeld-b2b-vanjee",
+    "found": false
+  },
+  {
+    "artist_id": "santiago-garcia",
+    "found": true,
+    "image_path": "images/artists/santiago-garcia.jpg",
+    "image_source": "https://open.spotify.com/artist/4HTu4h0bTZratn5pTBqRjS",
+    "image_credit": "Spotify",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "sasi",
+    "found": true,
+    "image_path": "images/artists/sasi.jpg",
+    "image_source": "https://soundcloud.com/omrisasi",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "seth-schwarz",
+    "found": true,
+    "image_path": "images/artists/seth-schwarz.jpg",
+    "image_source": "https://soundcloud.com/seth-schwarz",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "silkworm",
+    "found": true,
+    "image_path": "images/artists/silkworm.jpg",
+    "image_source": "https://soundcloud.com/silkworm-dj",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "simbasol",
+    "found": true,
+    "image_path": "images/artists/simbasol.jpg",
+    "image_source": "https://soundcloud.com/simbasol",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "syd-gris",
+    "found": true,
+    "image_path": "images/artists/syd-gris.jpg",
+    "image_source": "https://soundcloud.com/syd-gris",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "tantum",
+    "found": true,
+    "image_path": "images/artists/tantum.jpg",
+    "image_source": "https://whenwedip.com/2023/01/premiere-acetone/",
+    "image_credit": "When We Dip",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "tonic-walter",
+    "found": true,
+    "image_path": "images/artists/tonic-walter.jpg",
+    "image_source": "https://soundcloud.com/therealtonicwalter",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "tycho",
+    "found": true,
+    "image_path": "images/artists/tycho.jpg",
+    "image_source": "https://en.wikipedia.org/wiki/Tycho_(musician)",
+    "image_credit": "Wikipedia / Wikimedia Commons",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "vanjee",
+    "found": true,
+    "image_path": "images/artists/vanjee.jpg",
+    "image_source": "https://soundcloud.com/vanjee",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "vintage-culture",
+    "found": true,
+    "image_path": "images/artists/vintage-culture.jpg",
+    "image_source": "https://en.wikipedia.org/wiki/Vintage_Culture",
+    "image_credit": "Wikipedia / Wikimedia Commons",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "xinobi",
+    "found": true,
+    "image_path": "images/artists/xinobi.jpg",
+    "image_source": "https://xinobi.bandcamp.com/",
+    "image_credit": "Bandcamp",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "xinobi-b2b-losha",
+    "found": false
+  },
+  {
+    "artist_id": "yaku-means-water-hybrid-set",
+    "found": true,
+    "image_path": "images/artists/yaku-means-water-hybrid-set.jpg",
+    "image_source": "https://soundcloud.com/yakumeanswater",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "zach-walker",
+    "found": true,
+    "image_path": "images/artists/zach-walker.jpg",
+    "image_source": "https://www.zachwalker.com/",
+    "image_credit": "Official website (zachwalker.com)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "2juicy",
+    "found": true,
+    "image_path": "images/artists/2juicy.jpg",
+    "image_source": "https://soundcloud.com/2juicymusic",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "ahau",
+    "found": true,
+    "image_path": "images/artists/ahau.jpg",
+    "image_source": "https://ahaumusic.bandcamp.com",
+    "image_credit": "Bandcamp",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "amanda-gaez",
+    "found": false
+  },
+  {
+    "artist_id": "artemistique",
+    "found": true,
+    "image_path": "images/artists/artemistique.jpg",
+    "image_source": "https://soundcloud.com/artemistiquedj",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "bobby-lyte",
+    "found": true,
+    "image_path": "images/artists/bobby-lyte.jpg",
+    "image_source": "https://soundcloud.com/bobbyflowstate",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "breauxx",
+    "found": true,
+    "image_path": "images/artists/breauxx.jpg",
+    "image_source": "https://soundcloud.com/breauxxmusic",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "brk-brk",
+    "found": true,
+    "image_path": "images/artists/brk-brk.jpg",
+    "image_source": "https://soundcloud.com/brkxbrk",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "bryn-avery",
+    "found": true,
+    "image_path": "images/artists/bryn-avery.jpg",
+    "image_source": "https://soundcloud.com/bryn_avery",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "cheetatah",
+    "found": true,
+    "image_path": "images/artists/cheetatah.jpg",
+    "image_source": "https://soundcloud.com/djcheetatah",
+    "image_credit": "SoundCloud",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  }
+]

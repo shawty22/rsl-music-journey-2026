@@ -1,0 +1,160 @@
+[
+  {
+    "artist_id": "oba-flip",
+    "found": true,
+    "image_path": "images/artists/oba-flip.jpg",
+    "image_source": "https://soundcloud.com/oba-flip",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "onelife",
+    "found": false
+  },
+  {
+    "artist_id": "ramzi",
+    "found": true,
+    "image_path": "images/artists/ramzi.jpg",
+    "image_source": "https://www.ableton.com/en/blog/ramzi-in-a-world-of-her-own-design/",
+    "image_credit": "Ableton (photo by Martha Goncalves)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "razing-prophet",
+    "found": false
+  },
+  {
+    "artist_id": "rezonance",
+    "found": false
+  },
+  {
+    "artist_id": "ro-rousseau",
+    "found": true,
+    "image_path": "images/artists/ro-rousseau.jpg",
+    "image_source": "https://soundcloud.com/ro-rousseau",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "s-akiibaum",
+    "found": true,
+    "image_path": "images/artists/s-akiibaum.jpg",
+    "image_source": "https://soundcloud.com/sakiibaum",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "sacred-echoes",
+    "found": false
+  },
+  {
+    "artist_id": "sagmo",
+    "found": true,
+    "image_path": "images/artists/sagmo.jpg",
+    "image_source": "https://soundcloud.com/sagmolive",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "sensanik",
+    "found": true,
+    "image_path": "images/artists/sensanik.jpg",
+    "image_source": "https://sensanik.com",
+    "image_credit": "Sensanik official website",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "seth-finkin",
+    "found": true,
+    "image_path": "images/artists/seth-finkin.jpg",
+    "image_source": "https://soundcloud.com/sethfinkin",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "stephan-may",
+    "found": true,
+    "image_path": "images/artists/stephan-may.jpg",
+    "image_source": "https://www.stephanmay.com",
+    "image_credit": "Stephan May official website (Instagram feed embed)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "the-professor",
+    "found": false
+  },
+  {
+    "artist_id": "thiccboi-drewski",
+    "found": true,
+    "image_path": "images/artists/thiccboi-drewski.jpg",
+    "image_source": "https://soundcloud.com/officialdrewski",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "todd-spero",
+    "found": false
+  },
+  {
+    "artist_id": "truprwulf",
+    "found": true,
+    "image_path": "images/artists/truprwulf.jpg",
+    "image_source": "https://soundcloud.com/truprwulf",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "turtletheory",
+    "found": false
+  },
+  {
+    "artist_id": "vlvt-plse",
+    "found": false
+  },
+  {
+    "artist_id": "vozhd",
+    "found": true,
+    "image_path": "images/artists/vozhd.jpg",
+    "image_source": "https://soundcloud.com/kurenivka/13-vozhd-multuverse-virtual-burning-man",
+    "image_credit": "Kurenivka (Burning Man camp) SoundCloud release artwork",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "wronski",
+    "found": true,
+    "image_path": "images/artists/wronski.jpg",
+    "image_source": "https://soundcloud.com/djwronski",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "yaz",
+    "found": true,
+    "image_path": "images/artists/yaz.jpg",
+    "image_source": "https://soundcloud.com/yazmaniandevil",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "zilkha",
+    "found": true,
+    "image_path": "images/artists/zilkha.jpg",
+    "image_source": "https://soundcloud.com/djzilkha",
+    "image_credit": "SoundCloud (official artist avatar)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  }
+]

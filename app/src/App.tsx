@@ -66,20 +66,20 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
 
       <div className="field-guide-block">
         <div className="section-label" style={{ marginTop: 28 }}>
-          FIELD GUIDE
+          BMRI FIELD GUIDE
         </div>
         <p className="field-guide-note">
-          Every Established/Emerging artist's bio, set times, camps, and locations — plus curated Wildcards — as one offline
-          document. If the app fails on playa, this doesn't need it.
+          Every Established/Emerging artist — photo, bio, and every set — walked through day by day, exactly as you'll hear
+          them on playa. If the app fails out there, this doesn't need it.
         </p>
         <a className="btn-secondary field-guide-link" href="field-guide.html" target="_blank" rel="noreferrer">
           Read online
         </a>
-        <a className="btn-secondary field-guide-link" href="BMRI-Field-Guide-2026.pdf" download>
-          Download PDF
-        </a>
-        <a className="btn-secondary field-guide-link" href="BMRI-Field-Guide-2026.epub" download>
+        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.epub" download>
           Download EPUB
+        </a>
+        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.pdf" download>
+          Download PDF
         </a>
       </div>
     </div>

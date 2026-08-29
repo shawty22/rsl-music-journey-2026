@@ -1,0 +1,202 @@
+[
+  {
+    "artist_id": "cindiana-jones",
+    "found": false
+  },
+  {
+    "artist_id": "crowsnestster",
+    "found": false
+  },
+  {
+    "artist_id": "dawdust",
+    "found": true,
+    "image_path": "images/artists/dawdust.jpg",
+    "image_source": "https://www.dawdust.com/images/pic01.webp",
+    "image_credit": "DAWdust official website",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "dj-p3tunia",
+    "found": true,
+    "image_path": "images/artists/dj-p3tunia.jpg",
+    "image_source": "https://soundcloud.com/dj-p3tunia",
+    "image_credit": "SoundCloud (DJ P3tunia official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "dj-spacecamp",
+    "found": true,
+    "image_path": "images/artists/dj-spacecamp.jpg",
+    "image_source": "https://soundcloud.com/djspacecamp",
+    "image_credit": "SoundCloud (dj spacecamp official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "dj-zip-disk",
+    "found": true,
+    "image_path": "images/artists/dj-zip-disk.jpg",
+    "image_source": "https://www.mixcloud.com/ted-alsop/",
+    "image_credit": "Mixcloud (DJ Zip Disk Official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "docta-reebs",
+    "found": true,
+    "image_path": "images/artists/docta-reebs.jpg",
+    "image_source": "https://soundcloud.com/tekno_reba",
+    "image_credit": "SoundCloud (docta reebs official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "don-gentry",
+    "found": true,
+    "image_path": "images/artists/don-gentry.jpg",
+    "image_source": "https://soundcloud.com/don-gentry",
+    "image_credit": "SoundCloud (Don Gentry official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "emanate",
+    "found": true,
+    "image_path": "images/artists/emanate.jpg",
+    "image_source": "https://soundcloud.com/emanate",
+    "image_credit": "SoundCloud (Emanate official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "fiendi",
+    "found": true,
+    "image_path": "images/artists/fiendi.jpg",
+    "image_source": "https://soundcloud.com/fiendi",
+    "image_credit": "SoundCloud (Fiendi official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "franccesco-cardenas",
+    "found": true,
+    "image_path": "images/artists/franccesco-cardenas.jpg",
+    "image_source": "https://soundcloud.com/franccesco-cardenas",
+    "image_credit": "SoundCloud (Franccesco Cardenas official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "gilarden",
+    "found": true,
+    "image_path": "images/artists/gilarden.jpg",
+    "image_source": "https://soundcloud.com/gilarden",
+    "image_credit": "SoundCloud (Gilarden official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "go-south",
+    "found": true,
+    "image_path": "images/artists/go-south.jpg",
+    "image_source": "https://soundcloud.com/gosouth",
+    "image_credit": "SoundCloud (Go South official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "gongo",
+    "found": false
+  },
+  {
+    "artist_id": "gordyceps",
+    "found": true,
+    "image_path": "images/artists/gordyceps.jpg",
+    "image_source": "https://soundcloud.com/gordyceps",
+    "image_credit": "SoundCloud (Gordyceps official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "grant-kaye",
+    "found": true,
+    "image_path": "images/artists/grant-kaye.jpg",
+    "image_source": "https://soundcloud.com/grantkaye",
+    "image_credit": "SoundCloud (Grant Kaye official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "grease-withaspoon",
+    "found": true,
+    "image_path": "images/artists/grease-withaspoon.jpg",
+    "image_source": "https://soundcloud.com/grease_withaspoon",
+    "image_credit": "SoundCloud (Grease Withaspoon official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "handz",
+    "found": true,
+    "image_path": "images/artists/handz.jpg",
+    "image_source": "https://soundcloud.com/handzzzzz",
+    "image_credit": "SoundCloud (HANDZ official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "heavenly-father",
+    "found": false
+  },
+  {
+    "artist_id": "hookahdome-players",
+    "found": false
+  },
+  {
+    "artist_id": "haana",
+    "found": true,
+    "image_path": "images/artists/haana.jpg",
+    "image_source": "https://thisishaana.bandcamp.com/",
+    "image_credit": "Bandcamp (Häana official artist page)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "iggy",
+    "found": true,
+    "image_path": "images/artists/iggy.jpg",
+    "image_source": "https://soundcloud.com/iggyymusic",
+    "image_credit": "SoundCloud (Iggy official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "iman-rizky",
+    "found": true,
+    "image_path": "images/artists/iman-rizky.jpg",
+    "image_source": "https://soundcloud.com/imanrizky",
+    "image_credit": "SoundCloud (Iman Rizky official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "j-thor",
+    "found": true,
+    "image_path": "images/artists/j-thor.jpg",
+    "image_source": "https://soundcloud.com/j-thor_official",
+    "image_credit": "SoundCloud (J-Thor official)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  },
+  {
+    "artist_id": "jalaya",
+    "found": true,
+    "image_path": "images/artists/jalaya.jpg",
+    "image_source": "https://jalaya.bandcamp.com/",
+    "image_credit": "Bandcamp (Jalaya official artist page)",
+    "image_verified": true,
+    "image_date": "2026-08-29"
+  }
+]
