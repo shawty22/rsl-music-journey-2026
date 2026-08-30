@@ -138,11 +138,33 @@ export function PlayaMapCanvas({
   const youRadiusFrac = you && geoModel ? Math.min(1, geoModel.rings[you.street] / Math.max(...Object.values(geoModel.rings))) : 0.5;
   const youXY = youHours !== null ? polarToXY(youHours, youRadiusFrac, center, maxR) : null;
 
-  const plottedStops = stops.map((s) => {
+  const rawStops = stops.map((s) => {
     const hours = parseClockPosition(s.clock);
     const radiusFrac = geoModel ? Math.min(1, geoModel.rings[s.street] / Math.max(...Object.values(geoModel.rings))) : 0.5;
     const xy = hours !== null ? polarToXY(hours, radiusFrac, center, maxR) : null;
     return { ...s, hours, xy };
+  });
+
+  // Two acts at the same (or a near-identical) address land on the same
+  // pixel and their labels stack unreadably on top of each other — fan
+  // stops that collide out in a small ring around their shared point
+  // rather than pretending it can't happen.
+  const clusterKey = (p: { x: number; y: number }) => `${Math.round(p.x / 10)},${Math.round(p.y / 10)}`;
+  const clusters = new Map<string, typeof rawStops>();
+  for (const s of rawStops) {
+    if (!s.xy) continue;
+    const key = clusterKey(s.xy);
+    if (!clusters.has(key)) clusters.set(key, []);
+    clusters.get(key)!.push(s);
+  }
+  const fanOffset = Math.max(16, markerR * 3.2);
+  const plottedStops = rawStops.map((s) => {
+    if (!s.xy) return s;
+    const group = clusters.get(clusterKey(s.xy))!;
+    if (group.length < 2) return s;
+    const idxInGroup = group.indexOf(s);
+    const angle = (idxInGroup / group.length) * 2 * Math.PI - Math.PI / 2;
+    return { ...s, xy: { x: s.xy.x + Math.cos(angle) * fanOffset, y: s.xy.y + Math.sin(angle) * fanOffset } };
   });
 
   const allHours = [youHours, ...plottedStops.map((s) => s.hours)];

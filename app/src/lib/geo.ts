@@ -169,9 +169,11 @@ export function describeWalkingDirection(
   const nextR = model.rings[nextStreet.toUpperCase()];
   if (youHours === null || nextHours === null || youR === undefined || nextR === undefined) return null;
 
-  const nextStreetName = model.ring_full_names[nextStreet.toUpperCase()] ?? nextStreet.toUpperCase();
+  // Plain street letter, not the ring's full name — "D" reads faster on
+  // foot than "Delphi" when you're trying to just get somewhere.
+  const nextStreetLetter = nextStreet.toUpperCase();
   const radiusDeltaM = Math.round(Math.abs(nextR - youR));
-  const radial = radiusDeltaM < 20 ? `You're already on ${nextStreetName}` : `≈${radiusDeltaM}m ${nextR > youR ? "outward" : "inward, toward the Man"} to ${nextStreetName}`;
+  const radial = radiusDeltaM < 20 ? `You're already on ${nextStreetLetter}` : `≈${radiusDeltaM}m ${nextR > youR ? "outward" : "inward, toward the Man"} to ${nextStreetLetter}`;
 
   let delta = nextHours - youHours;
   while (delta <= -6) delta += 12;

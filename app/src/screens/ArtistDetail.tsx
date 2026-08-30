@@ -123,9 +123,9 @@ export function ArtistDetailScreen({
           <div className="section-label">LINKS</div>
           <div className="chip-row">
             {links.map((l) => (
-              <span key={l.key} className="link-chip">
-                {l.label}
-              </span>
+              <a key={l.key} className="link-chip" href={artist[l.key] as string} target="_blank" rel="noreferrer">
+                {l.label} ↗
+              </a>
             ))}
           </div>
         </div>
