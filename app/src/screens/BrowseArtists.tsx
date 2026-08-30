@@ -86,7 +86,24 @@ export function BrowseArtistsScreen({
         <div className="icon-btn-spacer" />
       </div>
 
-      <div className="search-field" style={{ marginTop: 16 }}>
+      <div className="field-label" style={{ marginTop: 14, marginBottom: 6 }}>
+        Jump to a genre
+      </div>
+      <div className="genre-chip-row genre-chip-row-big">
+        {genre && (
+          <button className="filter-chip filter-chip-active" onClick={() => setGenre(null)}>
+            {genre} ✕
+          </button>
+        )}
+        {!genre &&
+          topGenres.map((g) => (
+            <button key={g} className="filter-chip" onClick={() => setGenre(g)}>
+              {g}
+            </button>
+          ))}
+      </div>
+
+      <div className="search-field" style={{ marginTop: 14 }}>
         <SearchIcon />
         <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={`Search ${dataset.metadata.artist_count.toLocaleString()} artists…`} />
       </div>
@@ -104,23 +121,6 @@ export function BrowseArtistsScreen({
         <button className={`filter-chip filter-chip-wildcard ${filter === "WILDCARD" ? "filter-chip-active" : ""}`} onClick={() => setFilter("WILDCARD")}>
           🟣 Wildcard
         </button>
-      </div>
-
-      <div className="field-label" style={{ marginTop: 16, marginBottom: 6 }}>
-        Jump to a genre
-      </div>
-      <div className="genre-chip-row">
-        {genre && (
-          <button className="filter-chip filter-chip-active" onClick={() => setGenre(null)}>
-            {genre} ✕
-          </button>
-        )}
-        {!genre &&
-          topGenres.map((g) => (
-            <button key={g} className="filter-chip" onClick={() => setGenre(g)}>
-              {g}
-            </button>
-          ))}
       </div>
 
       <div className="artist-list">

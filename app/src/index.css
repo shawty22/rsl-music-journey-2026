@@ -707,8 +707,23 @@ input, select {
 .genre-chip-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; flex-shrink: 0; }
 .genre-chip-row::-webkit-scrollbar { display: none; }
 .genre-chip-row .filter-chip { flex-shrink: 0; text-transform: capitalize; }
-.artist-row-listen { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-.listen-now-chip { font-size: 11.5px; font-weight: 700; color: var(--gold); background: var(--gold-bg); border: 1px solid rgba(243, 200, 91, 0.35); border-radius: 999px; padding: 5px 11px; text-decoration: none; }
+/* Big-thumb mode: this is the primary "pick a genre while moving" row, so
+   the chips are full tap targets, not compact filter pills. */
+.genre-chip-row-big .filter-chip { font-size: 15px; padding: 14px 20px; font-weight: 800; }
+.artist-row-listen { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.listen-now-chip {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold);
+  background: var(--gold-bg);
+  border: 1px solid rgba(243, 200, 91, 0.35);
+  border-radius: 14px;
+  padding: 14px 18px;
+  text-decoration: none;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
 
 /* ---------- artist / act detail shared ---------- */
 
