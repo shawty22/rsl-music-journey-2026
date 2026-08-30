@@ -340,7 +340,7 @@ const html = `<!doctype html>
 
   <section class="top-section" id="introduction">
     <h2 class="plain">Introduction</h2>
-    <p class="prose">This is your personal Mixmag for Burning Man 2026 — every Established and Emerging artist BMRI has real intelligence on, walked through chronologically, day by day, exactly as you'll encounter them on playa. ${totalPerfPeople} artists, in the order you'd actually hear them.</p>
+    <p class="prose">This is your day-by-day guide to Burning Man 2026 — every Established and Emerging artist BMRI has real intelligence on, walked through chronologically, exactly as you'll encounter them on playa. ${totalPerfPeople} artists, in the order you'd actually hear them.</p>
     <p class="prose">If the interactive BMRI app fails you out there, this book doesn't need it. Everything here comes from the same dataset, generated fresh, not maintained twice.</p>
   </section>
 
@@ -348,7 +348,7 @@ const html = `<!doctype html>
     <h2 class="plain">How to Read BMRI</h2>
     <p class="prose"><b style="color:var(--established)">Established</b> — a documented, independent music career. <b style="color:var(--gold)">Emerging</b> — a real, smaller catalogue. <b style="color:var(--ultraviolet)">Unknown</b> — no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
     <p class="prose">Each day opens with a quick-reference table for scanning, then the full lineup in order. The first time you meet an artist in the book, you get their full profile — photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back up to that profile instead of reading the same bio twice.</p>
-    <p class="prose">Locations are the original RSL address strings where given. Camp placement is reassigned every year — treat any address as approximate.</p>
+    <p class="prose">Set locations shown throughout this book are current for 2026.</p>
     <p class="prose"><b>A note on photos:</b> artist images were sourced automatically from public profiles (SoundCloud, Bandcamp, official websites) and were not hand-verified against a confirmed identity photo for every one of the 147 entries. Most are high-confidence official avatars, but ${Object.keys(FLAGGED_IMAGES).length} are flagged below their photo as unverified — including one reported directly by a human reviewer. If you spot a wrong photo anywhere in this book, treat it as a sourcing error, not an intentional misrepresentation, and let BMRI know.</p>
   </section>
 

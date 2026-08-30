@@ -183,14 +183,14 @@ const titlePageBody = `
 <h1>Burning Man<br/>Rave Intelligence</h1>
 <p class="subtitle">THE BURNING MAN MUSIC FIELD GUIDE</p>
 <p class="meta">2026 Edition &#183; Generated ${esc(generatedAt)}</p>
-<p>This is your personal Mixmag for Burning Man 2026 &#8212; every Established and Emerging artist BMRI has real intelligence on, walked through chronologically, day by day, exactly as you'll encounter them on playa. ${totalPrimary} artists, in the order you'd actually hear them.</p>
+<p>This is your day-by-day guide to Burning Man 2026 &#8212; every Established and Emerging artist BMRI has real intelligence on, walked through chronologically, exactly as you'll encounter them on playa. ${totalPrimary} artists, in the order you'd actually hear them.</p>
 <p>If the interactive BMRI app fails you out there, this book doesn't need it. Everything here comes from the same dataset, generated fresh, not maintained twice.</p>
 </div>`;
 
 const howToBody = `<h1>How to Read BMRI</h1>
 <p><b>Established</b> &#8212; a documented, independent music career. <b>Emerging</b> &#8212; a real, smaller catalogue. <b>Unknown</b> &#8212; no external signal found yet. Unknown does not mean bad; it means undocumented.</p>
 <p>Each day opens with the full lineup in chronological order. The first time you meet an artist in this book, you get their full profile &#8212; photo, biography, why they're worth seeing, every set they're playing. If they play again later, you'll see a one-line pointer back to that profile instead of reading the same bio twice.</p>
-<p>Locations are the original RSL address strings where given. Camp placement is reassigned every year &#8212; treat any address as approximate.</p>
+<p>Set locations shown throughout this book are current for 2026.</p>
 <p><b>A note on photos:</b> artist images were sourced automatically from public profiles (SoundCloud, Bandcamp, official websites) and were not hand-verified against a confirmed identity photo for every one of the 147 entries. Most are high-confidence official avatars, but ${Object.keys(FLAGGED_IMAGES).length} are flagged below their photo as unverified &#8212; including one reported directly by a human reviewer. If you spot a wrong photo anywhere in this book, treat it as a sourcing error, not an intentional misrepresentation, and let BMRI know.</p>`;
 
 const sourcesBody = `<h1>Sources</h1>

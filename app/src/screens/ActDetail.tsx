@@ -113,7 +113,7 @@ export function ActDetailScreen({
           {camp.landmark && <div className="camp-landmark">📍 Look for: {camp.landmark}</div>}
           <div className="camp-as-of">
             {camp.hometown && `Hometown: ${camp.hometown} · `}
-            As of {camp.as_of_year} — camp placement changes yearly, this is descriptive only.
+            Camp character from {camp.as_of_year} — set times and locations above are current for 2026.
           </div>
         </div>
       )}

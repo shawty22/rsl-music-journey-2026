@@ -189,7 +189,7 @@ function SavedScreen({
         )}
       </div>
 
-      <div style={{ height: 90 }} />
+      <div className="bottom-nav-spacer" />
     </div>
   );
 }

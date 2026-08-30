@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { JourneyStop } from "../lib/journey";
 import { toDisplayRole } from "../lib/recommend";
 import { resolvePerformanceType } from "../lib/performanceType";
@@ -28,6 +29,8 @@ export function JourneyResultsScreen({
   onShare: () => void;
   onSave: () => void;
 }) {
+  const [saved, setSaved] = useState(false);
+
   return (
     <div className="screen">
       <div className="screen-top screen-top-centered">
@@ -121,8 +124,15 @@ export function JourneyResultsScreen({
             <ShareIcon size={15} />
             SHARE THIS NIGHT
           </button>
-          <button className="btn-ghost btn-ghost-muted" onClick={onSave}>
-            SAVE
+          <button
+            className="btn-ghost btn-ghost-muted"
+            disabled={saved}
+            onClick={() => {
+              onSave();
+              setSaved(true);
+            }}
+          >
+            {saved ? "✓ SAVED" : "SAVE"}
           </button>
         </div>
       )}

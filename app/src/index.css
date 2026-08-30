@@ -114,6 +114,10 @@ input, select { font-family: inherit; }
   flex-shrink: 0;
 }
 .icon-btn-spacer { width: 36px; height: 36px; flex-shrink: 0; }
+/* Clearance so the fixed bottom-nav bar never covers the last thing on a
+   primary-tab screen — a flat 90px undershoots on phones with a
+   home-indicator safe area, which the nav bar itself already accounts for. */
+.bottom-nav-spacer { height: calc(90px + env(safe-area-inset-bottom, 0px)); flex-shrink: 0; }
 .icon-btn-labeled { width: auto; padding: 0 10px 0 8px; gap: 5px; }
 .icon-btn-label { font-size: 11px; font-weight: 800; color: var(--text-dim); }
 
@@ -192,7 +196,8 @@ input, select { font-family: inherit; }
   gap: 8px;
 }
 .btn-ghost-wildcard { color: var(--wildcard); }
-.btn-ghost-muted { color: var(--text-dim); flex: 0 0 90px; }
+.btn-ghost-muted { color: var(--text-dim); flex: 0 0 104px; }
+.btn-ghost-muted:disabled { opacity: 0.7; color: var(--accent-2); cursor: default; }
 .btn-ghost-full { width: 100%; }
 
 .btn-add {

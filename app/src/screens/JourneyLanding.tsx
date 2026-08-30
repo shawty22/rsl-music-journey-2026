@@ -125,6 +125,7 @@ export function JourneyLandingScreen({
 
       <div className="spacer" />
       <div className="home-footer">{dataset.metadata.artist_count.toLocaleString()} artists to discover · works fully offline</div>
+      <div className="bottom-nav-spacer" />
     </div>
   );
 }

@@ -152,6 +152,8 @@ export function PlayaMapScreen({
       {compass.state === "unsupported" && <div className="empty">Compass not available on this device — direction shown on the map above.</div>}
 
       <div className="map-source-note">Real 2026 Black Rock City geometry (Golden Spike + street layout, Burning Man Innovate GIS data).</div>
+
+      <div className="bottom-nav-spacer" />
     </div>
   );
 }
