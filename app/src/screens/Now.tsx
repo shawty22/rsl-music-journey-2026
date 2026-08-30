@@ -131,7 +131,7 @@ export function NowScreen({
           <p className="welcome-signoff">
             Happy burn. See you on the dance floor.
             <br />
-            — Ciaran aka Papi Chuleto 2026 · Find me at Media Mecca or Snack Shack @ 2:45 &amp; B x
+            — Ciaran aka Papi Chuleto 2026 · Find me at Snack Shack @ 2:45 &amp; B x
           </p>
         </div>
       )}
