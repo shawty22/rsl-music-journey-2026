@@ -12,6 +12,7 @@ import {
   haversineMeters,
   bearingDeg,
   metersToWalkMinutes,
+  describeWalkingDirection,
 } from "../lib/geo";
 import type { ScoredRecommendation } from "../types";
 
@@ -61,6 +62,11 @@ export function PlayaMapScreen({
   }, [geoModel, youClock, youStreet, nextParsed]);
 
   const arrowRotation = bearingAndDistance !== null && compass.heading !== null ? (bearingAndDistance.bearing - compass.heading + 360) % 360 : null;
+
+  const walkingDirection = useMemo(() => {
+    if (!geoModel || !youClock || !youStreet || !nextParsed) return null;
+    return describeWalkingDirection(geoModel, youClock, youStreet, nextParsed.clock, nextParsed.street);
+  }, [geoModel, youClock, youStreet, nextParsed]);
 
   const markers: MapStopMarker[] = stops
     .map((s, i): MapStopMarker | null => {
@@ -139,6 +145,12 @@ export function PlayaMapScreen({
             to {next.artist.artist} at {next.performance.camp}
             {next.performance.location ? ` · ${next.performance.location}` : ""}
           </div>
+          {walkingDirection && (
+            <div className="map-directions">
+              <div>{walkingDirection.angular}</div>
+              <div>{walkingDirection.radial}</div>
+            </div>
+          )}
         </div>
       )}
 

@@ -201,19 +201,32 @@ const performances = raw.performances.map((p) => {
 // No coordinates are invented. We only preserve distinct location strings
 // seen in the source and classify their string shape.
 
-const ADDR_RE = /^\d{1,2}:\d{2}\s*&\s*[A-Za-z]$/;
+// Clock and street appear in either order in the source data ("3:00 & E" and
+// "Esplanade & 5:45" are both real, common formats — not a typo to special-
+// case away), and street codes aren't always a single letter (e.g. "ESP").
+const ADDR_RE_CLOCK_FIRST = /^(\d{1,2}:\d{2})\s*&\s*([A-Za-z]+)$/;
+const ADDR_RE_STREET_FIRST = /^([A-Za-z]+)\s*&\s*(\d{1,2}:\d{2})$/;
+function parseAddressComponents(raw) {
+  const s = raw.trim();
+  const clockFirst = s.match(ADDR_RE_CLOCK_FIRST);
+  if (clockFirst) return { clock: clockFirst[1], street: clockFirst[2] };
+  const streetFirst = s.match(ADDR_RE_STREET_FIRST);
+  if (streetFirst) return { clock: streetFirst[2], street: streetFirst[1] };
+  return null;
+}
 const locMap = new Map();
 for (const p of performances) {
   const loc = p.location;
   if (!loc) continue;
   if (!locMap.has(loc)) {
+    const components = parseAddressComponents(loc);
     locMap.set(loc, {
       location_string: loc,
       normalized_location: loc.trim().toUpperCase(),
-      address_components: ADDR_RE.test(loc.trim()) ? { clock: loc.split("&")[0].trim(), street: loc.split("&")[1].trim() } : null,
+      address_components: components,
       latitude: null,
       longitude: null,
-      location_type: ADDR_RE.test(loc.trim()) ? "clock_address" : /deep playa/i.test(loc) ? "deep_playa" : "named_area",
+      location_type: components ? "clock_address" : /deep playa/i.test(loc) ? "deep_playa" : "named_area",
       performance_count: 0,
     });
   }

@@ -241,6 +241,11 @@ export function PlayaMapCanvas({
                     {s.isNext ? "NEXT" : s.label}
                   </text>
                 )}
+                {!compact && s.isNext && (
+                  <text x={s.xy.x} y={s.xy.y + markerR + 14 * scale} textAnchor="middle" fontSize={fontSmall} fill={ROLE_COLOR[s.role]} fontWeight="700">
+                    {s.clock} & {s.street}
+                  </text>
+                )}
               </g>
             ),
         )}

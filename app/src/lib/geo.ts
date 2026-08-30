@@ -55,15 +55,23 @@ export function destinationPoint(start: { lat: number; lng: number }, bearingDeg
 // Parses a free-typed or RSL-sourced "2:35 & B" style address into its
 // clock/street parts. Returns null for non-clock-address strings (deep
 // playa descriptions, camp names) rather than guessing.
+// The geo model keys the Esplanade ring as "ESP" (matching official GIS
+// data); the source location strings spell it out — normalize so ring
+// lookups actually match.
+function normalizeStreetCode(street: string): string {
+  const s = street.toUpperCase();
+  return s === "ESPLANADE" ? "ESP" : s;
+}
+
 export function parseClockStreetAddress(raw: string): { clock: string; street: string } | null {
   const s = raw.trim();
   // "3:00 & E" — the common order.
   const clockFirst = s.match(/^(\d{1,2}:\d{2})\s*&\s*([A-Za-z]+)$/);
-  if (clockFirst) return { clock: clockFirst[1], street: clockFirst[2].toUpperCase() };
+  if (clockFirst) return { clock: clockFirst[1], street: normalizeStreetCode(clockFirst[2]) };
   // "Esplanade & 5:45" — same address, reversed order (real, common in the
   // source data — not a typo to special-case away).
   const streetFirst = s.match(/^([A-Za-z]+)\s*&\s*(\d{1,2}:\d{2})$/);
-  if (streetFirst) return { clock: streetFirst[2], street: streetFirst[1].toUpperCase() };
+  if (streetFirst) return { clock: streetFirst[2], street: normalizeStreetCode(streetFirst[1]) };
   return null;
 }
 
@@ -142,4 +150,34 @@ export function latLngToBrcAddress(model: BrcGeoModel, point: { lat: number; lng
 
 export function metersToWalkMinutes(m: number): number {
   return Math.round(m / 80); // ~80 m/min walking pace on playa terrain
+}
+
+// Plain BRC-native walking directions — the two moves the grid is actually
+// built from (in/out along a street's ring, and around along the clock arc)
+// rather than a raw compass bearing, which isn't how anyone navigates BRC
+// on foot.
+export function describeWalkingDirection(
+  model: BrcGeoModel,
+  youClock: string,
+  youStreet: string,
+  nextClock: string,
+  nextStreet: string,
+): { radial: string; angular: string } | null {
+  const youHours = parseClockPosition(youClock);
+  const nextHours = parseClockPosition(nextClock);
+  const youR = model.rings[youStreet.toUpperCase()];
+  const nextR = model.rings[nextStreet.toUpperCase()];
+  if (youHours === null || nextHours === null || youR === undefined || nextR === undefined) return null;
+
+  const nextStreetName = model.ring_full_names[nextStreet.toUpperCase()] ?? nextStreet.toUpperCase();
+  const radiusDeltaM = Math.round(Math.abs(nextR - youR));
+  const radial = radiusDeltaM < 20 ? `You're already on ${nextStreetName}` : `≈${radiusDeltaM}m ${nextR > youR ? "outward" : "inward, toward the Man"} to ${nextStreetName}`;
+
+  let delta = nextHours - youHours;
+  while (delta <= -6) delta += 12;
+  while (delta > 6) delta -= 12;
+  const nextClockLabel = formatClockPosition(nextHours);
+  const angular = Math.abs(delta) < 0.2 ? `You're already near ${nextClockLabel}` : `walk ${delta > 0 ? "clockwise" : "counterclockwise"} to ${nextClockLabel}`;
+
+  return { radial, angular };
 }

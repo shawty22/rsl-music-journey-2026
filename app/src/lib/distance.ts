@@ -20,7 +20,9 @@ function clockToAngleDeg(clock: string): number | null {
 }
 
 function ringRadiusFt(letter: string): number | null {
-  const idx = RING_LETTERS.indexOf(letter.trim().toUpperCase());
+  const s = letter.trim().toUpperCase();
+  if (s === "ESPLANADE" || s === "ESP") return ESPLANADE_RADIUS_FT;
+  const idx = RING_LETTERS.indexOf(s);
   if (idx === -1) return null;
   return ESPLANADE_RADIUS_FT + idx * RING_SPACING_FT;
 }

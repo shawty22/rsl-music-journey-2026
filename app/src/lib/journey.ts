@@ -104,7 +104,7 @@ export function buildJourney(
       if (dist.confidence === "approximate" && dist.estMinutes) {
         note = `~${dist.estMinutes[0]}-${dist.estMinutes[1]} min walk, starts ${waitMinutes} min after your last stop.`;
       } else {
-        note = `Starts ${waitMinutes} min after your last stop. Walk time unknown — RSL location string ("${perf.location ?? "unspecified"}") isn't a walkable clock address.`;
+        note = `Starts ${waitMinutes} min after your last stop. Walk time unknown — "${perf.location ?? "unspecified"}" isn't a walkable clock address.`;
       }
 
       const candidate: Candidate = { rec: { performance: perf, artist, role: baseRole, reasons, score }, nm, journeyScore, note };

@@ -14,10 +14,13 @@
   {
     "location_string": "Esplanade & 5:45",
     "normalized_location": "ESPLANADE & 5:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "5:45",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 113
   },
   {
@@ -32,10 +35,13 @@
   {
     "location_string": "Esplanade & 4:15",
     "normalized_location": "ESPLANADE & 4:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "4:15",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 63
   },
   {
@@ -59,10 +65,13 @@
   {
     "location_string": "Esplanade & 10:00",
     "normalized_location": "ESPLANADE & 10:00",
-    "address_components": null,
+    "address_components": {
+      "clock": "10:00",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 50
   },
   {
@@ -80,10 +89,13 @@
   {
     "location_string": "Esplanade & 8:00",
     "normalized_location": "ESPLANADE & 8:00",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:00",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 45
   },
   {
@@ -122,10 +134,13 @@
   {
     "location_string": "Esplanade & 2:30",
     "normalized_location": "ESPLANADE & 2:30",
-    "address_components": null,
+    "address_components": {
+      "clock": "2:30",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 39
   },
   {
@@ -188,10 +203,13 @@
   {
     "location_string": "B & 8:15",
     "normalized_location": "B & 8:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:15",
+      "street": "B"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 26
   },
   {
@@ -284,19 +302,25 @@
   {
     "location_string": "Esplanade & 7:15",
     "normalized_location": "ESPLANADE & 7:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "7:15",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 18
   },
   {
     "location_string": "B & 8:45",
     "normalized_location": "B & 8:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:45",
+      "street": "B"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 18
   },
   {
@@ -335,10 +359,13 @@
   {
     "location_string": "F & 8:45",
     "normalized_location": "F & 8:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:45",
+      "street": "F"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 16
   },
   {
@@ -374,10 +401,13 @@
   {
     "location_string": "E & 2:15",
     "normalized_location": "E & 2:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "2:15",
+      "street": "E"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 15
   },
   {
@@ -416,10 +446,13 @@
   {
     "location_string": "E & 7:15",
     "normalized_location": "E & 7:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "7:15",
+      "street": "E"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 13
   },
   {
@@ -437,19 +470,25 @@
   {
     "location_string": "E & 7:45",
     "normalized_location": "E & 7:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "7:45",
+      "street": "E"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 13
   },
   {
     "location_string": "D & 4:15",
     "normalized_location": "D & 4:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "4:15",
+      "street": "D"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 13
   },
   {
@@ -500,10 +539,13 @@
   {
     "location_string": "A & 8:15",
     "normalized_location": "A & 8:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:15",
+      "street": "A"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 11
   },
   {
@@ -593,10 +635,13 @@
   {
     "location_string": "Esplanade & 4:00",
     "normalized_location": "ESPLANADE & 4:00",
-    "address_components": null,
+    "address_components": {
+      "clock": "4:00",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 5
   },
   {
@@ -701,19 +746,25 @@
   {
     "location_string": "Esplanade & 9:45",
     "normalized_location": "ESPLANADE & 9:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "9:45",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 2
   },
   {
     "location_string": "E & 8:15",
     "normalized_location": "E & 8:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "8:15",
+      "street": "E"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 2
   },
   {
@@ -749,10 +800,13 @@
   {
     "location_string": "D & 7:15",
     "normalized_location": "D & 7:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "7:15",
+      "street": "D"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
@@ -788,28 +842,37 @@
   {
     "location_string": "D & 9:15",
     "normalized_location": "D & 9:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "9:15",
+      "street": "D"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
     "location_string": "Esplanade & 3:30",
     "normalized_location": "ESPLANADE & 3:30",
-    "address_components": null,
+    "address_components": {
+      "clock": "3:30",
+      "street": "Esplanade"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
     "location_string": "B & 3:45",
     "normalized_location": "B & 3:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "3:45",
+      "street": "B"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
@@ -842,28 +905,37 @@
   {
     "location_string": "B & 9:15",
     "normalized_location": "B & 9:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "9:15",
+      "street": "B"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
     "location_string": "E & 9:15",
     "normalized_location": "E & 9:15",
-    "address_components": null,
+    "address_components": {
+      "clock": "9:15",
+      "street": "E"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {
     "location_string": "B & 9:45",
     "normalized_location": "B & 9:45",
-    "address_components": null,
+    "address_components": {
+      "clock": "9:45",
+      "street": "B"
+    },
     "latitude": null,
     "longitude": null,
-    "location_type": "named_area",
+    "location_type": "clock_address",
     "performance_count": 1
   },
   {

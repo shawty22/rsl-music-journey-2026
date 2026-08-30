@@ -373,6 +373,7 @@ input, select {
 .map-distance-card { margin-top: 18px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
 .map-distance-main { font-size: 20px; font-weight: 800; }
 .map-distance-sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.map-directions { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 14px; font-weight: 700; color: var(--accent); display: flex; flex-direction: column; gap: 3px; }
 .map-route-note { font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 12px; }
 .map-source-note { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 20px; line-height: 1.5; }
 
