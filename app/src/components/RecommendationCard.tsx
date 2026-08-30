@@ -1,6 +1,7 @@
 import type { ScoredRecommendation } from "../types";
 import { toDisplayRole } from "../lib/recommend";
 import { resolvePerformanceType } from "../lib/performanceType";
+import { parseClockStreetAddress } from "../lib/geo";
 import { SignalBadge, PerformanceTypeTag } from "./badges";
 import { BookmarkIcon } from "./icons";
 
@@ -69,7 +70,7 @@ export function RecommendationCard({
 
       {topReason && <div className="rec-reason">{topReason.text}</div>}
 
-      {onShowOnMap && performance.location && (
+      {onShowOnMap && performance.location && parseClockStreetAddress(performance.location) && (
         <button
           className="rec-map-link"
           onClick={(e) => {

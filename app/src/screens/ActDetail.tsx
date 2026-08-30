@@ -2,6 +2,7 @@ import type { JourneyStop } from "../lib/journey";
 import { toDisplayRole } from "../lib/recommend";
 import { resolvePerformanceType } from "../lib/performanceType";
 import { formatNightMinutes } from "../lib/time";
+import { parseClockStreetAddress } from "../lib/geo";
 import { HomeIcon, BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
 import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
 import { ArtistPhoto } from "../components/ArtistPhoto";
@@ -33,8 +34,9 @@ export function ActDetailScreen({
           <button className="icon-btn" onClick={onBack} aria-label="Back">
             <BackIcon />
           </button>
-          <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <button className="icon-btn icon-btn-labeled" onClick={onHome} aria-label="Home">
             <HomeIcon />
+            <span className="icon-btn-label">Home</span>
           </button>
         </div>
         <button className="icon-btn" aria-label="Share">
@@ -118,7 +120,7 @@ export function ActDetailScreen({
 
       <div className="spacer" />
 
-      {onOpenMap && stop.performance.location && (
+      {onOpenMap && stop.performance.location && parseClockStreetAddress(stop.performance.location) && (
         <button className="btn-secondary" onClick={onOpenMap} style={{ marginTop: 0, marginBottom: 12 }}>
           🧭 View on Playa Map
         </button>

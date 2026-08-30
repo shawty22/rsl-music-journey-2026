@@ -85,8 +85,9 @@ export function PlayaMapScreen({
           <button className="icon-btn" onClick={onBack} aria-label="Back">
             <BackIcon />
           </button>
-          <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <button className="icon-btn icon-btn-labeled" onClick={onHome} aria-label="Home">
             <HomeIcon />
+            <span className="icon-btn-label">Home</span>
           </button>
         </div>
         <span className="wordmark">PLAYA MAP</span>

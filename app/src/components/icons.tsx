@@ -57,11 +57,15 @@ export function HomeIcon({ size = 16, color = "var(--text)" }: IconProps) {
   );
 }
 
+// Two overlapping figures — reads as "browse people/artists," not "my
+// profile" (a single silhouette, which every app uses for "my account").
 export function PeopleIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx={12} cy={8} r={3.2} stroke={color} strokeWidth={1.8} />
-      <path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
+      <circle cx={9} cy={8} r={3.2} stroke={color} strokeWidth={1.8} />
+      <path d="M2.5 20c1.1-3.8 3.7-5.8 6.5-5.8s5.4 2 6.5 5.8" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
+      <circle cx={16.5} cy={7} r={2.6} stroke={color} strokeWidth={1.6} opacity={0.65} />
+      <path d="M13.8 13.8c.9-1.2 2-1.8 3.2-1.8 2.2 0 4.1 1.7 5 4.8" stroke={color} strokeWidth={1.6} strokeLinecap="round" opacity={0.65} />
     </svg>
   );
 }

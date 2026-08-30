@@ -25,19 +25,30 @@ export function BrowseArtistsScreen({
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    let list = q ? dataset.artists.filter((a) => a.artist_normalized.includes(q)) : dataset.artists;
+    let list = q
+      ? dataset.artists.filter((a) => a.artist_normalized.includes(q) || a.genre_tags.some((g) => g.toLowerCase().includes(q)))
+      : dataset.artists;
     if (filter === "WILDCARD") list = list.filter((a) => a.signal_status.toUpperCase() === "UNKNOWN");
     else if (filter !== "ALL") list = list.filter((a) => a.signal_status.toUpperCase() === filter);
-    // Alphabetical, A-Z — the point of "browse" rather than search.
-    list = [...list].sort((a, b) => a.artist.localeCompare(b.artist));
+    // Established, then Emerging, then Unknown — alphabetical within each
+    // tier. A flat A-Z sort buries every real artist under ~1,000
+    // symbol-prefixed Unknown entries (names like "_nophones", "*rekless")
+    // that sort before any letter.
+    const tierRank: Record<string, number> = { ESTABLISHED: 0, EMERGING: 1 };
+    list = [...list].sort((a, b) => {
+      const ra = tierRank[a.signal_status.toUpperCase()] ?? 2;
+      const rb = tierRank[b.signal_status.toUpperCase()] ?? 2;
+      return ra !== rb ? ra - rb : a.artist.localeCompare(b.artist);
+    });
     return list.slice(0, 200);
   }, [dataset, query, filter]);
 
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onHome} aria-label="Home">
+        <button className="icon-btn icon-btn-labeled" onClick={onHome} aria-label="Home">
           <HomeIcon />
+          <span className="icon-btn-label">Home</span>
         </button>
         <span className="wordmark">ARTISTS</span>
         <div className="icon-btn-spacer" />

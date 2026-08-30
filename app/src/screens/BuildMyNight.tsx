@@ -96,8 +96,9 @@ export function BuildMyNightScreen({
   return (
     <div className="screen">
       <div className="screen-top">
-        <button className="icon-btn" onClick={onHome} aria-label="Home">
+        <button className="icon-btn icon-btn-labeled" onClick={onHome} aria-label="Home">
           <HomeIcon />
+          <span className="icon-btn-label">Home</span>
         </button>
         <div className="icon-btn-spacer" />
       </div>

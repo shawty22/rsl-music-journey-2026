@@ -56,9 +56,15 @@ export function destinationPoint(start: { lat: number; lng: number }, bearingDeg
 // clock/street parts. Returns null for non-clock-address strings (deep
 // playa descriptions, camp names) rather than guessing.
 export function parseClockStreetAddress(raw: string): { clock: string; street: string } | null {
-  const m = raw.trim().match(/^(\d{1,2}:\d{2})\s*&\s*([A-Za-z]+)$/);
-  if (!m) return null;
-  return { clock: m[1], street: m[2].toUpperCase() };
+  const s = raw.trim();
+  // "3:00 & E" — the common order.
+  const clockFirst = s.match(/^(\d{1,2}:\d{2})\s*&\s*([A-Za-z]+)$/);
+  if (clockFirst) return { clock: clockFirst[1], street: clockFirst[2].toUpperCase() };
+  // "Esplanade & 5:45" — same address, reversed order (real, common in the
+  // source data — not a typo to special-case away).
+  const streetFirst = s.match(/^([A-Za-z]+)\s*&\s*(\d{1,2}:\d{2})$/);
+  if (streetFirst) return { clock: streetFirst[2], street: streetFirst[1].toUpperCase() };
+  return null;
 }
 
 export function parseClockPosition(clock: string): number | null {

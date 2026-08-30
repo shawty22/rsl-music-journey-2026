@@ -42,8 +42,9 @@ export function ArtistDetailScreen({
           <button className="icon-btn" onClick={onBack} aria-label="Back">
             <BackIcon />
           </button>
-          <button className="icon-btn" onClick={onHome} aria-label="Home">
+          <button className="icon-btn icon-btn-labeled" onClick={onHome} aria-label="Home">
             <HomeIcon />
+            <span className="icon-btn-label">Home</span>
           </button>
         </div>
         <div className="icon-btn-spacer" />
