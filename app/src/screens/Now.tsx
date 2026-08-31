@@ -5,7 +5,7 @@ import { toDisplayRole } from "../lib/recommend";
 import { classifyLiveState, computeSignalOfMoment, currentNightMinutes, dedupePerformances, formatStateLabel } from "../lib/liveStatus";
 import { DAY_OPTIONS } from "../lib/time";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon, ArrowRightIcon } from "../components/icons";
+import { GearIcon, PeopleIcon } from "../components/icons";
 import { LiveStatusBar } from "../components/LiveStatus";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { ScoredRecommendation, TasteProfile } from "../types";
@@ -48,6 +48,16 @@ export function NowScreen({
     } catch {
       // localStorage unavailable (private mode etc) — banner just won't stay dismissed
     }
+  }
+
+  const [downloadToast, setDownloadToast] = useState<string | null>(null);
+  function announceDownload(format: "EPUB" | "PDF") {
+    setDownloadToast(
+      format === "PDF"
+        ? "Downloading PDF — look for it in the Files app (or tap Share → Save to Files if it opens as a preview instead)."
+        : "Downloading EPUB — it should open straight into Apple Books.",
+    );
+    window.setTimeout(() => setDownloadToast(null), 6000);
   }
 
   const { happeningNow, startingSoon, signal, bestNext } = useMemo(() => {
@@ -99,25 +109,26 @@ export function NowScreen({
         </div>
       </div>
 
-      <div className="book-promo book-promo-top">
-        <div className="section-label">BMRI FIELD GUIDE 2026 · DOWNLOADABLE</div>
-        <p className="book-promo-note">
-          Every Established and Emerging artist — photo, bio, and every set — as one offline document. Download it for
-          offline use and perusal on playa.
-        </p>
-        <a className="cta-gradient book-promo-primary" href="field-guide.html" target="_blank" rel="noreferrer">
-          <span>READ THE FIELD GUIDE ONLINE</span>
-          <ArrowRightIcon />
+      <div className="field-guide-strip">
+        <span className="field-guide-strip-label">📖 Field Guide</span>
+        <a href="field-guide.html" target="_blank" rel="noreferrer">
+          Read online
         </a>
-        <div className="book-promo-downloads">
-          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.epub" download>
-            ⬇ Download EPUB
-          </a>
-          <a className="btn-secondary book-promo-download" href="BMRI-2026-Music-Field-Guide.pdf" download>
-            ⬇ Download PDF
-          </a>
-        </div>
+        <span className="field-guide-strip-dot">·</span>
+        <a href="BMRI-2026-Music-Field-Guide.epub" download onClick={() => announceDownload("EPUB")}>
+          EPUB
+        </a>
+        <span className="field-guide-strip-dot">·</span>
+        <a href="BMRI-2026-Music-Field-Guide.pdf" download onClick={() => announceDownload("PDF")}>
+          PDF
+        </a>
       </div>
+
+      {downloadToast && (
+        <div className="download-toast" role="status">
+          {downloadToast}
+        </div>
+      )}
 
       {!welcomeDismissed && (
         <div className="welcome-banner">

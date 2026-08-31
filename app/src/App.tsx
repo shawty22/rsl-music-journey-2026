@@ -29,6 +29,16 @@ function defaultDraft(): JourneyDraft {
 }
 
 function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; onChange: (t: TasteProfile) => void; onClose: () => void }) {
+  const [downloadToast, setDownloadToast] = useState<string | null>(null);
+  function announceDownload(format: "EPUB" | "PDF") {
+    setDownloadToast(
+      format === "PDF"
+        ? "Downloading PDF — look for it in the Files app (or tap Share → Save to Files if it opens as a preview instead)."
+        : "Downloading EPUB — it should open straight into Apple Books.",
+    );
+    window.setTimeout(() => setDownloadToast(null), 6000);
+  }
+
   return (
     <div className="sheet">
       <div className="sheet-header">
@@ -100,12 +110,17 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
         <a className="btn-secondary field-guide-link" href="field-guide.html" target="_blank" rel="noreferrer">
           Read online
         </a>
-        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.epub" download>
+        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.epub" download onClick={() => announceDownload("EPUB")}>
           Download EPUB
         </a>
-        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.pdf" download>
+        <a className="btn-secondary field-guide-link" href="BMRI-2026-Music-Field-Guide.pdf" download onClick={() => announceDownload("PDF")}>
           Download PDF
         </a>
+        {downloadToast && (
+          <div className="download-toast" role="status">
+            {downloadToast}
+          </div>
+        )}
         <p className="field-guide-disclaimer">
           Photos were auto-sourced from public artist profiles, not hand-verified one by one. Most are correct, but a few
           are flagged inside the guide as unverified — if you spot a wrong photo, it's a sourcing error, not intentional.
