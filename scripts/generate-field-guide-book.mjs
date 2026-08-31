@@ -326,15 +326,16 @@ const html = `<!doctype html>
   .app-return-bar .book-label { color: var(--text-faint); font-weight: 600; margin-left: auto; }
 
   @media print {
-    body { color: #111; background: #fff; max-width: none; padding: 0 6%; }
-    :root { --text: #111; --text-dim: #333; --text-faint: #666; --gold: #7a5b00; --line: #ccc; --established: #2d6b00; --ultraviolet: #5a2fa0; }
+    /* Nobody's printing 354 pages on paper — this is read on a phone/iPad
+       screen, likely at night on playa. Keep the same dark theme as the
+       app instead of flipping to a "printable paper" white background. */
+    body { max-width: none; padding: 0 6%; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .search-sticky { display: none; }
     .app-return-bar { display: none; }
     header.cover { break-after: page; }
     #contents { break-after: page; }
     .day-section { break-before: page; }
     .artist-entry { break-inside: avoid; }
-    a { color: #111; text-decoration: underline; }
   }
 </style>
 </head>
