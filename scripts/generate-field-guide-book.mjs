@@ -313,10 +313,21 @@ const html = `<!doctype html>
 
   #search-box { width: 100%; margin-top: 20px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-size: 15px; }
 
+  .app-return-bar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(8,8,11,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 5%;
+    font-size: 13px; font-weight: 800; color: var(--gold); text-decoration: none;
+  }
+  .app-return-bar .book-label { color: var(--text-faint); font-weight: 600; margin-left: auto; }
+
   @media print {
     body { color: #111; background: #fff; max-width: none; padding: 0 6%; }
     :root { --text: #111; --text-dim: #333; --text-faint: #666; --gold: #7a5b00; --line: #ccc; --established: #2d6b00; --ultraviolet: #5a2fa0; }
     #search-box { display: none; }
+    .app-return-bar { display: none; }
     header.cover { break-after: page; }
     #contents { break-after: page; }
     .day-section { break-before: page; }
@@ -326,6 +337,11 @@ const html = `<!doctype html>
 </style>
 </head>
 <body>
+
+  <a class="app-return-bar" href="./">
+    <span>← Back to the BMRI App</span>
+    <span class="book-label">You're reading: Field Guide</span>
+  </a>
 
   <header class="cover">
     <div class="cover-scrim">
