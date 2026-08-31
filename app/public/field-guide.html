@@ -104,7 +104,9 @@
   .wildcard-row { padding: 14px 0; border-bottom: 1px solid var(--line); }
   .wildcard-when { color: var(--text-faint); font-size: 12px; margin-left: 8px; }
 
-  #search-box { width: 100%; margin-top: 20px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-size: 15px; }
+  .search-sticky { position: sticky; top: 41px; z-index: 40; background: var(--bg); padding: 14px 0 8px; margin-top: 20px; }
+  #search-box { width: 100%; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-size: 15px; }
+  #search-status { font-size: 12px; color: var(--text-faint); margin-top: 8px; min-height: 16px; }
 
   .app-return-bar {
     position: sticky; top: 0; z-index: 50;
@@ -119,7 +121,7 @@
   @media print {
     body { color: #111; background: #fff; max-width: none; padding: 0 6%; }
     :root { --text: #111; --text-dim: #333; --text-faint: #666; --gold: #7a5b00; --line: #ccc; --established: #2d6b00; --ultraviolet: #5a2fa0; }
-    #search-box { display: none; }
+    .search-sticky { display: none; }
     .app-return-bar { display: none; }
     header.cover { break-after: page; }
     #contents { break-after: page; }
@@ -145,7 +147,10 @@
     </div>
     <div class="cover-credit">Photo: "Burning Man – Festival – Night – DJ Michel von Tell" by Tituous, CC BY 4.0, via Wikimedia Commons</div>
   </header>
-  <input id="search-box" type="text" placeholder="Search artist or genre… (Cmd/Ctrl-F also works)" oninput="filterEntries(this.value)" />
+  <div class="search-sticky">
+    <input id="search-box" type="text" placeholder="Search artist or genre…" oninput="filterEntries(this.value)" />
+    <div id="search-status"></div>
+  </div>
 
   <section class="top-section" id="introduction">
     <h2 class="plain">Introduction</h2>
@@ -7703,10 +7708,36 @@
   <script>
     function filterEntries(q) {
       q = q.trim().toLowerCase();
-      document.querySelectorAll('.artist-entry').forEach(function (el) {
+      var status = document.getElementById('search-status');
+
+      // Full profiles and repeat-performance backreferences both carry the
+      // artist's name — match on the visible text of each independently so
+      // a hit in one doesn't wrongly keep the other visible.
+      document.querySelectorAll('.artist-entry, .backref').forEach(function (el) {
         var text = el.textContent.toLowerCase();
         el.style.display = !q || text.indexOf(q) !== -1 ? '' : 'none';
       });
+
+      // A day with nothing visible left in it is just clutter while
+      // searching — collapse the whole slot/day rather than showing an
+      // empty time heading or a day header over nothing.
+      document.querySelectorAll('.time-slot').forEach(function (slot) {
+        var anyVisible = Array.prototype.some.call(
+          slot.querySelectorAll('.artist-entry, .backref'),
+          function (el) { return el.style.display !== 'none'; }
+        );
+        slot.style.display = !q || anyVisible ? '' : 'none';
+      });
+      var totalMatches = 0;
+      document.querySelectorAll('.day-section').forEach(function (day) {
+        var visibleSlots = Array.prototype.filter.call(day.querySelectorAll('.time-slot'), function (s) { return s.style.display !== 'none'; }).length;
+        day.style.display = !q || visibleSlots > 0 ? '' : 'none';
+        totalMatches += visibleSlots ? Array.prototype.filter.call(day.querySelectorAll('.artist-entry'), function (el) { return el.style.display !== 'none'; }).length : 0;
+      });
+
+      if (!q) status.textContent = '';
+      else if (totalMatches === 0) status.textContent = 'No matches for "' + q + '" — try a broader term.';
+      else status.textContent = totalMatches + ' artist' + (totalMatches === 1 ? '' : 's') + ' match "' + q + '".';
     }
   </script>
 </body>
