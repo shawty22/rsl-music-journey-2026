@@ -232,11 +232,6 @@ input, select { font-family: inherit; }
 .dot-filled { background: var(--accent); }
 .step-headline { font-size: 24px; font-weight: 800; line-height: 1.22; margin: 4px 0 0; }
 
-.welcome-banner { position: relative; margin-top: 16px; padding: 16px 34px 16px 16px; background: var(--bg-elevated); border: 1px solid var(--gold); border-radius: 14px; }
-.welcome-banner p { font-size: 13px; line-height: 1.55; color: var(--text); margin: 0 0 10px; }
-.welcome-banner p:last-child { margin-bottom: 0; }
-.welcome-banner b { color: var(--gold); }
-.welcome-signoff { color: var(--text-dim) !important; font-size: 12px !important; }
 .welcome-dismiss { position: absolute; top: 10px; right: 10px; background: none; border: none; color: var(--text-dim); font-size: 20px; line-height: 1; width: 28px; height: 28px; }
 
 .section { margin-top: 26px; }
@@ -517,6 +512,17 @@ input, select {
 .field-guide-strip-label { color: var(--text-faint); font-weight: 700; margin-right: 4px; }
 .field-guide-strip a { color: var(--gold); text-decoration: none; font-weight: 700; }
 .field-guide-strip-dot { color: var(--text-faint); }
+.install-prompt-strip { position: relative; padding-right: 22px; }
+.install-prompt-link { background: none; border: none; padding: 0; color: var(--gold); text-decoration: none; font-weight: 700; font-size: 12.5px; text-align: left; }
+.install-prompt-dismiss { position: absolute; top: -4px; right: -4px; font-size: 15px; padding: 4px; }
+
+/* The two things someone actually opens the app to do — front and center,
+   right under the hero, not buried behind bottom-nav taps alone. */
+.home-primary-actions { display: flex; gap: 10px; margin-top: 16px; }
+.home-primary-actions .cta-gradient { flex: 1; margin: 0; }
+.home-map-btn { flex: 0 0 88px; margin: 0; }
+
+.home-footer-links { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--border); }
 
 .download-toast {
   margin-top: 10px;

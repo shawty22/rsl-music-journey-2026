@@ -28,7 +28,13 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        // .jpg (artist photos) added deliberately: the Field Guide's "Read
+        // Online" page is already auto-installed (it's .html), so without
+        // its photos too, "already installed" would still show blank
+        // photo slots offline. EPUB/PDF stay out — 16-22MB each, and
+        // bundling them would make every visitor's first install much
+        // slower and more likely to fail on weak playa signal.
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,jpg}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         // Without this, the SPA's navigateFallback (needed so client-side
         // routing survives a refresh) also swallows <a download> clicks for

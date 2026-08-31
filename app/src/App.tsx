@@ -366,6 +366,11 @@ export default function App() {
           }}
           onOpenArtists={() => setView("browseArtists")}
           onOpenSettings={() => setShowSettings(true)}
+          onBuildJourney={() => setView("journeyDetails")}
+          onOpenMap={() => {
+            openStandaloneMap("now");
+            setView("map");
+          }}
         />
       )}
 

@@ -21,6 +21,8 @@ export function NowScreen({
   onSeeAllStartingSoon,
   onOpenArtists,
   onOpenSettings,
+  onBuildJourney,
+  onOpenMap,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
@@ -32,21 +34,35 @@ export function NowScreen({
   onSeeAllStartingSoon: () => void;
   onOpenArtists: () => void;
   onOpenSettings: () => void;
+  onBuildJourney: () => void;
+  onOpenMap: () => void;
 }) {
   const [now] = useState(() => new Date());
-  const [welcomeDismissed, setWelcomeDismissed] = useState(() => {
+
+  // iOS never fires a native install prompt (Apple doesn't expose one) —
+  // Android Chrome shows its own automatically once the manifest/service
+  // worker qualify, no code needed. This just avoids nagging people who've
+  // already installed it, on either platform.
+  const [isStandalone] = useState(() => {
     try {
-      return localStorage.getItem("bmri_welcome_dismissed_v1") === "1";
+      return window.matchMedia("(display-mode: standalone)").matches || (window.navigator as unknown as { standalone?: boolean }).standalone === true;
     } catch {
       return false;
     }
   });
-  function dismissWelcome() {
-    setWelcomeDismissed(true);
+  const [installDismissed, setInstallDismissed] = useState(() => {
     try {
-      localStorage.setItem("bmri_welcome_dismissed_v1", "1");
+      return localStorage.getItem("bmri_install_prompt_dismissed_v1") === "1";
     } catch {
-      // localStorage unavailable (private mode etc) — banner just won't stay dismissed
+      return false;
+    }
+  });
+  function dismissInstallPrompt() {
+    setInstallDismissed(true);
+    try {
+      localStorage.setItem("bmri_install_prompt_dismissed_v1", "1");
+    } catch {
+      // localStorage unavailable — prompt just won't stay dismissed
     }
   }
 
@@ -109,43 +125,14 @@ export function NowScreen({
         </div>
       </div>
 
-      <div className="field-guide-strip">
-        <span className="field-guide-strip-label">📖 Field Guide</span>
-        <a href="field-guide.html" target="_blank" rel="noreferrer">
-          Read online
-        </a>
-        <span className="field-guide-strip-dot">·</span>
-        <a href="BMRI-2026-Music-Field-Guide.epub" download onClick={() => announceDownload("EPUB")}>
-          EPUB
-        </a>
-        <span className="field-guide-strip-dot">·</span>
-        <a href="BMRI-2026-Music-Field-Guide.pdf" download onClick={() => announceDownload("PDF")}>
-          PDF
-        </a>
+      <div className="home-primary-actions">
+        <button className="cta-gradient" onClick={onBuildJourney}>
+          <span>BUILD MY JOURNEY</span>
+        </button>
+        <button className="btn-secondary home-map-btn" onClick={onOpenMap}>
+          MAP
+        </button>
       </div>
-
-      {downloadToast && (
-        <div className="download-toast" role="status">
-          {downloadToast}
-        </div>
-      )}
-
-      {!welcomeDismissed && (
-        <div className="welcome-banner">
-          <button className="welcome-dismiss" onClick={dismissWelcome} aria-label="Dismiss">
-            ×
-          </button>
-          <p>
-            Some website functionality is still under construction. Try out <b>Build My Journey</b> and the <b>Map</b> to
-            plan your own custom route through Burning Man.
-          </p>
-          <p className="welcome-signoff">
-            Happy burn. See you on the dance floor.
-            <br />
-            — Ciaran aka Papi Chuleto 2026 · Find me at Snack Shack @ 2:45 &amp; B x
-          </p>
-        </div>
-      )}
 
       <LiveStatusBar geoModel={dataset.geoModel} />
 
@@ -223,6 +210,41 @@ export function NowScreen({
           </div>
         </div>
       )}
+
+      <div className="home-footer-links">
+        {!isStandalone && !installDismissed && (
+          <div className="field-guide-strip install-prompt-strip">
+            <span className="field-guide-strip-label">📲 Everything's in the app —</span>
+            <button className="install-prompt-link" onClick={onOpenSettings}>
+              install it for offline use on playa
+            </button>
+            <button className="welcome-dismiss install-prompt-dismiss" onClick={dismissInstallPrompt} aria-label="Dismiss">
+              ×
+            </button>
+          </div>
+        )}
+
+        <div className="field-guide-strip">
+          <span className="field-guide-strip-label">📖 Field Guide</span>
+          <a href="field-guide.html" target="_blank" rel="noreferrer">
+            Read online
+          </a>
+          <span className="field-guide-strip-dot">·</span>
+          <a href="BMRI-2026-Music-Field-Guide.epub" download onClick={() => announceDownload("EPUB")}>
+            EPUB
+          </a>
+          <span className="field-guide-strip-dot">·</span>
+          <a href="BMRI-2026-Music-Field-Guide.pdf" download onClick={() => announceDownload("PDF")}>
+            PDF
+          </a>
+        </div>
+
+        {downloadToast && (
+          <div className="download-toast" role="status">
+            {downloadToast}
+          </div>
+        )}
+      </div>
 
       <div className="bottom-nav-spacer" />
     </div>
