@@ -95,7 +95,7 @@ function AppSettingsPanel({ taste, onChange, onClose }: { taste: TasteProfile; o
         </div>
         <p className="field-guide-note">
           Every Established/Emerging artist — photo, bio, and every set — walked through day by day, exactly as you'll hear
-          them on playa. If the app fails out there, this doesn't need it.
+          them on playa. Download it for offline use in case the app ever fails you out there.
         </p>
         <a className="btn-secondary field-guide-link" href="field-guide.html" target="_blank" rel="noreferrer">
           Read online

@@ -95,18 +95,18 @@ export function NowScreen({
         <div className="hero-banner-caption">
           <span className="hero-mark">BMRI</span>
           <div className="hero-title">Burning Man Rave Intelligence</div>
-          <div className="hero-tagline">The app and the 2026 field guide book, in one place.</div>
+          <div className="hero-tagline">The app and the 2026 field guide, in one place.</div>
         </div>
       </div>
 
       <div className="book-promo book-promo-top">
-        <div className="section-label">BMRI BOOK 2026 · DOWNLOADABLE</div>
+        <div className="section-label">BMRI FIELD GUIDE 2026 · DOWNLOADABLE</div>
         <p className="book-promo-note">
-          Every Established and Emerging artist — photo, bio, and every set — as one offline document. If the app fails on
-          playa, this doesn't need it.
+          Every Established and Emerging artist — photo, bio, and every set — as one offline document. Download it for
+          offline use and perusal on playa.
         </p>
         <a className="cta-gradient book-promo-primary" href="field-guide.html" target="_blank" rel="noreferrer">
-          <span>READ THE BOOK ONLINE</span>
+          <span>READ THE FIELD GUIDE ONLINE</span>
           <ArrowRightIcon />
         </a>
         <div className="book-promo-downloads">
