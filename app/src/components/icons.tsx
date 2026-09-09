@@ -70,6 +70,16 @@ export function PeopleIcon({ size = 14, color = "var(--text-dim)" }: IconProps) 
   );
 }
 
+export function BookIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path d="M12 5.5C10.3 4.3 7.8 3.7 5 3.7c-.6 0-1 .4-1 1v13.6c0 .6.4 1 1 1 2.8 0 5.3.6 7 1.8" stroke={color} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 5.5c1.7-1.2 4.2-1.8 7-1.8.6 0 1 .4 1 1v13.6c0 .6-.4 1-1 1-2.8 0-5.3.6-7 1.8" stroke={color} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 5.5v15.6" stroke={color} strokeWidth={1.7} strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function BookmarkIcon({ size = 14, color = "var(--text-dim)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">

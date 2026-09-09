@@ -17,7 +17,7 @@ import { ActDetailScreen } from "./screens/ActDetail";
 import { BrowseArtistsScreen } from "./screens/BrowseArtists";
 import { ArtistDetailScreen } from "./screens/ArtistDetail";
 import { PlayaMapScreen } from "./screens/PlayaMap";
-import { HomeIcon, PeopleIcon } from "./components/icons";
+import { HomeIcon, PeopleIcon, BookIcon } from "./components/icons";
 import type { SavedJourney, ScoredRecommendation, TasteProfile } from "./types";
 
 type View = PrimaryTab | "journeyDetails" | "results" | "actDetail" | "browseArtists" | "artistDetail" | "myTaste";
@@ -154,6 +154,9 @@ function SavedScreen({
       <div className="screen-top">
         <span className="wordmark">SAVED</span>
         <div className="top-actions">
+          <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+            <BookIcon size={16} />
+          </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
           </button>

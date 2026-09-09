@@ -7,7 +7,7 @@ import { estimateDistance, findLocation } from "../lib/distance";
 import { nightMinutesFromHour24 } from "../lib/time";
 import { dedupePerformances } from "../lib/liveStatus";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon } from "../components/icons";
+import { GearIcon, PeopleIcon, BookIcon } from "../components/icons";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { PerformanceType, ScoredRecommendation, TasteProfile } from "../types";
 
@@ -122,6 +122,9 @@ export function RadarScreen({
       <div className="screen-top">
         <span className="wordmark">BMRI</span>
         <div className="top-actions">
+          <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+            <BookIcon size={16} />
+          </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
           </button>

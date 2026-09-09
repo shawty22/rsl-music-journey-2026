@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
-import { GearIcon, ArrowRightIcon, PeopleIcon } from "../components/icons";
+import { GearIcon, ArrowRightIcon, PeopleIcon, BookIcon } from "../components/icons";
 import { OrbitGraphic } from "../components/OrbitGraphic";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
@@ -65,6 +65,9 @@ export function JourneyLandingScreen({
             <span className="badge-dot" />
             {online ? "ONLINE" : "OFFLINE"}
           </span>
+          <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+            <BookIcon size={16} />
+          </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
           </button>

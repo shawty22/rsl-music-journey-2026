@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { HomeIcon, BackIcon } from "../components/icons";
+import { HomeIcon, BackIcon, BookIcon } from "../components/icons";
 import { PlayaMapCanvas, type MapStopMarker } from "../components/PlayaMapCanvas";
 import { useGeolocation } from "../lib/useGeolocation";
 import { useCompassHeading } from "../lib/useCompassHeading";
@@ -97,7 +97,9 @@ export function PlayaMapScreen({
           </button>
         </div>
         <span className="wordmark">PLAYA MAP</span>
-        <div className="icon-btn-spacer" />
+        <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+          <BookIcon size={16} />
+        </a>
       </div>
 
       <div className="map-wrap">

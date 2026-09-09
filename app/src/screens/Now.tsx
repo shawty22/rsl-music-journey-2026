@@ -5,7 +5,7 @@ import { toDisplayRole } from "../lib/recommend";
 import { classifyLiveState, computeSignalOfMoment, currentNightMinutes, dedupePerformances, formatStateLabel } from "../lib/liveStatus";
 import { DAY_OPTIONS } from "../lib/time";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon } from "../components/icons";
+import { GearIcon, PeopleIcon, BookIcon } from "../components/icons";
 import { LiveStatusBar } from "../components/LiveStatus";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { ScoredRecommendation, TasteProfile } from "../types";
@@ -110,6 +110,9 @@ export function NowScreen({
       <div className="hero-banner">
         <div className="hero-banner-nav">
           <div className="top-actions">
+            <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+              <BookIcon size={16} />
+            </a>
             <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
               <PeopleIcon size={16} />
             </button>
