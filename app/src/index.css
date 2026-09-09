@@ -524,6 +524,10 @@ input, select {
 
 .home-footer-links { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--border); }
 
+.connect-section { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+.connect-links { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.connect-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+
 .download-toast {
   margin-top: 10px;
   background: var(--bg-elevated);

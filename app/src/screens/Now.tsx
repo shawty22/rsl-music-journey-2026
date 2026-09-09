@@ -246,6 +246,21 @@ export function NowScreen({
         )}
       </div>
 
+      <div className="connect-section">
+        <div className="section-label">CONNECT WITH ME</div>
+        <div className="connect-links">
+          <a href="tel:+14084996347">📞 (408) 499-6347</a>
+          <a href="mailto:Ciaran.Ohara@gmail.com">✉️ Ciaran.Ohara@gmail.com</a>
+          <a href="ciaran-ohara.vcf">📇 Save my contact</a>
+          <a href="https://www.instagram.com/ciaran.o.solas" target="_blank" rel="noreferrer">
+            📷 Instagram
+          </a>
+          <a href="https://www.facebook.com/Ciaranimo" target="_blank" rel="noreferrer">
+            Facebook
+          </a>
+        </div>
+      </div>
+
       <div className="bottom-nav-spacer" />
     </div>
   );
