@@ -36,17 +36,15 @@ export function BrowseArtistsScreen({
   const [filter, setFilter] = useState<SignalFilter>("ALL");
   const [genre, setGenre] = useState<string | null>(null);
 
-  // Top genres by how many artists carry them — a scrollable quick-pick row
-  // so "go straight to a genre" doesn't require typing.
+  // Every real genre tag (there are only 20 total), ranked by how many
+  // artists carry it — an artist can land in more than one bucket, so
+  // these counts don't sum to the artist total, which is expected.
   const topGenres = useMemo(() => {
     const counts = new Map<string, number>();
     for (const a of dataset.artists) {
       for (const g of a.genre_tags) counts.set(g, (counts.get(g) ?? 0) + 1);
     }
-    return [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 24)
-      .map(([g]) => g);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [dataset]);
 
   const results = useMemo(() => {
@@ -96,9 +94,9 @@ export function BrowseArtistsScreen({
           </button>
         )}
         {!genre &&
-          topGenres.map((g) => (
+          topGenres.map(([g, count]) => (
             <button key={g} className="filter-chip" onClick={() => setGenre(g)}>
-              {g}
+              {g} <span className="genre-chip-count">{count}</span>
             </button>
           ))}
       </div>
