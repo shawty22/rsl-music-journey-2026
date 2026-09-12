@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
 import { execFileSync } from "node:child_process";
-import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES } from "./lib/field-guide-model.mjs";
+import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES, formatPerformanceWhen } from "./lib/field-guide-model.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -57,7 +57,7 @@ function linksBlock(a) {
 function performanceListXhtml(artistId) {
   const perfs = allPerformancesOf(artistId);
   if (!perfs.length) return `<p class="perf-empty">No confirmed set time in the source data.</p>`;
-  return perfs.map((p) => `<p class="perf"><b>${esc(p.day_raw)} @ ${esc(p.set_time_raw)}</b> &#8212; ${esc(p.camp)}${p.location ? ` &#183; ${esc(p.location)}` : ""}</p>`).join("\n");
+  return perfs.map((p) => `<p class="perf"><b>${esc(formatPerformanceWhen(p))}</b> &#8212; ${esc(p.camp)}${p.location ? ` &#183; ${esc(p.location)}` : ""}</p>`).join("\n");
 }
 
 // image files actually referenced this build, copied into OEBPS/images/artists/
@@ -160,7 +160,7 @@ function wildcardsBody() {
       const perfs = allPerformancesOf(a.artist_id);
       const first = perfs[0];
       const disc = a.bio || [a.discovery_note, a.catalogue_signal, a.external_signal].filter(Boolean).join(" ");
-      return `<div class="wildcard"><p><b>${esc(a.artist)}</b>${first ? ` <span class="wc-when">${esc(first.day_raw)} @ ${esc(first.set_time_raw)} &#183; ${esc(first.camp)}</span>` : ""}</p><p>${esc(disc)}</p></div>`;
+      return `<div class="wildcard"><p><b>${esc(a.artist)}</b>${first ? ` <span class="wc-when">${esc(formatPerformanceWhen(first))} &#183; ${esc(first.camp)}</span>` : ""}</p><p>${esc(disc)}</p></div>`;
     })
     .join("\n");
   return `<h1>Wildcard / Discovery</h1>

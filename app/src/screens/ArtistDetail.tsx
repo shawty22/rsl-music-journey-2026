@@ -2,6 +2,7 @@ import type { Dataset } from "../data/loadData";
 import { HomeIcon, BackIcon, PinIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
 import { ArtistPhoto } from "../components/ArtistPhoto";
+import { formatPerformanceWhen } from "../lib/time";
 
 const LINK_LABELS: { key: "spotify_url" | "soundcloud_url" | "bandcamp_url" | "apple_music_url" | "website"; label: string }[] = [
   { key: "spotify_url", label: "Spotify" },
@@ -136,7 +137,7 @@ export function ArtistDetailScreen({
           <div className="section-label">PLAYING THIS WEEK</div>
           {performances.map((p) => (
             <div key={p.performance_id} className="perf-row">
-              <strong>{p.day_raw}</strong> @ {p.set_time_raw} — {p.camp}
+              <strong>{formatPerformanceWhen(p.day_start, p.set_time_raw)}</strong> — {p.camp}
               {p.location ? ` (${p.location})` : ""}
             </div>
           ))}

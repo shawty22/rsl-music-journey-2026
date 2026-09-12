@@ -33,6 +33,15 @@ export function imageFlagFor(artistId) {
   return FLAGGED_IMAGES[artistId] || null;
 }
 
+// day_raw ("TUE PM — WED AM") describes how an overnight set was bucketed
+// for sorting, not something a reader needs to parse — it reads as two
+// conflicting days next to one clock time. Show the single calendar day
+// the set actually starts on instead: "Tuesday, 8:30pm".
+export function formatPerformanceWhen(p) {
+  const dayLabel = p.day_start ? (DAY_LABEL[p.day_start] ?? p.day_start) : null;
+  return dayLabel ? `${dayLabel}, ${p.set_time_raw}` : p.set_time_raw;
+}
+
 function nightMinutesFromHour24(hour24, minute) {
   const base = hour24 * 60 + minute;
   return hour24 < 12 ? base + 24 * 60 : base;

@@ -27,6 +27,25 @@ export function formatNightMinutes(nightMinutes: number): string {
 
 export const DAY_OPTIONS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] as const;
 
+export const DAY_FULL_LABEL: Record<string, string> = {
+  SUN: "Sunday",
+  MON: "Monday",
+  TUE: "Tuesday",
+  WED: "Wednesday",
+  THU: "Thursday",
+  FRI: "Friday",
+  SAT: "Saturday",
+};
+
+// The source data's day_raw ("TUE PM — WED AM") describes how an overnight
+// set was bucketed for sorting, not something a reader needs to parse —
+// it reads as two conflicting days next to one clock time. Show the single
+// calendar day the set actually starts on instead: "Tuesday, 8:30pm".
+export function formatPerformanceWhen(dayStart: string | null, setTimeRaw: string): string {
+  const dayLabel = dayStart ? (DAY_FULL_LABEL[dayStart] ?? dayStart) : null;
+  return dayLabel ? `${dayLabel}, ${setTimeRaw}` : setTimeRaw;
+}
+
 // Real, verified Burning Man 2026 calendar dates (Black Rock City runs Aug
 // 30 - Sep 7, 2026 per burningman.org) — shown next to each day chip so
 // "what day is it out there" doesn't depend on remembering the week.

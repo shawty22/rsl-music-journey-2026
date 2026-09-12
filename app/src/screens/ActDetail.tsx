@@ -1,7 +1,7 @@
 import type { JourneyStop } from "../lib/journey";
 import { toDisplayRole } from "../lib/recommend";
 import { resolvePerformanceType } from "../lib/performanceType";
-import { formatNightMinutes } from "../lib/time";
+import { formatNightMinutes, DAY_FULL_LABEL } from "../lib/time";
 import { parseClockStreetAddress } from "../lib/geo";
 import { HomeIcon, BackIcon, ClockIcon, PinIcon, ShareIcon } from "../components/icons";
 import { RoleBadge, SignalBadge, PerformanceTypeTag, ReasonRow } from "../components/badges";
@@ -88,7 +88,8 @@ export function ActDetailScreen({
           <ClockIcon size={18} color="var(--accent)" />
           <div>
             <div className="detail-info-main">
-              {stop.performance.day_start} · {formatNightMinutes(stop.arrivalNightMinutes)}
+              {stop.performance.day_start ? DAY_FULL_LABEL[stop.performance.day_start] ?? stop.performance.day_start : ""} ·{" "}
+              {formatNightMinutes(stop.arrivalNightMinutes)}
             </div>
             <div className="detail-info-sub">{stop.transitionNote}</div>
           </div>

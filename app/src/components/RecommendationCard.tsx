@@ -2,6 +2,7 @@ import type { ScoredRecommendation } from "../types";
 import { toDisplayRole } from "../lib/recommend";
 import { resolvePerformanceType } from "../lib/performanceType";
 import { parseClockStreetAddress } from "../lib/geo";
+import { formatPerformanceWhen } from "../lib/time";
 import { SignalBadge, PerformanceTypeTag } from "./badges";
 import { BookmarkIcon } from "./icons";
 
@@ -65,7 +66,7 @@ export function RecommendationCard({
 
       <div className="rec-meta">
         {performance.camp}
-        {performance.location ? ` · ${performance.location}` : ""} · {performance.day_raw} @ {performance.set_time_raw}
+        {performance.location ? ` · ${performance.location}` : ""} · {formatPerformanceWhen(performance.day_start, performance.set_time_raw)}
       </div>
 
       {topReason && <div className="rec-reason">{topReason.text}</div>}

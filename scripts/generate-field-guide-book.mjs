@@ -7,7 +7,7 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES } from "./lib/field-guide-model.mjs";
+import { loadModel, tier, aboutText, whyInteresting, geoLine, perfType, imageFlagFor, FLAGGED_IMAGES, formatPerformanceWhen } from "./lib/field-guide-model.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -68,7 +68,7 @@ function performanceListBlock(artistId) {
   const perfs = allPerformancesOf(artistId);
   if (!perfs.length) return `<div class="perf-row perf-empty">No confirmed set time in the source data.</div>`;
   return perfs
-    .map((p) => `<div class="perf-row"><span class="perf-day">${esc(p.day_raw)}</span><span class="perf-time">${esc(p.set_time_raw)}</span><span class="perf-place">${esc(p.camp)}${p.location ? ` · ${esc(p.location)}` : ""}</span></div>`)
+    .map((p) => `<div class="perf-row"><span class="perf-when">${esc(formatPerformanceWhen(p))}</span><span class="perf-place">${esc(p.camp)}${p.location ? ` · ${esc(p.location)}` : ""}</span></div>`)
     .join("\n");
 }
 
@@ -191,7 +191,7 @@ function wildcardSectionHtml() {
       const first = perfs[0];
       const disc = a.bio || [a.discovery_note, a.catalogue_signal, a.external_signal].filter(Boolean).join(" ");
       return `<div class="wildcard-row">
-        <b>${esc(a.artist)}</b> ${first ? `<span class="wildcard-when">${esc(first.day_raw)} @ ${esc(first.set_time_raw)} · ${esc(first.camp)}</span>` : ""}
+        <b>${esc(a.artist)}</b> ${first ? `<span class="wildcard-when">${esc(formatPerformanceWhen(first))} · ${esc(first.camp)}</span>` : ""}
         <p class="prose">${esc(disc)}</p>
       </div>`;
     })
@@ -287,8 +287,7 @@ const html = `<!doctype html>
   .notable b { color: var(--text-faint); font-weight: 800; font-size: 11px; text-transform: uppercase; margin-right: 6px; }
   .perfs { margin-top: 4px; }
   .perf-row { display: flex; gap: 10px; font-size: 13px; padding: 4px 0; flex-wrap: wrap; align-items: baseline; }
-  .perf-day { color: var(--gold); font-weight: 800; white-space: nowrap; flex-shrink: 0; }
-  .perf-time { color: var(--text); font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+  .perf-when { color: var(--gold); font-weight: 800; white-space: nowrap; flex-shrink: 0; }
   .perf-place { color: var(--text-dim); }
   .perf-empty { color: var(--text-faint); font-style: italic; }
   .listen { margin-top: 14px; }

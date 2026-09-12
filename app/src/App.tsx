@@ -3,7 +3,7 @@ import "./index.css";
 import { loadDataset, type Dataset } from "./data/loadData";
 import { loadTaste, saveTaste, loadSavedJourneys, saveJourney, deleteJourney, loadSavedSets, toggleSavedSet, DEFAULT_TASTE } from "./lib/taste";
 import { buildJourney, type JourneyStop } from "./lib/journey";
-import { parseTimeInputToNightMinutes, nightMinutesFromHour24, formatNightMinutes, currentDraftTime } from "./lib/time";
+import { parseTimeInputToNightMinutes, nightMinutesFromHour24, formatNightMinutes, currentDraftTime, formatPerformanceWhen } from "./lib/time";
 import { genreTagToMoodKeys } from "./lib/radar";
 import { RecommendationCard } from "./components/RecommendationCard";
 import { BottomNav, type PrimaryTab } from "./components/BottomNav";
@@ -265,7 +265,7 @@ export default function App() {
         ? nightMinutesFromHour24(rec.performance.set_time_hour24, rec.performance.set_time_minute)
         : 0;
     setDetailStop({
-      stop: { ...rec, transitionNote: `${rec.performance.day_raw} at ${rec.performance.set_time_raw}.`, arrivalNightMinutes: nm, isFinale: false },
+      stop: { ...rec, transitionNote: `${formatPerformanceWhen(rec.performance.day_start, rec.performance.set_time_raw)}.`, arrivalNightMinutes: nm, isFinale: false },
       actNumber: 1,
     });
     setDetailReturnTo(returnTo);
