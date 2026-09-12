@@ -500,6 +500,8 @@ export default function App() {
             setSelectedArtistId(id);
             setView("artistDetail");
           }}
+          taste={taste}
+          onChangeTaste={updateTaste}
         />
       )}
 

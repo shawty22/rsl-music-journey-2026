@@ -1,11 +1,16 @@
 import { useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
-import { HomeIcon, SearchIcon } from "../components/icons";
+import type { TasteProfile } from "../types";
+import { HomeIcon, SearchIcon, HeartIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
 import { ArtistPhoto } from "../components/ArtistPhoto";
 
 type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
 type Artist = Dataset["artists"][number];
+
+function normalizeName(s: string): string {
+  return s.trim().toLowerCase();
+}
 
 function geographyLine(artist: Artist): string | null {
   const parts = [artist.city, artist.state_region, artist.country].filter(Boolean);
@@ -27,10 +32,14 @@ export function BrowseArtistsScreen({
   dataset,
   onHome,
   onSelectArtist,
+  taste,
+  onChangeTaste,
 }: {
   dataset: Dataset;
   onHome: () => void;
   onSelectArtist: (artistId: string) => void;
+  taste: TasteProfile;
+  onChangeTaste: (t: TasteProfile) => void;
 }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<SignalFilter>("ALL");
@@ -72,6 +81,18 @@ export function BrowseArtistsScreen({
     });
     return list.slice(0, 200);
   }, [dataset, query, filter, genre]);
+
+  const favoriteSet = useMemo(() => new Set(taste.favorite_artists.map(normalizeName)), [taste.favorite_artists]);
+
+  function toggleFavorite(artist: Artist) {
+    const isFav = favoriteSet.has(normalizeName(artist.artist));
+    onChangeTaste({
+      ...taste,
+      favorite_artists: isFav
+        ? taste.favorite_artists.filter((a) => normalizeName(a) !== normalizeName(artist.artist))
+        : [...taste.favorite_artists, artist.artist],
+    });
+  }
 
   return (
     <div className="screen">
@@ -131,6 +152,16 @@ export function BrowseArtistsScreen({
                 <ArtistPhoto artistId={a.artist_id} alt={a.artist} className="artist-row-thumb" />
                 <span className="artist-row-name">{a.artist}</span>
                 <SignalBadge status={a.signal_status} />
+                <button
+                  className="icon-btn artist-row-favorite"
+                  aria-label={favoriteSet.has(normalizeName(a.artist)) ? "Remove from favorites" : "Add to favorites"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(a);
+                  }}
+                >
+                  <HeartIcon filled={favoriteSet.has(normalizeName(a.artist))} color={favoriteSet.has(normalizeName(a.artist)) ? "#ff4d6d" : "var(--text-dim)"} />
+                </button>
               </div>
               <div className="artist-row-genre">{a.genre_tags.length > 0 ? a.genre_tags.join(" · ") : "genre not yet tagged"}</div>
               <div className="artist-row-meta">

@@ -730,6 +730,15 @@ input, select {
 
 .artist-row-rich { padding: 14px 4px; border-bottom: 1px solid var(--border); cursor: pointer; }
 .artist-row-top { display: flex; align-items: center; gap: 10px; }
+.artist-row-favorite {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+.artist-row-favorite:active { background: var(--bg-elevated); }
 .artist-row-thumb { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 .artist-row-name { font-size: 16px; font-weight: 700; flex: 1; }
 .artist-row-genre { font-size: 12.5px; color: var(--text-dim); margin-top: 4px; }
