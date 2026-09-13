@@ -3,9 +3,9 @@ import type { Dataset } from "../data/loadData";
 import { buildCandidatePool } from "../lib/recommend";
 import { toDisplayRole } from "../lib/recommend";
 import { classifyLiveState, computeSignalOfMoment, currentNightMinutes, dedupePerformances, formatStateLabel } from "../lib/liveStatus";
-import { DAY_OPTIONS } from "../lib/time";
+import { DAY_OPTIONS, isEventOver } from "../lib/time";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon, BookIcon } from "../components/icons";
+import { GearIcon, PeopleIcon, BookIcon, HeartIcon } from "../components/icons";
 import { LiveStatusBar } from "../components/LiveStatus";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { ScoredRecommendation, TasteProfile } from "../types";
@@ -20,6 +20,7 @@ export function NowScreen({
   onOpenSignal,
   onSeeAllStartingSoon,
   onOpenArtists,
+  onOpenFavorites,
   onOpenSettings,
   onBuildJourney,
   onOpenMap,
@@ -33,11 +34,13 @@ export function NowScreen({
   onOpenSignal: (genres: string[]) => void;
   onSeeAllStartingSoon: () => void;
   onOpenArtists: () => void;
+  onOpenFavorites: () => void;
   onOpenSettings: () => void;
   onBuildJourney: () => void;
   onOpenMap: () => void;
 }) {
   const [now] = useState(() => new Date());
+  const eventOver = useMemo(() => isEventOver(now), [now]);
 
   // iOS never fires a native install prompt (Apple doesn't expose one) —
   // Android Chrome shows its own automatically once the manifest/service
@@ -116,6 +119,9 @@ export function NowScreen({
             <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
               <PeopleIcon size={16} />
             </button>
+            <button className="icon-btn" onClick={onOpenFavorites} aria-label="My favorites">
+              <HeartIcon size={16} />
+            </button>
             <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
               <GearIcon />
             </button>
@@ -124,22 +130,33 @@ export function NowScreen({
         <div className="hero-banner-caption">
           <span className="hero-mark">BMRI</span>
           <div className="hero-title">Burning Man Rave Intelligence</div>
-          <div className="hero-tagline">The app and the 2026 field guide, in one place.</div>
+          <div className="hero-tagline">{eventOver ? "The 2026 lineup, archived. Keep discovering." : "The app and the 2026 field guide, in one place."}</div>
         </div>
       </div>
 
-      <div className="home-primary-actions">
-        <button className="cta-gradient" onClick={onBuildJourney}>
-          <span>BUILD MY JOURNEY</span>
-        </button>
-        <button className="btn-secondary home-map-btn" onClick={onOpenMap}>
-          MAP
-        </button>
-      </div>
+      {eventOver ? (
+        <div className="home-primary-actions">
+          <button className="cta-gradient" onClick={onOpenArtists}>
+            <span>BROWSE ARTISTS</span>
+          </button>
+          <button className="btn-secondary home-map-btn" onClick={onOpenFavorites}>
+            FAVORITES
+          </button>
+        </div>
+      ) : (
+        <div className="home-primary-actions">
+          <button className="cta-gradient" onClick={onBuildJourney}>
+            <span>BUILD MY JOURNEY</span>
+          </button>
+          <button className="btn-secondary home-map-btn" onClick={onOpenMap}>
+            MAP
+          </button>
+        </div>
+      )}
 
-      <LiveStatusBar geoModel={dataset.geoModel} />
+      {!eventOver && <LiveStatusBar geoModel={dataset.geoModel} />}
 
-      {signal && (
+      {!eventOver && signal && (
         <div className="section">
           <div className="section-label">SIGNAL OF THE MOMENT</div>
           <button className="signal-card" onClick={() => onOpenSignal(signal.genreFilter)}>
@@ -150,7 +167,7 @@ export function NowScreen({
         </div>
       )}
 
-      {happeningNow.length > 0 && (
+      {!eventOver && happeningNow.length > 0 && (
         <div className="section">
           <div className="section-label">HAPPENING NOW</div>
           <div className="card-list">
@@ -169,7 +186,7 @@ export function NowScreen({
         </div>
       )}
 
-      {happeningNow.length === 0 && bestNext && (
+      {!eventOver && happeningNow.length === 0 && bestNext && (
         <div className="section">
           <div className="now-empty-headline">Nothing strong is live right now.</div>
           <div className="section-label" style={{ marginTop: 14 }}>
@@ -190,7 +207,7 @@ export function NowScreen({
         </div>
       )}
 
-      {startingSoon.length > 0 && (
+      {!eventOver && startingSoon.length > 0 && (
         <div className="section">
           <div className="section-label-row">
             <div className="section-label">STARTING SOON</div>
@@ -215,7 +232,7 @@ export function NowScreen({
       )}
 
       <div className="home-footer-links">
-        {!isStandalone && !installDismissed && (
+        {!eventOver && !isStandalone && !installDismissed && (
           <div className="field-guide-strip install-prompt-strip">
             <span className="field-guide-strip-label">📲 Everything's in the app —</span>
             <button className="install-prompt-link" onClick={onOpenSettings}>

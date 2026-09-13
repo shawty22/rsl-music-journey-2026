@@ -1,31 +1,14 @@
 import { useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import type { TasteProfile } from "../types";
-import { HomeIcon, SearchIcon, HeartIcon } from "../components/icons";
-import { SignalBadge, PerformanceTypeTag } from "../components/badges";
-import { ArtistPhoto } from "../components/ArtistPhoto";
+import { HomeIcon, SearchIcon } from "../components/icons";
+import { ArtistRow, listenLinksFor } from "../components/ArtistRow";
 
 type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
 type Artist = Dataset["artists"][number];
 
 function normalizeName(s: string): string {
   return s.trim().toLowerCase();
-}
-
-function geographyLine(artist: Artist): string | null {
-  const parts = [artist.city, artist.state_region, artist.country].filter(Boolean);
-  return parts.length > 0 ? parts.join(", ") : null;
-}
-
-const LISTEN_LINKS: { key: "spotify_url" | "soundcloud_url" | "bandcamp_url" | "apple_music_url"; label: string }[] = [
-  { key: "spotify_url", label: "Spotify" },
-  { key: "soundcloud_url", label: "SoundCloud" },
-  { key: "bandcamp_url", label: "Bandcamp" },
-  { key: "apple_music_url", label: "Apple Music" },
-];
-
-function listenLinksFor(a: Artist) {
-  return LISTEN_LINKS.filter((l) => a[l.key]);
 }
 
 export function BrowseArtistsScreen({
@@ -143,43 +126,15 @@ export function BrowseArtistsScreen({
       </div>
 
       <div className="artist-list">
-        {results.map((a) => {
-          const geo = geographyLine(a);
-          const listenLinks = listenLinksFor(a);
-          return (
-            <div key={a.artist_id} className="artist-row-rich" onClick={() => onSelectArtist(a.artist_id)}>
-              <div className="artist-row-top">
-                <ArtistPhoto artistId={a.artist_id} alt={a.artist} className="artist-row-thumb" />
-                <span className="artist-row-name">{a.artist}</span>
-                <SignalBadge status={a.signal_status} />
-                <button
-                  className="icon-btn artist-row-favorite"
-                  aria-label={favoriteSet.has(normalizeName(a.artist)) ? "Remove from favorites" : "Add to favorites"}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleFavorite(a);
-                  }}
-                >
-                  <HeartIcon filled={favoriteSet.has(normalizeName(a.artist))} color={favoriteSet.has(normalizeName(a.artist)) ? "#ff4d6d" : "var(--text-dim)"} />
-                </button>
-              </div>
-              <div className="artist-row-genre">{a.genre_tags.length > 0 ? a.genre_tags.join(" · ") : "genre not yet tagged"}</div>
-              <div className="artist-row-meta">
-                <PerformanceTypeTag type={a.performance_type} />
-                {geo && <span className="artist-row-geo">{geo}</span>}
-              </div>
-              {listenLinks.length > 0 && (
-                <div className="artist-row-listen" onClick={(e) => e.stopPropagation()}>
-                  {listenLinks.map((l) => (
-                    <a key={l.key} href={a[l.key] as string} target="_blank" rel="noreferrer" className="listen-now-chip">
-                      ▶ {l.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {results.map((a) => (
+          <ArtistRow
+            key={a.artist_id}
+            artist={a}
+            isFavorite={favoriteSet.has(normalizeName(a.artist))}
+            onToggleFavorite={() => toggleFavorite(a)}
+            onClick={() => onSelectArtist(a.artist_id)}
+          />
+        ))}
         {results.length === 0 && <p className="empty">No artists match that search.</p>}
       </div>
     </div>

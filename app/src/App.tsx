@@ -17,10 +17,11 @@ import { ActDetailScreen } from "./screens/ActDetail";
 import { BrowseArtistsScreen } from "./screens/BrowseArtists";
 import { ArtistDetailScreen } from "./screens/ArtistDetail";
 import { PlayaMapScreen } from "./screens/PlayaMap";
-import { HomeIcon, PeopleIcon, BookIcon } from "./components/icons";
+import { MyFavoritesScreen } from "./screens/MyFavorites";
+import { HomeIcon, PeopleIcon, BookIcon, HeartIcon } from "./components/icons";
 import type { SavedJourney, ScoredRecommendation, TasteProfile } from "./types";
 
-type View = PrimaryTab | "journeyDetails" | "results" | "actDetail" | "browseArtists" | "artistDetail" | "myTaste";
+type View = PrimaryTab | "journeyDetails" | "results" | "actDetail" | "browseArtists" | "artistDetail" | "myTaste" | "myFavorites";
 
 const PRIMARY_TABS: ReadonlySet<View> = new Set<PrimaryTab>(["now", "radar", "journey", "saved", "map"]);
 
@@ -139,6 +140,7 @@ function SavedScreen({
   onRemoveJourney,
   onHome,
   onOpenArtists,
+  onOpenFavorites,
 }: {
   savedSets: ScoredRecommendation[];
   onRemoveSet: (performanceId: string) => void;
@@ -148,6 +150,7 @@ function SavedScreen({
   onRemoveJourney: (id: string) => void;
   onHome: () => void;
   onOpenArtists: () => void;
+  onOpenFavorites: () => void;
 }) {
   return (
     <div className="screen">
@@ -159,6 +162,9 @@ function SavedScreen({
           </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
+          </button>
+          <button className="icon-btn" onClick={onOpenFavorites} aria-label="My favorites">
+            <HeartIcon size={16} />
           </button>
           <button className="icon-btn" onClick={onHome} aria-label="Home">
             <HomeIcon />
@@ -368,6 +374,7 @@ export default function App() {
             setView("radar");
           }}
           onOpenArtists={() => setView("browseArtists")}
+          onOpenFavorites={() => setView("myFavorites")}
           onOpenSettings={() => setShowSettings(true)}
           onBuildJourney={() => setView("journeyDetails")}
           onOpenMap={() => {
@@ -388,6 +395,7 @@ export default function App() {
           onSelect={(rec) => openStandaloneDetail(rec, "radar")}
           onShowOnMap={(rec) => openMapForSingle(rec, "radar")}
           onOpenArtists={() => setView("browseArtists")}
+          onOpenFavorites={() => setView("myFavorites")}
           onOpenSettings={() => setShowSettings(true)}
           onBuildJourneyFrom={() => setView("journeyDetails")}
           initialMoods={radarSeed?.moods}
@@ -403,10 +411,25 @@ export default function App() {
           onOpenMyTaste={() => setView("myTaste")}
           onOpenSettings={() => setShowSettings(true)}
           onOpenArtists={() => setView("browseArtists")}
+          onOpenFavorites={() => setView("myFavorites")}
         />
       )}
 
       {view === "myTaste" && <MyTasteScreen dataset={dataset} taste={taste} onChange={updateTaste} onHome={goNow} />}
+
+      {view === "myFavorites" && (
+        <MyFavoritesScreen
+          dataset={dataset}
+          taste={taste}
+          onChangeTaste={updateTaste}
+          onHome={goNow}
+          onSelectArtist={(id) => {
+            setSelectedArtistId(id);
+            setView("artistDetail");
+          }}
+          onOpenArtists={() => setView("browseArtists")}
+        />
+      )}
 
       {view === "journeyDetails" && (
         <BuildMyNightScreen
@@ -525,6 +548,7 @@ export default function App() {
           }}
           onHome={goNow}
           onOpenArtists={() => setView("browseArtists")}
+          onOpenFavorites={() => setView("myFavorites")}
         />
       )}
 

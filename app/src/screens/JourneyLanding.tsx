@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dataset } from "../data/loadData";
-import { GearIcon, ArrowRightIcon, PeopleIcon, BookIcon } from "../components/icons";
+import { GearIcon, ArrowRightIcon, PeopleIcon, BookIcon, HeartIcon } from "../components/icons";
 import { OrbitGraphic } from "../components/OrbitGraphic";
 import { MOOD_TILES } from "../lib/moods";
 import type { PerformanceType, TasteProfile } from "../types";
@@ -19,6 +19,7 @@ export function JourneyLandingScreen({
   onOpenMyTaste,
   onOpenSettings,
   onOpenArtists,
+  onOpenFavorites,
 }: {
   dataset: Dataset;
   taste: TasteProfile;
@@ -27,6 +28,7 @@ export function JourneyLandingScreen({
   onOpenMyTaste: () => void;
   onOpenSettings: () => void;
   onOpenArtists: () => void;
+  onOpenFavorites: () => void;
 }) {
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -70,6 +72,9 @@ export function JourneyLandingScreen({
           </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
+          </button>
+          <button className="icon-btn" onClick={onOpenFavorites} aria-label="My favorites">
+            <HeartIcon size={16} />
           </button>
           <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
             <GearIcon />

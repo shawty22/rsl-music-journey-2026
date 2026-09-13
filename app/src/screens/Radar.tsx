@@ -7,7 +7,7 @@ import { estimateDistance, findLocation } from "../lib/distance";
 import { nightMinutesFromHour24 } from "../lib/time";
 import { dedupePerformances } from "../lib/liveStatus";
 import { isSetSaved } from "../lib/taste";
-import { GearIcon, PeopleIcon, BookIcon } from "../components/icons";
+import { GearIcon, PeopleIcon, BookIcon, HeartIcon } from "../components/icons";
 import { RecommendationCard } from "../components/RecommendationCard";
 import type { PerformanceType, ScoredRecommendation, TasteProfile } from "../types";
 
@@ -33,6 +33,7 @@ export function RadarScreen({
   onSelect,
   onShowOnMap,
   onOpenArtists,
+  onOpenFavorites,
   onOpenSettings,
   onBuildJourneyFrom,
   initialMoods,
@@ -45,6 +46,7 @@ export function RadarScreen({
   onSelect: (rec: ScoredRecommendation) => void;
   onShowOnMap: (rec: ScoredRecommendation) => void;
   onOpenArtists: () => void;
+  onOpenFavorites: () => void;
   onOpenSettings: () => void;
   onBuildJourneyFrom: (moods: string[]) => void;
   initialMoods?: string[];
@@ -127,6 +129,9 @@ export function RadarScreen({
           </a>
           <button className="icon-btn" onClick={onOpenArtists} aria-label="Browse artists">
             <PeopleIcon size={16} />
+          </button>
+          <button className="icon-btn" onClick={onOpenFavorites} aria-label="My favorites">
+            <HeartIcon size={16} />
           </button>
           <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
             <GearIcon />

@@ -59,6 +59,14 @@ export const BURN_DATE_LABELS: Record<(typeof DAY_OPTIONS)[number], string> = {
   SAT: "Sep 5",
 };
 
+// Black Rock City opens Aug 30 and the gate closes after exodus on Sep 8 —
+// once real device time passes that, live-event features (building a
+// schedule, the playa map, "happening now") have nothing left to show.
+const EVENT_ENDS = new Date(2026, 8, 8); // Sep 8, 2026, local time
+export function isEventOver(now: Date = new Date()): boolean {
+  return now >= EVENT_ENDS;
+}
+
 // Live "menu-bar style" day/date/time readout straight off the device clock.
 export function formatLiveClock(now: Date): string {
   const day = now.toLocaleDateString(undefined, { weekday: "short" }).toUpperCase();
