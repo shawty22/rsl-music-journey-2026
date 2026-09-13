@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import type { TasteProfile } from "../types";
-import { HomeIcon, SearchIcon } from "../components/icons";
+import { HomeIcon, SearchIcon, BookIcon, HeartIcon, GearIcon } from "../components/icons";
 import { ArtistRow, listenLinksFor } from "../components/ArtistRow";
 
 type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
@@ -17,12 +17,16 @@ export function BrowseArtistsScreen({
   onSelectArtist,
   taste,
   onChangeTaste,
+  onOpenFavorites,
+  onOpenSettings,
 }: {
   dataset: Dataset;
   onHome: () => void;
   onSelectArtist: (artistId: string) => void;
   taste: TasteProfile;
   onChangeTaste: (t: TasteProfile) => void;
+  onOpenFavorites: () => void;
+  onOpenSettings: () => void;
 }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<SignalFilter>("ALL");
@@ -85,7 +89,17 @@ export function BrowseArtistsScreen({
           <span className="icon-btn-label">Home</span>
         </button>
         <span className="wordmark">ARTISTS</span>
-        <div className="icon-btn-spacer" />
+        <div className="top-actions">
+          <a className="icon-btn" href="field-guide.html" target="_blank" rel="noreferrer" aria-label="Read the Field Guide">
+            <BookIcon size={16} />
+          </a>
+          <button className="icon-btn" onClick={onOpenFavorites} aria-label="My favorites">
+            <HeartIcon size={16} />
+          </button>
+          <button className="icon-btn" onClick={onOpenSettings} aria-label="App settings">
+            <GearIcon />
+          </button>
+        </div>
       </div>
 
       <div className="field-label" style={{ marginTop: 14, marginBottom: 6 }}>

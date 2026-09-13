@@ -525,6 +525,8 @@ export default function App() {
           }}
           taste={taste}
           onChangeTaste={updateTaste}
+          onOpenFavorites={() => setView("myFavorites")}
+          onOpenSettings={() => setShowSettings(true)}
         />
       )}
 
