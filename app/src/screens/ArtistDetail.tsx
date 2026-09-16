@@ -1,5 +1,5 @@
 import type { Dataset } from "../data/loadData";
-import { HomeIcon, BackIcon, PinIcon } from "../components/icons";
+import { HomeIcon, BackIcon, PinIcon, ShareIcon } from "../components/icons";
 import { SignalBadge, PerformanceTypeTag } from "../components/badges";
 import { ArtistPhoto } from "../components/ArtistPhoto";
 import { formatPerformanceWhen } from "../lib/time";
@@ -36,6 +36,23 @@ export function ArtistDetailScreen({
   const about = artist.bio || [artist.discovery_note, artist.catalogue_signal, artist.external_signal].filter(Boolean).join(" ");
   const links = LINK_LABELS.filter((l) => artist[l.key]);
 
+  function shareArtist() {
+    if (!artist) return;
+    const linkLines = links.map((l) => `${l.label}: ${artist[l.key]}`).join("\n");
+    const text = [
+      `${artist.artist}${artist.genre_tags.length ? ` — ${artist.genre_tags.join(", ")}` : ""}`,
+      linkLines,
+      "via BMRI (Burning Man Rave Intelligence): https://burningmanraveintelligence.live",
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+    if (navigator.share) {
+      navigator.share({ title: artist.artist, text }).catch(() => {});
+    } else {
+      alert(text);
+    }
+  }
+
   return (
     <div className="screen">
       <div className="screen-top">
@@ -48,7 +65,9 @@ export function ArtistDetailScreen({
             <span className="icon-btn-label">Home</span>
           </button>
         </div>
-        <div className="icon-btn-spacer" />
+        <button className="icon-btn" onClick={shareArtist} aria-label="Share this artist">
+          <ShareIcon />
+        </button>
       </div>
 
       <ArtistPhoto artistId={artist.artist_id} alt={artist.artist} className="detail-photo" />
