@@ -44,5 +44,6 @@
   { "artist": "Nicolas Jaar", "genres": ["experimental electronic", "downtempo"], "styles": [], "performance_characteristics": ["LIVE", "DJ"], "country": "Chile", "scene": null },
   { "artist": "Recondite", "genres": ["techno", "ambient"], "styles": [], "performance_characteristics": ["LIVE", "DJ"], "country": "Germany", "scene": null },
   { "artist": "Extrawelt", "genres": ["techno", "experimental electronic"], "styles": [], "performance_characteristics": ["DJ", "LIVE"], "country": "Germany", "scene": null },
-  { "artist": "Burnt Friedman", "genres": ["experimental electronic", "world fusion"], "styles": [], "performance_characteristics": ["LIVE"], "country": "Germany", "scene": null }
+  { "artist": "Burnt Friedman", "genres": ["experimental electronic", "world fusion"], "styles": [], "performance_characteristics": ["LIVE"], "country": "Germany", "scene": null },
+  { "artist": "Lee Reynolds", "genres": ["techno", "tech house", "acid"], "styles": ["breaks", "Desert Hearts sound"], "performance_characteristics": ["DJ"], "country": "United Kingdom", "scene": "Desert Hearts (Southern California)" }
 ]

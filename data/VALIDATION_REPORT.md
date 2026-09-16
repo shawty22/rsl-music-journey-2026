@@ -1,6 +1,6 @@
 # RSL 2026 Data Validation Report
 
-Generated: 2026-08-29T18:58:16.823Z
+Generated: 2026-09-16T16:17:27.502Z
 
 ## Duplicate artist_normalized
 None found.
@@ -38,7 +38,7 @@ None found.
 Note: 1604 / 1604 performances are currently classified UNKNOWN — the RSL PDF encodes DJ/live/hybrid via icons that were not text-extracted in this seed. Classification is pending enrichment, not an error.
 
 ## Artist enrichment coverage
-285 / 1180 artists have any enrichment field populated beyond the raw RSL extraction.
+289 / 1180 artists have any enrichment field populated beyond the raw RSL extraction.
 
 ## Summary
 - Performances: 1604
