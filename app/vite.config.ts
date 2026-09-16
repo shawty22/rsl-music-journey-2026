@@ -12,6 +12,15 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      // The plain auto-injected register script only calls
+      // navigator.serviceWorker.register() once and never reloads an
+      // already-open tab when a new version activates — on an installed
+      // PWA that's left open, that means every deploy needs a manual
+      // force-close-and-reopen (sometimes twice) to actually show up.
+      // Registering through the virtual module below with immediate:true
+      // instead reloads the page itself as soon as a new version takes
+      // over, so a deploy is live the moment the app is next foregrounded.
+      injectRegister: false,
       includeAssets: ['icon-192.png', 'icon-512.png', 'favicon-32.png'],
       manifest: {
         name: 'BMRI — Burning Man Rave Intelligence',
