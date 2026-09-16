@@ -744,16 +744,25 @@ input, select {
 .artist-row-genre { font-size: 12.5px; color: var(--text-dim); margin-top: 4px; }
 .artist-row-meta { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
 .artist-row-geo { font-size: 12px; color: var(--text-faint); }
-/* Wraps vertically instead of scrolling sideways — with only 20 real
-   genres total, showing them all at a glance beats hiding most of them
-   off-screen to the right. */
-.genre-chip-row { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
-.genre-chip-row .filter-chip { flex-shrink: 0; text-transform: capitalize; }
-.genre-chip-count { color: var(--text-faint); font-weight: 700; font-size: 0.85em; margin-left: 2px; }
-.genre-chip-row-big .filter-chip .genre-chip-count { color: var(--text-dim); }
-/* Big-thumb mode: this is the primary "pick a genre while moving" row, so
-   the chips are full tap targets, not compact filter pills. */
-.genre-chip-row-big .filter-chip { font-size: 15px; padding: 14px 20px; font-weight: 800; }
+/* A wrapped grid of 20 genre chips ate the whole screen before you even
+   reached search — a single dropdown keeps every genre (and its count)
+   one tap away without spending any vertical space on the ones you're
+   not picking right now. */
+.genre-select-wrap { position: relative; }
+.genre-select-wrap svg { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.genre-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 40px 13px 14px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  text-transform: capitalize;
+}
 .artist-row-listen { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 .listen-now-chip {
   font-size: 15px;

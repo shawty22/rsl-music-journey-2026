@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Dataset } from "../data/loadData";
 import type { TasteProfile } from "../types";
-import { HomeIcon, SearchIcon, BookIcon, HeartIcon, GearIcon } from "../components/icons";
+import { HomeIcon, SearchIcon, BookIcon, HeartIcon, GearIcon, ChevronDownIcon } from "../components/icons";
 import { ArtistRow, listenLinksFor } from "../components/ArtistRow";
 
 type SignalFilter = "ALL" | "ESTABLISHED" | "EMERGING" | "WILDCARD";
@@ -105,18 +105,16 @@ export function BrowseArtistsScreen({
       <div className="field-label" style={{ marginTop: 14, marginBottom: 6 }}>
         Jump to a genre
       </div>
-      <div className="genre-chip-row genre-chip-row-big">
-        {genre && (
-          <button className="filter-chip filter-chip-active" onClick={() => setGenre(null)}>
-            {genre} ✕
-          </button>
-        )}
-        {!genre &&
-          topGenres.map(([g, count]) => (
-            <button key={g} className="filter-chip" onClick={() => setGenre(g)}>
-              {g} <span className="genre-chip-count">{count}</span>
-            </button>
+      <div className="genre-select-wrap">
+        <select className="genre-select" value={genre ?? ""} onChange={(e) => setGenre(e.target.value || null)}>
+          <option value="">All genres</option>
+          {topGenres.map(([g, count]) => (
+            <option key={g} value={g}>
+              {g} ({count})
+            </option>
           ))}
+        </select>
+        <ChevronDownIcon size={16} />
       </div>
 
       <div className="search-field" style={{ marginTop: 14 }}>

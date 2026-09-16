@@ -115,6 +115,14 @@ export function SearchIcon({ size = 16, color = "var(--text-faint)" }: IconProps
   );
 }
 
+export function ChevronDownIcon({ size = 16, color = "var(--text-dim)" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke={color} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function PulseIcon({ size = 18, color = "var(--text)" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
